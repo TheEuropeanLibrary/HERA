@@ -78,13 +78,45 @@
     </developers>
     
     <modules>
-        <module>rest</module>
+        <module>rest/administration</module>
     </modules>
     
     <properties>
         <version.jdk>1.7</version.jdk>
         <version.junit>4.10</version.junit>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        
+		<version.jersey>2.3.1</version.jersey>
+		<version.spring-security>3.2.5.RELEASE</version.spring-security>
+		<version.spring-framework>3.2.5.RELEASE</version.spring-framework>
+		<version.servlet>2.5</version.servlet>
+
+		<version.jdk>1.7</version.jdk>
+		<version.junit>4.10</version.junit>
+		<version.slf4j>1.7.5</version.slf4j>
+		<version.junitparams>1.0.2</version.junitparams>
+		<version.commonscodec>1.8</version.commonscodec>
+		<version.commonio>2.4</version.commonio>
+		<version.uuid>3.4</version.uuid>
+		<version.blobstore>1.6.0</version.blobstore>
+		<version.gson>2.2.1</version.gson>
+		<version.guava>15.0</version.guava>
+		
+		<main.directory>${project.basedir}</main.directory>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<!-- Logging -->
+		<log4j2_version>2.0-rc1</log4j2_version>
+		<version.log4j>1.2.17</version.log4j>
+		<version.logback>1.0.1</version.logback>
+		<skipITs>true</skipITs>
+		<commons-logging.version>1.1.1</commons-logging.version>
+		
+		<!-- Testing -->
+		<version.mockito>1.9.5</version.mockito>
+		<version.org.glassfish.jersey.test-framework>2.3.1</version.org.glassfish.jersey.test-framework>
+
     </properties>
     
     <build>
@@ -162,15 +194,6 @@
         </pluginManagement>
     </build>
     
-    <!--    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-core</artifactId>
-                <version>1.9.5</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>-->
 
     <dependencies>
         <dependency>
@@ -180,10 +203,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    
-    <repositories>
-        
-    </repositories>
     
     <repositories>
         <repository>
