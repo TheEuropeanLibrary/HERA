@@ -17,6 +17,8 @@ import org.theeuropeanlibrary.maia.common.model.DataProvider;
 /**
  * Resource for DataProvider.
  *
+ * @author Emmanouil Koufakis (emmanouil.koufakis@kb.nl)
+ * @since 17.10.2014
  */
 @Path("/data-providers/{providerId}")
 @Component
@@ -24,29 +26,28 @@ import org.theeuropeanlibrary.maia.common.model.DataProvider;
 public class DataProviderResource {
 
     /**
-     * @return Says hello to the specified person.
-     *
-     * @param The person to say hello to.
+     * @param providerId which provider should be retrieved
+     * @return provider as response
      */
     @GET
     @Produces({MediaType.APPLICATION_JSON})
 //     @PreAuthorize("isAuthenticated()")
     public Response getProvider(@PathParam("providerId") String providerId) {
-    	
-    	final String username = DataProviderResource.getUsername();
-    	if (username.equals("Alina")) {
-
-    		DataProvider p = new DataProvider(providerId);
-    		p.setName("Alina");
+        final String username = DataProviderResource.getUsername();
+        if (username.equals("Alina")) {
+            DataProvider p = new DataProvider(providerId);
+            p.setName("Alina");
             final Response response = Response.ok().entity(p).build();
             return response;
-    	}
-		DataProvider p = new DataProvider(providerId);
-		p.setName("Manos");
+        }
+
+        DataProvider p = new DataProvider(providerId);
+        p.setName("Manos");
+
         final Response response = Response.ok().entity(p).build();
         return response;
     }
-    
+
     /**
      * @return Name of the currently logged in user
      */

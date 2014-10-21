@@ -6,19 +6,20 @@ import org.glassfish.jersey.server.spring.scope.RequestContextFilter;
 import org.theeuropeanlibrary.maia.common.model.DataProvider;
 
 /**
- * Jersey Configuration for Exception Mappers and Resources
- * 
+ * Jersey Configuration for Exception mappers and Resources
+ *
+ * @author Emmanouil Koufakis (emmanouil.koufakis@kb.nl)
+ * @since 17.10.2014
  */
 public class JerseyConfig extends ResourceConfig {
-
-	/**
-	 * Creates a new instance of this class.
-	 */
-	public JerseyConfig() {
-		super();
+    /**
+     * Creates a new instance of this class.
+     */
+    public JerseyConfig() {
+        super();
         register(RequestContextFilter.class);
         register(DataProvider.class);
         register(LoggingFilter.class);
         register(DataProviderResource.class);
-	}
+    }
 }
