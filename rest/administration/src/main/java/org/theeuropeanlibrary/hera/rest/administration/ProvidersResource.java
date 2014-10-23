@@ -8,22 +8,23 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.springframework.context.annotation.Scope;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-import org.theeuropeanlibrary.maia.common.model.DataProvider;
+import org.theeuropeanlibrary.maia.common.model.Provider;
 
 /**
- * Resource for DataProvider.
+ * Resource for Provider.
  *
  * @author Emmanouil Koufakis (emmanouil.koufakis@kb.nl)
  * @since 17.10.2014
  */
-@Path("/data-providers/{providerId}")
+@Path("/providers/{providerId}")
 @Component
 @Scope("request")
-public class DataProviderResource {
+public class ProvidersResource {
 
     /**
      * @param providerId which provider should be retrieved
@@ -31,17 +32,17 @@ public class DataProviderResource {
      */
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-//     @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public Response getProvider(@PathParam("providerId") String providerId) {
-        final String username = DataProviderResource.getUsername();
+        final String username = ProvidersResource.getUsername();
         if (username.equals("Alina")) {
-            DataProvider p = new DataProvider(providerId);
+            Provider p = new Provider(providerId);
             p.setName("Alina");
             final Response response = Response.ok().entity(p).build();
             return response;
         }
 
-        DataProvider p = new DataProvider(providerId);
+        Provider p = new Provider(providerId);
         p.setName("Manos");
 
         final Response response = Response.ok().entity(p).build();

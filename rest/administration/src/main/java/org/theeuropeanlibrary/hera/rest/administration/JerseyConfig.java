@@ -3,7 +3,7 @@ package org.theeuropeanlibrary.hera.rest.administration;
 import org.glassfish.jersey.filter.LoggingFilter;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.spring.scope.RequestContextFilter;
-import org.theeuropeanlibrary.maia.common.model.DataProvider;
+import org.theeuropeanlibrary.maia.common.model.Provider;
 
 /**
  * Jersey Configuration for Exception mappers and Resources
@@ -18,8 +18,8 @@ public class JerseyConfig extends ResourceConfig {
     public JerseyConfig() {
         super();
         register(RequestContextFilter.class);
-        register(DataProvider.class);
+        register(Provider.class);
         register(LoggingFilter.class);
-        register(DataProviderResource.class);
+        register(ProvidersResource.class);
     }
 }
