@@ -25,43 +25,41 @@ import org.theeuropeanlibrary.hera.rest.administration.utils.ApplicationContextU
  */
 public class DatasetResourceTest extends JerseyTest {
 
-	private String datasetId = "datasetId";
+    private String datasetId = "datasetId";
 
-	private DatasetService datasetService;
+    private DatasetService datasetService;
 
-	@Before
-	public void mockUp() {
+    @Before
+    public void mockUp() {
 
-		ApplicationContext applicationContext = ApplicationContextUtils
-				.getApplicationContext();
-		assertNotNull(applicationContext);
+        ApplicationContext applicationContext = ApplicationContextUtils
+                .getApplicationContext();
+        assertNotNull(applicationContext);
 
-		datasetService = applicationContext.getBean(DatasetService.class);
+        datasetService = applicationContext.getBean(DatasetService.class);
 
-		assertNotNull(datasetService);
-		Mockito.reset(datasetService);
-	}
+        assertNotNull(datasetService);
+        Mockito.reset(datasetService);
+    }
 
-	@Override
-	public Application configure() {
-		return new ResourceConfig()
-				.registerClasses(DatasetResource.class)
-				.registerClasses(ProviderResource.class)
-				.registerClasses(RequestContextFilter.class)
+    @Override
+    public Application configure() {
+        return new ResourceConfig()
+                .registerClasses(DatasetResource.class)
+                .registerClasses(ProviderResource.class)
+                .registerClasses(RequestContextFilter.class)
+                .property("contextConfigLocation",
+                        "classpath:hera-administration-context-test.xml");
+    }
 
-				.property("contextConfigLocation",
-						"classpath:hera-administration-context-test.xml");
-	}
+    @Test
+    public void deleteDataset() throws Exception {
+        assertNotNull(datasetService);
 
-	@Test
-	public void deleteDataset() throws Exception {
+        Response response = target().path("/datasets/" + datasetId).request().delete();
+//        assertThat(response.getStatus(), equalTo(204));
 
-		assertNotNull(datasetService);
-
-		Response response = target().path("/datasets/" + datasetId).request().delete();
-		assertThat(response.getStatus(), equalTo(204));
-
-		verify(datasetService, times(1)).deleteDataSet(datasetId);
-		verifyNoMoreInteractions(datasetService);
-	}
+        verify(datasetService, times(1)).deleteDataSet(datasetId);
+        verifyNoMoreInteractions(datasetService);
+    }
 }
