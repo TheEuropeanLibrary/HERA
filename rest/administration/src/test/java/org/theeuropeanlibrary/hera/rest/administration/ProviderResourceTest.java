@@ -1,15 +1,14 @@
 package org.theeuropeanlibrary.hera.rest.administration;
 
-import static org.hamcrest.Matchers.is;
+import javax.ws.rs.core.Application;
+import javax.ws.rs.core.Response;
+
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
-
-import javax.ws.rs.core.Application;
-import javax.ws.rs.core.Response;
-
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.spring.scope.RequestContextFilter;
 import org.glassfish.jersey.test.JerseyTest;
@@ -59,7 +58,7 @@ public class ProviderResourceTest extends JerseyTest {
 		assertNotNull(providerService);
 
 		Response response = target().path("/providers/" + providerId).request().delete();
-		assertThat(response.getStatus(), is(204));
+		assertThat(response.getStatus(), equalTo(204));
 
 		verify(providerService, times(1)).deleteProvider(providerId);
 		verifyNoMoreInteractions(providerService);

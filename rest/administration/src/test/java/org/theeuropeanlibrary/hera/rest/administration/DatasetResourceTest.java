@@ -1,6 +1,6 @@
 package org.theeuropeanlibrary.hera.rest.administration;
 
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.times;
@@ -59,7 +59,7 @@ public class DatasetResourceTest extends JerseyTest {
 		assertNotNull(datasetService);
 
 		Response response = target().path("/datasets/" + datasetId).request().delete();
-		assertThat(response.getStatus(), is(204));
+		assertThat(response.getStatus(), equalTo(204));
 
 		verify(datasetService, times(1)).deleteDataSet(datasetId);
 		verifyNoMoreInteractions(datasetService);
