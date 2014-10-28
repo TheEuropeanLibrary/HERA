@@ -1,6 +1,5 @@
 package org.theeuropeanlibrary.hera.rest.administration.service;
 
-import org.theeuropeanlibrary.hera.rest.administration.ResultSlice;
 import org.theeuropeanlibrary.maia.common.definitions.Dataset;
 
 // TODO: needs to be moved to separate project

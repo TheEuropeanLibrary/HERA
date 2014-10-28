@@ -12,7 +12,7 @@
 
     <artifactId>hera-rest-administration</artifactId>
     <packaging>war</packaging>
-    <name>HERA: REST Administration</name>
+    <name>HERA: Rest Administration</name>
 
     <profiles>
         <profile>
@@ -58,6 +58,13 @@
     <dependencies>
 
         <!-- MAIA -->
+
+        <dependency>
+            <groupId>org.theeuropeanlibrary</groupId>
+            <artifactId>hera-service-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        
         <dependency>
             <groupId>org.theeuropeanlibrary</groupId>
             <artifactId>maia-common</artifactId>

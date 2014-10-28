@@ -79,6 +79,7 @@
 	</developers>
 
 	<modules>
+		<module>service</module>
 		<module>rest</module>
 	</modules>
 
