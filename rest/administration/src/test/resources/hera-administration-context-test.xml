@@ -10,10 +10,19 @@
     <context:component-scan base-package="org.theeuropeanlibrary.hera.rest.administration"/>
     <context:annotation-config/>
     
-	<!-- JSON serialization: Jackson custom object Mapper -->
-	<bean id="telObjectMapper" class="org.theeuropeanlibrary.hera.rest.administration.objectmapper.TelObjectMapper" />
-	
-	<!-- Mocked services (autowired in the tests) -->
+    <!-- JSON serialization: Jackson custom object Mapper -->
+    <bean id="providerRegistry" class="org.theeuropeanlibrary.maia.tel.model.provider.ProviderRegistry" />
+    <bean id="objectMapper" class="org.theeuropeanlibrary.maia.converter.json.EntityObjectMapper">
+        <constructor-arg name="providerRegistry" ref="providerRegistry"/>
+        <constructor-arg name="datasetRegistry">
+            <null />
+        </constructor-arg>
+        <constructor-arg name="recordRegistry">
+            <null />
+        </constructor-arg>
+    </bean>
+    
+    <!-- Mocked services (autowired in the tests) -->
 	
     <bean id="datasetService" name="datasetService" class="org.mockito.Mockito" factory-method="mock" >
         <constructor-arg value="org.theeuropeanlibrary.hera.rest.administration.service.DatasetService" />
@@ -23,10 +32,10 @@
         <constructor-arg value="org.theeuropeanlibrary.hera.rest.administration.service.ProviderService" />
     </bean>
     
-	<bean class="org.theeuropeanlibrary.hera.rest.administration.utils.ApplicationContextUtils"/>
+    <bean class="org.theeuropeanlibrary.hera.rest.administration.utils.ApplicationContextUtils"/>
     
     <bean id="mappings"
-              class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="properties">
             <value>
                 numberOfElementsOnPage=100
@@ -34,5 +43,5 @@
         </property>
     </bean>
     
-	<import resource="classpath:inmemory-authentication-context-test.xml" />
+    <import resource="classpath:inmemory-authentication-context-test.xml" />
 </beans>
