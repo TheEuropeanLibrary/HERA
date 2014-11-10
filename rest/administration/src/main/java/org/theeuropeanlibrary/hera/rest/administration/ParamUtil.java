@@ -3,8 +3,8 @@ package org.theeuropeanlibrary.hera.rest.administration;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 
-import org.theeuropeanlibrary.hera.rest.administration.exception.ErrorInfo;
-import org.theeuropeanlibrary.hera.rest.administration.exception.HeraErrorCode;
+import org.theeuropeanlibrary.hera.rest.administration.service.exception.ErrorInfo;
+import org.theeuropeanlibrary.hera.rest.administration.service.exception.HeraErrorCode;
 
 /**
  * Util for parameters.

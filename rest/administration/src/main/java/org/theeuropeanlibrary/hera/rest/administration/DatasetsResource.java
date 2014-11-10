@@ -2,7 +2,6 @@ package org.theeuropeanlibrary.hera.rest.administration;
 
 import static org.theeuropeanlibrary.hera.rest.administration.ParamConstants.F_DATASET;
 import static org.theeuropeanlibrary.hera.rest.administration.ParamConstants.F_DESCRIPTION;
-import static org.theeuropeanlibrary.hera.rest.administration.ParamConstants.P_PROVIDER;
 import static org.theeuropeanlibrary.hera.rest.administration.ParamConstants.Q_START_FROM;
 
 import java.net.URI;
@@ -11,7 +10,6 @@ import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
@@ -26,7 +24,6 @@ import org.springframework.stereotype.Component;
 import org.theeuropeanlibrary.hera.rest.administration.service.DatasetService;
 import org.theeuropeanlibrary.maia.common.definitions.Dataset;
 
-
 /**
  * Resource to get and create data set.
  */
@@ -35,12 +32,11 @@ import org.theeuropeanlibrary.maia.common.definitions.Dataset;
 @Scope("request")
 public class DatasetsResource {
 
-	@Autowired(required = false)
+    @Autowired(required = false)
     private DatasetService datasetService;
 
     @Value("${numberOfElementsOnPage}")
     private int numberOfDatasets;
-
 
     /**
      * Returns all data sets. Result is returned in slices.
@@ -52,7 +48,9 @@ public class DatasetsResource {
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public ResultSlice<Dataset> getDataSets(@QueryParam(Q_START_FROM) String startFrom) {
-        return datasetService.getDataSets(startFrom, numberOfDatasets);
+        ResultSlice<Dataset> dList = new ResultSlice<>();
+        dList.setResults(datasetService.getDataSets(startFrom, numberOfDatasets));
+        return dList;
     }
 
     /**
@@ -61,21 +59,21 @@ public class DatasetsResource {
      * @param dataSetId identifier of data set (required).
      * @param description description of data set.
      * @return URI to newly created data set in content-location.
-     * 
+     *
      * @statuscode 201 object has been created.
      */
     @POST
     public Response createDataSet(
-    		@Context UriInfo uriInfo,
-    			@FormParam(F_DATASET) String dataSetId,
-    				@FormParam(F_DESCRIPTION) String description) {
-    	
+            @Context UriInfo uriInfo,
+            @FormParam(F_DATASET) String dataSetId,
+            @FormParam(F_DESCRIPTION) String description) {
+
         ParamUtil.require(F_DATASET, dataSetId);
 
         Dataset dataSet = datasetService.createDataSet(dataSetId, description);
         final URI datasetURI = null;
         final Response response = Response.created(datasetURI).build();
-        
+
         String creatorName = SpringUserUtils.getUsername();
         return response;
     }

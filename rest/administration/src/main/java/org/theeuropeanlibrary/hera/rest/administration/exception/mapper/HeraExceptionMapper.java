@@ -2,13 +2,12 @@ package org.theeuropeanlibrary.hera.rest.administration.exception.mapper;
 
 import javax.ws.rs.core.Response;
 
-import org.theeuropeanlibrary.hera.rest.administration.exception.DatabaseConnectionException;
-import org.theeuropeanlibrary.hera.rest.administration.exception.DatasetAlreadyExistsException;
-import org.theeuropeanlibrary.hera.rest.administration.exception.DatasetDoesNotExistException;
-import org.theeuropeanlibrary.hera.rest.administration.exception.DatasetEmptyException;
-import org.theeuropeanlibrary.hera.rest.administration.exception.GenericException;
-import org.theeuropeanlibrary.hera.rest.administration.exception.ProviderAlreadyExistsException;
-import org.theeuropeanlibrary.hera.rest.administration.exception.ProviderDoesNotExistException;
+import org.theeuropeanlibrary.hera.rest.administration.service.exception.DatabaseConnectionException;
+import org.theeuropeanlibrary.hera.rest.administration.service.exception.DatasetAlreadyExistsException;
+import org.theeuropeanlibrary.hera.rest.administration.service.exception.DatasetDoesNotExistException;
+import org.theeuropeanlibrary.hera.rest.administration.service.exception.GenericException;
+import org.theeuropeanlibrary.hera.rest.administration.service.exception.ProviderAlreadyExistsException;
+import org.theeuropeanlibrary.hera.rest.administration.service.exception.ProviderDoesNotExistException;
 
 /**
  * Generic class exposing the exceptions
@@ -27,13 +26,6 @@ public class HeraExceptionMapper {
 	 * @return An API exception response corresponding to the exception
 	 */
 	public Response toResponse(DatabaseConnectionException e){
-		return buildResponse(e);
-	}
-	/**
-	 * @param e A {@link DatasetEmptyException}
-	 * @return An API exception response corresponding to the exception
-	 */
-	public Response toResponse(DatasetEmptyException e){
 		return buildResponse(e);
 	}
 	/**

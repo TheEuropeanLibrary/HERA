@@ -17,9 +17,9 @@ import javax.ws.rs.core.UriInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import org.theeuropeanlibrary.hera.rest.administration.exception.ProviderAlreadyExistsException;
-import org.theeuropeanlibrary.hera.rest.administration.exception.ProviderDoesNotExistException;
 import org.theeuropeanlibrary.hera.rest.administration.service.ProviderService;
+import org.theeuropeanlibrary.hera.rest.administration.service.exception.ProviderAlreadyExistsException;
+import org.theeuropeanlibrary.hera.rest.administration.service.exception.ProviderDoesNotExistException;
 import org.theeuropeanlibrary.maia.common.definitions.Provider;
 import org.theeuropeanlibrary.maia.tel.model.provider.ProviderConstants;
 
