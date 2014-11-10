@@ -40,23 +40,24 @@ public class MemoryProviderService implements ProviderService {
     }
 
     @Override
-    public Provider createProvider(String providerId, String dataProviderProperties) {
+    public Provider createProvider() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Provider updateProvider(String providerId, String dataProviderProperties) {
+    public boolean updateProvider(Provider provider) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void deleteProvider(String providerId) {
+    public boolean deleteProvider(Object providerId) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Provider> getProviders(String startFrom, int numberOfProviders) {
+    public List getProviders(Object startProviderId, int numberOfProviders) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 
 }

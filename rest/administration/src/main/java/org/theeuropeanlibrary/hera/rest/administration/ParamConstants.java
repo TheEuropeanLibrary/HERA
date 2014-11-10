@@ -1,14 +1,11 @@
 package org.theeuropeanlibrary.hera.rest.administration;
 
-
 //TODO: move to HERA-COMMON
-
 /**
  * PathConstants
- * 
+ *
  */
 public interface ParamConstants {
-
 
     // resource paths
     static final String PROVIDERS = "data-providers";

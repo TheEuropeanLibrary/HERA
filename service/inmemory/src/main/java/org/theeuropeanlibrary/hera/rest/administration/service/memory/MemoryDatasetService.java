@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.theeuropeanlibrary.hera.rest.administration.service.DatasetService;
 import org.theeuropeanlibrary.hera.rest.administration.service.memory.dao.MemoryDatasetDao;
 import org.theeuropeanlibrary.maia.common.definitions.Dataset;
+import org.theeuropeanlibrary.maia.common.definitions.Provider;
 
 /**
  *
@@ -40,22 +41,27 @@ public class MemoryDatasetService implements DatasetService {
     }
 
     @Override
-    public void deleteDataSet(String dataSetId) {
+    public Dataset createDataSet(Provider provider) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Dataset> getDataSets(String startFrom, int numberOfDatasets) {
+    public boolean updateDataSet(Dataset dataSet) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Dataset createDataSet(String dataSetId, String description) {
+    public void deleteDataSet(Object dataSetId) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void updateDataSet(String dataSetId, String description) {
+    public List getDataSetsForProvider(Object providerId, Object startDatasetId, int numberOfDatasets) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List getDataSets(Object startDatasetId, int numberOfDatasets) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

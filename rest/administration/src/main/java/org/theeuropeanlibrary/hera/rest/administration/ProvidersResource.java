@@ -2,10 +2,6 @@ package org.theeuropeanlibrary.hera.rest.administration;
 
 import static org.theeuropeanlibrary.hera.rest.administration.ParamConstants.P_PROVIDER;
 import static org.theeuropeanlibrary.hera.rest.administration.ParamConstants.Q_START_FROM;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -69,12 +65,13 @@ public class ProvidersResource {
     @PreAuthorize("isAuthenticated()")
     public Response createProvider(@Context UriInfo uriInfo, @QueryParam(P_PROVIDER) String providerId)
             throws ProviderAlreadyExistsException {
-        Provider provider = providerService.createProvider(providerId, "");
-        URI providerURI = null;
-        try {
-            providerURI = new URI("");
-        } catch (URISyntaxException e) {
-        }
-        return Response.created(providerURI).build();
+//        Provider provider = providerService.createProvider(providerId, "");
+//        URI providerURI = null;
+//        try {
+//            providerURI = new URI("");
+//        } catch (URISyntaxException e) {
+//        }
+//        return Response.created(providerURI).build();
+        return null;
     }
 }

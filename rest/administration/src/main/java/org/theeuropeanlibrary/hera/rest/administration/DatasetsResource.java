@@ -70,7 +70,7 @@ public class DatasetsResource {
 
         ParamUtil.require(F_DATASET, dataSetId);
 
-        Dataset dataSet = datasetService.createDataSet(dataSetId, description);
+//        Dataset dataSet = datasetService.createDataSet(dataSetId, description);
         final URI datasetURI = null;
         final Response response = Response.created(datasetURI).build();
 

@@ -52,6 +52,6 @@ public class DatasetResource {
     public void updateDataSet(@PathParam(P_DATASET) String dataSetId,
     		@FormParam(F_DESCRIPTION) String description) {
     	
-        dataSetService.updateDataSet(dataSetId, description);
+//        dataSetService.updateDataSet(dataSetId, description);
     }
 }

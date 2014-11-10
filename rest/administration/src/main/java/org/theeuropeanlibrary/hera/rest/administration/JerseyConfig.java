@@ -1,5 +1,6 @@
 package org.theeuropeanlibrary.hera.rest.administration;
 
+import org.theeuropeanlibrary.hera.rest.administration.DatasetResource;
 import org.glassfish.jersey.filter.LoggingFilter;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.spring.scope.RequestContextFilter;

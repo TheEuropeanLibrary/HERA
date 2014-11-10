@@ -75,7 +75,7 @@ public class ProviderResource {
     		@Context UriInfo uriInfo)
             throws ProviderAlreadyExistsException {
     	
-        Provider provider = providerService.updateProvider(providerId, dataProviderProperties);
+//        Provider provider = providerService.updateProvider(providerId, dataProviderProperties);
     }
     
     @DELETE
