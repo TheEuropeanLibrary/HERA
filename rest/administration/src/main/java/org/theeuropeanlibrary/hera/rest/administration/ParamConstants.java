@@ -15,7 +15,7 @@ public interface ParamConstants {
     // path parameter names
     static final String P_VER = "VERSION";
 
-    static final String P_PROVIDER = "DATAPROVIDER";
+    static final String P_PROVIDER = "PROVIDER";
 
     static final String P_DATASET = "DATASET";
 
@@ -24,7 +24,7 @@ public interface ParamConstants {
     // query parameter names
     static final String Q_START_FROM = "startFrom";
 
-    // query parameter names
+    // form parameter names
     static final String F_DATASET = "dataSetId";
 
     static final String F_DATASET_PROVIDER_ID = "dataSetProviderId";

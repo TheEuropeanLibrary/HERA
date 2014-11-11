@@ -9,10 +9,8 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriInfo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -21,10 +19,11 @@ import org.theeuropeanlibrary.hera.rest.administration.service.ProviderService;
 import org.theeuropeanlibrary.hera.rest.administration.service.exception.ProviderAlreadyExistsException;
 import org.theeuropeanlibrary.hera.rest.administration.service.exception.ProviderDoesNotExistException;
 import org.theeuropeanlibrary.maia.common.definitions.Provider;
-import org.theeuropeanlibrary.maia.tel.model.provider.ProviderConstants;
 
 /**
  * Resource for DataProvider.
+ * 
+ * Get / Update / Delete provider
  * 
  */
 @Path("/providers/{" + P_PROVIDER + "}")
@@ -32,54 +31,43 @@ import org.theeuropeanlibrary.maia.tel.model.provider.ProviderConstants;
 @Scope("request")
 public class ProviderResource {
 
-	@Autowired(required = false)
-	private ProviderService providerService;
+	@Autowired
+	private ProviderService<String> providerService;
 	
     /**
-     * @return Retrieves a data-provider.
+     * @return Retrieves a provider.
+     * @throws ProviderDoesNotExistException 
      */
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-//     @PreAuthorize("isAuthenticated()")
-    public Response getProvider(@PathParam(P_PROVIDER) String providerId) {
-    	
-    	// TODO: replace this dummy example
-    	String username = SpringUserUtils.getUsername();
-    	if (username.equals("Alina")) {
+    public Response getProvider(@PathParam(P_PROVIDER) String providerId) throws ProviderDoesNotExistException {
 
-    		Provider p = new Provider();
-    		p.setId(providerId);
-    		p.addValue(ProviderConstants.NAME, "Alina");
-    		
-            final Response response = Response.ok().entity(p).build();
-            return response;
-    	}
-		Provider p = new Provider();
-		p.setId(providerId);
-		p.addValue(ProviderConstants.NAME, "manos");
+		Provider<String> p = providerService.getProvider(providerId);
         final Response response = Response.ok().entity(p).build();
         return response;
     }
-    
+	
     /**
-     * Updates data provider information.
+     * Updates provider information.
      *
      * @param dataProviderProperties data provider properties.
      * @throws ProviderDoesNotExistException
-     * @statuscode 204 object has been updated.
+     * @statuscode 200 object has been updated.
      */
     @PUT
     @Consumes({MediaType.APPLICATION_JSON})
-    public void updateProvider(String dataProviderProperties,
-    		@PathParam(P_PROVIDER) String providerId,
-    		@Context UriInfo uriInfo)
-            throws ProviderAlreadyExistsException {
+    public Response updateProvider(
+    		@PathParam(P_PROVIDER) String providerId, Provider<String> provider)
+    				throws ProviderAlreadyExistsException, ProviderDoesNotExistException {
     	
-//        Provider provider = providerService.updateProvider(providerId, dataProviderProperties);
+    	providerService.updateProvider(providerId, provider);
+        return Response.ok().build();
     }
     
     @DELETE
-    public void deleteProvider(@PathParam(P_PROVIDER) String providerId)  {
+    public Response deleteProvider(@PathParam(P_PROVIDER) String providerId) throws ProviderDoesNotExistException  {
+    	
         providerService.deleteProvider(providerId);
+        return Response.ok().build();
     }
 }

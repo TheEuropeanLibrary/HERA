@@ -57,13 +57,18 @@
 
     <dependencies>
 
-        <!-- MAIA -->
-
+        <dependency>
+        	<groupId>org.theeuropeanlibrary</groupId>
+        	<artifactId>hera-service-inmemory</artifactId>
+        	<version>${project.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.theeuropeanlibrary</groupId>
             <artifactId>hera-service-api</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <!-- MAIA -->
         
         <dependency>
             <groupId>org.theeuropeanlibrary</groupId>
@@ -267,29 +272,6 @@
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.jayway.restassured</groupId>
-            <artifactId>rest-assured</artifactId>
-            <version>2.3.4</version>
-        </dependency>
-        
-        <!-- Testing -->
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <scope>test</scope>
             <exclusions>
                 <exclusion>
                     <artifactId>hamcrest-core</artifactId>
@@ -318,6 +300,7 @@
             <groupId>com.jayway.restassured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>2.3.4</version>
+            <scope>test</scope>
             <exclusions>
                 <exclusion>
                     <artifactId>hamcrest-core</artifactId>
@@ -334,6 +317,13 @@
         <dependency>
             <groupId>org.glassfish.jersey.test-framework</groupId>
             <artifactId>jersey-test-framework-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>${version.jersey}</version>
         </dependency>
 
         <dependency>

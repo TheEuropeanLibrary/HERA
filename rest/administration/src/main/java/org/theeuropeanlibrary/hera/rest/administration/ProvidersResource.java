@@ -1,17 +1,15 @@
 package org.theeuropeanlibrary.hera.rest.administration;
 
-import static org.theeuropeanlibrary.hera.rest.administration.ParamConstants.P_PROVIDER;
 import static org.theeuropeanlibrary.hera.rest.administration.ParamConstants.Q_START_FROM;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriInfo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -22,7 +20,9 @@ import org.theeuropeanlibrary.hera.rest.administration.service.exception.Provide
 import org.theeuropeanlibrary.maia.common.definitions.Provider;
 
 /**
- * Resource for DataProviders.
+ * Resource for Providers.
+ * 
+ * Get / Create provider
  *
  */
 @Path("/providers")
@@ -30,8 +30,8 @@ import org.theeuropeanlibrary.maia.common.definitions.Provider;
 @Scope("request")
 public class ProvidersResource {
 
-    @Autowired(required = false)
-    private ProviderService providerService;
+    @Autowired
+    private ProviderService<String> providerService;
 
     private static final int NUMBER_OF_ELEMENTS_ON_PAGE = 100;
 
@@ -43,35 +43,27 @@ public class ProvidersResource {
      */
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public ResultSlice<Provider> getProviders(@QueryParam(Q_START_FROM) String startFrom) {
-        ResultSlice<Provider> pList = new ResultSlice<>();
+    public ResultSlice<Provider<String>> getProviders(@QueryParam(Q_START_FROM) String startFrom) {
+        ResultSlice<Provider<String>> pList = new ResultSlice<>();
         pList.setResults(providerService.getProviders(startFrom, NUMBER_OF_ELEMENTS_ON_PAGE));
         return pList;
     }
 
     /**
-     * Creates a new data provider. Response contains uri to created resource in
-     * as content location.
+     * @return A new provider including his id.
      *
-     * @param dataProviderProperties data provider properties.
-     * @param providerId data provider id (required)
-     * @return URI to created resource in content location
+     * @param provider to create.
      * @throws ProviderAlreadyExistsException provider already * exists.
-     * @statuscode 201 object has been created.
+     * @statuscode 200 object has been created.
      */
-    @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @PreAuthorize("isAuthenticated()")
-    public Response createProvider(@Context UriInfo uriInfo, @QueryParam(P_PROVIDER) String providerId)
+    @POST
+    public Response createProvider(Provider<String> provider)
             throws ProviderAlreadyExistsException {
-//        Provider provider = providerService.createProvider(providerId, "");
-//        URI providerURI = null;
-//        try {
-//            providerURI = new URI("");
-//        } catch (URISyntaxException e) {
-//        }
-//        return Response.created(providerURI).build();
-        return null;
+    	
+    	Provider<String> createdProvider = providerService.createProvider(provider);
+    	return Response.ok().entity(createdProvider).build();
     }
 }

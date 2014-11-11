@@ -10,7 +10,16 @@
   http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:annotation-config />
-
+    
+    <!-- DAO -->
+    <bean id="datasetDao" class="org.theeuropeanlibrary.hera.rest.administration.service.memory.dao.MemoryDatasetDao" />
+    <bean id="dataProviderDao" class="org.theeuropeanlibrary.hera.rest.administration.service.memory.dao.MemoryProviderDao" />
+	
+	<!-- Services -->
+    <bean id="datasetService" class="org.theeuropeanlibrary.hera.rest.administration.service.memory.MemoryDatasetService" />
+    <bean id="dataProviderService" class="org.theeuropeanlibrary.hera.rest.administration.service.memory.MemoryProviderService" />
+    
+	<!-- Resources -->
     <bean id="dataProviderResource" class="org.theeuropeanlibrary.hera.rest.administration.ProviderResource" />
     <bean id="dataProvidersResource" class="org.theeuropeanlibrary.hera.rest.administration.ProvidersResource" />
 	
@@ -19,11 +28,11 @@
 
     <!-- JSON serialization: Jackson custom object Mapper -->
     <bean id="providerRegistry" class="org.theeuropeanlibrary.maia.tel.model.provider.ProviderRegistry" />
+    <bean id="datasetRegistry" class="org.theeuropeanlibrary.maia.tel.model.dataset.DatasetRegistry" />
+    
     <bean id="objectMapper" class="org.theeuropeanlibrary.maia.converter.json.EntityObjectMapper">
         <constructor-arg name="providerRegistry" ref="providerRegistry"/>
-        <constructor-arg name="datasetRegistry">
-            <null />
-        </constructor-arg>
+        <constructor-arg name="datasetRegistry" ref="datasetRegistry"/>
         <constructor-arg name="recordRegistry">
             <null />
         </constructor-arg>

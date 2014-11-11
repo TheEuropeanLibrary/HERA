@@ -3,8 +3,7 @@ package org.theeuropeanlibrary.hera.rest.administration;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 
-import org.theeuropeanlibrary.hera.rest.administration.service.exception.ErrorInfo;
-import org.theeuropeanlibrary.hera.rest.administration.service.exception.HeraErrorCode;
+import org.theeuropeanlibrary.hera.rest.administration.exception.mapper.HeraErrorMessage;
 
 /**
  * Util for parameters.
@@ -22,11 +21,10 @@ final class ParamUtil {
      */
     static void require(String parameterName, Object parameterValue) {
         if (parameterValue == null) {
-            ErrorInfo errorInfo = new ErrorInfo(HeraErrorCode.OTHER.name(), parameterName + " is a required parameter");
-            throw new WebApplicationException(Response.status(Response.Status.BAD_REQUEST).entity(errorInfo).build());
+            HeraErrorMessage errorMessage = new HeraErrorMessage(parameterName + " is a required parameter");
+            throw new WebApplicationException(Response.status(Response.Status.BAD_REQUEST).entity(errorMessage).build());
         }
     }
-
 
     private ParamUtil() {
     }

@@ -49,7 +49,7 @@ public class DatasetResourceTest extends JerseyTest {
                 .registerClasses(ProviderResource.class)
                 .registerClasses(RequestContextFilter.class)
                 .property("contextConfigLocation",
-                        "classpath:hera-administration-context-test.xml");
+                        "classpath:hera-administration-context-test-mock.xml");
     }
 
     @Test
