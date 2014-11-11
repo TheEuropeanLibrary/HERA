@@ -6,9 +6,9 @@ import javax.ws.rs.ext.Provider;
 import org.theeuropeanlibrary.hera.rest.administration.service.exception.DatasetAlreadyExistsException;
 
 /**
- * RecordExists exception mapper
+ * Provider Already Exists exception mapper
  */
 @Provider
-public class RecordExistsExceptionMapper extends HeraExceptionMapper implements ExceptionMapper<DatasetAlreadyExistsException> {
-
+public class DatasetAlreadyExistsExceptionMapper extends HeraExceptionMapper implements
+        ExceptionMapper<DatasetAlreadyExistsException> {
 }

@@ -4,16 +4,13 @@ package org.theeuropeanlibrary.hera.rest.administration.service.exception;
 /**
  * Database connection exception
  */
-public class DatabaseConnectionException extends GenericException{
+public class DatabaseConnectionException extends HeraException{
 
-	public DatabaseConnectionException(ErrorInfo e){
-		super(e);
+	public DatabaseConnectionException(String errorMessage){
+		super(errorMessage);
 	}
 	
-	public DatabaseConnectionException(IdentifierErrorInfo errorInfo) {
-		super(errorInfo);
+	public DatabaseConnectionException() {
+		super();
 	}
-
-	
-
 }

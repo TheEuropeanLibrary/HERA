@@ -5,16 +5,13 @@ package org.theeuropeanlibrary.hera.rest.administration.service.exception;
  * Exception thrown when a dataset already exists in the database 
  *
  */
-public class DatasetAlreadyExistsException extends GenericException {
+public class DatasetAlreadyExistsException extends HeraException {
 
-	public DatasetAlreadyExistsException(ErrorInfo errorInfo) {
-		super(errorInfo);
+	public DatasetAlreadyExistsException(String errorMessage) {
+		super(errorMessage);
 	}
 
-	public DatasetAlreadyExistsException(IdentifierErrorInfo errorInfo) {
-		super(errorInfo);
+	public DatasetAlreadyExistsException() {
+		super();
 	}
-
-	
-
 }

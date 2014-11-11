@@ -2,15 +2,15 @@ package org.theeuropeanlibrary.hera.rest.administration.service.exception;
 
 
 /**
- * Thrown when there is attempt to create a provider that already exists.
+ * Thrown on attempt to create a provider that already exists.
  */
-public class ProviderAlreadyExistsException extends GenericException {
+public class ProviderAlreadyExistsException extends HeraException {
 
-	public ProviderAlreadyExistsException(ErrorInfo e){
-		super(e);
+	public ProviderAlreadyExistsException(final String errorMessage){
+		super(errorMessage);
 	}
 	
-    public ProviderAlreadyExistsException(IdentifierErrorInfo errorInfo) {
-        super(errorInfo);
+    public ProviderAlreadyExistsException() {
+        super();
     }
 }
