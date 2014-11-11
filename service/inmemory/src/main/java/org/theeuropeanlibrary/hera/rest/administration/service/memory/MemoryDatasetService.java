@@ -1,10 +1,14 @@
 package org.theeuropeanlibrary.hera.rest.administration.service.memory;
 
 import java.util.List;
+import java.util.UUID;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.theeuropeanlibrary.hera.rest.administration.service.DatasetService;
+import org.theeuropeanlibrary.hera.rest.administration.service.exception.DatasetDoesNotExistException;
+import org.theeuropeanlibrary.hera.rest.administration.service.exception.ProviderDoesNotExistException;
 import org.theeuropeanlibrary.hera.rest.administration.service.memory.dao.MemoryDatasetDao;
 import org.theeuropeanlibrary.maia.common.definitions.Dataset;
 import org.theeuropeanlibrary.maia.common.definitions.Provider;
@@ -14,7 +18,7 @@ import org.theeuropeanlibrary.maia.common.definitions.Provider;
  * @author Markus Muhr (markus.muhr@theeuropeanlibrary.org)
  * @since 10.11.2014
  */
-public class MemoryDatasetService implements DatasetService {
+public class MemoryDatasetService implements DatasetService<String> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MemoryDatasetService.class);
 
@@ -40,29 +44,53 @@ public class MemoryDatasetService implements DatasetService {
         LOGGER.info("MemoryDatasetService started successfully.");
     }
 
-    @Override
-    public Dataset createDataSet(Provider provider) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public Dataset<String> createDataSet(Dataset<String> dataset) {
+		
+    	final String id = UUID.randomUUID().toString();
+    	dataset.setId(id);
+    	datasetDao.createDataset(id, dataset);
+    	return dataset;
+	}
 
-    @Override
-    public boolean updateDataSet(Dataset dataSet) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    @Override
-    public void deleteDataSet(Object dataSetId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public void updateDataSet(String datasetId, Dataset dataSet) throws DatasetDoesNotExistException {
+		
+		final boolean resultOK = datasetDao.updateDataSet(datasetId, dataSet);
+    	if (!resultOK) {
+    		final String errorMessage = String.format("DatasetId [%s] not found.", datasetId);
+    		throw new DatasetDoesNotExistException(errorMessage);
+    	}
+	}
 
-    @Override
-    public List getDataSetsForProvider(Object providerId, Object startDatasetId, int numberOfDatasets) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public void deleteDataSet(String datasetId) throws DatasetDoesNotExistException {
+		final boolean resultOK = datasetDao.deleteDataSet(datasetId);
+		if (!resultOK) {
+    		final String errorMessage = String.format("DatasetId [%s] not found.", datasetId);
+    		throw new DatasetDoesNotExistException(errorMessage);
+		}
+	}
+	
+	@Override
+	public Dataset<String> getDataset(String datasetId) throws DatasetDoesNotExistException {
+		
+    	Dataset<String> d = datasetDao.getDataset(datasetId);
+		if (d == null) {
+    		final String errorMessage = String.format("DatasetId [%s] not found.", datasetId);
+			throw new DatasetDoesNotExistException(errorMessage);
+		}
+		return d;
+	}
 
-    @Override
-    public List getDataSets(Object startDatasetId, int numberOfDatasets) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public List<Dataset<String>> getDataSetsForProvider(String providerId, String startDatasetId, int numberOfDatasets) {
+		return null;
+	}
 
+	@Override
+	public List<Dataset<String>> getDataSets(String startDatasetId,	int numberOfDatasets) {
+		return null;
+	}
 }

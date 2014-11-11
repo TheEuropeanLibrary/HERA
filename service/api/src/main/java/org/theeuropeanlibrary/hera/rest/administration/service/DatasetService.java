@@ -1,19 +1,23 @@
 package org.theeuropeanlibrary.hera.rest.administration.service;
 
 import java.util.List;
-import org.theeuropeanlibrary.maia.common.definitions.Dataset;
-import org.theeuropeanlibrary.maia.common.definitions.Provider;
 
-// TODO: needs to be moved to separate project
+import org.theeuropeanlibrary.hera.rest.administration.service.exception.DatasetDoesNotExistException;
+import org.theeuropeanlibrary.maia.common.definitions.Dataset;
+
 public interface DatasetService<T> {
 
-    Dataset<T> createDataSet(Provider<T> provider);
+    Dataset<T> createDataSet(Dataset<T> dataSet);
     
-    boolean updateDataSet(Dataset<T> dataSet);
+	Dataset<T> getDataset(T datasetId) throws DatasetDoesNotExistException;
     
-    void deleteDataSet(T dataSetId);
+    void updateDataSet(String datasetId, Dataset<T> dataSet) 
+    		throws DatasetDoesNotExistException;
     
-    List<Dataset<T>> getDataSetsForProvider(T providerId, T startDatasetId, int numberOfDatasets);
+    void deleteDataSet(T dataSetId) 
+    		throws DatasetDoesNotExistException;
 
     List<Dataset<T>> getDataSets(T startDatasetId, int numberOfDatasets);
+    
+    List<Dataset<T>> getDataSetsForProvider(T providerId, T startDatasetId, int numberOfDatasets);
 }

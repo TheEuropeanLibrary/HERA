@@ -1,16 +1,19 @@
 package org.theeuropeanlibrary.hera.rest.administration.service;
 
 import java.util.List;
+
+import org.theeuropeanlibrary.hera.rest.administration.service.exception.ProviderDoesNotExistException;
 import org.theeuropeanlibrary.maia.common.definitions.Provider;
 
-//TODO: needs to be moved to separate project
 public interface ProviderService<T> {
 
-    Provider<T> createProvider();
+    Provider<T> createProvider(Provider<T> provider);
 
-    boolean updateProvider(Provider<T> provider);
+    void updateProvider(T providerId, Provider<T> provider) throws ProviderDoesNotExistException;
 
-    boolean deleteProvider(T providerId);
+    void deleteProvider(T providerId) throws ProviderDoesNotExistException;
 
     List<Provider<T>> getProviders(T startProviderId, int numberOfProviders);
+
+	Provider<String> getProvider(String providerId) throws ProviderDoesNotExistException;
 }
