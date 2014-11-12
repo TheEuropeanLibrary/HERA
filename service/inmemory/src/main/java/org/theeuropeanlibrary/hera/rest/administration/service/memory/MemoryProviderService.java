@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.theeuropeanlibrary.hera.rest.administration.service.ProviderService;
-import org.theeuropeanlibrary.hera.rest.administration.service.exception.DatasetDoesNotExistException;
 import org.theeuropeanlibrary.hera.rest.administration.service.exception.ProviderDoesNotExistException;
 import org.theeuropeanlibrary.hera.rest.administration.service.memory.dao.MemoryProviderDao;
 import org.theeuropeanlibrary.maia.common.definitions.Provider;
@@ -78,8 +77,9 @@ public class MemoryProviderService implements ProviderService<String> {
 
 	@Override
 	public List<Provider<String>> getProviders(String startProviderId, int numberOfProviders) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<Provider<String>> providers = providerDao.getProviders(startProviderId, numberOfProviders);
+		return providers;
 	}
 
 	@Override

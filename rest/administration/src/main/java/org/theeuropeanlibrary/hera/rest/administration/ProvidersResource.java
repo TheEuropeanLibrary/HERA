@@ -12,11 +12,13 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 import org.theeuropeanlibrary.hera.rest.administration.service.ProviderService;
 import org.theeuropeanlibrary.hera.rest.administration.service.exception.ProviderAlreadyExistsException;
+import org.theeuropeanlibrary.hera.rest.administration.service.exception.ProviderDoesNotExistException;
 import org.theeuropeanlibrary.maia.common.definitions.Provider;
 
 /**
@@ -32,25 +34,28 @@ public class ProvidersResource {
 
     @Autowired
     private ProviderService<String> providerService;
-
-    private static final int NUMBER_OF_ELEMENTS_ON_PAGE = 100;
+    
+    @Value("${numberOfElementsOnPage}")
+    private int NUMBER_OF_ELEMENTS_ON_PAGE;
 
     /**
      * Lists all providers. Result is returned in slices.
      *
      * @param startFrom reference to next slice of result.
      * @return slice of result.
+     * @throws ProviderDoesNotExistException 
      */
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public ResultSlice<Provider<String>> getProviders(@QueryParam(Q_START_FROM) String startFrom) {
+    public ResultSlice<Provider<String>> getProviders(@QueryParam(Q_START_FROM) String startFrom) throws ProviderDoesNotExistException {
         ResultSlice<Provider<String>> pList = new ResultSlice<>();
         pList.setResults(providerService.getProviders(startFrom, NUMBER_OF_ELEMENTS_ON_PAGE));
         return pList;
     }
 
+
     /**
-     * @return A new provider including his id.
+     * @return A new provider including his generated id.
      *
      * @param provider to create.
      * @throws ProviderAlreadyExistsException provider already * exists.

@@ -8,10 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.theeuropeanlibrary.hera.rest.administration.service.DatasetService;
 import org.theeuropeanlibrary.hera.rest.administration.service.exception.DatasetDoesNotExistException;
-import org.theeuropeanlibrary.hera.rest.administration.service.exception.ProviderDoesNotExistException;
 import org.theeuropeanlibrary.hera.rest.administration.service.memory.dao.MemoryDatasetDao;
 import org.theeuropeanlibrary.maia.common.definitions.Dataset;
-import org.theeuropeanlibrary.maia.common.definitions.Provider;
 
 /**
  *
@@ -86,11 +84,13 @@ public class MemoryDatasetService implements DatasetService<String> {
 
 	@Override
 	public List<Dataset<String>> getDataSetsForProvider(String providerId, String startDatasetId, int numberOfDatasets) {
-		return null;
+		List<Dataset<String>> datasets = datasetDao.getDataSetsForProvider(providerId, startDatasetId, numberOfDatasets);
+		return datasets;
 	}
 
 	@Override
 	public List<Dataset<String>> getDataSets(String startDatasetId,	int numberOfDatasets) {
-		return null;
+		List<Dataset<String>> datasets = datasetDao.getDatasets(startDatasetId, numberOfDatasets);
+		return datasets;
 	}
 }

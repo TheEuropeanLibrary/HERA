@@ -24,6 +24,8 @@ public interface ParamConstants {
     // query parameter names
     static final String Q_START_FROM = "startFrom";
 
+    static final String Q_PROVIDER = "providerId";
+
     // form parameter names
     static final String F_DATASET = "dataSetId";
 

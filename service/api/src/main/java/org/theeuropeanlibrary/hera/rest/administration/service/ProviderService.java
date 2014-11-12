@@ -13,7 +13,7 @@ public interface ProviderService<T> {
 
     void deleteProvider(T providerId) throws ProviderDoesNotExistException;
 
-    List<Provider<T>> getProviders(T startProviderId, int numberOfProviders);
+    List<Provider<T>> getProviders(T startProviderId, int numberOfProviders) throws ProviderDoesNotExistException;
 
 	Provider<String> getProvider(String providerId) throws ProviderDoesNotExistException;
 }

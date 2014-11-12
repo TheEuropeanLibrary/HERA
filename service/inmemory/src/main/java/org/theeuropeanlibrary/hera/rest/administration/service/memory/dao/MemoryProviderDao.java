@@ -1,13 +1,18 @@
 package org.theeuropeanlibrary.hera.rest.administration.service.memory.dao;
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.theeuropeanlibrary.maia.common.definitions.Provider;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 /**
- *
+ * Dummy in-memory implementation.
+ * Not really accurate but good for now.
+ * 
  * @author Markus Muhr (markus.muhr@theeuropeanlibrary.org)
  * @since 10.11.2014
  */
@@ -32,5 +37,18 @@ public class MemoryProviderDao {
 
 	public Provider<String> getProvider(String providerId) {
 		return providers.get(providerId);
+	}
+
+	public List<Provider<String>> getProviders(String startProviderId, int numberOfProviders) {
+
+		List<Provider<String>> providersToReturn = Lists.newArrayList();
+		
+		Iterator<Provider<String>> i = providers.values().iterator();
+		int count = 0;
+		while(count < numberOfProviders && i.hasNext()) {
+			providersToReturn.add(i.next());
+			count++;
+		}
+		return providersToReturn;
 	}	
 }
