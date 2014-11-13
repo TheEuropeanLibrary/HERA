@@ -69,7 +69,7 @@ public class DatasetIntegrationTest {
      */
 //TODO: JSON does not serialize providers properly so some parts are commented out (for now)
 //TODO: this works but requires a running instance
-    @Test
+//    @Test
     public void fullDatasetIntegrationTest() throws ConverterException {
     	
     	Dataset<String> datasetToIngest = new Dataset<String>();
