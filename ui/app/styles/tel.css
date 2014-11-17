@@ -1,0 +1,1058 @@
+body {
+  font-family: "Open Sans", Arial, sans-serif;
+}
+body,
+html {
+  height: 100%;
+}
+.tel-app-container {
+  height: 100%;
+}
+.label.tel-label {
+  background: #b0b0b0;
+  color: #fff;
+  font-size: 11px;
+  line-height: 20px;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+  padding: 0 6px;
+  display: inline-block;
+  font-weight: 600;
+}
+.label.tel-label.label-warning {
+  background-color: #f4b04f;
+}
+.label.tel-label.label-success {
+  background-color: #5cb85c;
+}
+.badge.tel-badge {
+  background: #1d89cf;
+  border: 1px solid #1d89cf;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 18px;
+  padding: 0 8px;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+}
+.tel-main-menu {
+  width: 240px;
+}
+.tel-navigation {
+  background-color: #23272d;
+  padding: 0;
+}
+.tel-navigation.small {
+  width: 56px;
+}
+.tel-navigation.small > li {
+  width: auto;
+}
+.tel-navigation.small > li > a {
+  text-align: center;
+}
+.tel-navigation.small > li > a > .tel-text {
+  display: none;
+}
+.tel-navigation.small > li .label.tel-label {
+  display: none;
+}
+.tel-navigation.small .tel-dropdown {
+  position: relative;
+}
+.tel-navigation.small .tel-dropdown > a {
+  padding-right: 14px;
+  text-align: center;
+}
+.tel-navigation.small .tel-dropdown > a:before {
+  right: 7px;
+}
+.tel-navigation.small .tel-dropdown > ul {
+  background-color: #23272d;
+  position: absolute;
+  left: 56px;
+  top: 0;
+  opacity: 0;
+  width: 240px;
+}
+.tel-navigation .tel-dropdown .label.tel-label,
+.tel-navigation .tel-dropdown .badge.tel-badge {
+  line-height: 16px;
+  margin-top: 2px;
+}
+.tel-navigation .tel-dropdown a {
+  padding-right: 30px;
+}
+.tel-navigation .tel-dropdown > a:before {
+  content: "\f105";
+  display: block;
+  font-family: FontAwesome;
+  font-size: 12px;
+  line-height: 10px;
+  height: 10px;
+  width: 10px;
+  right: 14px;
+  top: 17px;
+  margin: 0;
+  position: absolute;
+  text-align: center;
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+}
+.tel-navigation .tel-dropdown > ul {
+  display: none;
+  padding: 0;
+}
+.tel-navigation .tel-dropdown > ul > li > a {
+  padding-left: 39px;
+}
+.tel-navigation li {
+  display: block;
+}
+.tel-navigation a {
+  color: #808b9c;
+  display: block;
+  font-size: 13px;
+  line-height: 20px;
+  padding: 11px 14px;
+  position: relative;
+  transition: all .2s;
+  text-decoration: none;
+  outline: 0 none;
+}
+.tel-navigation a:hover {
+  color: #ffffff;
+}
+.tel-navigation a:hover:after {
+  display: block;
+}
+.tel-navigation a:after {
+  content: " ";
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  position: absolute;
+  right: auto;
+  background: #1a7ab9;
+  display: none;
+  left: 0;
+}
+.tel-navigation .active a {
+  background-color: #181b1f;
+}
+.tel-navigation .active a .tel-menu-icon {
+  color: #1d89cf;
+}
+.tel-navigation .active a .tel-text {
+  color: #ffffff;
+}
+.tel-navigation .active a:after {
+  display: block;
+}
+.tel-navigation .tel-menu-icon {
+  display: inline-block;
+  margin-right: 5px;
+  line-height: 20px;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+.tel-navigation .tel-label.label {
+  display: block;
+  line-height: 16px;
+  float: right;
+  font-size: 11px;
+  height: auto;
+  margin: 2px 0 0 5px;
+  padding: 0 5px;
+  position: relative;
+  width: auto;
+  z-index: 501;
+  border: 0 none;
+}
+.tel-navigation .badge.tel-badge {
+  display: block;
+  line-height: 16px;
+  float: right;
+  font-size: 11px;
+  height: auto;
+  margin: 2px 0 0 5px;
+  padding: 0 5px;
+  position: relative;
+  width: auto;
+  z-index: 501;
+  border: 0 none;
+}
+.tel-form-control.form-control {
+  border-top-color: #c2c2c2;
+  box-shadow: none;
+  border-radius: 2px;
+  padding-top: 7px;
+}
+.tel-form-control.form-control:focus {
+  border-color: #1d89cf;
+  outline: 0;
+  box-shadow: none;
+}
+.tel-checkbox.checkbox.checkbox-inline {
+  margin-top: 0;
+}
+.tel-checkbox.checkbox input[type="checkbox"] {
+  position: absolute;
+  left: -1000000px;
+  margin: 0;
+  padding: 0;
+}
+.tel-checkbox.checkbox input[type="checkbox"]:checked + .lbl:before {
+  content: "\f00c";
+}
+.tel-checkbox.checkbox input[type="checkbox"]:disabled + .lbl:before {
+  background-color: #eeeeee;
+  cursor: not-allowed;
+}
+.tel-checkbox.checkbox input[type="checkbox"]:disabled + .lbl:hover:before {
+  border: 1px solid #bbbbbb;
+}
+.tel-checkbox.checkbox input[type="checkbox"]:disabled + .lbl {
+  cursor: not-allowed;
+}
+.tel-checkbox.checkbox .lbl {
+  position: relative;
+  padding-left: 1px;
+  line-height: 21px;
+  display: inline-block;
+}
+.tel-checkbox.checkbox .lbl:before {
+  content: "";
+  color: #1d89cf;
+  opacity: 1;
+  border: 1px solid #bbbbbb;
+  border-radius: 2px;
+  background: #fff;
+  display: block;
+  font-family: FontAwesome;
+  font-size: 11px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  line-height: 15px;
+  box-sizing: border-box;
+  transition: all .2s;
+  cursor: pointer;
+  margin: 2px 3px -3px -20px;
+  text-align: center;
+}
+.tel-checkbox.checkbox .lbl:hover:before {
+  border-color: #1d89cf;
+}
+.tel-checkbox.checkbox .lbl:focus:before {
+  border-color: #1d89cf;
+}
+.tel-radio.radio input[type="radio"] {
+  position: absolute;
+  left: -1000000px;
+  margin: 0;
+  padding: 0;
+}
+.tel-radio.radio input[type="radio"]:checked + .lbl:after {
+  content: "";
+  position: absolute;
+  display: block;
+  background-color: #1d89cf;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  margin: 2px 3px -3px -20px;
+  top: 5px;
+  left: 5px;
+  transition: all .2s;
+}
+.tel-radio.radio input[type="radio"]:disabled + .lbl:before {
+  background-color: #eeeeee;
+  cursor: not-allowed;
+}
+.tel-radio.radio input[type="radio"]:disabled + .lbl:hover:before {
+  border: 1px solid #bbbbbb;
+}
+.tel-radio.radio input[type="radio"]:disabled + .lbl {
+  cursor: not-allowed;
+}
+.tel-radio.radio .lbl {
+  position: relative;
+  padding-left: 1px;
+  line-height: 21px;
+  display: inline-block;
+}
+.tel-radio.radio .lbl:before {
+  content: "";
+  color: #1d89cf;
+  opacity: 1;
+  border: 1px solid #bbbbbb;
+  border-radius: 50%;
+  background: #fff;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  box-sizing: border-box;
+  transition: all .2s;
+  cursor: pointer;
+  margin: 2px 3px -3px -20px;
+  text-align: center;
+}
+.tel-radio.radio .lbl:hover:before {
+  border-color: #1d89cf;
+}
+.has-error.tel-has-error .control-label,
+.has-success.tel-has-success .control-label,
+.has-warning.tel-has-warning .control-label {
+  color: #555555;
+}
+.has-error.tel-has-error .help-block.tel-help-block,
+.has-success.tel-has-success .help-block.tel-help-block,
+.has-warning.tel-has-warning .help-block.tel-help-block {
+  border-radius: 2px;
+  margin-top: 2px;
+  position: relative;
+  padding: 5px 10px;
+}
+.has-error.tel-has-error .help-block.tel-help-block:before,
+.has-success.tel-has-success .help-block.tel-help-block:before,
+.has-warning.tel-has-warning .help-block.tel-help-block:before,
+.has-error.tel-has-error .help-block.tel-help-block:after,
+.has-success.tel-has-success .help-block.tel-help-block:after,
+.has-warning.tel-has-warning .help-block.tel-help-block:after {
+  content: "";
+  position: absolute;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+}
+.has-error.tel-has-error .help-block.tel-help-block:before,
+.has-success.tel-has-success .help-block.tel-help-block:before,
+.has-warning.tel-has-warning .help-block.tel-help-block:before {
+  left: 16px;
+  top: -7px;
+}
+.has-error.tel-has-error .help-block.tel-help-block:after,
+.has-success.tel-has-success .help-block.tel-help-block:after,
+.has-warning.tel-has-warning .help-block.tel-help-block:after {
+  left: 17px;
+  top: -6px;
+}
+.has-success.tel-has-success .form-control.tel-form-control {
+  border-color: #a3ce7f;
+}
+.has-success.tel-has-success .form-control.tel-form-control:focus {
+  border-color: #a3ce7f;
+}
+.has-success.tel-has-success .help-block.tel-help-block {
+  color: #468847;
+  background-color: #dff0d8;
+  border: 1px solid #d0e6be;
+}
+.has-success.tel-has-success .help-block.tel-help-block:before {
+  border-bottom: solid #b5d899;
+  border-width: 7px;
+}
+.has-success.tel-has-success .help-block.tel-help-block:after {
+  border-bottom: 6px solid #e2f1dc;
+}
+.has-warning.tel-has-warning .form-control.tel-form-control {
+  border-color: #eebf5e;
+}
+.has-warning.tel-has-warning .form-control.tel-form-control:focus {
+  border-color: #eebf5e;
+}
+.has-warning.tel-has-warning .help-block.tel-help-block {
+  color: #af8640;
+  background-color: #f9f1c7;
+  border: 1px solid #f6deac;
+}
+.has-warning.tel-has-warning .help-block.tel-help-block:before {
+  border-bottom: solid #f1cc7e;
+  border-width: 7px;
+}
+.has-warning.tel-has-warning .help-block.tel-help-block:after {
+  border-bottom: 6px solid #f9f2cc;
+}
+.has-error.tel-has-error .form-control.tel-form-control {
+  border-color: #d38e99;
+}
+.has-error.tel-has-error .form-control.tel-form-control:focus {
+  border-color: #d38e99;
+}
+.has-error.tel-has-error .help-block.tel-help-block {
+  color: #b94a48;
+  background-color: #f2dede;
+  border: 1px solid #ebccd1;
+}
+.has-error.tel-has-error .help-block.tel-help-block:before {
+  border-bottom: solid #dda7b0;
+  border-width: 7px;
+}
+.has-error.tel-has-error .help-block.tel-help-block:after {
+  border-bottom: 6px solid #f3e2e2;
+}
+.tel-table-header {
+  background: #fff;
+  border: 1px solid #e4e4e4;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  margin-bottom: -1px;
+  padding: 10px 15px;
+  position: relative;
+}
+.tel-table-header .tel-table-caption {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 24px;
+  margin: 0;
+  padding: 0;
+}
+.tel-table-footer {
+  background-color: #fafafa;
+  border: 1px solid #e4e4e4;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  line-height: 20px;
+  margin-top: -21px;
+  min-height: 40px;
+  padding: 10px 15px;
+  position: relative;
+}
+.tel-table-primary table {
+  border-top-color: #23638c;
+}
+.tel-table-primary table thead tr {
+  background-color: #2175ac;
+}
+.tel-table-primary table thead tr th {
+  background-color: #2175ac;
+}
+.tel-table-primary .tel-table-header {
+  background-color: #1d89cf;
+}
+.tel-table-primary .tel-table-header,
+.tel-table-primary thead,
+.tel-table-primary thead > tr > th,
+.tel-table-primary thead > tr {
+  border-color: #23638c;
+  color: #fff;
+}
+.tel-accordion .panel-group .panel {
+  border-color: #e2e2e2;
+  box-shadow: none;
+  border-radius: 2px;
+}
+.tel-accordion .panel-group .panel + .panel {
+  margin-top: 5px;
+}
+.tel-accordion .panel-group .panel .panel-heading {
+  background-color: #fafafa;
+  padding: 0;
+}
+.tel-accordion .panel-group .panel .panel-heading h4 a {
+  cursor: pointer;
+  color: #777777;
+  font-weight: normal;
+  font-size: 13px;
+  display: block;
+  line-height: 22px;
+  padding: 9px 35px 9px 20px;
+  position: relative;
+}
+.tel-accordion .panel-group .panel .panel-heading h4 a:hover {
+  color: #555555;
+  background-color: rgba(0, 0, 0, 0.016);
+  text-decoration: none;
+}
+.tel-accordion .panel-group .panel .panel-heading h4 a .accordion-status {
+  font-size: 10px;
+  line-height: 36px;
+  position: absolute;
+  top: 3px;
+  right: 15px;
+}
+.tel-accordion .panel-group .panel .panel-body {
+  padding: 20px;
+}
+.tel-select > .ui-select-match {
+  border-radius: 2px;
+  color: #555555;
+  font-size: 13px;
+  border-color: #c2c2c2;
+}
+.tel-select > .ui-select-match:hover {
+  background-color: transparent;
+  border-color: #c2c2c2;
+}
+.tel-select > .ui-select-match:focus,
+.tel-select > .ui-select-match.btn-default-focus {
+  border-color: #1d89cf;
+  background-color: transparent;
+  box-shadow: none;
+  outline: 0 none;
+}
+.tel-select > .ui-select-match .text-muted {
+  color: #555555;
+}
+.tel-select.open > .ui-select-match {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.tel-select.open > .ui-select-choices {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.tel-select > .ui-select-search {
+  border-radius: 2px;
+  font-size: 13px;
+}
+.tel-select > .ui-select-search:focus {
+  border-color: #1d89cf;
+  box-shadow: none;
+}
+.tel-select > .ui-select-choices {
+  border-color: #1d89cf;
+  border-radius: 2px;
+  box-shadow: none;
+  margin-top: -1px;
+}
+.tel-select > .ui-select-choices > .ui-select-choices-group .ui-select-choices-row {
+  font-size: 13px;
+}
+.tel-select > .ui-select-choices > .ui-select-choices-group .ui-select-choices-row .ui-select-choices-row-inner {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.tel-select.ui-select-multiple {
+  border-color: #c2c2c2;
+  border-radius: 2px;
+}
+.tel-select.ui-select-multiple.open {
+  border-color: #1d89cf;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.tel-select.ui-select-multiple .ui-select-search {
+  color: #555555;
+  font-size: 13px;
+  padding-left: 8px;
+}
+.tel-select.ui-select-multiple .ui-select-search::-webkit-input-placeholder {
+  color: #555555;
+  opacity: 1;
+}
+.tel-select.ui-select-multiple .ui-select-search:-moz-placeholder {
+  /* Firefox 18- */
+  color: #555555;
+  opacity: 1;
+}
+.tel-select.ui-select-multiple .ui-select-search::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #555555;
+  opacity: 1;
+}
+.tel-select.ui-select-multiple .ui-select-search:-ms-input-placeholder {
+  color: #555555;
+  opacity: 1;
+}
+.tel-select.ui-select-multiple .ui-select-match .ui-select-match-item {
+  border: 0 none;
+  border-radius: 2px;
+  background-color: #b0b0b0;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  padding-right: 0;
+}
+.tel-select.ui-select-multiple .ui-select-match .ui-select-match-item .ui-select-match-close {
+  color: #ffffff;
+  padding-top: 2px;
+  opacity: 1;
+  font-size: 15px;
+  font-weight: normal;
+  padding-right: 4px;
+  padding-bottom: 3px;
+}
+.breadcrumb.tel-breadcrumb {
+  background-color: #f6f6f6;
+  border-bottom: 1px solid #e9e9e9;
+  padding: 6px 18px;
+}
+.breadcrumb.tel-breadcrumb .breadcrumb-label {
+  color: #bbbbbb;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 18px;
+  padding-right: 15px;
+}
+.breadcrumb.tel-breadcrumb li a {
+  color: #999999;
+  font-size: 12px;
+  line-height: 18px;
+}
+.breadcrumb.tel-breadcrumb li a:hover {
+  color: #555555;
+  text-decoration: none;
+}
+.breadcrumb.tel-breadcrumb li + li:before {
+  color: #ccc;
+  content: "\f054";
+  font-family: FontAwesome;
+  font-size: 7px;
+  display: inline-block;
+  line-height: 8px;
+  position: relative;
+  top: -1px;
+}
+.breadcrumb.tel-breadcrumb li.active a {
+  color: #555555;
+}
+.page-header.tel-page-header {
+  background-color: #f6f6f6;
+  margin: -18px -18px 18px -18px;
+  padding: 20px 18px;
+}
+.page-header.tel-page-header h1 {
+  color: #666666;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 30px;
+  text-align: left;
+  margin: 0;
+  padding-top: 3px;
+}
+.page-header.tel-page-header h1 .page-header-icon {
+  font-size: 21px;
+  line-height: 21px;
+}
+.page-header.tel-page-header .tel-button-container {
+  border-radius: 2px;
+  width: auto;
+}
+.page-header.tel-page-header .tel-button-container .btn {
+  border-radius: 2px;
+  font-size: 13px;
+  height: 32px;
+  width: 100%;
+}
+.page-header.tel-page-header .tel-button-container .btn span {
+  background-color: rgba(0, 0, 0, 0.06);
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+  display: block;
+  float: left;
+  line-height: 15px;
+  margin: -5px 12px 0 -13px;
+  padding: 8px 10px;
+  position: relative;
+  font-size: 14px;
+}
+.page-header.tel-page-header .input-group {
+  margin: 0;
+}
+.page-header.tel-page-header .input-group .input-group-addon {
+  border: 0 none;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  height: 32px;
+}
+.page-header.tel-page-header .input-group .form-control {
+  border: 0 none;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  box-shadow: none;
+  font-size: 13px;
+  height: 32px;
+}
+.tel-signin-container {
+  border-radius: 2px;
+  margin: 80px auto;
+  width: 650px;
+  position: relative;
+  z-index: 999;
+}
+.tel-signin-container .tel-signin-info {
+  background-color: #23272d;
+  height: 305px;
+  padding: 30px;
+  text-align: left;
+  width: 40%;
+}
+.tel-signin-container .tel-signin-info .logo img {
+  margin-top: -5px;
+  width: 180px;
+}
+.tel-signin-container .tel-signin-info .logo:hover,
+.tel-signin-container .tel-signin-info .logo:focus {
+  text-decoration: none;
+}
+.tel-signin-container .tel-signin-info .slogan {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 300;
+  margin-top: 5px;
+}
+.tel-signin-container .tel-signin-info ul {
+  color: #ffffff;
+  display: block;
+  font-size: 13px;
+  font-weight: 300;
+  margin: 30px 0 0;
+  padding: 0;
+}
+.tel-signin-container .tel-signin-info ul li {
+  list-style: none;
+  margin: 0;
+  padding: 7px 0;
+}
+.tel-signin-container .tel-signin-info ul li .signin-icon {
+  display: block;
+  float: left;
+  font-size: 14px;
+  line-height: 18px;
+  margin-right: 6px;
+  text-align: center;
+  width: 24px;
+}
+.tel-signin-container .tel-signin-form {
+  background-color: #ffffff;
+  padding: 30px;
+  position: relative;
+  height: 305px;
+  width: 60%;
+}
+.tel-signin-container .tel-signin-form .signin-text {
+  color: #777777;
+  display: block;
+  font-size: 15px;
+  font-style: italic;
+  margin-bottom: 25px;
+  position: relative;
+  text-align: center;
+}
+.tel-signin-container .tel-signin-form .signin-text:before {
+  background: #e4e4e4;
+  content: "";
+  display: block;
+  height: 1px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+.tel-signin-container .tel-signin-form .signin-text span {
+  background-color: #ffffff;
+  display: inline-block;
+  padding: 0 20px;
+  position: relative;
+}
+.tel-signin-container .tel-signin-form .form-group.w-icon {
+  margin: 0 0 20px 0;
+  position: relative;
+}
+.tel-signin-container .tel-signin-form .form-group.w-icon input {
+  font-size: 15px;
+  padding-left: 56px;
+}
+.tel-signin-container .tel-signin-form .form-group.w-icon .signin-form-icon {
+  border-right: 1px solid #d6d6d6;
+  bottom: 9px;
+  color: #d6d6d6;
+  display: block;
+  font-size: 14px;
+  left: 0;
+  line-height: 27px;
+  position: absolute;
+  text-align: center;
+  top: 9px;
+  width: 40px;
+  z-index: 1;
+  transition: all .3s;
+}
+.tel-signin-container .tel-signin-form .form-actions {
+  margin-top: 15px;
+}
+.tel-signin-container .tel-signin-form .form-actions .signin-btn {
+  border: none;
+  border-radius: 999999px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 19px;
+  outline: 0 none;
+  text-align: center;
+  padding: 10px 40px;
+  width: auto;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+.tel-signin-container .tel-signin-form .form-actions a.forgot-password {
+  border-bottom: 1px dashed #bbb;
+  color: #999999;
+  display: inline-block;
+  font-size: 11px;
+  margin-left: 10px;
+  padding-bottom: 1px;
+}
+.tel-signin-container .tel-signin-form .form-actions a.forgot-password:hover {
+  color: #555555;
+  text-decoration: none;
+}
+.tel-signin-container .tel-signin-form .form-actions a.forgot-password:focus {
+  outline: 0 none;
+  text-decoration: none;
+}
+.tel-signin-container .tel-signin-form .password-reset-form {
+  background-color: #ffffff;
+  left: 0;
+  height: 305px;
+  width: 100%;
+  position: absolute;
+  padding: 30px;
+  top: 0;
+  z-index: 2;
+}
+.tel-signin-container .tel-signin-form .password-reset-form.ng-hide-add.ng-hide-add-active,
+.tel-signin-container .tel-signin-form .password-reset-form.ng-hide-remove.ng-hide-remove-active {
+  transition: all .5s;
+}
+.tel-signin-container .tel-signin-form .password-reset-form.ng-hide {
+  opacity: 0;
+}
+.tel-signin-container .tel-signin-form .password-reset-form .header {
+  background-color: #f4f4f4;
+  border-bottom: 1px solid #ddd;
+  margin: -30px -30px 30px -30px;
+  padding: 20px;
+}
+.tel-signin-container .tel-signin-form .password-reset-form .header .signin-text {
+  margin-bottom: 0;
+}
+.tel-signin-container .tel-signin-form .password-reset-form .header .signin-text:before {
+  display: none;
+}
+.tel-signin-container .tel-signin-form .password-reset-form .header .signin-text span {
+  background-color: #f4f4f4;
+}
+.tel-signin-page {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.tel-signin-page.image-1 {
+  background: transparent url("../images/library.jpg") center center no-repeat scroll;
+  background-size: cover;
+}
+.tel-signin-page .not-a-member {
+  color: #ffffff;
+  display: block;
+  font-size: 14px;
+  margin: -80px 0 80px;
+  padding: 20px 0;
+  text-align: center;
+}
+.tel-signin-page .not-a-member a {
+  color: #fff;
+  text-decoration: underline;
+  transition: all .3s;
+}
+.tel-signin-page .not-a-member a:hover {
+  opacity: 0.6;
+}
+.tel-page-pricing {
+  background: transparent url("../images/libraries.jpg") center center no-repeat scroll;
+  background-size: cover;
+  height: 100%;
+}
+.tel-page-pricing .tel-page-pricing-header {
+  position: relative;
+  height: 184px;
+  text-align: center;
+}
+.tel-page-pricing .tel-page-pricing-header .bg-overlay {
+  background-color: #8f7c5f;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+}
+.tel-page-pricing .tel-page-pricing-header .bg-image {
+  background: transparent url("../images/book-banner.jpg") center center no-repeat scroll;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+.tel-page-pricing .tel-page-pricing-header .page-pricing-header-content {
+  position: relative;
+  z-index: 3;
+}
+.tel-page-pricing .tel-page-pricing-header .page-pricing-header-content .page-title {
+  padding: 40px 0 0 0;
+  color: #ffffff;
+  margin: 0 0 -40px 0;
+}
+.tel-page-pricing .tel-page-pricing-header .page-pricing-header-content .slogan {
+  padding: 60px 0 40px;
+  color: #ffffff;
+}
+.tel-page-pricing .tel-page-pricing-header .page-pricing-header-content .slogan h3,
+.tel-page-pricing .tel-page-pricing-header .page-pricing-header-content .slogan h4 {
+  padding: 0;
+  margin: 0;
+}
+.tel-page-pricing .tel-page-pricing-header .page-pricing-header-content .slogan h3 {
+  line-height: 30px;
+  font-weight: 600;
+}
+.tel-page-pricing .tel-page-pricing-header .page-pricing-header-content .slogan h4 {
+  padding-top: 10px;
+  font-weight: 300;
+}
+.tel-page-pricing .tel-plans-panel {
+  max-width: 1000px;
+  background-color: #fafafa;
+  border: 1px solid #e4e4e4;
+  margin: 22px auto 22px;
+}
+.tel-page-pricing .tel-plans-panel .plans-container {
+  position: relative;
+  margin: -1px;
+}
+.tel-page-pricing .tel-plans-panel .plans-container .plan-col {
+  text-align: center;
+  padding: 0;
+  position: relative;
+  margin-bottom: 0;
+}
+.tel-page-pricing .tel-plans-panel .plans-container .plan-col + .plan-col .plan-features li {
+  border-left: 0 none;
+}
+.tel-page-pricing .tel-plans-panel .plans-container .plan-col .plan-header {
+  font-size: 15px;
+  font-weight: 700;
+  overflow: hidden;
+  line-height: 50px;
+  white-space: nowrap;
+  position: relative;
+}
+.tel-page-pricing .tel-plans-panel .plans-container .plan-col .plan-pricing {
+  white-space: nowrap;
+  padding: 20px 0;
+}
+.tel-page-pricing .tel-plans-panel .plans-container .plan-col .plan-pricing .plan-currency {
+  font-size: 24px;
+  font-weight: 300;
+}
+.tel-page-pricing .tel-plans-panel .plans-container .plan-col .plan-pricing .plan-value {
+  font-size: 44px;
+  font-weight: 300;
+}
+.tel-page-pricing .tel-plans-panel .plans-container .plan-col .plan-pricing .plan-period {
+  font-size: 18px;
+  display: inline-block;
+  margin-left: 5px;
+  font-weight: 300;
+}
+.tel-page-pricing .tel-plans-panel .plans-container .plan-col .plan-features {
+  padding: 0;
+  margin: 0;
+  border-top: none;
+}
+.tel-page-pricing .tel-plans-panel .plans-container .plan-col .plan-features li {
+  margin: 0;
+  padding: 16px 0;
+  font-size: 14px;
+  font-weight: 300;
+  display: block;
+  background-color: #ffffff;
+  border-top: 0;
+  border-right: 1px solid #e4e4e4;
+  border-bottom: 1px solid #e4e4e4;
+  border-left: 1px solid #e4e4e4;
+}
+.tel-page-pricing .tel-plans-panel .plans-container .plan-col .plan-features a {
+  font-size: 13px;
+  transition: all .2s;
+  margin: 0;
+  padding: 16px 0;
+  font-weight: 300;
+  display: block;
+}
+.tel-page-pricing .tel-plans-panel .plans-container .plan-col .plan-features a:hover {
+  background-color: #96be6d;
+  text-decoration: none;
+}
+.tel-page-pricing .bg-light-green {
+  color: #ffffff;
+  background-color: #a5cd7d;
+}
+.tel-page-pricing .bg-light-green.darken {
+  background-color: #9dc378;
+}
+.tel-page-pricing .bg-light-green.darker {
+  background: #96be6d;
+}
+.tel-page-pricing .trial {
+  padding: 20px 0;
+  text-align: center;
+  font-size: 14px;
+  color: #ffffff;
+  line-height: 23px;
+}
+.tel-page-pricing .trial a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+@media (min-width: 480px) {
+  .tel-navigation > li {
+    width: auto;
+  }
+  .tel-navigation > li > a {
+    text-align: center;
+  }
+  .tel-navigation > li > a > .tel-menu-icon {
+    margin-right: 5px;
+  }
+  .tel-navigation > li > a > .tel-text {
+    display: none;
+  }
+  .tel-navigation > li > a > .label.tel-label,
+  .tel-navigation > li > a > .badge.tel-badge {
+    display: none;
+  }
+}
+@media (min-width: 768px) {
+  .tel-navigation > li {
+    width: 240px;
+  }
+  .tel-navigation > li > a {
+    text-align: left;
+  }
+  .tel-navigation > li > a > .tel-menu-icon {
+    margin-right: 0;
+  }
+  .tel-navigation > li > a > .tel-text {
+    display: inline;
+  }
+  .tel-navigation > li > a > .label.tel-label,
+  .tel-navigation > li > a > .badge.tel-badge {
+    display: block;
+  }
+}

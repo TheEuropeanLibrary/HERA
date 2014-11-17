@@ -1,0 +1,76 @@
+<div class="tel-signin-page image-1">
+    <div class="tel-signin-container clearfix">
+        <!-- Left side -->
+        <div class="tel-signin-info pull-left">
+            <a href="#/" class="logo">
+                <img src="images/logo-book.png">&nbsp;
+            </a> <!-- / .logo -->
+            <div class="slogan">
+                TEL Customers Portal.
+            </div> <!-- / .slogan -->
+            <ul>
+                <li><i class="fa fa-file-text-o signin-icon"></i> Digital Collections Creation</li>
+                <li><i class="fa fa-outdent signin-icon"></i> Data Harvesting &amp; Ingestion</li>
+                <li><i class="fa fa-bar-chart-o signin-icon"></i> Statistics and More...</li>
+                <!-- <li><i class="fa fa-heart signin-icon"></i> Crafted with love</li> -->
+            </ul> <!-- / Info list -->
+        </div>
+        <!-- / Left side -->
+
+        <!-- Right side -->
+        <div class="tel-signin-form pull-left">
+
+            <!-- Form -->
+            <form method="post" id="signin-form_id" ng-submit="login()">
+                <div class="signin-text">
+                    <span>Sign In to your account</span>
+                </div> <!-- / .signin-text -->
+
+                <div class="form-group w-icon">
+                    <input type="text" name="signin_username" id="username_id" class="form-control tel-form-control input-lg" placeholder="Username or email" ng-model="username">
+                    <span class="fa fa-user signin-form-icon"></span>
+                </div> <!-- / Username -->
+                <!--<div style="height:20px;"></div>-->
+                <div class="form-group w-icon">
+                    <input type="password" name="signin_password" id="password_id" class="form-control tel-form-control input-lg" placeholder="Password" ng-model="password">
+                    <span class="fa fa-lock signin-form-icon"></span>
+                </div> <!-- / Password -->
+                <!--<div style="height:20px;"></div>-->
+                <div class="form-actions">
+                    <button type="submit" class="signin-btn bg-primary">SIGN IN</button>
+                    <a href="#" ng-click="toggleResetPassword($event)" class="forgot-password" id="forgot-password-link">Forgot your password?</a>
+                </div> <!-- / .form-actions -->
+            </form>
+            <!-- / Form -->
+
+            <!-- Password reset form -->
+            <div class="password-reset-form" id="password-reset-form" ng-show="resetPasswordVisible">
+                <div class="header">
+                    <div class="signin-text">
+                        <span>Password reset</span>
+                        <a href="#" ng-click="toggleResetPassword($event)" class="close">&times;</a>
+                    </div> <!-- / .signin-text -->
+                </div> <!-- / .header -->
+
+                <!-- Form -->
+                <form action="index.html" id="password-reset-form_id">
+                    <div class="form-group w-icon">
+                        <input type="text" name="password_reset_email" id="p_email_id" class="tel-form-control form-control input-lg" placeholder="Enter your email">
+                        <span class="fa fa-envelope signin-form-icon"></span>
+                    </div> <!-- / Email -->
+
+                    <div class="form-actions">
+                        <button type="submit" class="signin-btn bg-primary">SEND PASSWORD RESET LINK</button>
+                    </div> <!-- / .form-actions -->
+                </form>
+                <!-- / Form -->
+            </div>
+            <!-- / Password reset form -->
+        </div>
+        <!-- Right side -->
+    </div>
+
+    <div class="not-a-member">
+        Not a member? <a href="#" ui-sref="plans">Sign up now</a>
+    </div>
+</div>
