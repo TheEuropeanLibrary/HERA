@@ -34,10 +34,8 @@
         <expression-handler ref="expressionHandler" />
     </global-method-security>
      -->
+     <!-- 
     <global-method-security secured-annotations="enabled" />
-
-    <b:bean id="encoder"
-            class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
-            
-
+     -->
+      
 </b:beans>
