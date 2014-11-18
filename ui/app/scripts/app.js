@@ -36,6 +36,11 @@ angular
                     url: "/plans",
                     templateUrl: "views/plans.html",
                     controller: "PlansCtrl"
+                })
+                .state("signup", {
+                    url: "/signup",
+                    templateUrl: "views/signup.html",
+                    controller: "SignUpCtrl"
                 });
         }
     ])

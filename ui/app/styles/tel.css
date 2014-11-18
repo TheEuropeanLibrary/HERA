@@ -1020,6 +1020,113 @@ html {
   color: #ffffff;
   text-decoration: underline;
 }
+.tel-signup-page .tel-signup-container {
+  margin: 80px auto;
+  position: relative;
+  width: 380px;
+}
+.tel-signup-page .tel-signup-container .signup-header {
+  background-color: #23272d;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  overflow: hidden;
+  padding: 20px 30px;
+  text-align: center;
+}
+.tel-signup-page .tel-signup-container .signup-header .logo img {
+  margin-top: -5px;
+  width: 180px;
+}
+.tel-signup-page .tel-signup-container .signup-header .slogan {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 300;
+  margin-top: 5px;
+}
+.tel-signup-page .tel-signup-container .signup-form {
+  background-color: #ffffff;
+  padding: 30px;
+  position: relative;
+}
+.tel-signup-page .tel-signup-container .signup-form .signup-text {
+  color: #777777;
+  display: block;
+  font-size: 15px;
+  font-style: italic;
+  margin-bottom: 25px;
+  position: relative;
+  text-align: center;
+}
+.tel-signup-page .tel-signup-container .signup-form .signup-text:before {
+  background-color: #e4e4e4;
+  content: "";
+  display: block;
+  height: 1px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+.tel-signup-page .tel-signup-container .signup-form .signup-text.plan {
+  margin-top: 20px;
+}
+.tel-signup-page .tel-signup-container .signup-form .signup-text span {
+  background-color: #ffffff;
+  display: inline-block;
+  padding: 0 20px;
+  position: relative;
+}
+.tel-signup-page .tel-signup-container .signup-form .form-group {
+  margin: 0;
+  position: relative;
+}
+.tel-signup-page .tel-signup-container .signup-form .form-group.w-icon input[type="text"],
+.tel-signup-page .tel-signup-container .signup-form .form-group.w-icon input[type="password"] {
+  font-size: 15px;
+  padding-left: 56px;
+}
+.tel-signup-page .tel-signup-container .signup-form .form-group.w-icon .signup-form-icon {
+  border-right: 1px solid #d6d6d6;
+  bottom: 9px;
+  color: #d6d6d6;
+  display: block;
+  font-size: 14px;
+  left: 0;
+  line-height: 27px;
+  position: absolute;
+  text-align: center;
+  top: 9px;
+  transition: all 0.3s ease 0s;
+  width: 40px;
+}
+.tel-signup-page .tel-signup-container .signup-form .form-group + .form-group {
+  margin-top: 10px;
+}
+.tel-signup-page .tel-signup-container .signup-form .form-group.conditions {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.tel-signup-page .tel-signup-container .signup-form .form-group .chosen-plan {
+  font-size: 13px;
+}
+.tel-signup-page .tel-signup-container .signup-form .form-actions {
+  margin-top: 15px;
+}
+.tel-signup-page .tel-signup-container .signup-form .form-actions .signup-btn {
+  border: none;
+  border-radius: 999999px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 19px;
+  outline: 0 none;
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
+  transition: all .3s;
+}
+.tel-signup-page .tel-signup-container .signup-form .form-actions .signup-btn:hover {
+  background-color: #444444;
+}
 @media (min-width: 480px) {
   .tel-navigation > li {
     width: auto;

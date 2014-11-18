@@ -1,0 +1,94 @@
+<div class="tel-signup-page">
+    <div class="tel-signup-container">
+        <!-- Header -->
+        <div class="signup-header">
+            <a href="index.html" class="logo">
+                <img src="images/logo-book.png">&nbsp;
+            </a> <!-- / .logo -->
+            <div class="slogan">
+                TEL Customers Portal.
+            </div> <!-- / .slogan -->
+        </div>
+        <!-- / Header -->
+
+        <!-- Form -->
+        <div class="signup-form">
+            <form action="index.html" id="signup-form_id">
+
+                <div class="signup-text">
+                    <span>Create an account</span>
+                </div>
+
+                <div class="form-group w-icon">
+                    <input type="text" name="signup_name" class="form-control tel-form-control input-lg" placeholder="Full name">
+                    <span class="fa fa-info signup-form-icon"></span>
+                </div>
+
+                <div class="form-group w-icon">
+                    <input type="text" name="signup_name" class="form-control tel-form-control input-lg" placeholder="Organization">
+                    <span class="fa fa-briefcase signup-form-icon"></span>
+                </div>
+
+                <div class="form-group w-icon">
+                    <input type="text" name="signup_email" id="email_id" class="form-control tel-form-control input-lg" placeholder="E-mail">
+                    <span class="fa fa-envelope signup-form-icon"></span>
+                </div>
+
+                <div class="form-group w-icon">
+                    <input type="text" name="signup_username" id="username_id" class="form-control tel-form-control input-lg" placeholder="Username">
+                    <span class="fa fa-user signup-form-icon"></span>
+                </div>
+
+                <div class="form-group w-icon">
+                    <input type="password" name="signup_password" id="password_id" class="form-control tel-form-control input-lg" placeholder="Password">
+                    <span class="fa fa-lock signup-form-icon"></span>
+                </div>
+
+                <div class="signup-text plan">
+                    <span>Choose a Plan</span>
+                </div>
+
+                <div class="form-group w-icon">
+                    <!--  -->
+                    <div class="btn-group">
+                        <label class="btn btn-success chosen-plan" ng-model="radioModel" btn-radio="'Basic'">Basic</label>
+                        <label class="btn btn-success chosen-plan" ng-model="radioModel" btn-radio="'Basic+'">Basic+</label>
+                        <label class="btn btn-success chosen-plan" ng-model="radioModel" btn-radio="'Premium'">Premium</label>
+                        <label class="btn btn-success chosen-plan" ng-model="radioModel" btn-radio="'Premium Gold'">Premium Gold</label>
+                    </div>
+                    <!--<div class="btn-group" data-toggle="buttons">-->
+                        <!--<label class="btn btn-success chosen-plan">-->
+                            <!--<input type="radio" name="options" class="chosen-plan" id="option1"> Basic-->
+                        <!--</label>-->
+                        <!--<label class="btn btn-success chosen-plan">-->
+                            <!--<input type="radio" name="options" class="chosen-plan" id="option2"> Basic+-->
+                        <!--</label>-->
+                        <!--<label class="btn btn-success chosen-plan">-->
+                            <!--<input type="radio" name="options" class="chosen-plan" id="option3"> Premium-->
+                        <!--</label>-->
+                        <!--<label class="btn btn-success chosen-plan">-->
+                            <!--<input type="radio" name="options" class="chosen-plan" id="option4">Premium Gold-->
+                        <!--</label>-->
+                    <!--</div>-->
+                </div>
+
+                <div class="form-group conditions">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="signup_confirm" class="px" id="confirm_id">
+                        <span class="lbl">I agree with the <a href="#" target="_blank">Terms and Conditions</a></span>
+                    </label>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="signup-btn bg-primary">SIGN UP</button>
+                </div>
+            </form>
+            <!-- / Form -->
+        </div>
+        <!-- Right side -->
+    </div>
+
+    <div class="have-account">
+        Already have an account? <a href="#/signin">Sign In</a>
+    </div>
+</div>
