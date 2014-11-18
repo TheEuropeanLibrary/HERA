@@ -57,7 +57,7 @@ public class ProviderIntegrationTest {
     @Before
     public void setup() {
 
-        objectMapper = new EntityObjectMapper(ProviderRegistry.INSTANCE, null, null);
+        objectMapper = new EntityObjectMapper(ProviderRegistry.getInstance(), null, null);
         assertNotNull(objectMapper);
         converter = new ProviderEntityJsonConverter(objectMapper);
     }
