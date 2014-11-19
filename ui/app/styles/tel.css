@@ -1127,6 +1127,216 @@ html {
 .tel-signup-page .tel-signup-container .signup-form .form-actions .signup-btn:hover {
   background-color: #444444;
 }
+.tel-navbar.navbar {
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
+  border: 0 none;
+  border-radius: 0;
+  left: 0;
+  min-height: 46px;
+  right: 0;
+  position: absolute;
+  top: 0;
+  z-index: 1030;
+}
+.tel-navbar.navbar .tel-main-menu-toggle {
+  background-color: #f8f8f8;
+  color: #555555;
+  width: 56px;
+  height: 46px;
+  left: 0;
+  overflow: hidden;
+  z-index: 1034;
+  border: medium none;
+  display: block;
+  font-size: 11px;
+  margin: 0;
+  outline: 0 none;
+  padding: 0;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  transition: all .5s;
+}
+.tel-navbar.navbar .tel-main-menu-toggle.open .navbar-icon:after {
+  content: "\f0da";
+  right: -8px;
+}
+.tel-navbar.navbar .tel-main-menu-toggle .navbar-icon {
+  font-size: 14px;
+  line-height: 46px;
+  left: 26px;
+  margin: -8px 0 0 0;
+  padding: 0;
+  position: absolute;
+  z-index: 1035;
+  transition: all .2s;
+}
+.tel-navbar.navbar .tel-main-menu-toggle .navbar-icon:after {
+  content: "\f0d9";
+  right: 16px;
+  display: block;
+  font-size: 10px;
+  line-height: 46px;
+  position: absolute;
+  top: 0;
+}
+.tel-navbar.navbar .tel-main-menu-toggle .hide-menu-text {
+  opacity: 0;
+}
+.tel-navbar.navbar .navbar-header {
+  transition: padding .5s;
+  padding-left: 56px;
+}
+.tel-navbar.navbar .navbar-header .navbar-brand {
+  background-color: #23272d;
+  height: 46px;
+  padding: 5px;
+}
+.tel-navbar.navbar .navbar-header .navbar-brand img {
+  display: block;
+  height: 100%;
+}
+.tel-navbar.navbar .navbar-collapse.tel-navbar-collapse {
+  border-left: 1px solid #f1f1f1;
+  margin: 0;
+  position: relative;
+}
+.tel-navbar.navbar .nav.navbar-nav {
+  position: relative;
+  z-index: 1032;
+}
+.tel-navbar.navbar .nav.navbar-nav > li {
+  border-right: 1px solid #f1f1f1;
+}
+.tel-navbar.navbar .nav.navbar-nav > li > a {
+  color: #555555;
+  line-height: 46px;
+  font-size: 13px;
+  height: 46px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: all .2s;
+}
+.tel-navbar.navbar .nav.navbar-nav > li > a:hover {
+  background-color: #f8f8f8;
+}
+.tel-navbar.navbar .right {
+  left: 0;
+  padding-right: 16px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1031;
+}
+.tel-navbar.navbar .right .navbar-nav.right-navbar-nav {
+  border: 0 none;
+  margin: 0;
+  list-style: none;
+  position: relative;
+}
+.tel-navbar.navbar .right .navbar-nav.right-navbar-nav > li {
+  border-left: 1px solid #f1f1f1;
+  border-right: none;
+}
+.tel-navbar.navbar .right .navbar-nav.right-navbar-nav > li > a {
+  display: block;
+  color: #555555;
+  height: 46px;
+  line-height: 46px;
+  padding: 0 15px;
+  transition: all .2s;
+}
+.tel-navbar.navbar .right .navbar-nav.right-navbar-nav > li > a.user-menu img {
+  display: inline-block;
+  height: 25px;
+  margin-top: -3px;
+  width: 25px;
+  border-radius: 50%;
+}
+.tel-navbar.navbar .right .navbar-nav.right-navbar-nav > li > a.user-menu span {
+  display: inline-block;
+  font-size: 13px;
+  margin-left: 7px;
+}
+.tel-navbar.navbar .right .navbar-nav.right-navbar-nav > li.nav-icon-btn > a {
+  font-size: 13px;
+  text-align: center;
+  width: 46px;
+  padding: 0 15px;
+  display: block;
+}
+.tel-navbar.navbar .right .navbar-nav.right-navbar-nav > li.nav-icon-btn > a .small-screen-text {
+  display: none;
+}
+.tel-navbar.navbar .right .navbar-nav.right-navbar-nav > li.nav-icon-btn > a .nav-icon {
+  font-size: 12px;
+  display: inline-block;
+  margin-right: 0;
+}
+.tel-navbar.navbar .right .navbar-nav.right-navbar-nav > li.nav-icon-btn > a .label {
+  font-size: 8px;
+  padding: 0 2px;
+  line-height: 10px;
+  position: absolute;
+  display: block;
+  right: 10px;
+  top: 13px;
+}
+.tel-navbar.navbar .right .navbar-nav.right-navbar-nav > li.nav-icon-btn.nav-icon-btn-danger .label {
+  background-color: #e66454;
+}
+.tel-navbar.navbar .right .navbar-nav.right-navbar-nav > li .navbar-form {
+  height: 46px;
+  margin: 0;
+  width: 100%;
+}
+.tel-navbar.navbar .right .navbar-nav.right-navbar-nav > li .navbar-form .tel-form-control.form-control {
+  background-color: #f8f8f8;
+  border: none;
+  color: #999999;
+  font-size: 13px;
+  font-weight: normal;
+  height: 30px;
+  line-height: 20px;
+  margin-top: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 150px;
+}
+.tel-navbar.navbar .right .navbar-nav.right-navbar-nav > li .tel-dropdown-menu.dropdown-menu {
+  right: 0;
+  left: auto;
+}
+.tel-dropdown.dropdown.open .dropdown-toggle {
+  background-color: #f8f8f8;
+  text-decoration: none;
+}
+.tel-dropdown.dropdown.open .dropdown-toggle:focus {
+  background-color: #f8f8f8;
+  text-decoration: none;
+}
+.tel-dropdown.dropdown.open .dropdown-toggle:hover {
+  background-color: #f8f8f8;
+  text-decoration: none;
+}
+.tel-dropdown.dropdown .tel-dropdown-menu.dropdown-menu {
+  padding: 5px 0;
+  background-color: #ffffff;
+  border: 2px solid #cccccc;
+  box-shadow: none;
+  border-radius: 0;
+}
+.tel-dropdown.dropdown .tel-dropdown-menu.dropdown-menu > li > a {
+  color: #555555;
+  font-size: 13px;
+  line-height: 32px;
+  margin: 0;
+  padding: 0 18px;
+}
+.tel-dropdown.dropdown .tel-dropdown-menu.dropdown-menu > li > a:hover {
+  background-color: #f8f8f8;
+}
 @media (min-width: 480px) {
   .tel-navigation > li {
     width: auto;

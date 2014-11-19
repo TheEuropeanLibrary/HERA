@@ -1,319 +1,422 @@
-<div class="row" style="margin-bottom: 10px">
-    <div class="clearfix"></div>
-    <ul class="tel-breadcrumb breadcrumb">
-        <div class="breadcrumb-label text-light-gray">You are here:</div>
-        <li>
-            <a href="#">Home</a>
-        </li>
-        <li class="active">
-            <a href="#">Dashboard</a>
-        </li>
-    </ul>
+<div class="tel-navbar navbar navbar-inverse" role="navigation">
+    <button type="button" class="tel-main-menu-toggle">
+        <i class="navbar-icon fa fa-bars icon"></i>
+        <span class="hide-menu-text">HIDE MENU</span>
+    </button>
+    <div class="navbar-inner">
+        <div class="navbar-header">
+            <a href="index.html" class="navbar-brand">
+                <img alt="The European Library" src="images/logo-book.png">
+            </a>
+        </div>
+        <div class="collapse navbar-collapse tel-navbar-collapse">
+            <div>
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li class="dropdown tel-dropdown" dropdown>
+                        <a href="#" class="dropdown-toggle" dropdown-toggle>Dropdown</a>
+                        <ul class="tel-dropdown-menu dropdown-menu" role="menu">
+                            <li><a href="#">First item</a></li>
+                            <li><a href="#">Second item</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Third item</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="right clearfix">
+                    <ul class="navbar navbar-nav pull-right right-navbar-nav">
+                        <li class="nav-icon-btn nav-icon-btn-danger dropdown">
+                            <a href="#notifications" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="label">5</span>
+                                <i class="nav-icon fa fa-bullhorn"></i>
+                                <span class="small-screen-text">Notifications</span>
+                            </a>
+                            <div class="dropdown-menu widget-notifications no-padding" style="width: 300px">
+                                <div class="slimScrollDiv">
+                                    <div class="notifications-list" id="main-navbar-notifications">
+                                        <div class="notification">
+                                            <div class="notification-title text-danger">SYSTEM</div>
+                                            <div class="notification-description"><strong>Error 500</strong>: Syntax error in index.php at line <strong>461</strong>.</div>
+                                            <div class="notification-ago">12h ago</div>
+                                            <div class="notification-icon fa fa-hdd-o bg-danger"></div>
+                                        </div> <!-- / .notification -->
 
-    <div class="page-header tel-page-header">
-        <div class="row">
-            <!-- Page header, center on small screens -->
-            <h1 class="col-xs-12 col-sm-4">
-                <i class="fa fa-dashboard page-header-icon"></i>&nbsp;&nbsp;Dashboard
-            </h1>
-            <div class="col-xs-12 col-sm-8">
-                <div class="row">
-                    <hr class="visible-xs no-grid-gutter-h">
-                    <!-- "Create project" button, width=auto on desktops -->
-                    <div class="pull-right col-xs-12 tel-button-container">
-                        <a class="btn btn-primary btn-labeled" href="#">
-                            <span class="btn-label icon fa fa-plus"></span>
-                            Create project
-                        </a>
-                    </div>
-                    <!-- Margin -->
-                    <div class="visible-xs clearfix form-group-margin"></div>
-                    <!-- Search field -->
-                    <form class="pull-right col-xs-12 col-sm-6" action="">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                            <input type="text" class="form-control no-padding-hr" placeholder="Search...">
-                        </div>
-                    </form>
+                                        <div class="notification">
+                                            <div class="notification-title text-info">STORE</div>
+                                            <div class="notification-description">You have <strong>9</strong> new orders.</div>
+                                            <div class="notification-ago">12h ago</div>
+                                            <div class="notification-icon fa fa-truck bg-info"></div>
+                                        </div> <!-- / .notification -->
+
+                                        <div class="notification">
+                                            <div class="notification-title text-default">CRON DAEMON</div>
+                                            <div class="notification-description">Job <strong>"Clean DB"</strong> has been completed.</div>
+                                            <div class="notification-ago">12h ago</div>
+                                            <div class="notification-icon fa fa-clock-o bg-default"></div>
+                                        </div> <!-- / .notification -->
+
+                                        <div class="notification">
+                                            <div class="notification-title text-success">SYSTEM</div>
+                                            <div class="notification-description">Server <strong>up</strong>.</div>
+                                            <div class="notification-ago">12h ago</div>
+                                            <div class="notification-icon fa fa-hdd-o bg-success"></div>
+                                        </div> <!-- / .notification -->
+
+                                        <div class="notification">
+                                            <div class="notification-title text-warning">SYSTEM</div>
+                                            <div class="notification-description"><strong>Warning</strong>: Processor load <strong>92%</strong>.</div>
+                                            <div class="notification-ago">12h ago</div>
+                                            <div class="notification-icon fa fa-hdd-o bg-warning"></div>
+                                        </div> <!-- / .notification -->
+                                    </div>
+                                </div> <!-- / .notifications-list -->
+                                <a href="#" class="notifications-link">MORE NOTIFICATIONS</a>
+                            </div> <!-- / .dropdown-menu -->
+                        </li>
+                        <li>
+                            <form class="navbar-form pull-left">
+                                <input type="text" class="tel-form-control form-control" placeholder="Search">
+                            </form>
+                        </li>
+                        <li class="dropdown tel-dropdown">
+                            <a href="#" class="dropdown-toggle user-menu" data-toggle="dropdown">
+                                <img src="http://placehold.it/25x25">
+                                <span>John Doe</span>
+                            </a>
+                            <ul class="tel-dropdown-menu dropdown-menu">
+                                <li><a href="#"><span class="label label-warning pull-right">New</span>Profile</a></li>
+                                <li><a href="#"><span class="badge badge-primary pull-right">New</span>Account</a></li>
+                                <li><a href="#"><i class="dropdown-icon fa fa-cog"></i>&nbsp;&nbsp;Settings</a></li>
+                                <li class="divider"></li>
+                                <li><a href="pages-signin.html"><i class="dropdown-icon fa fa-power-off"></i>&nbsp;&nbsp;Log Out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<div class="container">
+    <div class="row" style="margin-bottom: 10px">
+        <div class="clearfix"></div>
+        <ul class="tel-breadcrumb breadcrumb">
+            <div class="breadcrumb-label text-light-gray">You are here:</div>
+            <li>
+                <a href="#">Home</a>
+            </li>
+            <li class="active">
+                <a href="#">Dashboard</a>
+            </li>
+        </ul>
 
-    <div class="form-group">
-        <label class="control-label">Text input</label>
-        <input type="text" class="tel-form-control form-control" placeholder="Text input">
-    </div>
-    <div class="form-group">
-        <label class="control-label">Textarea</label>
-        <textarea class="tel-form-control form-control"></textarea>
-    </div>
-    <div class="form-group">
-        <div class="tel-checkbox checkbox">
-            <label>
-                <input type="checkbox"> <span class="lbl">Check me out</span>
-            </label>
-        </div>
-    </div>
-    <div class="form-group">
-        <!--<div class="tel-checkbox checkbox checkbox-inline">-->
-            <!--<label>-->
-                <!--<input type="checkbox"> <span class="lbl">Check me out</span>-->
-            <!--</label>-->
-        <!--</div>-->
-        <!--<div class="tel-checkbox checkbox checkbox-inline">-->
-            <!--<label>-->
-                <!--<input type="checkbox"> <span class="lbl">Check me out</span>-->
-            <!--</label>-->
-        <!--</div>-->
-        <!--<div class="tel-checkbox checkbox checkbox-inline">-->
-            <!--<label>-->
-                <!--<input type="checkbox"> <span class="lbl">Check me out</span>-->
-            <!--</label>-->
-        <!--</div>-->
-    </div>
-    <div class="form-group">
-        <div class="tel-radio radio">
-            <label>
-                <input type="radio" name="radio">
-                <span class="lbl">Radio 1</span>
-            </label>
-        </div>
-        <div class="tel-radio radio">
-            <label>
-                <input type="radio" name="radio">
-                <span class="lbl">Radio 2</span>
-            </label>
-        </div>
-        <div class="tel-radio radio">
-            <label>
-                <input type="radio" name="radio">
-                <span class="lbl">Radio 3</span>
-            </label>
-        </div>
-    </div>
-    <div class="form-group">
-        <select class="tel-form-control form-control">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <select class="tel-form-control form-control" multiple>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-        </select>
-    </div>
-    <div class="form-group has-error tel-has-error">
-        <label class="control-label">Text input</label>
-        <input type="text" class="tel-form-control form-control">
-        <p class="tel-help-block help-block">Error msg</p>
-    </div>
-    <div class="form-group has-success tel-has-success">
-        <label class="control-label">Text input</label>
-        <input type="text" class="tel-form-control form-control">
-        <p class="tel-help-block help-block">Error msg</p>
-    </div>
-    <div class="form-group has-warning tel-has-warning">
-        <label class="control-label">Text input</label>
-        <input type="text" class="tel-form-control form-control">
-        <p class="tel-help-block help-block">Error msg</p>
-    </div>
-
-    <div class="tel-table-primary">
-        <div class="tel-table-header">
-            <div class="tel-table-caption">
-                Primary Table
+        <div class="page-header tel-page-header">
+            <div class="row">
+                <!-- Page header, center on small screens -->
+                <h1 class="col-xs-12 col-sm-4">
+                    <i class="fa fa-dashboard page-header-icon"></i>&nbsp;&nbsp;Dashboard
+                </h1>
+                <div class="col-xs-12 col-sm-8">
+                    <div class="row">
+                        <hr class="visible-xs no-grid-gutter-h">
+                        <!-- "Create project" button, width=auto on desktops -->
+                        <div class="pull-right col-xs-12 tel-button-container">
+                            <a class="btn btn-primary btn-labeled" href="#">
+                                <span class="btn-label icon fa fa-plus"></span>
+                                Create project
+                            </a>
+                        </div>
+                        <!-- Margin -->
+                        <div class="visible-xs clearfix form-group-margin"></div>
+                        <!-- Search field -->
+                        <form class="pull-right col-xs-12 col-sm-6" action="">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                                <input type="text" class="form-control no-padding-hr" placeholder="Search...">
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            </tbody>
-        </table>
-        <div class="tel-table-footer">
-            Footer
+
+        <div class="form-group">
+            <label class="control-label">Text input</label>
+            <input type="text" class="tel-form-control form-control" placeholder="Text input">
+        </div>
+        <div class="form-group">
+            <label class="control-label">Textarea</label>
+            <textarea class="tel-form-control form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <div class="tel-checkbox checkbox">
+                <label>
+                    <input type="checkbox"> <span class="lbl">Check me out</span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <!--<div class="tel-checkbox checkbox checkbox-inline">-->
+            <!--<label>-->
+            <!--<input type="checkbox"> <span class="lbl">Check me out</span>-->
+            <!--</label>-->
+            <!--</div>-->
+            <!--<div class="tel-checkbox checkbox checkbox-inline">-->
+            <!--<label>-->
+            <!--<input type="checkbox"> <span class="lbl">Check me out</span>-->
+            <!--</label>-->
+            <!--</div>-->
+            <!--<div class="tel-checkbox checkbox checkbox-inline">-->
+            <!--<label>-->
+            <!--<input type="checkbox"> <span class="lbl">Check me out</span>-->
+            <!--</label>-->
+            <!--</div>-->
+        </div>
+        <div class="form-group">
+            <div class="tel-radio radio">
+                <label>
+                    <input type="radio" name="radio">
+                    <span class="lbl">Radio 1</span>
+                </label>
+            </div>
+            <div class="tel-radio radio">
+                <label>
+                    <input type="radio" name="radio">
+                    <span class="lbl">Radio 2</span>
+                </label>
+            </div>
+            <div class="tel-radio radio">
+                <label>
+                    <input type="radio" name="radio">
+                    <span class="lbl">Radio 3</span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <select class="tel-form-control form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <select class="tel-form-control form-control" multiple>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+            </select>
+        </div>
+        <div class="form-group has-error tel-has-error">
+            <label class="control-label">Text input</label>
+            <input type="text" class="tel-form-control form-control">
+            <p class="tel-help-block help-block">Error msg</p>
+        </div>
+        <div class="form-group has-success tel-has-success">
+            <label class="control-label">Text input</label>
+            <input type="text" class="tel-form-control form-control">
+            <p class="tel-help-block help-block">Error msg</p>
+        </div>
+        <div class="form-group has-warning tel-has-warning">
+            <label class="control-label">Text input</label>
+            <input type="text" class="tel-form-control form-control">
+            <p class="tel-help-block help-block">Error msg</p>
+        </div>
+
+        <div class="tel-table-primary">
+            <div class="tel-table-header">
+                <div class="tel-table-caption">
+                    Primary Table
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="tel-table-footer">
+                Footer
+            </div>
+        </div>
+
+        <accordion class="tel-accordion" close-others="true">
+            <accordion-group is-open="accordionStatuses[0]">
+                <accordion-heading>
+                    Collapsible Group Item #1
+                    <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses[0], 'fa-minus-square': accordionStatuses[0]}"></i>
+                </accordion-heading>
+                This content is straight in the template.
+            </accordion-group>
+            <accordion-group is-open="accordionStatuses[1]">
+                <accordion-heading>
+                    Collapsible Group Item #2
+                    <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses[1], 'fa-minus-square': accordionStatuses[1]}"></i>
+                </accordion-heading>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </accordion-group>
+            <accordion-group is-open="accordionStatuses[2]">
+                <accordion-heading>
+                    Dynamic Body Content
+                    <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses[2], 'fa-minus-square': accordionStatuses[2]}"></i>
+                </accordion-heading>
+                <p>The body of the accordion group grows to fit the contents</p>
+            </accordion-group>
+            <accordion-group is-open="accordionStatuses[3]">
+                <accordion-heading>
+                    Another heading
+                    <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses[3], 'fa-minus-square': accordionStatuses[3]}"></i>
+                </accordion-heading>
+                This is just some content to illustrate fancy headings.
+            </accordion-group>
+        </accordion>
+        <div>
+            <p>Selected: {{person.selected.name}}</p>
+            <ui-select ng-model="person.selected" theme="bootstrap" class="tel-select">
+                <ui-select-match placeholder="Select or search a person in the list...">{{$select.selected.name}}</ui-select-match>
+                <ui-select-choices repeat="item in people | filter: $select.search">
+                    <span ng-bind-html="item.name | highlight: $select.search"></span>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div>
+            <ui-select class="tel-select" multiple ng-model="selectedData.friends" theme="bootstrap" ng-disabled="disabled">
+                <ui-select-match placeholder="Search and select friends...">{{$item.name}}</ui-select-match>
+                <ui-select-choices repeat="person in people | propsFilter: {name: $select.search, age: $select.search}">
+                    <div ng-bind-html="person.name | highlight: $select.search"></div>
+                    <small>
+                        age: <span ng-bind-html="''+person.age | highlight: $select.search"></span>
+                    </small>
+                </ui-select-choices>
+            </ui-select>
+            <p>Selected: {{selectedData.friends|json}}</p>
         </div>
     </div>
 
-    <accordion class="tel-accordion" close-others="true">
-        <accordion-group is-open="accordionStatuses[0]">
-            <accordion-heading>
-                Collapsible Group Item #1
-                <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses[0], 'fa-minus-square': accordionStatuses[0]}"></i>
-            </accordion-heading>
-            This content is straight in the template.
-        </accordion-group>
-        <accordion-group is-open="accordionStatuses[1]">
-            <accordion-heading>
-                Collapsible Group Item #2
-                <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses[1], 'fa-minus-square': accordionStatuses[1]}"></i>
-            </accordion-heading>
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-        </accordion-group>
-        <accordion-group is-open="accordionStatuses[2]">
-            <accordion-heading>
-                Dynamic Body Content
-                <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses[2], 'fa-minus-square': accordionStatuses[2]}"></i>
-            </accordion-heading>
-            <p>The body of the accordion group grows to fit the contents</p>
-        </accordion-group>
-        <accordion-group is-open="accordionStatuses[3]">
-            <accordion-heading>
-                Another heading
-                <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses[3], 'fa-minus-square': accordionStatuses[3]}"></i>
-            </accordion-heading>
-            This is just some content to illustrate fancy headings.
-        </accordion-group>
-    </accordion>
-    <div>
-        <p>Selected: {{person.selected.name}}</p>
-        <ui-select ng-model="person.selected" theme="bootstrap" class="tel-select">
-            <ui-select-match placeholder="Select or search a person in the list...">{{$select.selected.name}}</ui-select-match>
-            <ui-select-choices repeat="item in people | filter: $select.search">
-                <span ng-bind-html="item.name | highlight: $select.search"></span>
-            </ui-select-choices>
-        </ui-select>
-    </div>
-    <div>
-        <ui-select class="tel-select" multiple ng-model="selectedData.friends" theme="bootstrap" ng-disabled="disabled">
-            <ui-select-match placeholder="Search and select friends...">{{$item.name}}</ui-select-match>
-            <ui-select-choices repeat="person in people | propsFilter: {name: $select.search, age: $select.search}">
-                <div ng-bind-html="person.name | highlight: $select.search"></div>
-                <small>
-                    age: <span ng-bind-html="''+person.age | highlight: $select.search"></span>
-                </small>
-            </ui-select-choices>
-        </ui-select>
-        <p>Selected: {{selectedData.friends|json}}</p>
-    </div>
-</div>
-
-<div class="tel-main-menu" role="navigation">
-    <ul class="tel-navigation small" tel-main-menu>
-        <li class="active">
-            <a href="index.html">
-                <i class="tel-menu-icon fa fa-dashboard"></i>
-                <span class="tel-text">Dashboard</span>
-            </a>
-        </li>
-        <li class="tel-dropdown">
-            <a href="#">
-                <i class="tel-menu-icon fa fa-th"></i>
-                <span class="tel-text">Layouts</span>
-                <span class="label tel-label label-warning">Updated</span>
-            </a>
-            <ul>
-                <li>
-                    <a tabindex="-1" href="layouts-grid.html">
-                        <span class="tel-text">Grid</span>
-                    </a>
-                </li>
-                <li>
-                    <a tabindex="-1" href="layouts-main-menu.html">
-                        <i class="tel-menu-icon fa fa-th-list"></i>
-                        <span class="tel-text">Main menu</span>
-                        <span class="label tel-label label-warning">Updated</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <!--<li class="tel-dropdown">-->
+    <div class="tel-main-menu" role="navigation">
+        <ul class="tel-navigation small" tel-main-menu>
+            <li class="active">
+                <a href="index.html">
+                    <i class="tel-menu-icon fa fa-dashboard"></i>
+                    <span class="tel-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="tel-dropdown">
+                <a href="#">
+                    <i class="tel-menu-icon fa fa-th"></i>
+                    <span class="tel-text">Layouts</span>
+                    <span class="label tel-label label-warning">Updated</span>
+                </a>
+                <ul>
+                    <li>
+                        <a tabindex="-1" href="layouts-grid.html">
+                            <span class="tel-text">Grid</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a tabindex="-1" href="layouts-main-menu.html">
+                            <i class="tel-menu-icon fa fa-th-list"></i>
+                            <span class="tel-text">Main menu</span>
+                            <span class="label tel-label label-warning">Updated</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!--<li class="tel-dropdown">-->
             <!--<a href="#">-->
-                <!--<i class="tel-menu-icon fa fa-sitemap"></i>-->
-                <!--<span class="tel-text">Menu levels</span>-->
-                <!--<span class="tel-badge badge badge-primary">6</span>-->
+            <!--<i class="tel-menu-icon fa fa-sitemap"></i>-->
+            <!--<span class="tel-text">Menu levels</span>-->
+            <!--<span class="tel-badge badge badge-primary">6</span>-->
             <!--</a>-->
             <!--<ul>-->
-                <!--<li>-->
-                    <!--<a tabindex="-1" href="#">-->
-                        <!--<span class="tel-text">Menu level 1.1</span>-->
-                        <!--<span class="tel-badge badge badge-danger">12</span>-->
-                        <!--<span class="label tel-label label-info">21</span>-->
-                    <!--</a>-->
-                <!--</li>-->
-                <!--<li>-->
-                    <!--<a tabindex="-1" href="#">-->
-                        <!--<span class="tel-text">Menu level 1.2</span>-->
-                    <!--</a>-->
-                <!--</li>-->
-                <!--<li class="tel-dropdown">-->
-                    <!--<a tabindex="-1" href="#">-->
-                        <!--<span class="tel-text">Menu level 1.3</span>-->
-                        <!--<span class="label tel-label label-warning">5</span>-->
-                    <!--</a>-->
-                    <!--<ul>-->
-                        <!--<li>-->
-                            <!--<a tabindex="-1" href="#">-->
-                                <!--<span class="tel-text">Menu level 2.1</span>-->
-                            <!--</a>-->
-                        <!--</li>-->
-                        <!--<li class="tel-dropdown">-->
-                            <!--<a tabindex="-1" href="#">-->
-                                <!--<span class="tel-text">Menu level 2.2</span>-->
-                            <!--</a>-->
-                            <!--<ul>-->
-                                <!--<li class="tel-dropdown">-->
-                                    <!--<a tabindex="-1" href="#">-->
-                                        <!--<span class="tel-text">Menu level 3.1</span>-->
-                                    <!--</a>-->
-                                    <!--<ul>-->
-                                        <!--<li>-->
-                                            <!--<a tabindex="-1" href="#">-->
-                                                <!--<span class="tel-text">Menu level 4.1</span>-->
-                                            <!--</a>-->
-                                        <!--</li>-->
-                                    <!--</ul>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                    <!--<a tabindex="-1" href="#">-->
-                                        <!--<span class="tel-text">Menu level 3.2</span>-->
-                                    <!--</a>-->
-                                <!--</li>-->
-                            <!--</ul>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<a tabindex="-1" href="#">-->
-                                <!--<span class="tel-text">Menu level 2.2</span>-->
-                            <!--</a>-->
-                        <!--</li>-->
-                    <!--</ul>-->
-                <!--</li>-->
+            <!--<li>-->
+            <!--<a tabindex="-1" href="#">-->
+            <!--<span class="tel-text">Menu level 1.1</span>-->
+            <!--<span class="tel-badge badge badge-danger">12</span>-->
+            <!--<span class="label tel-label label-info">21</span>-->
+            <!--</a>-->
+            <!--</li>-->
+            <!--<li>-->
+            <!--<a tabindex="-1" href="#">-->
+            <!--<span class="tel-text">Menu level 1.2</span>-->
+            <!--</a>-->
+            <!--</li>-->
+            <!--<li class="tel-dropdown">-->
+            <!--<a tabindex="-1" href="#">-->
+            <!--<span class="tel-text">Menu level 1.3</span>-->
+            <!--<span class="label tel-label label-warning">5</span>-->
+            <!--</a>-->
+            <!--<ul>-->
+            <!--<li>-->
+            <!--<a tabindex="-1" href="#">-->
+            <!--<span class="tel-text">Menu level 2.1</span>-->
+            <!--</a>-->
+            <!--</li>-->
+            <!--<li class="tel-dropdown">-->
+            <!--<a tabindex="-1" href="#">-->
+            <!--<span class="tel-text">Menu level 2.2</span>-->
+            <!--</a>-->
+            <!--<ul>-->
+            <!--<li class="tel-dropdown">-->
+            <!--<a tabindex="-1" href="#">-->
+            <!--<span class="tel-text">Menu level 3.1</span>-->
+            <!--</a>-->
+            <!--<ul>-->
+            <!--<li>-->
+            <!--<a tabindex="-1" href="#">-->
+            <!--<span class="tel-text">Menu level 4.1</span>-->
+            <!--</a>-->
+            <!--</li>-->
             <!--</ul>-->
-        <!--</li>-->
-    </ul> <!-- / .navigation -->
-    <div class="menu-content">
-        <a href="pages-invoice.html" class="btn btn-primary btn-block btn-outline dark">Create Invoice</a>
-    </div>
-</div> <!-- / #main-menu -->
+            <!--</li>-->
+            <!--<li>-->
+            <!--<a tabindex="-1" href="#">-->
+            <!--<span class="tel-text">Menu level 3.2</span>-->
+            <!--</a>-->
+            <!--</li>-->
+            <!--</ul>-->
+            <!--</li>-->
+            <!--<li>-->
+            <!--<a tabindex="-1" href="#">-->
+            <!--<span class="tel-text">Menu level 2.2</span>-->
+            <!--</a>-->
+            <!--</li>-->
+            <!--</ul>-->
+            <!--</li>-->
+            <!--</ul>-->
+            <!--</li>-->
+        </ul> <!-- / .navigation -->
+        <div class="menu-content">
+            <a href="pages-invoice.html" class="btn btn-primary btn-block btn-outline dark">Create Invoice</a>
+        </div>
+    </div> <!-- / #main-menu -->
+</div>
