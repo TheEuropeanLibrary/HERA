@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * @ngdoc directive
@@ -16,7 +16,7 @@ angular.module("telApp")
                         var $this = $(this);
                         e.preventDefault();
                         $this.parent().toggleClass("tel-dropdown-open");
-                        if (element.hasClass("small")) {
+                        if (element.hasClass("small-menu")) {
                             if ($this.parent().hasClass("tel-dropdown-open")) {
                                 $this.next().show().animate({
                                     opacity: 1
@@ -39,8 +39,9 @@ angular.module("telApp")
                         }
                     });
 
-                angular.element(".tel-dropdown", element).on("mouseenter", function () {
-                        if (element.hasClass("small")) {
+                angular.element(".tel-dropdown", element)
+                    .on("mouseenter", function () {
+                        if (element.hasClass("small-menu")) {
                             var $this = $(this);
                             var $menu = $this.children("ul");
                             $this.toggleClass("tel-dropdown-open");
@@ -50,7 +51,7 @@ angular.module("telApp")
                         }
                     })
                     .on("mouseleave", function () {
-                        if (element.hasClass("small")) {
+                        if (element.hasClass("small-menu")) {
                             var $this = $(this);
                             var $menu = $this.children("ul");
                             $this.toggleClass("tel-dropdown-open");
@@ -62,6 +63,12 @@ angular.module("telApp")
                                 });
                         }
                     });
+
+                scope.$on("tel:toggleMenu", function () {
+                    element.toggleClass("small-menu");
+                    element.parent().toggleClass("small-menu");
+                    angular.element(".tel-app-wrapper").toggleClass("menu-open");
+                });
             }
         };
     });

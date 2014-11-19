@@ -24,6 +24,7 @@ angular
             $locationProvider.hashPrefix("!");
             $stateProvider
                 .state("main", {
+                    url: "/main",
                     templateUrl: "views/main.html",
                     controller: "MainCtrl"
                 })
