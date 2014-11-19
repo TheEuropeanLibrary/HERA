@@ -8,6 +8,21 @@ html {
 .tel-app-container {
   height: 100%;
 }
+.tel-app-wrapper {
+  background-color: #23272d;
+  padding-left: 56px;
+  transition: all .5s;
+}
+.tel-app-wrapper.menu-open {
+  padding-left: 240px;
+}
+.tel-content-wrapper {
+  background-color: #f6f6f6;
+  padding: 64px 18px 18px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
 .label.tel-label {
   background: #b0b0b0;
   color: #fff;
@@ -36,37 +51,43 @@ html {
 }
 .tel-main-menu {
   width: 240px;
+  height: auto;
+  position: absolute;
+  left: 0;
+  transition: all .5s;
+  z-index: 1;
+}
+.tel-main-menu.small-menu {
+  width: 56px;
 }
 .tel-navigation {
   background-color: #23272d;
-  padding: 0;
+  padding: 46px 0 0 0;
+  transition: all .5s;
 }
-.tel-navigation.small {
-  width: 56px;
-}
-.tel-navigation.small > li {
+.tel-navigation.small-menu > li {
   width: auto;
 }
-.tel-navigation.small > li > a {
+.tel-navigation.small-menu > li > a {
   text-align: center;
 }
-.tel-navigation.small > li > a > .tel-text {
+.tel-navigation.small-menu > li > a > .tel-text {
   display: none;
 }
-.tel-navigation.small > li .label.tel-label {
+.tel-navigation.small-menu > li .label.tel-label {
   display: none;
 }
-.tel-navigation.small .tel-dropdown {
+.tel-navigation.small-menu .tel-dropdown {
   position: relative;
 }
-.tel-navigation.small .tel-dropdown > a {
+.tel-navigation.small-menu .tel-dropdown > a {
   padding-right: 14px;
   text-align: center;
 }
-.tel-navigation.small .tel-dropdown > a:before {
+.tel-navigation.small-menu .tel-dropdown > a:before {
   right: 7px;
 }
-.tel-navigation.small .tel-dropdown > ul {
+.tel-navigation.small-menu .tel-dropdown > ul {
   background-color: #23272d;
   position: absolute;
   left: 56px;
@@ -583,6 +604,7 @@ html {
   background-color: #f6f6f6;
   border-bottom: 1px solid #e9e9e9;
   padding: 6px 18px;
+  margin: -18px -18px 18px;
 }
 .breadcrumb.tel-breadcrumb .breadcrumb-label {
   color: #bbbbbb;
@@ -1158,7 +1180,10 @@ html {
   top: 0;
   transition: all .5s;
 }
-.tel-navbar.navbar .tel-main-menu-toggle.open .navbar-icon:after {
+.tel-navbar.navbar .tel-main-menu-toggle.open-menu .navbar-icon {
+  left: 20px;
+}
+.tel-navbar.navbar .tel-main-menu-toggle.open-menu .navbar-icon:after {
   content: "\f0da";
   right: -8px;
 }
@@ -1185,22 +1210,30 @@ html {
   opacity: 0;
 }
 .tel-navbar.navbar .navbar-header {
-  transition: padding .5s;
+  transition: all .5s;
   padding-left: 56px;
 }
+.tel-navbar.navbar .navbar-header.open-menu {
+  width: 240px;
+}
 .tel-navbar.navbar .navbar-header .navbar-brand {
+  display: block;
   background-color: #23272d;
   height: 46px;
   padding: 5px;
+  width: 100%;
 }
 .tel-navbar.navbar .navbar-header .navbar-brand img {
+  margin: 0 auto;
   display: block;
   height: 100%;
 }
 .tel-navbar.navbar .navbar-collapse.tel-navbar-collapse {
-  border-left: 1px solid #f1f1f1;
   margin: 0;
   position: relative;
+}
+.tel-navbar.navbar .navbar-collapse.tel-navbar-collapse > div > .nav.navbar-nav {
+  border-left: 1px solid #f1f1f1;
 }
 .tel-navbar.navbar .nav.navbar-nav {
   position: relative;
