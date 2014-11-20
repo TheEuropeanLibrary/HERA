@@ -17,11 +17,13 @@ angular
         "ui.bootstrap",
         "ui.router",
         "ui.select",
-        "ui.utils"
+        "ui.utils",
+        "bmComponents"
     ])
-    .config(["$stateProvider", "$locationProvider",
-        function ($stateProvider, $locationProvider) {
+    .config(["$stateProvider", "$locationProvider", "$httpProvider", "bmApiUrlsProvider", "bmCookiesProvider",
+        function ($stateProvider, $locationProvider, $httpProvider, bmApiUrlsProvider, bmCookiesProvider) {
             $locationProvider.hashPrefix("!");
+
             $stateProvider
                 .state("main", {
                     url: "/main",
@@ -43,11 +45,27 @@ angular
                     templateUrl: "views/signup.html",
                     controller: "SignUpCtrl"
                 });
+
+            bmApiUrlsProvider.setHostname("tel", "localhost");
+            bmApiUrlsProvider.setPort("tel", 3000);
+            bmApiUrlsProvider.setUrlGenerator("tel", function (hostname, port) {
+                return hostname + ":" + port + "/hera";
+            });
+            bmApiUrlsProvider.setUrls("tel", {
+                "login": "/login"
+            });
+
+            $httpProvider.interceptors.push("telAuthInterceptor");
+
+            bmCookiesProvider.prefix = "tel";
         }
     ])
-    .run(["$state",
-        function ($state) {
-            if (!$state.current.name) {
+    .run(["$state", "$http", "bmCookies",
+        function ($state, $http, bmCookies) {
+            if (bmCookies.hasItem("Authorization")) {
+                $http.defaults.headers.common["Authorization"] = bmCookies.getItem("Authorization");
+                $state.go("organizations");
+            } else if (!$state.current.name) {
                 $state.go("signin");
             }
         }

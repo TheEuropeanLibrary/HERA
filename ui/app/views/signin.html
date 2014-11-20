@@ -21,24 +21,27 @@
         <div class="tel-signin-form pull-left">
 
             <!-- Form -->
-            <form method="post" id="signin-form_id" ng-submit="login()">
+            <form name="loginForm" novalidate>
                 <div class="signin-text">
                     <span>Sign In to your account</span>
                 </div> <!-- / .signin-text -->
 
-                <div class="form-group w-icon">
-                    <input type="text" name="signin_username" id="username_id" class="form-control tel-form-control input-lg" placeholder="Username or email" ng-model="username">
+                <div class="form-group w-icon" ng-class="{'has-error tel-has-error': invalidCredentials}">
+                    <input type="text" name="signin_username" class="form-control tel-form-control input-lg"
+                           placeholder="Username or email" ng-model="data.username">
                     <span class="fa fa-user signin-form-icon"></span>
                 </div> <!-- / Username -->
                 <!--<div style="height:20px;"></div>-->
-                <div class="form-group w-icon">
-                    <input type="password" name="signin_password" id="password_id" class="form-control tel-form-control input-lg" placeholder="Password" ng-model="password">
+                <div class="form-group w-icon" ng-class="{'has-error tel-has-error': invalidCredentials}">
+                    <input type="password" name="signin_password" class="form-control tel-form-control input-lg"
+                           placeholder="Password" ng-model="data.password">
                     <span class="fa fa-lock signin-form-icon"></span>
+                    <p class="tel-help-block help-block" ng-show="invalidCredentials">Invalid username or password.</p>
                 </div> <!-- / Password -->
                 <!--<div style="height:20px;"></div>-->
                 <div class="form-actions">
-                    <button type="submit" class="signin-btn bg-primary">SIGN IN</button>
-                    <a href="#" ng-click="toggleResetPassword($event)" class="forgot-password" id="forgot-password-link">Forgot your password?</a>
+                    <button ng-click="login()" type="submit" class="signin-btn bg-primary">SIGN IN</button>
+                    <a href="/#!" ng-click="toggleResetPassword($event)" class="forgot-password">Forgot your password?</a>
                 </div> <!-- / .form-actions -->
             </form>
             <!-- / Form -->
