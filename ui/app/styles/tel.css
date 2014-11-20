@@ -6,12 +6,12 @@ html {
   height: 100%;
 }
 .tel-app-container {
-  height: 100%;
+  min-height: 100%;
 }
 .tel-app-wrapper {
   background-color: #23272d;
   padding-left: 56px;
-  height: 100%;
+  min-height: 100%;
   transition: all .5s;
 }
 .tel-app-wrapper.menu-open {
@@ -1370,6 +1370,138 @@ html {
 }
 .tel-dropdown.dropdown .tel-dropdown-menu.dropdown-menu > li > a:hover {
   background-color: #f8f8f8;
+}
+.tel-btn.btn {
+  border-color: #ddd;
+  border-bottom-color: #cecece;
+  background: #f4f4f4 linear-gradient(to bottom, #f4f4f4 0, #eaeaea 100%) repeat-x;
+  border-radius: 2px;
+  color: #555555;
+  box-shadow: none;
+  text-shadow: none;
+  line-height: 15px;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 7px 12px;
+  outline: 0 none;
+}
+.tel-btn.btn:active {
+  background-color: #ebebeb;
+  border-color: #c6c6c6;
+  border-bottom-color: #c6c6c6;
+  color: #555555;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1) inset;
+}
+.tel-btn.btn:focus {
+  border-color: #dddddd;
+  border-bottom-color: #cecece;
+  background: #f4f4f4 linear-gradient(to bottom, #f4f4f4 0, #eaeaea 100%) repeat-x;
+}
+.tel-btn.btn:hover {
+  color: #555;
+  border-color: #d5d5d5;
+  border-bottom-color: #bcbcbc;
+  background: #eaeaea linear-gradient(to bottom, #efefef 0, #e5e5e5 100%) repeat-x;
+}
+.tel-btn.btn.btn-primary,
+.tel-btn.btn.btn-primary:focus {
+  border-color: #1a7ab9;
+  border-bottom-color: #16689e;
+  background: #1d89cf linear-gradient(to bottom, #1e8cd3 0, #1a7ab9 100%);
+  color: #ffffff;
+}
+.tel-btn.btn.btn-primary:hover {
+  color: #fff;
+  border-color: #1871ab;
+  border-bottom-color: #12547e;
+  background: #1a7ab9 linear-gradient(to bottom, #1c83c6 0, #1871ab 100%) repeat-x;
+}
+.tel-btn.btn.btn-primary:active {
+  background-color: #1a7dbd;
+  border-color: #146090;
+  border-bottom-color: #146090;
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1) inset;
+}
+.tel-btn.btn.btn-info,
+.tel-btn.btn.btn-info:focus {
+  border-color: #46b8da;
+  border-bottom-color: #2caed5;
+  background: #5bc0de linear-gradient(to bottom, #5fc2df 0, #46b8da 100%) repeat-x;
+  color: #ffffff;
+}
+.tel-btn.btn.btn-info:active {
+  background-color: #4ab9db;
+  border-color: #28a4c9;
+  border-bottom-color: #28a4c9;
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1) inset;
+}
+.tel-btn.btn.btn-info:hover {
+  color: #fff;
+  border-color: #39b3d7;
+  border-bottom-color: #2596b8;
+  background: #46b8da linear-gradient(to bottom, #53bddc 0, #39b3d7 100%) repeat-x;
+}
+.tel-btn.btn.btn-success,
+.tel-btn.btn.btn-success:focus {
+  border-color: #4cb64c;
+  border-bottom-color: #42a142;
+  background: #5ebd5e linear-gradient(to bottom, #62be62 0, #4cb64c 100%) repeat-x;
+  color: #ffffff;
+}
+.tel-btn.btn.btn-success:hover {
+  color: #fff;
+  border-color: #46ac46;
+  border-bottom-color: #388838;
+  background: #4cb64c linear-gradient(to bottom, #57ba57 0, #46ac46 100%) repeat-x;
+}
+.tel-btn.btn.btn-success:active {
+  background: #50b750;
+  border-color: #3e963e;
+  border-bottom-color: #3e963e;
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1) inset;
+}
+.tel-btn.btn.btn-warning,
+.tel-btn.btn.btn-warning:focus {
+  border-color: #f19a1f;
+  border-bottom-color: #e38b0e;
+  background: #f4b04f linear-gradient(to bottom, #f4b254 0, #f3a537 100%) repeat-x;
+  color: #ffffff;
+}
+.tel-btn.btn.btn-warning:hover {
+  color: #fff;
+  border-color: #f09411;
+  border-bottom-color: #c2770c;
+  background: #f3a537 linear-gradient(to bottom, #f3ac45 0, #f29f29 100%) repeat-x;
+}
+.tel-btn.btn.btn-warning:active {
+  background: #f3a73c;
+  border-color: #d5830d;
+  border-bottom-color: #d5830d;
+  color: #fff;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1) inset;
+}
+.tel-btn.btn.btn-danger,
+.tel-btn.btn.btn-danger:focus {
+  border-color: #e3503e;
+  border-bottom-color: #df3823;
+  background: #e66454 linear-gradient(to bottom, #e76858 0, #e3503e 100%) repeat-x;
+  color: #ffffff;
+}
+.tel-btn.btn.btn-danger:hover {
+  color: #ffffff;
+  border-color: #e14430;
+  border-bottom-color: #c22e1c;
+  background: #e3503e linear-gradient(to bottom, #e55c4b 0, #e14430 100%) repeat-x;
+}
+.tel-btn.btn.btn-danger:active {
+  background-color: #e35442;
+  border-color: #d4331f;
+  border-bottom-color: #d4331f;
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1) inset;
 }
 @media (min-width: 480px) {
   .tel-navigation > li {

@@ -10,6 +10,7 @@
 angular.module("telApp")
     .controller("OrganizationCtrl", ["$scope", "Providers",
         function ($scope, Providers) {
+            $scope.accordionStatuses = [];
             Providers.getProviders();
         }
     ]);

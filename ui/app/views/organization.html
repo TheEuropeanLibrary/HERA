@@ -2,6 +2,97 @@
     <div class="tel-main-menu" role="navigation" ng-include="'views/tel-main-menu.html'"></div>
     <div class="tel-navbar navbar navbar-inverse" role="navigation" ng-include="'views/tel-navbar.html'"></div>
     <div class="tel-content-wrapper">
+        <div class="tel-company-selector">
+            <img src="http://placehold.it/90x50">
+            <select class="form-control tel-form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+            </select>
+            <div class="panel-body buttons-with-margins">
+                <button class="tel-btn btn">Default</button> &nbsp;&nbsp;
+                <button class="tel-btn btn btn-primary">Primary</button> &nbsp;&nbsp;
+                <button class="tel-btn btn btn-info">Info</button> &nbsp;&nbsp;
+                <button class="tel-btn btn btn-success">Success</button> &nbsp;&nbsp;
+                <button class="tel-btn btn btn-warning">Warning</button> &nbsp;&nbsp;
+                <button class="tel-btn btn btn-danger">Danger</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <accordion class="tel-accordion" close-others="false">
+                    <accordion-group is-open="accordionStatuses[0]">
+                        <accordion-heading>
+                            General information
+                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses[0], 'fa-minus-square': accordionStatuses[0]}"></i>
+                        </accordion-heading>
+                        This content is straight in the template.
+                    </accordion-group>
+                    <accordion-group is-open="accordionStatuses[1]">
+                        <accordion-heading>
+                            Contact information
+                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses[1], 'fa-minus-square': accordionStatuses[1]}"></i>
+                        </accordion-heading>
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </accordion-group>
+                    <accordion-group is-open="accordionStatuses[2]">
+                        <accordion-heading>
+                            Additional information
+                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses[2], 'fa-minus-square': accordionStatuses[2]}"></i>
+                        </accordion-heading>
+                        <p>The body of the accordion group grows to fit the contents</p>
+                    </accordion-group>
+                    <accordion-group is-open="accordionStatuses[3]">
+                        <accordion-heading>
+                            Portal information
+                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses[3], 'fa-minus-square': accordionStatuses[3]}"></i>
+                        </accordion-heading>
+                        This is just some content to illustrate fancy headings.
+                    </accordion-group>
+                </accordion>
+            </div>
+            <div class="col-xs-6">
+                <accordion class="tel-accordion" close-others="false">
+                    <accordion-group is-open="accordionStatuses[4]">
+                        <accordion-heading>
+                            Datasets
+                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses[4], 'fa-minus-square': accordionStatuses[4]}"></i>
+                        </accordion-heading>
+                        This content is straight in the template.
+                    </accordion-group>
+                    <accordion-group is-open="accordionStatuses[5]">
+                        <accordion-heading>
+                            Organisation contacts
+                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses[5], 'fa-minus-square': accordionStatuses[5]}"></i>
+                        </accordion-heading>
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </accordion-group>
+                    <accordion-group is-open="accordionStatuses[6]">
+                        <accordion-heading>
+                            Images
+                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses[6], 'fa-minus-square': accordionStatuses[6]}"></i>
+                        </accordion-heading>
+                        <p>The body of the accordion group grows to fit the contents</p>
+                    </accordion-group>
+                    <accordion-group is-open="accordionStatuses[7]">
+                        <accordion-heading>
+                            Tickets
+                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses[7], 'fa-minus-square': accordionStatuses[7]}"></i>
+                        </accordion-heading>
+                        This is just some content to illustrate fancy headings.
+                    </accordion-group>
+                    <accordion-group is-open="accordionStatuses[8]">
+                        <accordion-heading>
+                            Tasks
+                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses[8], 'fa-minus-square': accordionStatuses[8]}"></i>
+                        </accordion-heading>
+                        This is just some content to illustrate fancy headings.
+                    </accordion-group>
+                </accordion>
+            </div>
+        </div>
+        <div class="clearfix"></div>
         <textarea class="form-control tel-form-control">
             asdasda
             asdasdad
