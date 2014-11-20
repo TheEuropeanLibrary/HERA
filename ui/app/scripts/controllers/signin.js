@@ -1,8 +1,8 @@
 "use strict";
 
 angular.module("telApp")
-    .controller("SignInCtrl", ["$scope", "Users",
-        function ($scope, Users) {
+    .controller("SignInCtrl", ["$scope", "Users", "$state",
+        function ($scope, Users, $state) {
 
             $scope.data = {};
 
@@ -17,7 +17,7 @@ angular.module("telApp")
             $scope.login = function () {
                 Users.login($scope.data)
                     .then(function () {
-
+                        $state.go("organization");
                     }, function () {
                         $scope.invalidCredentials = true;
                     });

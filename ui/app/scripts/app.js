@@ -44,6 +44,11 @@ angular
                     url: "/signup",
                     templateUrl: "views/signup.html",
                     controller: "SignUpCtrl"
+                })
+                .state("organization", {
+                    url: "/organization",
+                    templateUrl: "../views/organization.html",
+                    controller: "OrganizationCtrl"
                 });
 
             bmApiUrlsProvider.setHostname("tel", "localhost");
@@ -52,19 +57,20 @@ angular
                 return hostname + ":" + port + "/hera";
             });
             bmApiUrlsProvider.setUrls("tel", {
-                "login": "/login"
+                "login": "/login",
+                "providers": "/providers"
             });
 
             $httpProvider.interceptors.push("telAuthInterceptor");
 
-            bmCookiesProvider.prefix = "tel";
+            bmCookiesProvider.cookiePrefix = "tel";
         }
     ])
     .run(["$state", "$http", "bmCookies",
         function ($state, $http, bmCookies) {
             if (bmCookies.hasItem("Authorization")) {
                 $http.defaults.headers.common["Authorization"] = bmCookies.getItem("Authorization");
-                $state.go("organizations");
+                $state.go("organization");
             } else if (!$state.current.name) {
                 $state.go("signin");
             }
