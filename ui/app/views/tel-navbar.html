@@ -80,7 +80,7 @@
                         </form>
                     </li>
                     <li class="dropdown tel-dropdown">
-                        <a href="#" class="dropdown-toggle user-menu" data-toggle="dropdown">
+                        <a href class="dropdown-toggle user-menu" data-toggle="dropdown">
                             <img src="http://placehold.it/25x25">
                             <span>John Doe</span>
                         </a>
@@ -89,7 +89,7 @@
                             <li><a href="#"><span class="badge badge-primary pull-right">New</span>Account</a></li>
                             <li><a href="#"><i class="dropdown-icon fa fa-cog"></i>&nbsp;&nbsp;Settings</a></li>
                             <li class="divider"></li>
-                            <li><a href="pages-signin.html"><i class="dropdown-icon fa fa-power-off"></i>&nbsp;&nbsp;Log Out</a></li>
+                            <li><a href ng-click="logout($event)"><i class="dropdown-icon fa fa-power-off"></i>&nbsp;&nbsp;Log Out</a></li>
                         </ul>
                     </li>
                 </ul>

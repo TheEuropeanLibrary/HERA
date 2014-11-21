@@ -13,6 +13,9 @@ angular.module("telApp")
             return {
                 getProviders: function () {
                     return $http.get(bmApiUrls.getUrl("tel", "providers"));
+                },
+                getProvider: function (id) {
+                    return $http.get(bmApiUrls.getUrl("tel", "providers") + "/" + encodeURIComponent(id));
                 }
             }
         }

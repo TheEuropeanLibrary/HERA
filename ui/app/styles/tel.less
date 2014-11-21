@@ -9,15 +9,21 @@ body, html {
 .tel-app-container {
     min-height: 100%;
 }
+
 .tel-app-wrapper {
+    position: absolute;
+    width: 100%;
     background-color: #23272d;
     padding-left: 56px;
-    min-height: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
     transition: all .5s;
     &.menu-open {
         padding-left: 240px;
     }
 }
+
 .tel-content-wrapper {
     background-color: #f6f6f6;
     height: 100%;
@@ -26,6 +32,7 @@ body, html {
     position: relative;
     z-index: 2;
 }
+
 .label.tel-label {
     background: #b0b0b0;
     color: #fff;
@@ -226,7 +233,6 @@ body, html {
     border-top-color: #c2c2c2;
     box-shadow: none;
     border-radius: 2px;
-    padding-top: 7px;
     &:focus {
         border-color: #1d89cf;
         outline: 0;
@@ -1383,6 +1389,10 @@ body, html {
                             font-size: 13px;
                             margin-left: 7px;
                         }
+                        &:hover,
+                        &:focus {
+                            text-decoration: none;
+                        }
                     }
                 }
                 &.nav-icon-btn {
@@ -1606,6 +1616,17 @@ body, html {
         border-bottom-color: #d4331f;
         color: #ffffff;
         box-shadow: 0 0 12px rgba(0,0,0,.1) inset;
+    }
+}
+
+.tel-company-selector {
+    margin-bottom: 20px;
+    .form-control.tel-form-control {
+        width: 200px;
+        margin: 7px 0 0 15px;
+    }
+    .tel-company-selector-buttons {
+        margin: 8px 0 0 15px;
     }
 }
 
