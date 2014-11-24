@@ -18,12 +18,13 @@ angular
         "ui.router",
         "ui.select",
         "ui.utils",
-        "bmComponents"
+        "bmComponents",
+        "pascalprecht.translate"
     ])
     .config(["$stateProvider", "$locationProvider", "$httpProvider", "bmApiUrlsProvider", "bmCookiesProvider",
-        function ($stateProvider, $locationProvider, $httpProvider, bmApiUrlsProvider, bmCookiesProvider) {
+        "$translateProvider",
+        function ($stateProvider, $locationProvider, $httpProvider, bmApiUrlsProvider, bmCookiesProvider, $translateProvider) {
             $locationProvider.hashPrefix("!");
-
             $stateProvider
                 .state("main", {
                     url: "/main",
@@ -47,7 +48,7 @@ angular
                 })
                 .state("organization", {
                     url: "/organization",
-                    templateUrl: "../views/organization.html",
+                    templateUrl: "views/organization.html",
                     controller: "OrganizationCtrl"
                 });
 
@@ -56,6 +57,9 @@ angular
             bmApiUrlsProvider.setUrlGenerator("tel", function (hostname, port) {
                 return hostname + ":" + port + "/hera";
             });
+            //bmApiUrlsProvider.setUrlGenerator("tel", function () {
+            //    return "/hera-rest-administration";
+            //});
             bmApiUrlsProvider.setUrls("tel", {
                 "login": "/login",
                 "providers": "/providers"
@@ -64,6 +68,8 @@ angular
             $httpProvider.interceptors.push("telAuthInterceptor");
 
             bmCookiesProvider.cookiePrefix = "tel";
+
+            $translateProvider.preferredLanguage("en");
         }
     ])
     .run(["$state", "$http", "bmCookies",

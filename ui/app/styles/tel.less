@@ -511,6 +511,74 @@ body, html {
 .tel-accordion {
     .panel-group {
         .panel {
+            &.success {
+                border-color: #5ebd5e;
+                .panel-heading {
+                    background-color: #5ebd5e;
+                    h4 {
+                        a {
+                            color: #ffffff;
+                            .accordion-status {
+                                color: #ffffff;
+                            }
+                            &:hover {
+                                color: #ffffff;
+                            }
+                        }
+                    }
+                }
+            }
+            &.danger {
+                border-color: #e66454;
+                .panel-heading {
+                    background-color: #e66454;
+                    h4 {
+                        a {
+                            color: #ffffff;
+                            .accordion-status {
+                                color: #ffffff;
+                            }
+                            &:hover {
+                                color: #ffffff;
+                            }
+                        }
+                    }
+                }
+            }
+            &.warning {
+                border-color: #f4b04f;
+                .panel-heading {
+                    background-color: #f4b04f;
+                    h4 {
+                        a {
+                            color: #ffffff;
+                            .accordion-status {
+                                color: #ffffff;
+                            }
+                            &:hover {
+                                color: #ffffff;
+                            }
+                        }
+                    }
+                }
+            }
+            &.info {
+                border-color: #5bc0de;
+                .panel-heading {
+                    background-color: #5bc0de;
+                    h4 {
+                        a {
+                            color: #ffffff;
+                            .accordion-status {
+                                color: #ffffff;
+                            }
+                            &:hover {
+                                color: #ffffff;
+                            }
+                        }
+                    }
+                }
+            }
             border-color: #e2e2e2;
             box-shadow: none;
             border-radius: 2px;
@@ -519,6 +587,8 @@ body, html {
             }
             .panel-heading {
                 background-color: #fafafa;
+                border-top-left-radius: 1px;
+                border-top-right-radius: 1px;
                 padding: 0;
                 h4 {
                     a {
@@ -533,6 +603,10 @@ body, html {
                         &:hover {
                             color: #555555;
                             background-color: rgba(0, 0, 0, 0.016);
+                            text-decoration: none;
+                        }
+                        &:focus {
+                            outline: 0 none;
                             text-decoration: none;
                         }
                         .accordion-status {
@@ -1627,6 +1701,19 @@ body, html {
     }
     .tel-company-selector-buttons {
         margin: 8px 0 0 15px;
+    }
+}
+
+.form-group.tel-form-group-vertical {
+    & > label {
+        text-align: left;
+        float: none;
+        padding-top: 0;
+    }
+}
+.form-group.tel-header-group {
+    & > label {
+        text-align: left;
     }
 }
 

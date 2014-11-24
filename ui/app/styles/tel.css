@@ -474,11 +474,73 @@ html {
   box-shadow: none;
   border-radius: 2px;
 }
+.tel-accordion .panel-group .panel.success {
+  border-color: #5ebd5e;
+}
+.tel-accordion .panel-group .panel.success .panel-heading {
+  background-color: #5ebd5e;
+}
+.tel-accordion .panel-group .panel.success .panel-heading h4 a {
+  color: #ffffff;
+}
+.tel-accordion .panel-group .panel.success .panel-heading h4 a .accordion-status {
+  color: #ffffff;
+}
+.tel-accordion .panel-group .panel.success .panel-heading h4 a:hover {
+  color: #ffffff;
+}
+.tel-accordion .panel-group .panel.danger {
+  border-color: #e66454;
+}
+.tel-accordion .panel-group .panel.danger .panel-heading {
+  background-color: #e66454;
+}
+.tel-accordion .panel-group .panel.danger .panel-heading h4 a {
+  color: #ffffff;
+}
+.tel-accordion .panel-group .panel.danger .panel-heading h4 a .accordion-status {
+  color: #ffffff;
+}
+.tel-accordion .panel-group .panel.danger .panel-heading h4 a:hover {
+  color: #ffffff;
+}
+.tel-accordion .panel-group .panel.warning {
+  border-color: #f4b04f;
+}
+.tel-accordion .panel-group .panel.warning .panel-heading {
+  background-color: #f4b04f;
+}
+.tel-accordion .panel-group .panel.warning .panel-heading h4 a {
+  color: #ffffff;
+}
+.tel-accordion .panel-group .panel.warning .panel-heading h4 a .accordion-status {
+  color: #ffffff;
+}
+.tel-accordion .panel-group .panel.warning .panel-heading h4 a:hover {
+  color: #ffffff;
+}
+.tel-accordion .panel-group .panel.info {
+  border-color: #5bc0de;
+}
+.tel-accordion .panel-group .panel.info .panel-heading {
+  background-color: #5bc0de;
+}
+.tel-accordion .panel-group .panel.info .panel-heading h4 a {
+  color: #ffffff;
+}
+.tel-accordion .panel-group .panel.info .panel-heading h4 a .accordion-status {
+  color: #ffffff;
+}
+.tel-accordion .panel-group .panel.info .panel-heading h4 a:hover {
+  color: #ffffff;
+}
 .tel-accordion .panel-group .panel + .panel {
   margin-top: 5px;
 }
 .tel-accordion .panel-group .panel .panel-heading {
   background-color: #fafafa;
+  border-top-left-radius: 1px;
+  border-top-right-radius: 1px;
   padding: 0;
 }
 .tel-accordion .panel-group .panel .panel-heading h4 a {
@@ -494,6 +556,10 @@ html {
 .tel-accordion .panel-group .panel .panel-heading h4 a:hover {
   color: #555555;
   background-color: rgba(0, 0, 0, 0.016);
+  text-decoration: none;
+}
+.tel-accordion .panel-group .panel .panel-heading h4 a:focus {
+  outline: 0 none;
   text-decoration: none;
 }
 .tel-accordion .panel-group .panel .panel-heading h4 a .accordion-status {
@@ -1519,6 +1585,14 @@ html {
 }
 .tel-company-selector .tel-company-selector-buttons {
   margin: 8px 0 0 15px;
+}
+.form-group.tel-form-group-vertical > label {
+  text-align: left;
+  float: none;
+  padding-top: 0;
+}
+.form-group.tel-header-group > label {
+  text-align: left;
 }
 @media (min-width: 480px) {
   .tel-navigation > li {
