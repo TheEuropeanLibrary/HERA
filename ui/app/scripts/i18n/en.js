@@ -25,7 +25,8 @@ angular
                         LANGUAGE: "Language",
                         NAME: "Name",
                         NAME_TYPE: "Name type",
-                        ADD_DATASET: "Add dataset"
+                        ADD_DATASET: "Add dataset",
+                        VIEW_IN_PORTAL: "View in portal"
                     }
                 });
         }
