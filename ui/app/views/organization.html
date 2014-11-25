@@ -2,7 +2,9 @@
     <div class="tel-main-menu" role="navigation" ng-include="'views/tel-main-menu.html'"></div>
     <div class="tel-navbar navbar navbar-inverse" role="navigation" ng-include="'views/tel-navbar.html'" ng-controller="NavBarCtrl"></div>
     <div class="tel-content-wrapper">
-        <a ng-href="http://tel.com/{{selectedProvider['Identifier']}}" ng-if="selectedProvider" class="btn tel-btn btn-primary pull-right" translate="ORGANISATIONS.VIEW_IN_PORTAL"></a>
+        <a ng-href="http://tel.com/{{selectedProvider['Identifier']}}" ng-if="selectedProvider"
+           class="btn tel-btn btn-primary pull-right tel-btn-view-portal" translate="ORGANISATIONS.VIEW_IN_PORTAL"
+            target="_blank"></a>
         <div class="tel-company-selector clearfix">
             <img src="http://placehold.it/90x50" class="pull-left">
             <select class="form-control tel-form-control pull-left"

@@ -1580,6 +1580,9 @@ html {
   color: #ffffff;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.1) inset;
 }
+.tel-btn.btn.tel-btn-view-portal {
+  margin-top: 8px;
+}
 .tel-company-selector {
   margin-bottom: 20px;
 }
