@@ -24,7 +24,8 @@ angular
                         COUNTRY: "Country",
                         LANGUAGE: "Language",
                         NAME: "Name",
-                        NAME_TYPE: "Name type"
+                        NAME_TYPE: "Name type",
+                        ADD_DATASET: "Add dataset"
                     }
                 });
         }

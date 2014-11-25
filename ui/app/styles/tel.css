@@ -572,6 +572,10 @@ html {
 .tel-accordion .panel-group .panel .panel-body {
   padding: 20px;
 }
+.tel-dataset-table-container {
+  max-height: 250px;
+  overflow-y: auto;
+}
 .tel-select > .ui-select-match {
   border-radius: 2px;
   color: #555555;

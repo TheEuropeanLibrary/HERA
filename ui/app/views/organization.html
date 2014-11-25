@@ -35,7 +35,7 @@
                             <div class="form-group">
                                 <label for="organisation-type" class="col-sm-3 control-label" translate="ORGANISATIONS.TYPE"></label>
                                 <div class="col-sm-9">
-                                    <select id="organisation-type" class="tel-form-control form-control"></select>
+                                    <select id="organisation-type" class="tel-form-control form-control" ng-disabled="!editMode"></select>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -43,7 +43,8 @@
                                 <div class="col-sm-9">
                                     <select id="organisation-country" class="tel-form-control form-control"
                                             ng-model="selectedProvider['Country']"
-                                            ng-options="c.value as c.label for c in countries"></select>
+                                            ng-options="c.value as c.label for c in countries"
+                                            ng-disabled="!editMode"></select>
                                 </div>
                             </div>
                             <div class="form-group tel-header-group">
@@ -54,20 +55,23 @@
                             <div class="form-group" ng-repeat="name in selectedProvider['Names']">
                                 <div class="col-sm-3">
                                     <select class="tel-form-control form-control" ng-model="name['NameType']"
-                                            ng-options="c.value as c.label for c in nameTypes"></select>
+                                            ng-options="c.value as c.label for c in nameTypes"
+                                            ng-disabled="!editMode"></select>
                                 </div>
                                 <div class="col-sm-3">
                                     <select class="tel-form-control form-control" ng-model="name['Language']"
-                                            ng-options="c.value as c.label for c in languages"></select>
+                                            ng-options="c.value as c.label for c in languages"
+                                            ng-disabled="!editMode"></select>
                                 </div>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control tel-form-control" ng-model="name['Value']">
+                                    <input type="text" class="form-control tel-form-control" ng-model="name['Value']"
+                                           ng-disabled="!editMode">
                                 </div>
                                 <div class="col-sm-2">
-                                    <button type="button" class="tel-btn btn btn-primary" ng-click="addName()" ng-if="$last">
+                                    <button type="button" class="tel-btn btn btn-primary" ng-click="addName()" ng-if="$last && editMode">
                                         <i class="fa fa-plus"></i>
                                     </button>
-                                    <button type="button" class="tel-btn btn btn-danger" ng-click="removeName($index)" ng-if="!$last">
+                                    <button type="button" class="tel-btn btn btn-danger" ng-click="removeName($index)" ng-if="!$last && editMode">
                                         <i class="fa fa-minus"></i>
                                     </button>
                                 </div>
@@ -123,7 +127,102 @@
                             <span translate="ORGANISATIONS.DATASETS"></span>
                             <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses[4], 'fa-minus-square': accordionStatuses[4]}"></i>
                         </accordion-heading>
-                        This content is straight in the template.
+                        <div class="tel-dataset-table-container">
+                            <div class="tel-table-primary">
+                                <!--<div class="tel-table-header">-->
+                                <!--<div class="tel-table-caption">-->
+                                <!--Primary Table-->
+                                <!--</div>-->
+                                <!--</div>-->
+
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Username</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>@mdo</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>@fat</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>@twitter</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>@twitter</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>@twitter</td>
+                                    </tr><tr>
+                                        <td>3</td>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>@twitter</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>@twitter</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>@twitter</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>@twitter</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>@twitter</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>@twitter</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>@twitter</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="tel-table-footer">
+                                    <button type="button" class="btn btn-primary" translate="ORGANISATIONS.ADD_DATASET"></button>
+                                </div>
+                            </div>
+                        </div>
                     </accordion-group>
                     <accordion-group is-open="accordionStatuses[5]">
                         <accordion-heading>
