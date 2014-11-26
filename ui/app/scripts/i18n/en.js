@@ -26,7 +26,9 @@ angular
                         NAME: "Name",
                         NAME_TYPE: "Name type",
                         ADD_DATASET: "Add dataset",
-                        VIEW_IN_PORTAL: "View in portal"
+                        VIEW_IN_PORTAL: "View in portal",
+                        ROLE: "Role",
+                        EMAIL: "E-mail"
                     }
                 });
         }

@@ -2,50 +2,52 @@
     <div class="tel-main-menu" role="navigation" ng-include="'views/tel-main-menu.html'"></div>
     <div class="tel-navbar navbar navbar-inverse" role="navigation" ng-include="'views/tel-navbar.html'" ng-controller="NavBarCtrl"></div>
     <div class="tel-content-wrapper">
-        <a ng-href="http://tel.com/{{selectedProvider['Identifier']}}" ng-if="selectedProvider"
+        <a ng-href="http://tel.com/{{data.general.Identifier}}" ng-if="data.general.Identifier"
            class="btn tel-btn btn-primary pull-right tel-btn-view-portal" translate="ORGANISATIONS.VIEW_IN_PORTAL"
             target="_blank"></a>
         <div class="tel-company-selector clearfix">
             <img src="http://placehold.it/90x50" class="pull-left">
             <select class="form-control tel-form-control pull-left"
-                    ng-options="d.id as d['Name'] for d in providers"
-                    ng-model="selectedProviderId"
-                    ng-change="getProvider()">
+                    ng-options="d.id as d.name for d in providers"
+                    ng-model="selectedProviderId">
             </select>
             <div class="tel-company-selector-buttons pull-left">
-                <button class="btn btn-primary tel-btn" type="button" ng-if="!editMode && selectedProvider" ng-click="toggleEditMode()"
+                <button class="btn btn-primary tel-btn" type="button" ng-if="!editMode && selectedProviderId" ng-click="toggleEditMode()"
                         translate="EDIT"></button>
-                <button class="btn btn-success tel-btn" type="button" ng-if="editMode" translate="SAVE"></button>
+                <button class="btn btn-success tel-btn" type="button" ng-if="editMode" translate="SAVE" ng-click="saveChanges()"></button>
                 <button class="btn btn-danger tel-btn" type="button" ng-if="editMode" ng-click="cancelEdit()"
                         translate="CANCEL"></button>
             </div>
         </div>
-        <div class="row">
+        <div class="row" ng-form="parentForm">
             <div class="col-xs-6">
                 <accordion class="tel-accordion" close-others="false">
-                    <accordion-group is-open="accordionStatuses[0]" class="success">
+                    <accordion-group is-open="accordionStatuses.general" class="success">
                         <accordion-heading>
                             <span translate="ORGANISATIONS.GENERAL_INFORMATION"></span>
-                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses[0], 'fa-minus-square': accordionStatuses[0]}"></i>
+                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.general, 'fa-minus-square': accordionStatuses.general}"></i>
                         </accordion-heading>
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" name="general" novalidate>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label" translate="ORGANISATIONS.IDENTIFIER"></label>
                                 <div class="col-sm-9">
-                                    <p class="form-control-static">test</p>
+                                    <p class="form-control-static">{{data.general.Identifier}}</p>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="organisation-type" class="col-sm-3 control-label" translate="ORGANISATIONS.TYPE"></label>
                                 <div class="col-sm-9">
-                                    <select id="organisation-type" class="tel-form-control form-control" ng-disabled="!editMode"></select>
+                                    <select id="organisation-type" class="tel-form-control form-control"
+                                            ng-options="c.value as c.label for c in providerTypes"
+                                            ng-disabled="!editMode"
+                                            ng-model="data.general.ProviderType"></select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="organisation-country" class="col-sm-3 control-label" translate="ORGANISATIONS.COUNTRY"></label>
                                 <div class="col-sm-9">
                                     <select id="organisation-country" class="tel-form-control form-control"
-                                            ng-model="selectedProvider['Country']"
+                                            ng-model="data.general.Country"
                                             ng-options="c.value as c.label for c in countries"
                                             ng-disabled="!editMode"></select>
                                 </div>
@@ -55,69 +57,95 @@
                                 <label class="col-sm-3 control-label" translate="ORGANISATIONS.LANGUAGE"></label>
                                 <label class="col-sm-3 control-label" translate="ORGANISATIONS.NAME"></label>
                             </div>
-                            <div class="form-group" ng-repeat="name in selectedProvider['Names']">
+                            <div class="form-group" ng-repeat="name in data.general.Name">
                                 <div class="col-sm-3">
-                                    <select class="tel-form-control form-control" ng-model="name['NameType']"
+                                    <select class="tel-form-control form-control" ng-model="name.NameType"
                                             ng-options="c.value as c.label for c in nameTypes"
                                             ng-disabled="!editMode"></select>
                                 </div>
                                 <div class="col-sm-3">
-                                    <select class="tel-form-control form-control" ng-model="name['Language']"
+                                    <select class="tel-form-control form-control" ng-model="name.Language"
                                             ng-options="c.value as c.label for c in languages"
                                             ng-disabled="!editMode"></select>
                                 </div>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control tel-form-control" ng-model="name['Value']"
+                                    <input type="text" class="form-control tel-form-control" ng-model="name.Value"
                                            ng-disabled="!editMode">
                                 </div>
                                 <div class="col-sm-2">
+                                    <button type="button" class="tel-btn btn btn-danger" ng-click="removeName($index)" ng-if="editMode">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
                                     <button type="button" class="tel-btn btn btn-primary" ng-click="addName()" ng-if="$last && editMode">
                                         <i class="fa fa-plus"></i>
-                                    </button>
-                                    <button type="button" class="tel-btn btn btn-danger" ng-click="removeName($index)" ng-if="!$last && editMode">
-                                        <i class="fa fa-minus"></i>
                                     </button>
                                 </div>
                             </div>
                         </form>
                     </accordion-group>
-                    <accordion-group is-open="accordionStatuses[1]" class="warning">
+                    <accordion-group is-open="accordionStatuses.contact" class="warning">
                         <accordion-heading>
                             <span translate="ORGANISATIONS.CONTACT_INFORMATION"></span>
-                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses[1], 'fa-minus-square': accordionStatuses[1]}"></i>
+                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.contact, 'fa-minus-square': accordionStatuses.contact}"></i>
                         </accordion-heading>
-                        <div class="form-group col-xs-12">
-                            <label for="address">Address</label>
-                            <input id="address" type="text" class="form-control tel-form-control" ng-model="selectedProvider['Country']">
-                        </div>
-                        <div class="form-group col-xs-3">
-                            <label for="fax">Fax</label>
-                            <input id="fax" type="text" class="form-control tel-form-control">
-                        </div>
-                        <div class="form-group col-xs-3">
-                            <label for="phone">Phone</label>
-                            <input id="phone" type="text" class="form-control tel-form-control" ng-model="selectedProvider['Phone']">
-                        </div>
-                        <div class="form-group col-xs-3">
-                            <label for="email">E-mail</label>
-                            <input id="email" type="email" class="form-control tel-form-control" ng-model="selectedProvider['E-Mail']">
-                        </div>
-                        <div class="form-group col-xs-3">
-                            <label for="website">Website</label>
-                            <input id="website" type="text" class="form-control tel-form-control">
+                        <form name="contact" novalidate class="clearfix">
+                            <div class="form-group col-xs-12">
+                                <label for="address">Address</label>
+                                <input id="address" type="text" class="form-control tel-form-control" ng-disabled="!editMode" ng-model="data.contact.Country">
+                            </div>
+                            <div class="form-group col-xs-3">
+                                <label for="fax">Fax</label>
+                                <input id="fax" type="text" class="form-control tel-form-control" ng-disabled="!editMode">
+                            </div>
+                            <div class="form-group col-xs-3">
+                                <label for="phone">Phone</label>
+                                <input id="phone" type="text" class="form-control tel-form-control" ng-disabled="!editMode" bm-phone-number ng-model="data.contact.Phone">
+                            </div>
+                            <div class="form-group col-xs-3">
+                                <label for="email">E-mail</label>
+                                <input id="email" type="email" class="form-control tel-form-control" ng-disabled="!editMode" ng-model="data.contact['E-Mail']">
+                            </div>
+                            <div class="form-group col-xs-3">
+                                <label for="website">Website</label>
+                                <input id="website" type="text" class="form-control tel-form-control" ng-disabled="!editMode">
+                            </div>
+                        </form>
+                        <div class="col-xs-12">
+                            <div class="tel-table-primary">
+                                <div class="tel-datasets-table-container">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th translate="ORGANISATIONS.NAME">Name</th>
+                                            <th translate="ORGANISATIONS.ROLE">Name</th>
+                                            <th translate="ORGANISATIONS.EMAIL">E-mail</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr ng-repeat="contact in data.contact.Contact">
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{ contact.Value.Name }}</td>
+                                            <td>{{ contact.Value.Role }}</td>
+                                            <td>{{ contact.Value['Email'] }}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </accordion-group>
-                    <accordion-group is-open="accordionStatuses[2]">
+                    <accordion-group is-open="accordionStatuses.additional">
                         <accordion-heading>
                             <span translate="ORGANISATIONS.ADDITIONAL_INFORMATION"></span>
-                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses[2], 'fa-minus-square': accordionStatuses[2]}"></i>
+                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.additional, 'fa-minus-square': accordionStatuses.additional}"></i>
                         </accordion-heading>
                         <p>The body of the accordion group grows to fit the contents</p>
                     </accordion-group>
-                    <accordion-group is-open="accordionStatuses[3]">
+                    <accordion-group is-open="accordionStatuses.portal">
                         <accordion-heading>
                             <span translate="ORGANISATIONS.PORTAL_INFORMATION"></span>
-                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses[3], 'fa-minus-square': accordionStatuses[3]}"></i>
+                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.portal, 'fa-minus-square': accordionStatuses.portal}"></i>
                         </accordion-heading>
                         This is just some content to illustrate fancy headings.
                     </accordion-group>
@@ -125,10 +153,10 @@
             </div>
             <div class="col-xs-6">
                 <accordion class="tel-accordion" close-others="false">
-                    <accordion-group is-open="accordionStatuses[4]" class="info tel-dataset-panel">
+                    <accordion-group is-open="accordionStatuses.dataset" class="info tel-dataset-panel">
                         <accordion-heading>
                             <span translate="ORGANISATIONS.DATASETS"></span>
-                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses[4], 'fa-minus-square': accordionStatuses[4]}"></i>
+                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.dataset, 'fa-minus-square': accordionStatuses.datasets}"></i>
                         </accordion-heading>
                             <div class="tel-table-primary">
                                 <!--<div class="tel-table-header">-->
@@ -136,120 +164,121 @@
                                 <!--Primary Table-->
                                 <!--</div>-->
                                 <!--</div>-->
-
-                                <table class="table table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Username</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr><tr>
-                                        <td>3</td>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                                <div class="tel-datasets-table-container">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Username</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr><tr>
+                                            <td>3</td>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <div class="tel-table-footer">
                                     <button type="button" class="btn btn-primary" translate="ORGANISATIONS.ADD_DATASET"></button>
                                 </div>
                             </div>
                     </accordion-group>
-                    <accordion-group is-open="accordionStatuses[5]">
+                    <accordion-group is-open="accordionStatuses.membership">
                         <accordion-heading>
                             <span translate="ORGANISATIONS.CONTACTS"></span>
-                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses[5], 'fa-minus-square': accordionStatuses[5]}"></i>
+                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.membership, 'fa-minus-square': accordionStatuses.membership}"></i>
                         </accordion-heading>
                         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                     </accordion-group>
-                    <accordion-group is-open="accordionStatuses[6]">
+                    <accordion-group is-open="accordionStatuses.image">
                         <accordion-heading>
                             <span translate="ORGANISATIONS.IMAGES"></span>
-                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses[6], 'fa-minus-square': accordionStatuses[6]}"></i>
+                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.image, 'fa-minus-square': accordionStatuses.image}"></i>
                         </accordion-heading>
                         <p>The body of the accordion group grows to fit the contents</p>
                     </accordion-group>
-                    <accordion-group is-open="accordionStatuses[7]">
+                    <accordion-group is-open="accordionStatuses.ticket">
                         <accordion-heading>
                             <span translate="ORGANISATIONS.TICKETS"></span>
-                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses[7], 'fa-minus-square': accordionStatuses[7]}"></i>
+                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.ticket, 'fa-minus-square': accordionStatuses.ticket}"></i>
                         </accordion-heading>
                         This is just some content to illustrate fancy headings.
                     </accordion-group>
-                    <accordion-group is-open="accordionStatuses[8]">
+                    <accordion-group is-open="accordionStatuses.task">
                         <accordion-heading>
                             <span translate="ORGANISATIONS.TASKS"></span>
-                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses[8], 'fa-minus-square': accordionStatuses[8]}"></i>
+                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.task, 'fa-minus-square': accordionStatuses.task}"></i>
                         </accordion-heading>
                         This is just some content to illustrate fancy headings.
                     </accordion-group>

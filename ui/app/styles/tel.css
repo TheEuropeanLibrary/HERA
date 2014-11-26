@@ -534,10 +534,6 @@ html {
 .tel-accordion .panel-group .panel.info .panel-heading h4 a:hover {
   color: #ffffff;
 }
-.tel-accordion .panel-group .panel.tel-dataset-panel .panel-body {
-  max-height: 250px;
-  overflow-y: auto;
-}
 .tel-accordion .panel-group .panel + .panel {
   margin-top: 5px;
 }
@@ -575,6 +571,10 @@ html {
 }
 .tel-accordion .panel-group .panel .panel-body {
   padding: 20px;
+}
+.tel-datasets-table-container {
+  max-height: 250px;
+  overflow-y: auto;
 }
 .tel-select > .ui-select-match {
   border-radius: 2px;
