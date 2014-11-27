@@ -53,7 +53,7 @@
                                             ng-disabled="!editMode"></select>
                                 </div>
                             </div>
-                            <div class="form-group tel-header-group">
+                            <div class="form-group tel-header-group" ng-if="data.general.Name.length">
                                 <label class="col-sm-3 control-label" translate="ORGANISATIONS.NAME_TYPE"></label>
                                 <label class="col-sm-3 control-label" translate="ORGANISATIONS.LANGUAGE"></label>
                                 <label class="col-sm-3 control-label" translate="ORGANISATIONS.NAME"></label>
@@ -118,9 +118,9 @@
                                         <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th translate="ORGANISATIONS.NAME">Name</th>
-                                            <th translate="ORGANISATIONS.ROLE">Name</th>
-                                            <th translate="ORGANISATIONS.EMAIL">E-mail</th>
+                                            <th translate="ORGANISATIONS.NAME"></th>
+                                            <th translate="ORGANISATIONS.ROLE"></th>
+                                            <th translate="ORGANISATIONS.EMAIL"></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -128,7 +128,7 @@
                                             <td>{{ $index + 1 }}</td>
                                             <td>{{ contact.Value.Name }}</td>
                                             <td>{{ contact.Value.Role }}</td>
-                                            <td>{{ contact.Value['Email'] }}</td>
+                                            <td>{{ contact.Value.Email }}</td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -148,7 +148,49 @@
                             <span translate="ORGANISATIONS.PORTAL_INFORMATION"></span>
                             <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.portal, 'fa-minus-square': accordionStatuses.portal}"></i>
                         </accordion-heading>
-                        This is just some content to illustrate fancy headings.
+                        <form class="form-horizontal" name="portal" novalidate>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" translate="ORGANISATIONS.PORTAL_STATUS"></label>
+                                <div class="col-sm-9">
+                                    <select id="portal-status" class="tel-form-control form-control"
+                                            ng-options="c.value as c.label for c in portalStatuses"
+                                            ng-disabled="!editMode"
+                                            ng-model="data.portal.PortalStatus"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="organisation-type" class="col-sm-3 control-label" translate="ORGANISATIONS.COORDINATES"></label>
+                                <div class="col-sm-4">
+                                    <input id="latitude" type="text" class="form-control tel-form-control" ng-model="data.portal.Coordinate.Latitude" bm-float-parser ng-disabled="!editMode">
+                                </div>
+                                <div class="col-sm-5">
+                                    <input id="longitude" type="text" class="form-control tel-form-control" ng-model="data.portal.Coordinate.Longitude" bm-float-parser ng-disabled="!editMode">
+                                </div>
+                            </div>
+                            <div class="form-group tel-header-group" ng-if="data.portal.Link.length">
+                                <!--<label class="col-sm-3 control-label" translate="ORGANISATIONS.LINK"></label>-->
+                                <label class="col-sm-5 control-label" translate="ORGANISATIONS.LINK_TYPE"></label>
+                                <label class="col-sm-7 control-label" translate="ORGANISATIONS.URL"></label>
+                            </div>
+                            <div class="form-group" ng-repeat="link in data.portal.Link">
+                                <div class="col-sm-5">
+                                    <select class="tel-form-control form-control" ng-model="link.LinkType"
+                                            ng-options="c.value as c.label for c in linkTypes"
+                                            ng-disabled="!editMode"></select>
+                                </div>
+                                <div class="col-sm-5">
+                                    <input class="form-control tel-form-control" ng-model="link.Value" ng-disabled="!editMode">
+                                </div>
+                                <div class="col-sm-2">
+                                    <button type="button" class="tel-btn btn btn-danger" ng-click="removeLink($index)" ng-if="editMode">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="tel-btn btn btn-primary" ng-click="addLink()" ng-if="$last && editMode">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </accordion-group>
                 </accordion>
             </div>
@@ -169,83 +211,16 @@
                                     <table class="table table-bordered">
                                         <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Username</th>
+                                            <th translate="ORGANISATIONS.IDENTIFIER"></th>
+                                            <th translate="ORGANISATIONS.NAME"></th>
+                                            <th translate="ORGANISATIONS.STATUS"></th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr><tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
+                                        <tr ng-repeat="dataset in data.dataset.Dataset">
+                                            <td>{{ dataset.Value.Identifier }}</td>
+                                            <td>{{ dataset.Value.Name }}</td>
+                                            <td>{{ dataset.Value.Status }}</td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -255,12 +230,31 @@
                                 </div>
                             </div>
                     </accordion-group>
-                    <accordion-group is-open="accordionStatuses.membership">
+                    <accordion-group is-open="accordionStatuses.contact">
                         <accordion-heading>
                             <span translate="ORGANISATIONS.CONTACTS"></span>
-                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.membership, 'fa-minus-square': accordionStatuses.membership}"></i>
+                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.contact, 'fa-minus-square': accordionStatuses.contact}"></i>
                         </accordion-heading>
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        <div class="tel-datasets-table-container" ng-if="data.contact.Contact.length">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th translate="ORGANISATIONS.NAME">Name</th>
+                                    <th translate="ORGANISATIONS.ROLE">Name</th>
+                                    <th translate="ORGANISATIONS.EMAIL">E-mail</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="contact in data.contact.Contact">
+                                    <td>{{ $index + 1 }}</td>
+                                    <td>{{ contact.Value.Name }}</td>
+                                    <td>{{ contact.Value.Role }}</td>
+                                    <td>{{ contact.Value['Email'] }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </accordion-group>
                     <accordion-group is-open="accordionStatuses.image">
                         <accordion-heading>

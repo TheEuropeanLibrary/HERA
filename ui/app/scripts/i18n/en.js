@@ -28,7 +28,12 @@ angular
                         ADD_DATASET: "Add dataset",
                         VIEW_IN_PORTAL: "View in portal",
                         ROLE: "Role",
-                        EMAIL: "E-mail"
+                        EMAIL: "E-mail",
+                        STATUS: "Status",
+                        PORTAL_STATUS: "Portal status",
+                        COORDINATES: "Coordinates",
+                        LINK_TYPE: "Link type",
+                        URL: "Url"
                     }
                 });
         }

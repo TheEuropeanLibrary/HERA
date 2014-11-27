@@ -11,16 +11,6 @@ angular.module("telApp")
     .controller("OrganizationCtrl", ["$scope", "Providers", "telEnums", "$q",
         function ($scope, Providers, telEnums, $q) {
 
-            function parseProvider(data) {
-                $scope.selectedProvider = data.data;
-
-                if (!$scope.selectedProvider["Name"]) {
-                    $scope.selectedProvider["Name"] = [{}];
-                }
-
-                return data;
-            }
-
             function parseProviders(data) {
 
                 if (data.data.results && data.data.results.length) {
@@ -37,7 +27,7 @@ angular.module("telApp")
                 return data;
             }
 
-            var forms = ["general", "contact"],
+            var forms = ["general", "contact", "portal", "image"],
                 dataCopy = {};
 
             $scope.editMode = false;
@@ -53,18 +43,20 @@ angular.module("telApp")
                 $scope.data = angular.copy(dataCopy);
             };
 
-            $scope.getProvider = function () {
-                Providers
-                    .getProvider($scope.selectedProviderId)
-                    .then(parseProvider);
-            };
-
             $scope.addName = function () {
                 $scope.data.general.Name.push({});
             };
 
             $scope.removeName = function (index) {
                 $scope.data.general.Name.splice(index, 1);
+            };
+
+            $scope.addLink = function () {
+                $scope.data.portal.Link.push({});
+            };
+
+            $scope.removeLink = function (index) {
+                $scope.data.portal.Link.splice(index, 1);
             };
 
             $scope.saveChanges = function () {
@@ -95,6 +87,12 @@ angular.module("telApp")
                         .then(function (data) {
                             $scope.data[type] = data.data;
                             dataCopy = angular.copy($scope.data);
+                            if ($scope.data.general && !$scope.data.general.Name) {
+                                $scope.data.general.Name = [{}];
+                            }
+                            if ($scope.data.portal && !$scope.data.portal.Link) {
+                                $scope.data.portal.Link = [{}];
+                            }
                         });
                 }
             };
@@ -113,6 +111,14 @@ angular.module("telApp")
 
             telEnums.getProviderTypes().then(function (providerTypes) {
                 $scope.providerTypes = providerTypes;
+            });
+
+            telEnums.getPortalStatuses().then(function (portalStatuses) {
+                $scope.portalStatuses = portalStatuses;
+            });
+
+            telEnums.getLinkTypes().then(function (linkTypes) {
+                $scope.linkTypes = linkTypes;
             });
 
             $scope.$watch("accordionStatuses", function (newVal, oldVal) {

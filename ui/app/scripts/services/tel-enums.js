@@ -770,6 +770,10 @@ angular
 
             var providerTypes = ["NATIONAL_LIBRARY", "RESEARCH_LIBRARY"];
 
+            var portalStatuses = ["PREPARATION", "INTERNAL", "ACCEPTANCE", "SUSPENDED", "LIVE"];
+
+            var linkTypes = ["LOGO", "WEBSITE", "CONTACTS", "OPENING", "WIKIPEDIA_ENGLISH", "WIKIPEDIA_NATIVE"];
+
             return {
                 getCountries: function () {
                     return $q.when(countries.map(function (country) {
@@ -800,6 +804,22 @@ angular
                         return {
                             label: providerType,
                             value: providerType
+                        };
+                    }));
+                },
+                getPortalStatuses: function () {
+                    return $q.when(portalStatuses.map(function (portalStatus) {
+                        return {
+                            label: portalStatus,
+                            value: portalStatus
+                        };
+                    }));
+                },
+                getLinkTypes: function () {
+                    return $q.when(linkTypes.map(function (linkType) {
+                        return {
+                            label: linkType,
+                            value: linkType
                         };
                     }));
                 }
