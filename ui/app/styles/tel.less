@@ -13,7 +13,7 @@ body, html {
 .tel-app-wrapper {
     position: absolute;
     width: 100%;
-    background-color: #23272d;
+    background-color: #f6f6f6;
     padding-left: 56px;
     left: 0;
     top: 0;
@@ -26,11 +26,11 @@ body, html {
 
 .tel-content-wrapper {
     background-color: #f6f6f6;
-    height: 100%;
+    min-height: 100%;
     padding: 64px 18px 18px;
     width: 100%;
     position: relative;
-    z-index: 2;
+    z-index: 3;
 }
 
 .label.tel-label {
@@ -62,15 +62,26 @@ body, html {
 }
 
 .tel-main-menu {
-    width: 240px;
-    height: auto;
+    background-color: #23272d;
+    top: 0;
     position: absolute;
     left: 0;
     transition: all .5s;
-    z-index: 1;
+    width: 240px;
+    z-index: 2;
     &.small-menu {
         width: 56px;
     }
+}
+
+.tel-main-menu-bg {
+    background-color: #23272d;
+    bottom: 0;
+    top: 0;
+    position: fixed;
+    left: 0;
+    width: 240px;
+    z-index: 1;
 }
 
 .tel-navigation {
