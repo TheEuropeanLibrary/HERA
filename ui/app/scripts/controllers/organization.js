@@ -37,7 +37,8 @@ angular.module("telApp")
                 return data;
             }
 
-            var forms = ["general", "contact"];
+            var forms = ["general", "contact"],
+                dataCopy = {};
 
             $scope.editMode = false;
             $scope.accordionStatuses = {};
@@ -49,6 +50,7 @@ angular.module("telApp")
 
             $scope.cancelEdit = function () {
                 $scope.editMode = false;
+                $scope.data = angular.copy(dataCopy);
             };
 
             $scope.getProvider = function () {
@@ -92,7 +94,7 @@ angular.module("telApp")
                         })
                         .then(function (data) {
                             $scope.data[type] = data.data;
-                            console.log($scope.data);
+                            dataCopy = angular.copy($scope.data);
                         });
                 }
             };
