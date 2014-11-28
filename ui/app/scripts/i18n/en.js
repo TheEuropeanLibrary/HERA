@@ -39,6 +39,11 @@ angular
                     ADD_IMAGE: {
                         IMAGE_URL: "Image url",
                         ADD_IMAGE: "Add image"
+                    },
+                    ERRORS: {
+                        INVALID_FAX: "Invalid fax",
+                        INVALID_PHONE: "Invalid phone",
+                        INVALID_EMAIL: "Invalid e-mail"
                     }
                 });
         }

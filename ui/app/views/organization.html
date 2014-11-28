@@ -95,21 +95,24 @@
                                 <label for="address">Address</label>
                                 <input id="address" type="text" class="form-control tel-form-control" ng-disabled="!editMode" ng-model="data.contact.Country">
                             </div>
-                            <div class="form-group col-xs-3">
+                            <div class="form-group col-xs-3" ng-class="{'has-error tel-has-error': contact.contactFax.$invalid}">
                                 <label for="fax">Fax</label>
-                                <input id="fax" type="text" class="form-control tel-form-control" ng-disabled="!editMode">
+                                <input id="fax" type="text" class="form-control tel-form-control" ng-disabled="!editMode" bm-phone-number ng-model="data.contact.Fax" name="contactFax">
+                                <p ng-if="contact.contactFax.$invalid" class="tel-help-block help-block" translate="ERRORS.INVALID_FAX"></p>
                             </div>
-                            <div class="form-group col-xs-3">
+                            <div class="form-group col-xs-3" ng-class="{'has-error tel-has-error': contact.contactPhone.$invalid}">
                                 <label for="phone">Phone</label>
-                                <input id="phone" type="text" class="form-control tel-form-control" ng-disabled="!editMode" bm-phone-number ng-model="data.contact.Phone">
+                                <input id="phone" type="text" class="form-control tel-form-control" ng-disabled="!editMode" bm-phone-number ng-model="data.contact.Phone" name="contactPhone">
+                                <p ng-if="contact.contactPhone.$invalid" class="tel-help-block help-block" translate="ERRORS.INVALID_PHONE"></p>
                             </div>
-                            <div class="form-group col-xs-3">
+                            <div class="form-group col-xs-3" ng-class="{'has-error tel-has-error': contact.contactEmail.$invalid}">
                                 <label for="email">E-mail</label>
-                                <input id="email" type="email" class="form-control tel-form-control" ng-disabled="!editMode" ng-model="data.contact['E-Mail']">
+                                <input id="email" type="email" class="form-control tel-form-control" ng-disabled="!editMode" ng-model="data.contact['E-Mail']" name="contactEmail">
+                                <p ng-if="contact.contactEmail.$invalid" class="tel-help-block help-block" translate="ERRORS.INVALID_EMAIL"></p>
                             </div>
                             <div class="form-group col-xs-3">
                                 <label for="website">Website</label>
-                                <input id="website" type="text" class="form-control tel-form-control" ng-disabled="!editMode">
+                                <input id="website" type="text" class="form-control tel-form-control" ng-disabled="!editMode" ng-model="data.contact.Website">
                             </div>
                         </form>
                         <div class="col-xs-12">
