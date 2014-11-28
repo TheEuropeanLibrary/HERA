@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.theeuropeanlibrary.maia.common.definitions.Provider;
+import org.theeuropeanlibrary.maia.common.filter.EntityFilter;
+import org.theeuropeanlibrary.maia.tel.model.provider.ProviderRegistry;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -17,6 +19,8 @@ import com.google.common.collect.Maps;
  * @since 10.11.2014
  */
 public class MemoryProviderDao {
+	
+	EntityFilter<String, Provider<String>> providersFilter = ProviderRegistry.getInstance().getFilterFactory().getFilterForName("simple");
 
 	private Map<String, Provider<String>> providers = Maps.newHashMap();
 	
@@ -46,7 +50,10 @@ public class MemoryProviderDao {
 		Iterator<Provider<String>> i = providers.values().iterator();
 		int count = 0;
 		while(count < numberOfProviders && i.hasNext()) {
-			providersToReturn.add(i.next());
+			
+			Provider<String> currentProvider = i.next();
+			currentProvider = providersFilter.filter(currentProvider);
+			providersToReturn.add(currentProvider);
 			count++;
 		}
 		return providersToReturn;
