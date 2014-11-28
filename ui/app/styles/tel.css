@@ -1603,6 +1603,21 @@ html {
 .tel-company-selector .tel-company-selector-buttons {
   margin: 8px 0 0 15px;
 }
+.tel-company-selector img {
+  display: block;
+  max-width: 90px;
+}
+.tel-organisation-images {
+  margin-bottom: 20px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+.tel-organisation-images img {
+  display: inline-block;
+  max-height: 100px;
+  margin-right: 15px;
+  vertical-align: middle;
+}
 .form-group.tel-form-group-vertical > label {
   text-align: left;
   float: none;
@@ -1610,6 +1625,24 @@ html {
 }
 .form-group.tel-header-group > label {
   text-align: left;
+}
+.modal-header.tel-modal-header {
+  background-color: #f8f8f8;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  padding: 12px 20px;
+}
+.modal-footer.tel-modal-footer {
+  background-color: #ffffff;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  margin-top: 0;
+  padding: 12px 20px;
+}
+.tel-modal.modal .modal-dialog .close {
+  color: #555555;
+  font-size: 20px;
+  margin-top: 3px;
 }
 @media (min-width: 480px) {
   .tel-navigation > li {

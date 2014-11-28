@@ -33,7 +33,12 @@ angular
                         PORTAL_STATUS: "Portal status",
                         COORDINATES: "Coordinates",
                         LINK_TYPE: "Link type",
-                        URL: "Url"
+                        URL: "Url",
+                        ADD_IMAGE: "Add image"
+                    },
+                    ADD_IMAGE: {
+                        IMAGE_URL: "Image url",
+                        ADD_IMAGE: "Add image"
                     }
                 });
         }

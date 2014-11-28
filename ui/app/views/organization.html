@@ -7,10 +7,11 @@
            class="btn tel-btn btn-primary pull-right tel-btn-view-portal" translate="ORGANISATIONS.VIEW_IN_PORTAL"
             target="_blank"></a>
         <div class="tel-company-selector clearfix">
-            <img src="http://placehold.it/90x50" class="pull-left">
+            <img ng-src="{{ selectedProvider.logo }}" class="pull-left">
             <select class="form-control tel-form-control pull-left"
                     ng-options="d.id as d.name for d in providers"
-                    ng-model="selectedProviderId">
+                    ng-model="selectedProviderId"
+                    ng-change="changeProvider()">
             </select>
             <div class="tel-company-selector-buttons pull-left">
                 <button class="btn btn-primary tel-btn" type="button" ng-if="!editMode && selectedProviderId" ng-click="toggleEditMode()"
@@ -261,7 +262,12 @@
                             <span translate="ORGANISATIONS.IMAGES"></span>
                             <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.image, 'fa-minus-square': accordionStatuses.image}"></i>
                         </accordion-heading>
-                        <p>The body of the accordion group grows to fit the contents</p>
+                        <div class="tel-organisation-images">
+                            <img ng-src="{{img}}" ng-repeat="img in data.image.Image">
+                        </div>
+                        <button ng-if="data.image" type="button" class="btn tel-btn btn-primary" translate="ORGANISATIONS.ADD_IMAGE"
+                            ng-click="addImage()">
+                        </button>
                     </accordion-group>
                     <accordion-group is-open="accordionStatuses.ticket">
                         <accordion-heading>

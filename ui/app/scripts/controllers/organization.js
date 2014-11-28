@@ -8,8 +8,8 @@
  * Controller of the telApp
  */
 angular.module("telApp")
-    .controller("OrganizationCtrl", ["$scope", "Providers", "telEnums", "$q",
-        function ($scope, Providers, telEnums, $q) {
+    .controller("OrganizationCtrl", ["$scope", "Providers", "telEnums", "$q", "$modal",
+        function ($scope, Providers, telEnums, $q, $modal) {
 
             function parseProviders(data) {
 
@@ -95,6 +95,39 @@ angular.module("telApp")
                             }
                         });
                 }
+            };
+
+            $scope.changeProvider = function () {
+                Providers.getProvider($scope.selectedProviderId)
+                    .then(function (data) {
+                        $scope.selectedProvider = {};
+                        $scope.selectedProvider.Identifier = data.data.Identifier;
+                        $scope.selectedProvider.logo = (data.data.Link.filter(function (link) {
+                            return link.LinkType == "LOGO";
+                        })[0] || {}).Value;
+                        Object.keys($scope.accordionStatuses).forEach(function (i) {
+                            if ($scope.accordionStatuses[i]) {
+                                $scope.getData(i);
+                            }
+                        });
+                    });
+            };
+
+            $scope.addImage = function () {
+                var modalInstance = $modal.open({
+                    templateUrl: "views/add-image-modal.html",
+                    controller: "AddImageModalCtrl",
+                    windowClass: "tel-modal",
+                    resolve: {
+
+                    }
+                });
+
+                modalInstance.result.then(function (selectedItem) {
+
+                }, function () {
+
+                });
             };
 
             telEnums.getLanguages().then(function (languages) {
