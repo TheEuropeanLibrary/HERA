@@ -768,13 +768,19 @@ angular
                 "ACRONYM"
             ];
 
+            var providerTypes = ["NATIONAL_LIBRARY", "RESEARCH_LIBRARY"];
+
+            var portalStatuses = ["PREPARATION", "INTERNAL", "ACCEPTANCE", "SUSPENDED", "LIVE"];
+
+            var linkTypes = ["LOGO", "WEBSITE", "CONTACTS", "OPENING", "WIKIPEDIA_ENGLISH", "WIKIPEDIA_NATIVE"];
+
             return {
                 getCountries: function () {
                     return $q.when(countries.map(function (country) {
                         return {
                             label: country,
                             value: country
-                        }
+                        };
                     }));
                 },
                 getLanguages: function () {
@@ -782,7 +788,7 @@ angular
                         return {
                             label: language,
                             value: language
-                        }
+                        };
                     }));
                 },
                 getNameTypes: function () {
@@ -790,7 +796,31 @@ angular
                         return {
                             label: nameType,
                             value: nameType
-                        }
+                        };
+                    }));
+                },
+                getProviderTypes: function () {
+                    return $q.when(providerTypes.map(function (providerType) {
+                        return {
+                            label: providerType,
+                            value: providerType
+                        };
+                    }));
+                },
+                getPortalStatuses: function () {
+                    return $q.when(portalStatuses.map(function (portalStatus) {
+                        return {
+                            label: portalStatus,
+                            value: portalStatus
+                        };
+                    }));
+                },
+                getLinkTypes: function () {
+                    return $q.when(linkTypes.map(function (linkType) {
+                        return {
+                            label: linkType,
+                            value: linkType
+                        };
                     }));
                 }
             }

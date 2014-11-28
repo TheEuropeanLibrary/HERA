@@ -11,7 +11,7 @@ html {
 .tel-app-wrapper {
   position: absolute;
   width: 100%;
-  background-color: #23272d;
+  background-color: #f6f6f6;
   padding-left: 56px;
   left: 0;
   top: 0;
@@ -23,11 +23,11 @@ html {
 }
 .tel-content-wrapper {
   background-color: #f6f6f6;
-  height: 100%;
+  min-height: 100%;
   padding: 64px 18px 18px;
   width: 100%;
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 .label.tel-label {
   background: #b0b0b0;
@@ -56,15 +56,25 @@ html {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
 }
 .tel-main-menu {
-  width: 240px;
-  height: auto;
+  background-color: #23272d;
+  top: 0;
   position: absolute;
   left: 0;
   transition: all .5s;
-  z-index: 1;
+  width: 240px;
+  z-index: 2;
 }
 .tel-main-menu.small-menu {
   width: 56px;
+}
+.tel-main-menu-bg {
+  background-color: #23272d;
+  bottom: 0;
+  top: 0;
+  position: fixed;
+  left: 0;
+  width: 240px;
+  z-index: 1;
 }
 .tel-navigation {
   background-color: #23272d;
@@ -534,10 +544,6 @@ html {
 .tel-accordion .panel-group .panel.info .panel-heading h4 a:hover {
   color: #ffffff;
 }
-.tel-accordion .panel-group .panel.tel-dataset-panel .panel-body {
-  max-height: 250px;
-  overflow-y: auto;
-}
 .tel-accordion .panel-group .panel + .panel {
   margin-top: 5px;
 }
@@ -575,6 +581,10 @@ html {
 }
 .tel-accordion .panel-group .panel .panel-body {
   padding: 20px;
+}
+.tel-datasets-table-container {
+  max-height: 250px;
+  overflow-y: auto;
 }
 .tel-select > .ui-select-match {
   border-radius: 2px;
@@ -1593,6 +1603,21 @@ html {
 .tel-company-selector .tel-company-selector-buttons {
   margin: 8px 0 0 15px;
 }
+.tel-company-selector img {
+  display: block;
+  max-width: 90px;
+}
+.tel-organisation-images {
+  margin-bottom: 20px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+.tel-organisation-images img {
+  display: inline-block;
+  max-height: 100px;
+  margin-right: 15px;
+  vertical-align: middle;
+}
 .form-group.tel-form-group-vertical > label {
   text-align: left;
   float: none;
@@ -1600,6 +1625,24 @@ html {
 }
 .form-group.tel-header-group > label {
   text-align: left;
+}
+.modal-header.tel-modal-header {
+  background-color: #f8f8f8;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  padding: 12px 20px;
+}
+.modal-footer.tel-modal-footer {
+  background-color: #ffffff;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  margin-top: 0;
+  padding: 12px 20px;
+}
+.tel-modal.modal .modal-dialog .close {
+  color: #555555;
+  font-size: 20px;
+  margin-top: 3px;
 }
 @media (min-width: 480px) {
   .tel-navigation > li {

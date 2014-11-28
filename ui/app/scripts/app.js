@@ -52,14 +52,14 @@ angular
                     controller: "OrganizationCtrl"
                 });
 
-            bmApiUrlsProvider.setHostname("tel", "localhost");
-            bmApiUrlsProvider.setPort("tel", 3000);
-            bmApiUrlsProvider.setUrlGenerator("tel", function (hostname, port) {
-                return hostname + ":" + port + "/hera";
-            });
-            //bmApiUrlsProvider.setUrlGenerator("tel", function () {
-            //    return "/hera-rest-administration";
+            //bmApiUrlsProvider.setHostname("tel", "localhost");
+            //bmApiUrlsProvider.setPort("tel", 3000);
+            //bmApiUrlsProvider.setUrlGenerator("tel", function (hostname, port) {
+            //    return hostname + ":" + port + "/hera";
             //});
+            bmApiUrlsProvider.setUrlGenerator("tel", function () {
+                return "/hera-rest-administration";
+            });
             bmApiUrlsProvider.setUrls("tel", {
                 "login": "/login",
                 "providers": "/providers"
