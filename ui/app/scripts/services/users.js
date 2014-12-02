@@ -8,8 +8,8 @@
  * Service in the telApp.
  */
 angular.module("telApp")
-    .service("Users", ["$http", "$location", "Base64", "bmApiUrls", "bmCookies",
-        function ($http, $location, Base64, bmApiUrls, bmCookies) {
+    .service("Users", ["$http", "$location", "Base64", "bmApiUrls", "bmCookies", "$rootScope",
+        function ($http, $location, Base64, bmApiUrls, bmCookies, $rootScope) {
             return {
                 login: function (credentials) {
                     return $http

@@ -27,6 +27,22 @@ angular.module("telApp")
                 return data;
             }
 
+            function parseProvider(data) {
+                $scope.selectedProvider = {};
+                $scope.selectedProvider.Identifier = data.data.Identifier;
+                $scope.selectedProvider.logo = (data.data.Link.filter(function (link) {
+                    return link.LinkType == "LOGO";
+                })[0] || {}).Value;
+
+                Object.keys($scope.accordionStatuses).forEach(function (i) {
+                    if ($scope.accordionStatuses[i]) {
+                        $scope.getData(i);
+                    }
+                });
+
+                return data;
+            }
+
             var forms = ["general", "contact", "portal", "image"],
                 dataCopy = {};
 
@@ -99,18 +115,7 @@ angular.module("telApp")
 
             $scope.changeProvider = function () {
                 Providers.getProvider($scope.selectedProviderId)
-                    .then(function (data) {
-                        $scope.selectedProvider = {};
-                        $scope.selectedProvider.Identifier = data.data.Identifier;
-                        $scope.selectedProvider.logo = (data.data.Link.filter(function (link) {
-                            return link.LinkType == "LOGO";
-                        })[0] || {}).Value;
-                        Object.keys($scope.accordionStatuses).forEach(function (i) {
-                            if ($scope.accordionStatuses[i]) {
-                                $scope.getData(i);
-                            }
-                        });
-                    });
+                    .then(parseProvider);
             };
 
             $scope.addImage = function () {
@@ -165,6 +170,13 @@ angular.module("telApp")
 
             Providers
                 .getProviders()
-                .then(parseProviders);
+                .then(parseProviders)
+                .then(function () {
+                    if ($scope.providers && $scope.providers.length) {
+                        $scope.selectedProviderId = $scope.providers[0].id;
+                    }
+                    return Providers.getProvider($scope.selectedProviderId);
+                })
+                .then(parseProvider);
         }
     ]);
