@@ -247,17 +247,19 @@
                                 <div class="col-sm-9">
                                     <select id="portal-status" class="tel-form-control form-control"
                                             ng-options="c.value as c.label for c in portalStatuses"
-                                            ng-disabled="!editMode"
+                                            ng-disabled="!editMode.portal"
                                             ng-model="data.portal.PortalStatus"></select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="organisation-type" class="col-sm-3 control-label" translate="ORGANISATIONS.COORDINATES"></label>
                                 <div class="col-sm-4">
-                                    <input id="latitude" type="text" class="form-control tel-form-control" ng-model="data.portal.Coordinate.Latitude" bm-float-parser ng-disabled="!editMode">
+                                    <input id="latitude" type="text" class="form-control tel-form-control"
+                                           ng-model="data.portal.Coordinate.Latitude" bm-float-parser ng-disabled="!editMode.portal">
                                 </div>
                                 <div class="col-sm-5">
-                                    <input id="longitude" type="text" class="form-control tel-form-control" ng-model="data.portal.Coordinate.Longitude" bm-float-parser ng-disabled="!editMode">
+                                    <input id="longitude" type="text" class="form-control tel-form-control"
+                                           ng-model="data.portal.Coordinate.Longitude" bm-float-parser ng-disabled="!editMode.portal">
                                 </div>
                             </div>
                             <div class="form-group tel-header-group" ng-if="data.portal.Link.length">
@@ -269,21 +271,29 @@
                                 <div class="col-sm-5">
                                     <select class="tel-form-control form-control" ng-model="link.LinkType"
                                             ng-options="c.value as c.label for c in linkTypes"
-                                            ng-disabled="!editMode"></select>
+                                            ng-disabled="!editMode.portal"></select>
                                 </div>
                                 <div class="col-sm-5">
-                                    <input class="form-control tel-form-control" ng-model="link.Value" ng-disabled="!editMode">
+                                    <input class="form-control tel-form-control" ng-model="link.Value" ng-disabled="!editMode.portal">
                                 </div>
                                 <div class="col-sm-2">
-                                    <button type="button" class="tel-btn btn btn-danger" ng-click="removeLink($index)" ng-if="editMode">
+                                    <button type="button" class="tel-btn btn btn-danger" ng-click="removeLink($index)" ng-if="editMode.portal">
                                         <i class="fa fa-minus"></i>
                                     </button>
-                                    <button type="button" class="tel-btn btn btn-primary" ng-click="addLink()" ng-if="$last && editMode">
+                                    <button type="button" class="tel-btn btn btn-primary" ng-click="addLink()" ng-if="$last && editMode.portal">
                                         <i class="fa fa-plus"></i>
                                     </button>
                                 </div>
                             </div>
                         </form>
+                        <div class="tel-panel-buttons">
+                            <button class="btn btn-primary tel-btn" type="button" ng-if="!editMode.portal" ng-click="toggleEditMode('portal')"
+                                    translate="EDIT"></button>
+                            <button class="btn btn-success tel-btn" type="button" ng-if="editMode.portal" translate="SAVE"
+                                    ng-click="saveChanges('portal')"></button>
+                            <button class="btn btn-danger tel-btn" type="button" ng-if="editMode.portal" ng-click="cancelEdit('portal')"
+                                    translate="CANCEL"></button>
+                        </div>
                     </accordion-group>
                 </accordion>
             </div>
@@ -318,8 +328,8 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="tel-table-footer">
-                                    <button type="button" class="btn btn-primary" translate="ORGANISATIONS.ADD_DATASET"></button>
+                                <div class="tel-table-footer clearfix">
+                                    <button type="button" class="btn btn-primary pull-right" translate="ORGANISATIONS.ADD_DATASET"></button>
                                 </div>
                             </div>
                     </accordion-group>
@@ -357,7 +367,7 @@
                         <div class="tel-organisation-images">
                             <img ng-src="{{img}}" ng-repeat="img in data.image.Image">
                         </div>
-                        <button ng-if="data.image" type="button" class="btn tel-btn btn-primary" translate="ORGANISATIONS.ADD_IMAGE"
+                        <button ng-if="data.image" type="button" class="btn tel-btn btn-primary pull-right clearfix" translate="ORGANISATIONS.ADD_IMAGE"
                             ng-click="addImage()">
                         </button>
                     </accordion-group>
