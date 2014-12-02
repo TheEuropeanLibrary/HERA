@@ -774,6 +774,12 @@ angular
 
             var linkTypes = ["LOGO", "WEBSITE", "CONTACTS", "OPENING", "WIKIPEDIA_ENGLISH", "WIKIPEDIA_NATIVE"];
 
+            var membershipTypes = ["MEMBERS", "LIBRARY_PROSPECT", "INSTITUTION_PROSPECT", "CONTRIBUTOR"];
+
+            var libraryOrganisations = ["CERL", "CENL", "LIBER", "OTHER"];
+
+            var consortiumTypes = ["AGGREGATION", "PURCHASING"];
+
             return {
                 getCountries: function () {
                     return $q.when(countries.map(function (country) {
@@ -820,6 +826,30 @@ angular
                         return {
                             label: linkType,
                             value: linkType
+                        };
+                    }));
+                },
+                getMembershipTypes: function () {
+                    return $q.when(membershipTypes.map(function (m) {
+                        return {
+                            label: m,
+                            value: m
+                        };
+                    }));
+                },
+                getLibraryOrganisations: function () {
+                    return $q.when(libraryOrganisations.map(function (l) {
+                        return {
+                            label: l,
+                            value: l
+                        };
+                    }));
+                },
+                getConsortiumTypes: function () {
+                    return $q.when(consortiumTypes.map(function (c) {
+                        return {
+                            label: c,
+                            value: c
                         };
                     }));
                 }

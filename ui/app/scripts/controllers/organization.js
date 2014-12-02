@@ -49,14 +49,15 @@ angular.module("telApp")
             $scope.editMode = false;
             $scope.accordionStatuses = {};
             $scope.data = {};
+            $scope.editMode = {};
 
-            $scope.toggleEditMode = function () {
-                $scope.editMode = true;
+            $scope.toggleEditMode = function (type) {
+                $scope.editMode[type] = !$scope.editMode[type];
             };
 
-            $scope.cancelEdit = function () {
-                $scope.editMode = false;
-                $scope.data = angular.copy(dataCopy);
+            $scope.cancelEdit = function (type) {
+                $scope.editMode[type] = !$scope.editMode[type];
+                $scope.data[type] = angular.copy(dataCopy[type]);
             };
 
             $scope.addName = function () {
@@ -75,23 +76,16 @@ angular.module("telApp")
                 $scope.data.portal.Link.splice(index, 1);
             };
 
-            $scope.saveChanges = function () {
-                var promises = [];
-
-                forms.forEach(function (formName) {
-                    if ($scope.parentForm[formName].$valid && $scope.data[formName]) {
-                        console.log(formName, $scope.data[formName]);
-                        promises.push(Providers.updateProvider($scope.data[formName], {
-                                filter: formName
-                            })
-                        );
-                    }
-                });
-
-                $q.all(promises).then(function () {
-                    $scope.parentForm.$setPristine();
-                    $scope.editMode = false;
-                });
+            $scope.saveChanges = function (type) {
+                if ($scope.parentForm[type].$valid && $scope.data[type]) {
+                    Providers.updateProvider($scope.data[type], {
+                            filter: type
+                        })
+                        .then(function () {
+                            $scope.parentForm[type].$setPristine();
+                            $scope.editMode[type] = false;
+                        });
+                }
             };
 
             $scope.getData = function (type) {
@@ -157,6 +151,18 @@ angular.module("telApp")
 
             telEnums.getLinkTypes().then(function (linkTypes) {
                 $scope.linkTypes = linkTypes;
+            });
+
+            telEnums.getMembershipTypes().then(function (membershipTypes) {
+                $scope.membershipTypes = membershipTypes;
+            });
+
+            telEnums.getLibraryOrganisations().then(function (libraryOrganisations) {
+                $scope.libraryOrganisations = libraryOrganisations;
+            });
+
+            telEnums.getConsortiumTypes().then(function (consortiumTypes) {
+                $scope.consortiumTypes = consortiumTypes;
             });
 
             $scope.$watch("accordionStatuses", function (newVal, oldVal) {

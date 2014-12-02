@@ -1600,12 +1600,13 @@ html {
   width: 200px;
   margin: 7px 0 0 15px;
 }
-.tel-company-selector .tel-company-selector-buttons {
-  margin: 8px 0 0 15px;
-}
 .tel-company-selector img {
   display: block;
   max-width: 90px;
+}
+.tel-panel-buttons {
+  margin: 8px 0 0 15px;
+  text-align: right;
 }
 .tel-organisation-images {
   margin-bottom: 20px;

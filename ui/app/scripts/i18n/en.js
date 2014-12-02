@@ -34,7 +34,21 @@ angular
                         COORDINATES: "Coordinates",
                         LINK_TYPE: "Link type",
                         URL: "Url",
-                        ADD_IMAGE: "Add image"
+                        ADD_IMAGE: "Add image",
+                        STREET: "Street",
+                        POSTCODE: "Postcode",
+                        CITY: "City",
+                        FAX: "Fax",
+                        PHONE: "Phone",
+                        WEBSITE: "Website",
+                        MEMBER: "Member",
+                        DEA: "DEA",
+                        EOD: "EOD",
+                        LIBRARY_ORGANISATION: "Library organisation",
+                        AGGREGATOR: "Aggregator",
+                        CONSORTIUM_TYPE: "Consortium type",
+                        NOTES: "Notes",
+                        MEMBERSHIP_TYPE: "Membership type"
                     },
                     ADD_IMAGE: {
                         IMAGE_URL: "Image url",

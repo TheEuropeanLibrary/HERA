@@ -13,13 +13,6 @@
                     ng-model="selectedProviderId"
                     ng-change="changeProvider()">
             </select>
-            <div class="tel-company-selector-buttons pull-left">
-                <button class="btn btn-primary tel-btn" type="button" ng-if="!editMode && selectedProviderId" ng-click="toggleEditMode()"
-                        translate="EDIT"></button>
-                <button class="btn btn-success tel-btn" type="button" ng-if="editMode" translate="SAVE" ng-click="saveChanges()"></button>
-                <button class="btn btn-danger tel-btn" type="button" ng-if="editMode" ng-click="cancelEdit()"
-                        translate="CANCEL"></button>
-            </div>
         </div>
         <div class="row" ng-form="parentForm">
             <div class="col-xs-6">
@@ -41,7 +34,7 @@
                                 <div class="col-sm-9">
                                     <select id="organisation-type" class="tel-form-control form-control"
                                             ng-options="c.value as c.label for c in providerTypes"
-                                            ng-disabled="!editMode"
+                                            ng-disabled="!editMode.general"
                                             ng-model="data.general.ProviderType"></select>
                                 </div>
                             </div>
@@ -51,7 +44,7 @@
                                     <select id="organisation-country" class="tel-form-control form-control"
                                             ng-model="data.general.Country"
                                             ng-options="c.value as c.label for c in countries"
-                                            ng-disabled="!editMode"></select>
+                                            ng-disabled="!editMode.general"></select>
                                 </div>
                             </div>
                             <div class="form-group tel-header-group" ng-if="data.general.Name.length">
@@ -63,89 +56,185 @@
                                 <div class="col-sm-3">
                                     <select class="tel-form-control form-control" ng-model="name.NameType"
                                             ng-options="c.value as c.label for c in nameTypes"
-                                            ng-disabled="!editMode"></select>
+                                            ng-disabled="!editMode.general"></select>
                                 </div>
                                 <div class="col-sm-3">
                                     <select class="tel-form-control form-control" ng-model="name.Language"
                                             ng-options="c.value as c.label for c in languages"
-                                            ng-disabled="!editMode"></select>
+                                            ng-disabled="!editMode.general"></select>
                                 </div>
                                 <div class="col-sm-4">
                                     <input type="text" class="form-control tel-form-control" ng-model="name.Value"
-                                           ng-disabled="!editMode">
+                                           ng-disabled="!editMode.general">
                                 </div>
                                 <div class="col-sm-2">
-                                    <button type="button" class="tel-btn btn btn-danger" ng-click="removeName($index)" ng-if="editMode">
+                                    <button type="button" class="tel-btn btn btn-danger" ng-click="removeName($index)" ng-if="editMode.general">
                                         <i class="fa fa-minus"></i>
                                     </button>
-                                    <button type="button" class="tel-btn btn btn-primary" ng-click="addName()" ng-if="$last && editMode">
+                                    <button type="button" class="tel-btn btn btn-primary" ng-click="addName()" ng-if="$last && editMode.general">
                                         <i class="fa fa-plus"></i>
                                     </button>
                                 </div>
                             </div>
                         </form>
+                        <div class="tel-panel-buttons">
+                            <button class="btn btn-primary tel-btn" type="button" ng-if="!editMode.general" ng-click="toggleEditMode('general')"
+                                    translate="EDIT"></button>
+                            <button class="btn btn-success tel-btn" type="button" ng-if="editMode.general" translate="SAVE"
+                                    ng-click="saveChanges('general')"></button>
+                            <button class="btn btn-danger tel-btn" type="button" ng-if="editMode.general" ng-click="cancelEdit('general')"
+                                    translate="CANCEL"></button>
+                        </div>
                     </accordion-group>
-                    <accordion-group is-open="accordionStatuses.contact" class="warning">
+                    <accordion-group is-open="accordionStatuses.provider" class="warning">
                         <accordion-heading>
                             <span translate="ORGANISATIONS.ADDRESS"></span>
-                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.contact, 'fa-minus-square': accordionStatuses.contact}"></i>
+                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.provider, 'fa-minus-square': accordionStatuses.provider}"></i>
                         </accordion-heading>
                         <form name="contact" novalidate class="clearfix">
-                            <div class="form-group col-xs-12">
-                                <label for="address">Address</label>
-                                <input id="address" type="text" class="form-control tel-form-control" ng-disabled="!editMode" ng-model="data.contact.Country">
+                            <div class="form-group col-xs-4">
+                                <label for="street" translate="ORGANISATIONS.STREET"></label>
+                                <input id="street" type="text" class="form-control tel-form-control" ng-disabled="!editMode.contact" ng-model="data.contact.Address.Street">
+                            </div>
+                            <div class="form-group col-xs-4">
+                                <label for="postcode" translate="ORGANISATIONS.POSTCODE"></label>
+                                <input id="postcode" type="text" class="form-control tel-form-control" ng-disabled="!editMode.contact" ng-model="data.contact.Address.Postcode">
+                            </div>
+                            <div class="form-group col-xs-4">
+                                <label for="city" translate="ORGANISATIONS.CITY"></label>
+                                <input id="city" type="text" class="form-control tel-form-control" ng-disabled="!editMode.contact" ng-model="data.contact.Address.City">
                             </div>
                             <div class="form-group col-xs-3" ng-class="{'has-error tel-has-error': contact.contactFax.$invalid}">
-                                <label for="fax">Fax</label>
-                                <input id="fax" type="text" class="form-control tel-form-control" ng-disabled="!editMode" bm-phone-number ng-model="data.contact.Fax" name="contactFax">
+                                <label for="fax" translate="ORGANISATIONS.FAX"></label>
+                                <input id="fax" type="text" class="form-control tel-form-control" ng-disabled="!editMode.contact" bm-phone-number ng-model="data.contact.Fax" name="contactFax">
                                 <p ng-if="contact.contactFax.$invalid" class="tel-help-block help-block" translate="ERRORS.INVALID_FAX"></p>
                             </div>
                             <div class="form-group col-xs-3" ng-class="{'has-error tel-has-error': contact.contactPhone.$invalid}">
-                                <label for="phone">Phone</label>
-                                <input id="phone" type="text" class="form-control tel-form-control" ng-disabled="!editMode" bm-phone-number ng-model="data.contact.Phone" name="contactPhone">
+                                <label for="phone" translate="ORGANISATIONS.PHONE"></label>
+                                <input id="phone" type="text" class="form-control tel-form-control" ng-disabled="!editMode.contact" bm-phone-number ng-model="data.contact.Phone" name="contactPhone">
                                 <p ng-if="contact.contactPhone.$invalid" class="tel-help-block help-block" translate="ERRORS.INVALID_PHONE"></p>
                             </div>
                             <div class="form-group col-xs-3" ng-class="{'has-error tel-has-error': contact.contactEmail.$invalid}">
-                                <label for="email">E-mail</label>
-                                <input id="email" type="email" class="form-control tel-form-control" ng-disabled="!editMode" ng-model="data.contact['E-Mail']" name="contactEmail">
+                                <label for="email" translate="ORGANISATIONS.EMAIL"></label>
+                                <input id="email" type="email" class="form-control tel-form-control" ng-disabled="!editMode.contact" ng-model="data.contact['E-Mail']" name="contactEmail">
                                 <p ng-if="contact.contactEmail.$invalid" class="tel-help-block help-block" translate="ERRORS.INVALID_EMAIL"></p>
                             </div>
                             <div class="form-group col-xs-3">
-                                <label for="website">Website</label>
-                                <input id="website" type="text" class="form-control tel-form-control" ng-disabled="!editMode" ng-model="data.contact.Website">
+                                <label for="website" translate="ORGANISATIONS.WEBSITE"></label>
+                                <input id="website" type="text" class="form-control tel-form-control" ng-disabled="!editMode.contact" ng-model="data.contact.Website">
                             </div>
                         </form>
-                        <div class="col-xs-12">
-                            <div class="tel-table-primary">
-                                <div class="tel-datasets-table-container">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th translate="ORGANISATIONS.NAME"></th>
-                                            <th translate="ORGANISATIONS.ROLE"></th>
-                                            <th translate="ORGANISATIONS.EMAIL"></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr ng-repeat="contact in data.contact.Contact">
-                                            <td>{{ $index + 1 }}</td>
-                                            <td>{{ contact.Value.Name }}</td>
-                                            <td>{{ contact.Value.Role }}</td>
-                                            <td>{{ contact.Value.Email }}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                        <!--<div class="col-xs-12">-->
+                            <!--<div class="tel-table-primary">-->
+                                <!--<div class="tel-datasets-table-container">-->
+                                    <!--<table class="table table-bordered">-->
+                                        <!--<thead>-->
+                                        <!--<tr>-->
+                                            <!--<th>#</th>-->
+                                            <!--<th translate="ORGANISATIONS.NAME"></th>-->
+                                            <!--<th translate="ORGANISATIONS.ROLE"></th>-->
+                                            <!--<th translate="ORGANISATIONS.EMAIL"></th>-->
+                                        <!--</tr>-->
+                                        <!--</thead>-->
+                                        <!--<tbody>-->
+                                        <!--<tr ng-repeat="contact in data.contact.Contact">-->
+                                            <!--<td>{{ $index + 1 }}</td>-->
+                                            <!--<td>{{ contact.Value.Name }}</td>-->
+                                            <!--<td>{{ contact.Value.Role }}</td>-->
+                                            <!--<td>{{ contact.Value.Email }}</td>-->
+                                        <!--</tr>-->
+                                        <!--</tbody>-->
+                                    <!--</table>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <div class="tel-panel-buttons">
+                            <button class="btn btn-primary tel-btn" type="button" ng-if="!editMode.contact" ng-click="toggleEditMode('contact')"
+                                    translate="EDIT"></button>
+                            <button class="btn btn-success tel-btn" type="button" ng-if="editMode.contact" translate="SAVE"
+                                    ng-click="saveChanges('contact')"></button>
+                            <button class="btn btn-danger tel-btn" type="button" ng-if="editMode.contact" ng-click="cancelEdit('contact')"
+                                    translate="CANCEL"></button>
                         </div>
                     </accordion-group>
-                    <accordion-group is-open="accordionStatuses.additional">
+                    <accordion-group is-open="accordionStatuses.membership">
                         <accordion-heading>
                             <span translate="ORGANISATIONS.MEMBERSHIP"></span>
-                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.additional, 'fa-minus-square': accordionStatuses.additional}"></i>
+                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.membership, 'fa-minus-square': accordionStatuses.membership}"></i>
                         </accordion-heading>
-                        <p>The body of the accordion group grows to fit the contents</p>
+                        <form class="form-horizontal" name="membership" novalidate>
+                            <div class="form-group">
+                                <div class="tel-checkbox checkbox col-xs-8 col-xs-offset-3">
+                                    <label>
+                                        <input type="checkbox" ng-disabled="!editMode.membership" ng-model="data.membership.Member">
+                                        <span class="lbl" translate="ORGANISATIONS.MEMBER"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="tel-checkbox checkbox col-xs-8 col-xs-offset-3">
+                                    <label>
+                                        <input type="checkbox" ng-disabled="!editMode.membership" ng-model="data.membership.DEA">
+                                        <span class="lbl" translate="ORGANISATIONS.DEA"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" translate="ORGANISATIONS.MEMBERSHIP_TYPE"></label>
+                                <div class="col-sm-9">
+                                    <select class="tel-form-control form-control" ng-model="data.membership.MembershipType"
+                                            ng-options="c.value as c.label for c in membershipTypes"
+                                            ng-disabled="!editMode.membership"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="tel-checkbox checkbox col-xs-8 col-xs-offset-3">
+                                    <label>
+                                        <input type="checkbox" ng-disabled="!editMode.membership" ng-model="data.membership.EOD">
+                                        <span class="lbl" translate="ORGANISATIONS.EOD"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" translate="ORGANISATIONS.LIBRARY_ORGANISATION"></label>
+                                <div class="col-sm-9">
+                                    <select class="tel-form-control form-control" ng-model="data.membership.LibraryOrganization"
+                                            ng-options="c.value as c.label for c in libraryOrganisations"
+                                            ng-disabled="!editMode.membership"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" translate="ORGANISATIONS.AGGREGATOR"></label>
+                                <div class="col-sm-9">
+                                    <select class="tel-form-control form-control" ng-model="membership.AGGREGATOR"
+                                            ng-options="c.value as c.label for c in membershipTypes"
+                                            ng-disabled="!editMode.membership"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" translate="ORGANISATIONS.CONSORTIUM_TYPE"></label>
+                                <div class="col-sm-9">
+                                    <select class="tel-form-control form-control" ng-model="data.membership.ConsortiumType"
+                                            ng-options="c.value as c.label for c in consortiumTypes"
+                                            ng-disabled="!editMode.membership"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" translate="ORGANISATIONS.NOTES"></label>
+                                <div class="col-sm-9">
+                                    <textarea class="tel-form-control form-control"
+                                              ng-disabled="!editMode.membership" ng-model="data.membership.Note"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="tel-panel-buttons">
+                            <button class="btn btn-primary tel-btn" type="button" ng-if="!editMode.membership" ng-click="toggleEditMode('membership')"
+                                    translate="EDIT"></button>
+                            <button class="btn btn-success tel-btn" type="button" ng-if="editMode.membership" translate="SAVE"
+                                    ng-click="saveChanges('membership')"></button>
+                            <button class="btn btn-danger tel-btn" type="button" ng-if="editMode.membership" ng-click="cancelEdit('membership')"
+                                    translate="CANCEL"></button>
+                        </div>
                     </accordion-group>
                     <accordion-group is-open="accordionStatuses.portal">
                         <accordion-heading>
