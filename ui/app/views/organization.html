@@ -358,7 +358,6 @@
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th translate="ORGANISATIONS.NAME">Name</th>
                                     <th translate="ORGANISATIONS.ROLE">Name</th>
                                     <th translate="ORGANISATIONS.EMAIL">E-mail</th>
@@ -366,7 +365,6 @@
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat="contact in data.contact.Contact">
-                                    <td>{{ $index + 1 }}</td>
                                     <td>{{ contact.Value.Name }}</td>
                                     <td>{{ contact.Value.Role }}</td>
                                     <td>{{ contact.Value['Email'] }}</td>
