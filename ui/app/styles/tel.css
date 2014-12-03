@@ -1599,19 +1599,25 @@ html {
   color: #ffffff;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.1) inset;
 }
-.tel-btn.btn.tel-btn-view-portal {
-  margin-top: 8px;
-}
 .tel-company-selector {
   margin-bottom: 20px;
+  position: relative;
 }
 .tel-company-selector .form-control.tel-form-control {
+  display: inline-block;
   width: 200px;
   margin: 7px 0 0 15px;
 }
 .tel-company-selector img {
-  display: block;
+  display: inline-block;
   max-width: 90px;
+  max-height: 60px;
+}
+.tel-company-selector .tel-btn-view-portal {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -16px;
 }
 .tel-panel-buttons {
   margin: 8px 0 0 15px;

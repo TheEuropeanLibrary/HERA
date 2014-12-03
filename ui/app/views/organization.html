@@ -3,16 +3,20 @@
     <div class="tel-main-menu-bg"></div>
     <div class="tel-navbar navbar navbar-inverse" role="navigation" ng-include="'views/tel-navbar.html'" ng-controller="NavBarCtrl"></div>
     <div class="tel-content-wrapper">
-        <a ng-href="http://tel.com/{{data.general.Identifier}}" ng-if="data.general.Identifier"
-           class="btn tel-btn btn-primary pull-right tel-btn-view-portal" translate="ORGANISATIONS.VIEW_IN_PORTAL"
-            target="_blank"></a>
-        <div class="tel-company-selector clearfix">
-            <img ng-src="{{ selectedProvider.logo }}" class="pull-left">
-            <select class="form-control tel-form-control pull-left"
-                    ng-options="d.id as d.name for d in providers"
-                    ng-model="selectedProviderId"
-                    ng-change="changeProvider()">
-            </select>
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="tel-company-selector clearfix">
+                    <img ng-src="{{ selectedProvider.logo }}">
+                    <select class="form-control tel-form-control"
+                            ng-options="d.id as d.name for d in providers"
+                            ng-model="selectedProviderId"
+                            ng-change="changeProvider()">
+                    </select>
+                    <a ng-href="http://tel.com/{{data.general.Identifier}}" ng-if="data.general.Identifier"
+                       class="btn tel-btn btn-primary tel-btn-view-portal" translate="ORGANISATIONS.VIEW_IN_PORTAL"
+                       target="_blank"></a>
+                </div>
+            </div>
         </div>
         <div class="row" ng-form="parentForm">
             <div class="col-xs-6">
@@ -314,7 +318,7 @@
                     <accordion-group is-open="accordionStatuses.dataset" class="info tel-dataset-panel">
                         <accordion-heading>
                             <span translate="ORGANISATIONS.DATASETS"></span>
-                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.dataset, 'fa-minus-square': accordionStatuses.datasets}"></i>
+                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.dataset, 'fa-minus-square': accordionStatuses.dataset}"></i>
                         </accordion-heading>
                             <div class="tel-table-primary">
                                 <!--<div class="tel-table-header">-->
