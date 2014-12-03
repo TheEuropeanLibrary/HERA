@@ -10,7 +10,6 @@
  */
 angular
     .module("telApp", [
-        "ngAnimate",
         "ngMessages",
         "ngSanitize",
         "ngTouch",
