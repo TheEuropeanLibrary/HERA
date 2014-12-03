@@ -589,8 +589,9 @@ html {
 .tel-select > .ui-select-match {
   border-radius: 2px;
   color: #555555;
-  font-size: 13px;
+  font-size: 14px;
   border-color: #c2c2c2;
+  padding: 6px 15px;
 }
 .tel-select > .ui-select-match:hover {
   background-color: transparent;
@@ -605,6 +606,14 @@ html {
 }
 .tel-select > .ui-select-match .text-muted {
   color: #555555;
+}
+.tel-select[disabled] {
+  cursor: not-allowed;
+}
+.tel-select[disabled] > .ui-select-match {
+  color: #555555;
+  background-color: #eeeeee;
+  opacity: 1;
 }
 .tel-select.open > .ui-select-match {
   border-bottom-left-radius: 0;
