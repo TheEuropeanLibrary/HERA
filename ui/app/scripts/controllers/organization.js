@@ -77,15 +77,19 @@ angular.module("telApp")
             };
 
             $scope.saveChanges = function (type) {
-                if ($scope.parentForm[type].$valid && $scope.data[type]) {
+                //if ($scope.parentForm[type].$valid && $scope.data[type]) {
                     Providers.updateProvider($scope.data[type], {
                             filter: type
                         })
                         .then(function () {
-                            $scope.parentForm[type].$setPristine();
-                            $scope.editMode[type] = false;
+                            if ($scope.parentForm[type]) {
+                                $scope.parentForm[type].$setPristine();
+                            }
+                            if ($scope.editMode[type]) {
+                                $scope.editMode[type] = false;
+                            }
                         });
-                }
+                //}
             };
 
             $scope.getData = function (type) {
@@ -116,16 +120,15 @@ angular.module("telApp")
                 var modalInstance = $modal.open({
                     templateUrl: "views/add-image-modal.html",
                     controller: "AddImageModalCtrl",
-                    windowClass: "tel-modal",
-                    resolve: {
-
-                    }
+                    windowClass: "tel-modal"
                 });
 
-                modalInstance.result.then(function (selectedItem) {
-
-                }, function () {
-
+                modalInstance.result.then(function (imageUrl) {
+                    if (!$scope.data.image.Image) {
+                        $scope.data.image.Image = [];
+                    }
+                    $scope.data.image.Image.push(imageUrl);
+                    $scope.saveChanges("image");
                 });
             };
 

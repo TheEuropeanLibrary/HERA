@@ -410,7 +410,7 @@
                             <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.image, 'fa-minus-square': accordionStatuses.image}"></i>
                         </accordion-heading>
                         <div class="tel-organisation-images">
-                            <img ng-src="{{img}}" ng-repeat="img in data.image.Image">
+                            <img ng-src="{{img}}" ng-repeat="img in data.image.Image track by $index">
                         </div>
                         <button ng-if="data.image" type="button" class="btn tel-btn btn-primary pull-right clearfix" translate="ORGANISATIONS.ADD_IMAGE"
                             ng-click="addImage()">

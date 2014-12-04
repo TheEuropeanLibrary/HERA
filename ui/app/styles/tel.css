@@ -45,6 +45,9 @@ html {
 .label.tel-label.label-success {
   background-color: #5cb85c;
 }
+.modal-backdrop {
+  bottom: 0;
+}
 .badge.tel-badge {
   background: #1d89cf;
   border: 1px solid #1d89cf;
@@ -1632,6 +1635,7 @@ html {
   display: inline-block;
   max-height: 100px;
   margin-right: 15px;
+  margin-bottom: 15px;
   vertical-align: middle;
 }
 .form-group.tel-form-group-vertical > label {

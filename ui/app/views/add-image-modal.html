@@ -1,11 +1,12 @@
 <div class="tel-modal-header modal-header">
-    <h3 class="modal-title" translate="ADD_IMAGE.ADD_IMAGE"></h3>
+    <button aria-hidden="true" class="close" type="button" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title" translate="ADD_IMAGE.ADD_IMAGE"></h4>
 </div>
 <div class="modal-body">
     <form>
         <div class="form-group">
             <label for="image-url" translate="ADD_IMAGE.IMAGE_URL"></label>
-            <input id="image-url" type="text" class="form-control tel-form-control">
+            <input id="image-url" type="text" class="form-control tel-form-control" ng-model="data.image">
         </div>
     </form>
 </div>
