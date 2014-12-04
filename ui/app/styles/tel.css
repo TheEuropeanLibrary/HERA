@@ -45,8 +45,9 @@ html {
 .label.tel-label.label-success {
   background-color: #5cb85c;
 }
-.modal-backdrop {
+.tel-modal-backdrop.modal-backdrop {
   bottom: 0;
+  position: fixed;
 }
 .badge.tel-badge {
   background: #1d89cf;

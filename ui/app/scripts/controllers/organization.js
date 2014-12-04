@@ -120,7 +120,8 @@ angular.module("telApp")
                 var modalInstance = $modal.open({
                     templateUrl: "views/add-image-modal.html",
                     controller: "AddImageModalCtrl",
-                    windowClass: "tel-modal"
+                    windowClass: "tel-modal",
+                    backdropClass: "tel-modal-backdrop"
                 });
 
                 modalInstance.result.then(function (imageUrl) {
