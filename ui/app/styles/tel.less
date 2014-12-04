@@ -129,6 +129,11 @@ body, html {
         }
     }
     .tel-dropdown {
+        &.tel-dropdown-open {
+            & > a:before {
+                transform: rotate(90deg);
+            }
+        }
         .label.tel-label,
         .badge.tel-badge {
             line-height: 16px;

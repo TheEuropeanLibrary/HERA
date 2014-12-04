@@ -1,33 +1,33 @@
 <ul class="tel-navigation" tel-main-menu>
-    <li ui-sref-active="active">
-        <a ui-sref="organization">
-            <i class="tel-menu-icon fa fa-dashboard"></i>
-            <span class="tel-text" translate="ORGANISATIONS.ORGANISATIONS_LABEL"></span>
-        </a>
-    </li>
-    <li ui-sref-active="active">
-        <a ui-sref="datasets">
-            <i class="tel-menu-icon fa fa-dashboard"></i>
-            <span class="tel-text" translate="DATASETS.DATASETS_LABEL"></span>
-        </a>
-    </li>
+    <!--<li ui-sref-active="active">-->
+        <!--<a ui-sref="organization">-->
+            <!--<i class="tel-menu-icon fa fa-dashboard"></i>-->
+            <!--<span class="tel-text" translate="ORGANISATIONS.ORGANISATIONS_LABEL"></span>-->
+        <!--</a>-->
+    <!--</li>-->
+    <!--<li ui-sref-active="active">-->
+        <!--<a ui-sref="datasets">-->
+            <!--<i class="tel-menu-icon fa fa-dashboard"></i>-->
+            <!--<span class="tel-text" translate="DATASETS.DATASETS_LABEL"></span>-->
+        <!--</a>-->
+    <!--</li>-->
     <li ui-sref-active="active" class="tel-dropdown">
         <a href="#">
             <i class="tel-menu-icon fa fa-th"></i>
-            <span class="tel-text">Layouts</span>
-            <span class="label tel-label label-warning">Updated</span>
+            <span class="tel-text" translate="ADMINISTRATION"></span>
+            <!--<span class="label tel-label label-warning">Updated</span>-->
         </a>
         <ul>
-            <li>
-                <a tabindex="-1" href="layouts-grid.html">
-                    <span class="tel-text">Grid</span>
+            <li ui-sref-active="active">
+                <a ui-sref="organization">
+                    <i class="tel-menu-icon fa fa-dashboard"></i>
+                    <span class="tel-text" translate="ORGANISATIONS.ORGANISATIONS_LABEL"></span>
                 </a>
             </li>
-            <li>
-                <a tabindex="-1" href="layouts-main-menu.html">
-                    <i class="tel-menu-icon fa fa-th-list"></i>
-                    <span class="tel-text">Main menu</span>
-                    <span class="label tel-label label-warning">Updated</span>
+            <li ui-sref-active="active">
+                <a ui-sref="datasets">
+                    <i class="tel-menu-icon fa fa-dashboard"></i>
+                    <span class="tel-text" translate="DATASETS.DATASETS_LABEL"></span>
                 </a>
             </li>
         </ul>

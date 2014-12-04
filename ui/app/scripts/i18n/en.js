@@ -8,6 +8,7 @@ angular
                     SAVE: "Save",
                     CANCEL: "Cancel",
                     EDIT: "Edit",
+                    ADMINISTRATION: "Administration",
                     ORGANISATIONS: {
                         ORGANISATIONS_LABEL: "Organisations",
                         GENERAL: "General",
