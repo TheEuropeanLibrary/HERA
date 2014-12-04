@@ -1,0 +1,75 @@
+<div class="tel-app-wrapper menu-open">
+    <div class="tel-main-menu" role="navigation" ng-include="'views/tel-main-menu.html'"></div>
+    <div class="tel-main-menu-bg"></div>
+    <div class="tel-navbar navbar navbar-inverse" role="navigation" ng-include="'views/tel-navbar.html'" ng-controller="NavBarCtrl"></div>
+    <div class="tel-content-wrapper">
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="tel-company-selector clearfix">
+                    <img ng-src="{{ selectedProvider.logo }}">
+                    <select class="form-control tel-form-control"
+                            ng-options="d.id as d.name for d in providers"
+                            ng-model="selectedProviderId"
+                            ng-change="changeProvider()">
+                    </select>
+                    <select class="form-control tel-form-control"
+                            ng-options="d.id as d.name for d in datasets"
+                            ng-model="selectedDatasetId"
+                            ng-change="changeDataset()">
+                    </select>
+                    <a ng-href="http://tel.com/{{data.general.Identifier}}" ng-if="data.general.Identifier"
+                       class="btn tel-btn btn-primary tel-btn-view-portal" translate="ORGANISATIONS.VIEW_IN_PORTAL"
+                       target="_blank"></a>
+                </div>
+            </div>
+        </div>
+        <div class="row" ng-form="parentForm">
+            <div class="col-xs-6">
+                <accordion class="tel-accordion" close-others="false">
+                    <accordion-group is-open="accordionStatuses.general" class="success">
+                        <accordion-heading>
+                            <span translate="ORGANISATIONS.GENERAL"></span>
+                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.general, 'fa-minus-square': accordionStatuses.general}"></i>
+                        </accordion-heading>
+                        <form class="form-horizontal" name="general" novalidate>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" translate="DATASETS.IDENTIFIER"></label>
+                                <div class="col-sm-9">
+                                    <p class="form-control-static">{{data.general.Identifier}}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="dataset-type" class="col-sm-3 control-label" translate="DATASETS.TYPE"></label>
+                                <div class="col-sm-9">
+                                    <select id="dataset-type" class="tel-form-control form-control"
+                                            ng-options="c.value as c.label for c in datasetTypes"
+                                            ng-if="editMode.general"
+                                            ng-model="data.general.ProviderType"></select>
+                                    <p ng-if="!editMode.general" class="form-control-static">{{data.general.ProviderType | translate}}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="dataset-status" class="col-sm-3 control-label" translate="DATASETS.STATUS"></label>
+                                <div class="col-sm-9">
+                                    <select id="dataset-status" class="tel-form-control form-control"
+                                            ng-options="c.value as c.label for c in datasetStatuses"
+                                            ng-if="editMode.general"
+                                            ng-model="data.general.ProviderType"></select>
+                                    <p ng-if="!editMode.general" class="form-control-static">{{data.general.ProviderType | translate}}</p>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="tel-panel-buttons">
+                            <button class="btn btn-primary tel-btn" type="button" ng-if="!editMode.general" ng-click="toggleEditMode('general')"
+                                    translate="EDIT"></button>
+                            <button class="btn btn-success tel-btn" type="button" ng-if="editMode.general" translate="SAVE"
+                                    ng-click="saveChanges('general')"></button>
+                            <button class="btn btn-danger tel-btn" type="button" ng-if="editMode.general" ng-click="cancelEdit('general')"
+                                    translate="CANCEL"></button>
+                        </div>
+                    </accordion-group>
+                </accordion>
+            </div>
+        </div>
+    </div>
+</div>

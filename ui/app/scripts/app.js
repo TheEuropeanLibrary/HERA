@@ -49,6 +49,11 @@ angular
                     url: "/organization",
                     templateUrl: "views/organization.html",
                     controller: "OrganizationCtrl"
+                })
+                .state("datasets", {
+                    url: "/datasets",
+                    templateUrl: "views/datasets.html",
+                    controller: "DatasetsCtrl"
                 });
 
             //bmApiUrlsProvider.setHostname("tel", "localhost");
@@ -61,7 +66,8 @@ angular
             });
             bmApiUrlsProvider.setUrls("tel", {
                 "login": "/login",
-                "providers": "/providers"
+                "providers": "/providers",
+                "datasets": "/datasets"
             });
 
             $httpProvider.interceptors.push("telAuthInterceptor");

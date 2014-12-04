@@ -58,6 +58,12 @@ angular
                         INVALID_FAX: "Invalid fax",
                         INVALID_PHONE: "Invalid phone",
                         INVALID_EMAIL: "Invalid e-mail"
+                    },
+                    DATASETS: {
+                        DATASETS_LABEL: "Datasets",
+                        IDENTIFIER: "Identifier",
+                        TYPE: "Dataset type",
+                        STATUS: "Dataset status"
                     }
                 });
         }
