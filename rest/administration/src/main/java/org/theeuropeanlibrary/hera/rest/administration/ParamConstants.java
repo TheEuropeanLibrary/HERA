@@ -25,6 +25,8 @@ public interface ParamConstants {
     static final String Q_START_FROM = "startFrom";
 
     static final String Q_PROVIDER = "providerId";
+    
+    static final String Q_FILTER = "filter";
 
     // form parameter names
     static final String F_DATASET = "dataSetId";
