@@ -9,8 +9,8 @@
  */
 angular
     .module("telApp")
-    .factory("telEnums", ["$q",
-        function ($q) {
+    .factory("telEnums", ["$q", "$translate",
+        function ($q, $translate) {
             var countries = [
                 "AD",
                 "AE",
@@ -784,7 +784,7 @@ angular
                 getCountries: function () {
                     return $q.when(countries.map(function (country) {
                         return {
-                            label: "COUNTRIES." + country,
+                            label: $translate.instant("COUNTRIES." + country),
                             value: country
                         };
                     }));
@@ -792,7 +792,7 @@ angular
                 getLanguages: function () {
                     return $q.when(languages.map(function (language) {
                         return {
-                            label: "LANGUAGES." + language,
+                            label: $translate.instant("LANGUAGES." + language),
                             value: language
                         };
                     }));
@@ -840,7 +840,7 @@ angular
                 getLibraryOrganisations: function () {
                     return $q.when(libraryOrganisations.map(function (l) {
                         return {
-                            label: "LIBRARY_ORGANISATION." + l,
+                            label: $translate.instant("LIBRARY_ORGANISATION." + l),
                             value: l
                         };
                     }));

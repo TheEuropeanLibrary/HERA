@@ -107,6 +107,7 @@ angular.module("telApp")
                             if ($scope.data.portal && !$scope.data.portal.Link) {
                                 $scope.data.portal.Link = [{}];
                             }
+                            console.log($scope.data);
                         });
                 }
             };
