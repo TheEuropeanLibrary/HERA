@@ -59,7 +59,7 @@ public class DatasetIntegrationTest {
     @Before
     public void setup() {
 
-        objectMapper = new EntityObjectMapper(null, DatasetRegistry.INSTANCE, null);
+        objectMapper = new EntityObjectMapper(null, DatasetRegistry.getInstance(), null);
         assertNotNull(objectMapper);
         converter = new DatasetEntityJsonConverter(objectMapper);
     }
