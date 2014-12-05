@@ -46,6 +46,7 @@ angular.module("telApp")
             $scope.accordionStatuses = {};
             $scope.editMode = {};
             $scope.data = {};
+            $scope.datepickers = {};
 
             $scope.toggleEditMode = function (type) {
                 $scope.editMode[type] = !$scope.editMode[type];
@@ -54,6 +55,12 @@ angular.module("telApp")
             $scope.cancelEdit = function (type) {
                 $scope.editMode[type] = !$scope.editMode[type];
                 //$scope.data[type] = angular.copy(dataCopy[type]);
+            };
+
+            $scope.openDatepicker = function ($e, type) {
+                $e.preventDefault();
+                $e.stopPropagation();
+                $scope.datepickers[type] = true;
             };
 
             Providers
