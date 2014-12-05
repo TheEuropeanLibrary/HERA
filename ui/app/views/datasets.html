@@ -68,6 +68,123 @@
                                     translate="CANCEL"></button>
                         </div>
                     </accordion-group>
+                    <accordion-group is-open="accordionStatuses.redistribute" class="success">
+                        <accordion-heading>
+                            <span translate="DATASETS.REDISTRIBUTE"></span>
+                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.redistribute, 'fa-minus-square': accordionStatuses.redistribute}"></i>
+                        </accordion-heading>
+                        <form class="form-horizontal" name="general" novalidate>
+                            <div class="form-group">
+                                <label for="partnership-agreement-status" class="col-sm-3 control-label" translate="DATASETS.PARTNERSHIP_AGREEMENT_STATUS"></label>
+                                <div class="col-sm-9">
+                                    <select id="partnership-agreement-status" class="tel-form-control form-control"
+                                            ng-options="c.value as c.label for c in partnershipAgreementStatuses"
+                                            ng-if="editMode.redistribute"
+                                            ng-model="data.redistribute.ProviderType"></select>
+                                    <p ng-if="!editMode.redistribute" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="partnership-agreement-signed" class="col-sm-3 control-label" translate="DATASETS.PARTNERSHIP_AGREEMENT_SIGNED"></label>
+                                <div class="col-sm-9">
+                                    <p class="input-group" ng-if="editMode.redistribute">
+                                        <input id="partnership-agreement-signed" type="text" class="tel-form-control form-control"
+                                               datepicker-popup="dd.MM.yyyy" ng-model="dt" is-open="datepickers.partnershipAgreementSigned"
+                                               show-button-bar="false" />
+                                        <span class="tel-input-group-btn input-group-btn">
+                                            <button type="button" class="tel-btn btn btn-default" ng-click="openDatepicker($event ,'partnershipAgreementSigned')"><i class="glyphicon glyphicon-calendar"></i></button>
+                                        </span>
+                                    </p>
+                                    <p ng-if="!editMode.redistribute" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="appendix-received" class="col-sm-3 control-label" translate="DATASETS.APPENDIX_RECEIVED"></label>
+                                <div class="col-sm-9">
+                                    <p class="input-group" ng-if="editMode.redistribute">
+                                        <input id="appendix-received" type="text" class="tel-form-control form-control"
+                                               datepicker-popup="dd.MM.yyyy" ng-model="dt" is-open="datepickers.appendixReceived"
+                                               show-button-bar="false" />
+                                        <span class="tel-input-group-btn input-group-btn">
+                                            <button type="button" class="tel-btn btn btn-default" ng-click="openDatepicker($event, 'appendixReceived')"><i class="glyphicon glyphicon-calendar"></i></button>
+                                        </span>
+                                    </p>
+                                    <p ng-if="!editMode.redistribute" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="appendix-received" class="col-sm-3 control-label" translate="DATASETS.REDISTRIBUTE_TERMS"></label>
+                                <div class="col-sm-9">
+                                    <textarea ng-if="editMode.redistribute" class="tel-form-control form-control"></textarea>
+                                    <p ng-if="!editMode.redistribute" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="restriction-by-distribution-format" class="col-sm-3 control-label" translate="DATASETS.RESTRICTION_BY_DISTRIBUTION_FORMAT"></label>
+                                <div class="col-sm-9">
+                                    <select id="restriction-by-distribution-format" class="tel-form-control form-control"
+                                            ng-options="c.value as c.label for c in distributionFormats"
+                                            ng-if="editMode.redistribute"
+                                            ng-model="data.redistribute.ProviderType"></select>
+                                    <p ng-if="!editMode.redistribute" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="other-distribution-formats" class="col-sm-3 control-label" translate="DATASETS.OTHER_DISTRIBUTION_FORMATS"></label>
+                                <div class="col-sm-9">
+                                    <select id="other-distribution-formats" class="tel-form-control form-control"
+                                            ng-options="c.value as c.label for c in distributionFormats"
+                                            ng-if="editMode.redistribute"
+                                            ng-model="data.redistribute.ProviderType"></select>
+                                    <p ng-if="!editMode.redistribute" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="source-data-license" class="col-sm-3 control-label" translate="DATASETS.SOURCE_DATA_LICENSE"></label>
+                                <div class="col-sm-9">
+                                    <select id="source-data-license" class="tel-form-control form-control"
+                                            ng-options="c.value as c.label for c in licenses"
+                                            ng-if="editMode.redistribute"
+                                            ng-model="data.redistribute.ProviderType"></select>
+                                    <p ng-if="!editMode.redistribute" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="distribution-format-license" class="col-sm-3 control-label" translate="DATASETS.DISTRIBUTION_FORMAT_LICENSE"></label>
+                                <div class="col-sm-9">
+                                    <select id="distribution-format-license" class="tel-form-control form-control"
+                                            ng-options="c.value as c.label for c in licenses"
+                                            ng-if="editMode.redistribute"
+                                            ng-model="data.redistribute.ProviderType"></select>
+                                    <p ng-if="!editMode.redistribute" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="other-source-data-license" class="col-sm-3 control-label" translate="DATASETS.OTHER_SOURCE_DATA_LICENSE"></label>
+                                <div class="col-sm-9">
+                                    <textarea id="other-source-data-license" ng-if="editMode.redistribute"
+                                              class="tel-form-control form-control"></textarea>
+                                    <p ng-if="!editMode.redistribute" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="further-information" class="col-sm-3 control-label" translate="DATASETS.FURTHER_INFORMATION"></label>
+                                <div class="col-sm-9">
+                                    <textarea id="further-information" ng-if="editMode.redistribute"
+                                              class="tel-form-control form-control"></textarea>
+                                    <p ng-if="!editMode.redistribute" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="tel-panel-buttons">
+                            <button class="btn btn-primary tel-btn" type="button" ng-if="!editMode.redistribute" ng-click="toggleEditMode('redistribute')"
+                                    translate="EDIT"></button>
+                            <button class="btn btn-success tel-btn" type="button" ng-if="editMode.redistribute" translate="SAVE"
+                                    ng-click="saveChanges('redistribute')"></button>
+                            <button class="btn btn-danger tel-btn" type="button" ng-if="editMode.redistribute" ng-click="cancelEdit('redistribute')"
+                                    translate="CANCEL"></button>
+                        </div>
+                    </accordion-group>
                 </accordion>
             </div>
         </div>

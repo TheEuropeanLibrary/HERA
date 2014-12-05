@@ -64,8 +64,19 @@ angular
                         DATASETS_LABEL: "Datasets",
                         IDENTIFIER: "Identifier",
                         TYPE: "Dataset type",
-                        STATUS: "Dataset status"
-                    }
+                        STATUS: "Dataset status",
+                        REDISTRIBUTE: "Redistribute",
+                        PARTNERSHIP_AGREEMENT_STATUS: "Partnership agreement status",
+                        PARTNERSHIP_AGREEMENT_SIGNED: "Partnership agreement signed",
+                        APPENDIX_RECEIVED: "Appendix received",
+                        REDISTRIBUTE_TERMS: "Redistribute terms",
+                        RESTRICTION_BY_DISTRIBUTION_FORMAT: "Restriction by distribution format",
+                        OTHER_DISTRIBUTION_FORMATS: "Other distribution formats",
+                        SOURCE_DATA_LICENSE: "Source data license",
+                        DISTRIBUTION_FORMAT_LICENSE: "Distribution format license",
+                        OTHER_SOURCE_DATA_LICENSE: "Other source data license",
+                        FURTHER_INFORMATION: "Further information"
+                    },
                 });
         }
     ]);

@@ -1,89 +1,95 @@
 <?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>org.theeuropeanlibrary</groupId>
-		<artifactId>hera-service</artifactId>
-		<version>0.1-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath>
-	</parent>
+    <parent>
+        <groupId>org.theeuropeanlibrary</groupId>
+        <artifactId>hera-service</artifactId>
+        <version>0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 
-	<artifactId>hera-service-inmemory</artifactId>
-	<name>HERA: Service Memory</name>
+    <artifactId>hera-service-inmemory</artifactId>
+    <name>HERA: Service Memory</name>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.theeuropeanlibrary</groupId>
-			<artifactId>hera-service-api</artifactId>
-			<version>${project.version}</version>
-		</dependency>
+    <dependencies>
+        <dependency>
+            <groupId>org.theeuropeanlibrary</groupId>
+            <artifactId>hera-service-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+                
+        <dependency>
+            <groupId>org.theeuropeanlibrary</groupId>
+            <artifactId>maia-tel-model</artifactId>
+            <version>0.1-SNAPSHOT</version>
+        </dependency>
 
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>18.0</version>
-		</dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>18.0</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-			<scope>compile</scope>
-			<exclusions>
-				<!--without jcl - because we use log4j through slf4j -->
-				<exclusion>
-					<groupId>commons-logging</groupId>
-					<artifactId>commons-logging</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <scope>compile</scope>
+            <exclusions>
+                <!--without jcl - because we use log4j through slf4j -->
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
-		<!-- Log4j 2 implementation -->
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-			<version>${log4j2_version}</version>
-		</dependency>
+        <!-- Log4j 2 implementation -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j2_version}</version>
+        </dependency>
 
-		<!-- SLF4J to Log4j 2 binding -->
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-slf4j-impl</artifactId>
-			<version>2.0-beta6</version>
-		</dependency>
+        <!-- SLF4J to Log4j 2 binding -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>2.0-beta6</version>
+        </dependency>
 
-		<!-- SLF4J API -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-		</dependency>
+        <!-- SLF4J API -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
 
-		<!-- SLF4J extensions -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-ext</artifactId>
-			<version>1.7.5</version>
-		</dependency>
+        <!-- SLF4J extensions -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-ext</artifactId>
+            <version>1.7.5</version>
+        </dependency>
 
-		<!-- Commson Logging to Log4j 2 binding -->
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-jcl</artifactId>
-			<version>${log4j2_version}</version>
-		</dependency>
+        <!-- Commson Logging to Log4j 2 binding -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-jcl</artifactId>
+            <version>${log4j2_version}</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-flume-ng</artifactId>
-			<version>${log4j2_version}</version>
-		</dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-flume-ng</artifactId>
+            <version>${log4j2_version}</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-api</artifactId>
-			<version>${log4j2_version}</version>
-		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j2_version}</version>
+        </dependency>
+    </dependencies>
 
 </project>
