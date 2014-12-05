@@ -37,10 +37,10 @@
                                 <label for="organisation-type" class="col-sm-3 control-label" translate="ORGANISATIONS.TYPE"></label>
                                 <div class="col-sm-9">
                                     <select id="organisation-type" class="tel-form-control form-control"
-                                            ng-options="c.value as c.label for c in providerTypes"
+                                            ng-options="c.value as c.label | translate for c in providerTypes"
                                             ng-if="editMode.general"
                                             ng-model="data.general.ProviderType"></select>
-                                    <p ng-if="!editMode.general" class="form-control-static">{{data.general.ProviderType | translate}}</p>
+                                    <p ng-if="!editMode.general" class="form-control-static">{{ 'PROVIDER_TYPE.' + data.general.ProviderType | translate}}</p>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -51,12 +51,12 @@
                                             <!--ng-options="c.value as c.label for c in countries"-->
                                             <!--ng-disabled="!editMode.general"></select>-->
                                     <ui-select ng-model="data.general.Country" theme="bootstrap" class="tel-select" ng-if="editMode.general">
-                                        <ui-select-match>{{$select.selected.label}}</ui-select-match>
+                                        <ui-select-match>{{$select.selected.label | translate}}</ui-select-match>
                                         <ui-select-choices repeat="c.value as c in countries | filter: $select.search">
-                                            <span ng-bind-html="c.label | highlight: $select.search"></span>
+                                            <span ng-bind-html="c.label | translate | highlight: $select.search"></span>
                                         </ui-select-choices>
                                     </ui-select>
-                                    <p ng-if="!editMode.general" class="form-control-static">{{data.general.Country | translate}}</p>
+                                    <p ng-if="!editMode.general" class="form-control-static">{{ 'COUNTRIES.' + data.general.Country | translate}}</p>
                                 </div>
                             </div>
                             <div class="form-group tel-header-group" ng-if="data.general.Name.length">
@@ -67,21 +67,21 @@
                             <div class="form-group" ng-repeat="name in data.general.Name">
                                 <div class="col-sm-3">
                                     <select class="tel-form-control form-control" ng-model="name.NameType"
-                                            ng-options="c.value as c.label for c in nameTypes"
+                                            ng-options="c.value as c.label | translate for c in nameTypes"
                                             ng-if="editMode.general"></select>
-                                    <p class="form-control-static" ng-if="!editMode.general">{{name.NameType | translate}}</p>
+                                    <p class="form-control-static" ng-if="!editMode.general">{{ 'NAME_TYPE.' + name.NameType | translate}}</p>
                                 </div>
                                 <div class="col-sm-3">
                                     <!--<select class="tel-form-control form-control" ng-model="name.Language"-->
                                             <!--ng-options="c.value as c.label for c in languages"-->
                                             <!--ng-disabled="!editMode.general"></select>-->
                                     <ui-select ng-model="name.Language" theme="bootstrap" class="tel-select" ng-if="editMode.general">
-                                        <ui-select-match>{{$select.selected.label}}</ui-select-match>
+                                        <ui-select-match>{{$select.selected.label | translate}}</ui-select-match>
                                         <ui-select-choices repeat="c.value as c in languages | filter: $select.search">
-                                            <span ng-bind-html="c.label | highlight: $select.search"></span>
+                                            <span ng-bind-html="c.label | translate | highlight: $select.search"></span>
                                         </ui-select-choices>
                                     </ui-select>
-                                    <p class="form-control-static" ng-if="!editMode.general">{{name.Language | translate}}</p>
+                                    <p class="form-control-static" ng-if="!editMode.general">{{ 'LANGUAGES.' + name.Language | translate}}</p>
                                 </div>
                                 <div class="col-sm-4">
                                     <input type="text" class="form-control tel-form-control" ng-model="name.Value"
@@ -107,56 +107,56 @@
                                     translate="CANCEL"></button>
                         </div>
                     </accordion-group>
-                    <accordion-group is-open="accordionStatuses.additional" class="warning">
+                    <accordion-group is-open="accordionStatuses.address" class="warning">
                         <accordion-heading>
                             <span translate="ORGANISATIONS.ADDRESS"></span>
-                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.additional, 'fa-minus-square': accordionStatuses.additional}"></i>
+                            <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.address, 'fa-minus-square': accordionStatuses.address}"></i>
                         </accordion-heading>
-                        <form name="additional" novalidate class="clearfix">
+                        <form name="address" novalidate class="clearfix">
                             <div class="form-group col-xs-4">
                                 <label for="street" translate="ORGANISATIONS.STREET"></label>
                                 <input id="street" type="text" class="form-control tel-form-control"
-                                       ng-if="editMode.additional" ng-model="data.contact.Address.Street">
-                                <p ng-if="!editMode.additional" class="form-control-static">{{ data.additional.Address.Street }}</p>
+                                       ng-if="editMode.address" ng-model="data.contact.Address.Street">
+                                <p ng-if="!editMode.address" class="form-control-static">{{ data.address.Address.Street }}</p>
                             </div>
                             <div class="form-group col-xs-4">
                                 <label for="postcode" translate="ORGANISATIONS.POSTCODE"></label>
                                 <input id="postcode" type="text" class="form-control tel-form-control"
-                                       ng-if="editMode.additional" ng-model="data.contact.Address.Postcode">
-                                <p ng-if="!editMode.additional" class="form-control-static">{{ data.additional.Address.Postcode }}</p>
+                                       ng-if="editMode.address" ng-model="data.contact.Address.Postcode">
+                                <p ng-if="!editMode.address" class="form-control-static">{{ data.address.Address.Postcode }}</p>
                             </div>
                             <div class="form-group col-xs-4">
                                 <label for="city" translate="ORGANISATIONS.CITY"></label>
                                 <input id="city" type="text" class="form-control tel-form-control"
-                                       ng-if="editMode.additional" ng-model="data.contact.Address.City">
-                                <p ng-if="!editMode.additional" class="form-control-static">{{ data.additional.Address.City }}</p>
+                                       ng-if="editMode.address" ng-model="data.contact.Address.City">
+                                <p ng-if="!editMode.address" class="form-control-static">{{ data.address.Address.City }}</p>
                             </div>
-                            <div class="form-group col-xs-3" ng-class="{'has-error tel-has-error': additional.contactFax.$invalid}">
+                            <div class="form-group col-xs-3" ng-class="{'has-error tel-has-error': address.contactFax.$invalid}">
                                 <label for="fax" translate="ORGANISATIONS.FAX"></label>
-                                <input id="fax" type="text" class="form-control tel-form-control" ng-if="editMode.additional"
+                                <input id="fax" type="text" class="form-control tel-form-control" ng-if="editMode.address"
                                        bm-phone-number ng-model="data.contact.Fax" name="contactFax">
-                                <p ng-if="!editMode.additional" class="form-control-static">{{ data.additional.Fax }}</p>
-                                <p ng-if="additional.contactFax.$invalid" class="tel-help-block help-block" translate="ERRORS.INVALID_FAX"></p>
+                                <p ng-if="!editMode.address" class="form-control-static">{{ data.address.Fax }}</p>
+                                <p ng-if="address.contactFax.$invalid" class="tel-help-block help-block" translate="ERRORS.INVALID_FAX"></p>
                             </div>
-                            <div class="form-group col-xs-3" ng-class="{'has-error tel-has-error': additional.contactPhone.$invalid}">
+                            <div class="form-group col-xs-3" ng-class="{'has-error tel-has-error': address.contactPhone.$invalid}">
                                 <label for="phone" translate="ORGANISATIONS.PHONE"></label>
-                                <input id="phone" type="text" class="form-control tel-form-control" ng-if="editMode.additional"
+                                <input id="phone" type="text" class="form-control tel-form-control" ng-if="editMode.address"
                                        bm-phone-number ng-model="data.contact.Phone" name="contactPhone">
-                                <p ng-if="!editMode.additional" class="form-control-static">{{ data.additional.Phone }}</p>
-                                <p ng-if="additional.contactPhone.$invalid" class="tel-help-block help-block" translate="ERRORS.INVALID_PHONE"></p>
+                                <p ng-if="!editMode.address" class="form-control-static">{{ data.address.Phone }}</p>
+                                <p ng-if="address.contactPhone.$invalid" class="tel-help-block help-block" translate="ERRORS.INVALID_PHONE"></p>
                             </div>
-                            <div class="form-group col-xs-3" ng-class="{'has-error tel-has-error': additional.contactEmail.$invalid}">
+                            <div class="form-group col-xs-3" ng-class="{'has-error tel-has-error': address.contactEmail.$invalid}">
                                 <label for="email" translate="ORGANISATIONS.EMAIL"></label>
-                                <input id="email" type="email" class="form-control tel-form-control" ng-if="editMode.additional"
-                                       ng-model="data.additional['E-Mail']" name="contactEmail">
-                                <p ng-if="!editMode.additional" class="form-control-static">{{ data.additional['E-Mail'] }}</p>
-                                <p ng-if="additional.contactEmail.$invalid" class="tel-help-block help-block" translate="ERRORS.INVALID_EMAIL"></p>
+                                <input id="email" type="email" class="form-control tel-form-control" ng-if="editMode.address"
+                                       ng-model="data.address['E-Mail']" name="contactEmail">
+                                <p ng-if="!editMode.address" class="form-control-static">{{ data.address['E-Mail'] }}</p>
+                                <p ng-if="address.contactEmail.$invalid" class="tel-help-block help-block" translate="ERRORS.INVALID_EMAIL"></p>
                             </div>
                             <div class="form-group col-xs-3">
                                 <label for="website" translate="ORGANISATIONS.WEBSITE"></label>
-                                <input id="website" type="text" class="form-control tel-form-control" ng-if="editMode.additional"
-                                       ng-model="data.additional.Website">
-                                <p ng-if="!editMode.additional" class="form-control-static">{{ data.additional.Website }}</p>
+                                <input id="website" type="text" class="form-control tel-form-control" ng-if="editMode.address"
+                                       ng-model="data.address.Website">
+                                <p ng-if="!editMode.address" class="form-control-static">{{ data.address.Website }}</p>
                             </div>
                         </form>
                         <!--<div class="col-xs-12">-->
@@ -184,11 +184,11 @@
                             <!--</div>-->
                         <!--</div>-->
                         <div class="tel-panel-buttons">
-                            <button class="btn btn-primary tel-btn" type="button" ng-if="!editMode.additional" ng-click="toggleEditMode('additional')"
+                            <button class="btn btn-primary tel-btn" type="button" ng-if="!editMode.address" ng-click="toggleEditMode('address')"
                                     translate="EDIT"></button>
-                            <button class="btn btn-success tel-btn" type="button" ng-if="editMode.additional" translate="SAVE"
-                                    ng-click="saveChanges('additional')"></button>
-                            <button class="btn btn-danger tel-btn" type="button" ng-if="editMode.additional" ng-click="cancelEdit('additional')"
+                            <button class="btn btn-success tel-btn" type="button" ng-if="editMode.address" translate="SAVE"
+                                    ng-click="saveChanges('address')"></button>
+                            <button class="btn btn-danger tel-btn" type="button" ng-if="editMode.address" ng-click="cancelEdit('address')"
                                     translate="CANCEL"></button>
                         </div>
                     </accordion-group>
@@ -218,7 +218,7 @@
                                 <label class="col-sm-3 control-label" translate="ORGANISATIONS.MEMBERSHIP_TYPE"></label>
                                 <div class="col-sm-9">
                                     <select class="tel-form-control form-control" ng-model="data.membership.MembershipType"
-                                            ng-options="c.value as c.label for c in membershipTypes"
+                                            ng-options="c.value as c.label | translate for c in membershipTypes"
                                             ng-if="editMode.membership"></select>
                                     <p ng-if="!editMode.membership" class="form-control-static">{{ data.membership.MembershipType }}</p>
                                 </div>
@@ -235,9 +235,9 @@
                                 <label class="col-sm-3 control-label" translate="ORGANISATIONS.LIBRARY_ORGANISATION"></label>
                                 <div class="col-sm-9">
                                     <select class="tel-form-control form-control" ng-model="data.membership.LibraryOrganization"
-                                            ng-options="c.value as c.label for c in libraryOrganisations"
+                                            ng-options="c.value as c.label | translate for c in libraryOrganisations"
                                             ng-if="editMode.membership"></select>
-                                    <p ng-if="!editMode.membership" class="form-control-static">{{ data.membership.LibraryOrganization }}</p>
+                                    <p ng-if="!editMode.membership" class="form-control-static">{{ 'LIBRARY_ORGANISATION.' + data.membership.LibraryOrganization | translate }}</p>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -253,9 +253,9 @@
                                 <label class="col-sm-3 control-label" translate="ORGANISATIONS.CONSORTIUM_TYPE"></label>
                                 <div class="col-sm-9">
                                     <select class="tel-form-control form-control" ng-model="data.membership.ConsortiumType"
-                                            ng-options="c.value as c.label for c in consortiumTypes"
+                                            ng-options="c.value as c.label | translate for c in consortiumTypes"
                                             ng-if="editMode.membership"></select>
-                                    <p ng-if="!editMode.membership" class="form-control-static">{{ data.membership.ConsortiumType }}</p>
+                                    <p ng-if="!editMode.membership" class="form-control-static">{{ 'CONSORTIUM_TYPE.' + data.membership.ConsortiumType | translate }}</p>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -286,10 +286,10 @@
                                 <label class="col-sm-3 control-label" translate="ORGANISATIONS.PORTAL_STATUS"></label>
                                 <div class="col-sm-9">
                                     <select id="portal-status" class="tel-form-control form-control"
-                                            ng-options="c.value as c.label for c in portalStatuses"
+                                            ng-options="c.value as c.label | translate for c in portalStatuses"
                                             ng-if="editMode.portal"
                                             ng-model="data.portal.PortalStatus"></select>
-                                    <p ng-if="!editMode.portal" class="form-control-static">{{ data.portal.PortalStatus }}</p>
+                                    <p ng-if="!editMode.portal" class="form-control-static">{{ 'PORTAL_STATUS.' + data.portal.PortalStatus | translate }}</p>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -313,9 +313,9 @@
                             <div class="form-group" ng-repeat="link in data.portal.Link">
                                 <div class="col-sm-5">
                                     <select class="tel-form-control form-control" ng-model="link.LinkType"
-                                            ng-options="c.value as c.label for c in linkTypes"
+                                            ng-options="c.value as c.label | translate for c in linkTypes"
                                             ng-if="editMode.portal"></select>
-                                    <p ng-if="!editMode.portal" class="form-control-static">{{ link.LinkType }}</p>
+                                    <p ng-if="!editMode.portal" class="form-control-static">{{ 'LINK_TYPE.' + link.LinkType | translate}}</p>
                                 </div>
                                 <div class="col-sm-5">
                                     <input class="form-control tel-form-control" ng-model="link.Value" ng-if="editMode.portal">

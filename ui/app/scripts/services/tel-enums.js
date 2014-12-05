@@ -784,7 +784,7 @@ angular
                 getCountries: function () {
                     return $q.when(countries.map(function (country) {
                         return {
-                            label: country,
+                            label: "COUNTRIES." + country,
                             value: country
                         };
                     }));
@@ -792,7 +792,7 @@ angular
                 getLanguages: function () {
                     return $q.when(languages.map(function (language) {
                         return {
-                            label: language,
+                            label: "LANGUAGES." + language,
                             value: language
                         };
                     }));
@@ -800,7 +800,7 @@ angular
                 getNameTypes: function () {
                     return $q.when(nameTypes.map(function (nameType) {
                         return {
-                            label: nameType,
+                            label: "NAME_TYPE." + nameType,
                             value: nameType
                         };
                     }));
@@ -808,7 +808,7 @@ angular
                 getProviderTypes: function () {
                     return $q.when(providerTypes.map(function (providerType) {
                         return {
-                            label: providerType,
+                            label: "PROVIDER_TYPE." + providerType,
                             value: providerType
                         };
                     }));
@@ -816,7 +816,7 @@ angular
                 getPortalStatuses: function () {
                     return $q.when(portalStatuses.map(function (portalStatus) {
                         return {
-                            label: portalStatus,
+                            label: "PORTAL_STATUS." + portalStatus,
                             value: portalStatus
                         };
                     }));
@@ -824,7 +824,7 @@ angular
                 getLinkTypes: function () {
                     return $q.when(linkTypes.map(function (linkType) {
                         return {
-                            label: linkType,
+                            label: "LINK_TYPE." + linkType,
                             value: linkType
                         };
                     }));
@@ -840,7 +840,7 @@ angular
                 getLibraryOrganisations: function () {
                     return $q.when(libraryOrganisations.map(function (l) {
                         return {
-                            label: l,
+                            label: "LIBRARY_ORGANISATION." + l,
                             value: l
                         };
                     }));
@@ -848,7 +848,7 @@ angular
                 getConsortiumTypes: function () {
                     return $q.when(consortiumTypes.map(function (c) {
                         return {
-                            label: c,
+                            label: "CONSORTIUM_TYPE." + c,
                             value: c
                         };
                     }));
