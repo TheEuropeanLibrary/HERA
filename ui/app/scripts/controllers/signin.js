@@ -17,7 +17,7 @@ angular.module("telApp")
             $scope.login = function () {
                 Users.login($scope.data)
                     .then(function () {
-                        $state.go("organization");
+                        $state.go("app.administration.organisation");
                     }, function () {
                         $scope.invalidCredentials = true;
                     });

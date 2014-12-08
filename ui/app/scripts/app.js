@@ -45,12 +45,34 @@ angular
                     templateUrl: "views/signup.html",
                     controller: "SignUpCtrl"
                 })
-                .state("organization", {
-                    url: "/organization",
+                //.state("organization", {
+                //    url: "/organization",
+                //    templateUrl: "views/organization.html",
+                //    controller: "OrganizationCtrl"
+                //})
+                //.state("datasets", {
+                //    url: "/datasets",
+                //    templateUrl: "views/datasets.html",
+                //    controller: "DatasetsCtrl"
+                //})
+                .state("app", {
+                    url: "/app",
+                    abstract: true,
+                    //template: "<ui-view/>"
+                    templateUrl: "views/app.html",
+                    controller: "PlansCtrl"
+                })
+                .state("app.administration", {
+                    url: "/administration",
+                    abstract: true,
+                    template: "<div ui-view></div>"
+                })
+                .state("app.administration.organisation", {
+                    url: "/organisation",
                     templateUrl: "views/organization.html",
                     controller: "OrganizationCtrl"
                 })
-                .state("datasets", {
+                .state("app.administration.datasets", {
                     url: "/datasets",
                     templateUrl: "views/datasets.html",
                     controller: "DatasetsCtrl"
@@ -81,7 +103,7 @@ angular
         function ($state, $http, bmCookies) {
             if (bmCookies.hasItem("Authorization")) {
                 $http.defaults.headers.common["Authorization"] = bmCookies.getItem("Authorization");
-                $state.go("organization");
+                $state.go("app.administration.organisation");
             } else if (!$state.current.name) {
                 $state.go("signin");
             }
