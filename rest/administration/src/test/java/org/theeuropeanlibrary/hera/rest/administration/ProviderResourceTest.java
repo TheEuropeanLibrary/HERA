@@ -51,7 +51,7 @@ public class ProviderResourceTest extends JerseyTest {
                         "classpath:hera-administration-context-test-mock.xml");
     }
 
-    @Test
+//    @Test
     public void deleteProvider() throws Exception {
         assertNotNull(providerService);
 

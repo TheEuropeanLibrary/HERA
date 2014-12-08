@@ -1,14 +1,17 @@
 package org.theeuropeanlibrary.hera.rest.administration.service.memory.dao;
 
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.theeuropeanlibrary.maia.common.definitions.Dataset;
-import org.theeuropeanlibrary.maia.common.definitions.Provider;
 
+import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Multimap;
 
 /**
  * Dummy in-memory implementation.
@@ -19,32 +22,48 @@ import com.google.common.collect.Maps;
  */
 public class MemoryDatasetDao {
 	
-	private Map<String, Dataset<String>> datasets = Maps.newHashMap();
+	private Map<String, Dataset<String>> datasetsByDatasetId = Maps.newHashMap();
+	private Multimap<String, Dataset<String>> datasetsByProviderId = ArrayListMultimap.create();
 
-	public Dataset<String> createDataset(String datasetId, Dataset<String> dataset) {
-		return datasets.put(datasetId, dataset);
+	public Dataset<String> createDataset(String datasetId, String providerId, Dataset<String> dataset) {
+
+		datasetsByDatasetId.put(datasetId, dataset);
+		datasetsByProviderId.put(providerId, dataset);
+		return dataset;
 	}
 
 	public boolean updateDataSet(String datasetId, Dataset<String> dataset) {
+
+		datasetsByDatasetId.put(datasetId, dataset);
+
+		final String providerId = findProviderIdForDataset(datasetId);
+		if (providerId != null) {
+			datasetsByProviderId.put(providerId, dataset);
+		}
 		
-		Dataset<String> oldData = datasets.put(datasetId, dataset);
-		return oldData != null;
+		return true;
 	}
 
 	public boolean deleteDataSet(String datasetId) {
-		Dataset<String> oldData = datasets.remove(datasetId);
+		
+		Dataset<String> oldData = datasetsByDatasetId.remove(datasetId);
+		
+		final String providerId = findProviderIdForDataset(datasetId);
+		if (providerId != null) {
+			datasetsByProviderId.remove(providerId, oldData);
+		}
 		return oldData != null;
 	}
 
 	public Dataset<String> getDataset(String datasetId) {
-		return datasets.get(datasetId);
+		return datasetsByDatasetId.get(datasetId);
 	}
 
 	public List<Dataset<String>> getDatasets(String startDatasetId, int numberOfDatasets) {
 		
 		List<Dataset<String>> datasetsToReturn = Lists.newArrayList();
 		
-		Iterator<Dataset<String>> i = datasets.values().iterator();
+		Iterator<Dataset<String>> i = datasetsByDatasetId.values().iterator();
 		int count = 0;
 		while(count < numberOfDatasets && i.hasNext()) {
 			datasetsToReturn.add(i.next());
@@ -54,30 +73,29 @@ public class MemoryDatasetDao {
 	}
 
 	/**
-	 * TODO
-	 * Super dummy implementation
 	 * @return returns subset of total datasets
 	 */
-	public List<Dataset<String>> getDataSetsForProvider(String providerId, String startDatasetId, int numberOfDatasets) {
-
-		List<Dataset<String>> datasetsToReturn = Lists.newArrayList();
+	public Collection<Dataset<String>> getDataSetsForProvider(String providerId, String startDatasetId, int numberOfDatasets) {
+		return datasetsByProviderId.get(providerId);
+	}
+	
+	/**
+	 * @return ProviderId where the specified dataset belongs to
+	 * 
+	 * Only the first provider key found is returned.
+	 */
+	private String findProviderIdForDataset(String datasetId) {
 		
-		Iterator<Dataset<String>> i = datasets.values().iterator();
-		final int sizeOfStuffToReturn = numberOfDatasets / 2;
-		int count = 0;
-		
-		while(count < sizeOfStuffToReturn && i.hasNext()) {
+		Set<String> pKeys = datasetsByProviderId.keySet();
+		for (final String providerKey: pKeys) {
 			
-			Dataset<String> d = i.next();
-			Provider<String> p = d.getProvider();
-			String currentProvidersId = null;
-			if (p != null) {
-				currentProvidersId = p.getId();
-			}
-			if(currentProvidersId != null && currentProvidersId.equals(providerId)) {
-				datasetsToReturn.add(d);
+			Collection<Dataset<String>> datasetsForCurrentProvider = datasetsByProviderId.get(providerKey);
+			for (final Dataset d: datasetsForCurrentProvider) {
+				if (d.getId().equals(datasetId)) {
+					return providerKey;
+				}
 			}
 		}
-		return datasetsToReturn;
+		return null;
 	}
 }

@@ -1,6 +1,7 @@
 package org.theeuropeanlibrary.hera.rest.administration;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class ResultSet<T> {
 	/**
 	 * List of results
 	 */
-	private List<T> results = new ArrayList<T>();
+	private Collection<T> results = new ArrayList<T>();
 
 	/**
 	 * Creates a new instance of this class.
@@ -35,12 +36,12 @@ public class ResultSet<T> {
 	public ResultSet() {
 	}
 
-	public List<T> getResults() {
+	public Collection<T> getResults() {
 		return results;
 	}
 
 
-	public void setResults(List<T> results) {
-		this.results = results;
+	public void setResults(Collection<T> collection) {
+		this.results = collection;
 	}
 }

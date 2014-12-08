@@ -1,5 +1,6 @@
 package org.theeuropeanlibrary.hera.rest.administration.service;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.theeuropeanlibrary.hera.rest.administration.service.exception.DatasetDoesNotExistException;
@@ -7,7 +8,7 @@ import org.theeuropeanlibrary.maia.common.definitions.Dataset;
 
 public interface DatasetService<T> {
 
-    Dataset<T> createDataSet(Dataset<T> dataSet);
+    Dataset<T> createDataSet(T providerId, Dataset<T> dataSet);
 
 	Dataset<T> getDataset(T datasetId) throws DatasetDoesNotExistException;
     
@@ -19,5 +20,5 @@ public interface DatasetService<T> {
 
     List<Dataset<T>> getDataSets(T startDatasetId, int numberOfDatasets);
     
-    List<Dataset<T>> getDataSetsForProvider(T providerId, T startDatasetId, int numberOfDatasets);
+    Collection<Dataset<String>> getDataSetsForProvider(T providerId, T startDatasetId, int numberOfDatasets);
 }

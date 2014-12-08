@@ -1,5 +1,6 @@
 package org.theeuropeanlibrary.hera.rest.administration.service.memory;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
@@ -43,11 +44,11 @@ public class MemoryDatasetService implements DatasetService<String> {
     }
 
 	@Override
-	public Dataset<String> createDataSet(Dataset<String> dataset) {
+	public Dataset<String> createDataSet(String providerId, Dataset<String> dataset) {
 		
-    	final String id = UUID.randomUUID().toString();
-    	dataset.setId(id);
-    	datasetDao.createDataset(id, dataset);
+    	final String datasetId = UUID.randomUUID().toString();
+    	dataset.setId(datasetId);
+    	datasetDao.createDataset(datasetId, providerId, dataset);
     	return dataset;
 	}
 
@@ -83,8 +84,8 @@ public class MemoryDatasetService implements DatasetService<String> {
 	}
 
 	@Override
-	public List<Dataset<String>> getDataSetsForProvider(String providerId, String startDatasetId, int numberOfDatasets) {
-		List<Dataset<String>> datasets = datasetDao.getDataSetsForProvider(providerId, startDatasetId, numberOfDatasets);
+	public Collection<Dataset<String>> getDataSetsForProvider(String providerId, String startDatasetId, int numberOfDatasets) {
+		Collection<Dataset<String>> datasets = datasetDao.getDataSetsForProvider(providerId, startDatasetId, numberOfDatasets);
 		return datasets;
 	}
 

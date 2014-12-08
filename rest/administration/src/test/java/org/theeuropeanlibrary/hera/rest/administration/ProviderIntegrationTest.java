@@ -21,136 +21,182 @@ import org.theeuropeanlibrary.maia.tel.model.provider.ProviderKeys;
 import org.theeuropeanlibrary.maia.tel.model.provider.ProviderRegistry;
 
 /**
- * Requires a running HERA-administration instance at: http://localhost:8081/hera-rest-administration
+ * Requires a running HERA-administration instance at:
+ * http://localhost:8081/hera-rest-administration
  * 
  * Tests CREATE / GET / DELETE / UPDATE -> provider
  */
 public class ProviderIntegrationTest {
-	
-	//TODO 
-//	@Autowired
-//	private ObjectMapper objectMapper;
-	
-    private final static String PROVIDER_PHONE = "00316971902669";
-    private final static String PROVIDER_NAME = "Markus_Magic_Mushroom_Provider";
-    
-    private final static String PROVIDER_NAME_UPDATED = "Markus_Magic_Mushroom_Provider_UPDATED_TO_lollipop";
-    private final static String PROVIDER_PHONE_UPDATED = "00316971902669_UPDATED_TO_lollipop";
-    
+
+	// TODO
+	// @Autowired
+	// private ObjectMapper objectMapper;
+
+	private final static String PROVIDER_PHONE = "00316971902669";
+	private final static String PROVIDER_NAME = "Markus_Magic_Mushroom_Provider";
+
+	private final static String PROVIDER_NAME_UPDATED = "Markus_Magic_Mushroom_Provider_UPDATED_TO_lollipop";
+	private final static String PROVIDER_PHONE_UPDATED = "00316971902669_UPDATED_TO_lollipop";
+
 	private EntityObjectMapper objectMapper;
-	
+
 	private ProviderEntityJsonConverter converter;
-	
-	private HttpAuthenticationFeature basicAuthentication = HttpAuthenticationFeature.universalBuilder()
-		      .credentialsForBasic("Alina", "Alina")
-		      .build();
 
-    private Client client = JerseyClientBuilder.newClient().register(basicAuthentication);
+	private HttpAuthenticationFeature basicAuthentication = HttpAuthenticationFeature
+			.universalBuilder().credentialsForBasic("Alina", "Alina").build();
 
-    private static final String BASE_URL = "http://localhost:8081/hera-rest-administration";
-    
-    private static final String createProviderPathTemplate = "/providers" ;
-    private static final String getProviderPathTemplate = "/providers" + "/{" + ParamConstants.P_PROVIDER + "}";
-    private static final String updateProviderPathTemplate = "/providers" + "/{" + ParamConstants.P_PROVIDER + "}";
-    private static final String deleteProviderPathTemplate = "/providers" + "/{" + ParamConstants.P_PROVIDER + "}";
-    
-    @Before
-    public void setup() {
+	private Client client = JerseyClientBuilder.newClient().register(
+			basicAuthentication);
 
-        objectMapper = new EntityObjectMapper(ProviderRegistry.getInstance(), null, null);
-        assertNotNull(objectMapper);
-        converter = new ProviderEntityJsonConverter(objectMapper);
-    }
+	private static final String BASE_URL = "http://localhost:8082/hera-rest-administration";
+//	 private static final String BASE_URL =  "http://146.48.82.158:8080/hera-rest-administration/";
 
-    /**
-     * Create / Get / Update / Delete
-     */
-//TODO: this works but requires a running instance
-//  @Test
-    public void fullProviderIntegrationTest() throws ConverterException {
-    	
-    	Provider<String> providerToIngest = new Provider();
-    	providerToIngest.addValue(ProviderKeys.COUNTRY, Country.GR);
-    	providerToIngest.addValue(ProviderKeys.PHONE, PROVIDER_PHONE);
-    	providerToIngest.addValue(ProviderKeys.NAME, PROVIDER_NAME);
-    	
-        String encodedProvider = converter.encode(providerToIngest);
-        System.out.println(encodedProvider);
-        
-        ObjectMapperContextResolver r = new ObjectMapperContextResolver();
-        r.setObjectMapper(objectMapper);
-        client.register(r);
-        
-        // CREATE //
-    	Response resp = client.target(BASE_URL).path(createProviderPathTemplate)
-    			.request()
-    			.post(Entity.json(providerToIngest));
-    	
-        Provider<String> createdProvider = resp.readEntity(Provider.class);
-        assertThat(resp.getStatus(), equalTo(200));
-        
-        // GET //
-        
-        // try to get back the created provider 
-    	Response getResponse = client.target(BASE_URL).path(getProviderPathTemplate)
-    			.resolveTemplate(ParamConstants.P_PROVIDER, createdProvider.getId())
-    			.request()
-    			.get();
+	private static final String createProviderPathTemplate = "/providers";
+	private static final String getProviderPathTemplate = "/providers" + "/{"
+			+ ParamConstants.P_PROVIDER + "}";
+	private static final String updateProviderPathTemplate = "/providers"
+			+ "/{" + ParamConstants.P_PROVIDER + "}";
+	private static final String deleteProviderPathTemplate = "/providers"
+			+ "/{" + ParamConstants.P_PROVIDER + "}";
 
-        Provider<String> getProvider = getResponse.readEntity(Provider.class);
-        assertThat(getResponse.getStatus(), equalTo(200));
-        assertThat(getProvider.getId(), equalTo(createdProvider.getId()));
-        assertThat(getProvider.getFirstValue(ProviderKeys.PHONE), equalTo(PROVIDER_PHONE));
-        assertThat(getProvider.getFirstValue(ProviderKeys.NAME), equalTo(PROVIDER_NAME));
+	@Before
+	public void setup() {
 
-        // make an invalid get request
-    	Response getResponse404 = client.target(BASE_URL).path(getProviderPathTemplate)
-    			.resolveTemplate(ParamConstants.P_PROVIDER, "XXX")
-    			.request()
-    			.get();
-        assertThat(getResponse404.getStatus(), equalTo(404));
-    	
-        // UPDATE //
+		objectMapper = new EntityObjectMapper(ProviderRegistry.getInstance(),
+				null, null);
+		assertNotNull(objectMapper);
+		converter = new ProviderEntityJsonConverter(objectMapper);
+	}
 
-    	Provider<String> providerToUpdate = new Provider();
-    	providerToUpdate.setId(createdProvider.getId());
-    	providerToUpdate.addValue(ProviderKeys.COUNTRY, Country.GR);
-    	providerToUpdate.addValue(ProviderKeys.PHONE, PROVIDER_PHONE_UPDATED);
-    	providerToUpdate.addValue(ProviderKeys.NAME, PROVIDER_NAME_UPDATED);
-    	
-    	Response updateResponse = client.target(BASE_URL).path(updateProviderPathTemplate)
-    			.resolveTemplate(ParamConstants.P_PROVIDER, createdProvider.getId())
-    			.request()
-    			.put(Entity.json(providerToUpdate));
-    	
-    	// lets make sure the provider has been updated
-        // try to get back the updated provider 
-    	Response getUpdatedProviderResponse = client.target(BASE_URL).path(getProviderPathTemplate)
-    			.resolveTemplate(ParamConstants.P_PROVIDER, createdProvider.getId())
-    			.request()
-    			.get();
+	/**
+	 * Create / Get / Update / Delete
+	 */
+	// TODO: this works but requires a running instance
+	// @Test
+	public void fullProviderIntegrationTest() throws ConverterException {
 
-        Provider<String> updatedProvider = getUpdatedProviderResponse.readEntity(Provider.class);
-        assertThat(updateResponse.getStatus(), equalTo(200));
-        assertThat(updatedProvider.getId(), equalTo(createdProvider.getId()));
-        assertThat(updatedProvider.getFirstValue(ProviderKeys.PHONE), equalTo(PROVIDER_PHONE_UPDATED));
-        assertThat(updatedProvider.getFirstValue(ProviderKeys.NAME), equalTo(PROVIDER_NAME_UPDATED));
+		Provider<String> providerToIngest = new Provider();
+		providerToIngest.addValue(ProviderKeys.COUNTRY, Country.GR);
+		providerToIngest.addValue(ProviderKeys.PHONE, PROVIDER_PHONE);
+		providerToIngest.addValue(ProviderKeys.NAME, PROVIDER_NAME);
 
-        // DELETE //
-        
-        // try to delete the created provider
-    	Response deleteResponse = client.target(BASE_URL).path(deleteProviderPathTemplate)
-    			.resolveTemplate(ParamConstants.P_PROVIDER, createdProvider.getId())
-    			.request()
-                .delete();
-        assertThat(deleteResponse.getStatus(), equalTo(200));
-        
+		String encodedProvider = converter.encode(providerToIngest);
+		System.out.println(encodedProvider);
 
-        // try to delete the same provider again (should not work, it's already deleted)
-    	Response deleteResponse404 = client.target(BASE_URL).path(deleteProviderPathTemplate)
-    			.resolveTemplate(ParamConstants.P_PROVIDER, createdProvider.getId())
-    			.request()
-                .delete();
-        assertThat(deleteResponse404.getStatus(), equalTo(404));
-    }
+		ObjectMapperContextResolver r = new ObjectMapperContextResolver();
+		r.setObjectMapper(objectMapper);
+		client.register(r);
+
+		// CREATE //
+		Response resp = client.target(BASE_URL)
+				.path(createProviderPathTemplate).request()
+				.post(Entity.json(providerToIngest));
+
+		Provider<String> createdProvider = resp.readEntity(Provider.class);
+		assertThat(resp.getStatus(), equalTo(200));
+
+		// GET //
+
+		// try to get back the created provider
+		Response getResponse = client
+				.target(BASE_URL)
+				.path(getProviderPathTemplate)
+				.resolveTemplate(ParamConstants.P_PROVIDER,
+						createdProvider.getId()).request().get();
+
+		Provider<String> getProvider = getResponse.readEntity(Provider.class);
+		assertThat(getResponse.getStatus(), equalTo(200));
+		assertThat(getProvider.getId(), equalTo(createdProvider.getId()));
+		assertThat(getProvider.getFirstValue(ProviderKeys.PHONE),
+				equalTo(PROVIDER_PHONE));
+		assertThat(getProvider.getFirstValue(ProviderKeys.NAME),
+				equalTo(PROVIDER_NAME));
+
+		// make an invalid get request
+		Response getResponse404 = client.target(BASE_URL)
+				.path(getProviderPathTemplate)
+				.resolveTemplate(ParamConstants.P_PROVIDER, "XXX").request()
+				.get();
+		assertThat(getResponse404.getStatus(), equalTo(404));
+
+		// UPDATE //
+
+		Provider<String> providerToUpdate = new Provider();
+		providerToUpdate.setId(createdProvider.getId());
+		providerToUpdate.addValue(ProviderKeys.COUNTRY, Country.GR);
+		providerToUpdate.addValue(ProviderKeys.PHONE, PROVIDER_PHONE_UPDATED);
+		providerToUpdate.addValue(ProviderKeys.NAME, PROVIDER_NAME_UPDATED);
+
+		Response updateResponse = client
+				.target(BASE_URL)
+				.path(updateProviderPathTemplate)
+				.resolveTemplate(ParamConstants.P_PROVIDER,
+						createdProvider.getId()).request()
+				.put(Entity.json(providerToUpdate));
+
+		// lets make sure the provider has been updated
+		// try to get back the updated provider
+		Response getUpdatedProviderResponse = client
+				.target(BASE_URL)
+				.path(getProviderPathTemplate)
+				.resolveTemplate(ParamConstants.P_PROVIDER,
+						createdProvider.getId()).request().get();
+
+		Provider<String> updatedProvider = getUpdatedProviderResponse
+				.readEntity(Provider.class);
+		assertThat(updateResponse.getStatus(), equalTo(200));
+		assertThat(updatedProvider.getId(), equalTo(createdProvider.getId()));
+		assertThat(updatedProvider.getFirstValue(ProviderKeys.PHONE),
+				equalTo(PROVIDER_PHONE_UPDATED));
+		assertThat(updatedProvider.getFirstValue(ProviderKeys.NAME),
+				equalTo(PROVIDER_NAME_UPDATED));
+
+		// DELETE //
+
+		// try to delete the created provider
+		Response deleteResponse = client
+				.target(BASE_URL)
+				.path(deleteProviderPathTemplate)
+				.resolveTemplate(ParamConstants.P_PROVIDER,
+						createdProvider.getId()).request().delete();
+		assertThat(deleteResponse.getStatus(), equalTo(200));
+
+		// try to delete the same provider again (should not work, it's already
+		// deleted)
+		Response deleteResponse404 = client
+				.target(BASE_URL)
+				.path(deleteProviderPathTemplate)
+				.resolveTemplate(ParamConstants.P_PROVIDER,
+						createdProvider.getId()).request().delete();
+		assertThat(deleteResponse404.getStatus(), equalTo(404));
+	}
+
+	// TODO: this works but requires a running instance
+//	@Test
+	public void updateWithFilterTest() throws ConverterException {
+		
+		ObjectMapperContextResolver r = new ObjectMapperContextResolver();
+		r.setObjectMapper(objectMapper);
+		client.register(r);
+		
+		String id = "a9c433e0-b582-4d41-b292-a0448334147e";
+
+		Provider<String> providerToUpdate = new Provider();
+		providerToUpdate.setId(id);
+		providerToUpdate.addValue(ProviderKeys.COUNTRY, Country.GR);
+		providerToUpdate.addValue(ProviderKeys.PHONE, "Phone!");
+		providerToUpdate.addValue(ProviderKeys.NAME, "Name!");
+		
+		String filterName = "general";
+		
+		Response updateResponse = client
+				.target(BASE_URL)
+				.path(updateProviderPathTemplate)
+				.queryParam(ParamConstants.Q_FILTER, filterName)
+				.resolveTemplate(ParamConstants.P_PROVIDER,
+						id).request()
+				.put(Entity.json(providerToUpdate));
+		
+		System.out.println(updateResponse);
+	}
 }

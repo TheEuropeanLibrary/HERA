@@ -1,9 +1,8 @@
 package org.theeuropeanlibrary.hera.rest.administration;
 
-import static org.theeuropeanlibrary.hera.rest.administration.ParamConstants.P_DATASET;
 import static org.theeuropeanlibrary.hera.rest.administration.ParamConstants.P_PROVIDER;
-import static org.theeuropeanlibrary.hera.rest.administration.ParamConstants.Q_START_FROM;
 import static org.theeuropeanlibrary.hera.rest.administration.ParamConstants.Q_PROVIDER;
+import static org.theeuropeanlibrary.hera.rest.administration.ParamConstants.Q_START_FROM;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -20,8 +19,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
-import org.theeuropeanlibrary.hera.rest.administration.service.DatasetService;
-import org.theeuropeanlibrary.hera.rest.administration.service.exception.DatasetDoesNotExistException;
+import org.theeuropeanlibrary.hera.rest.administration.service.memory.MemoryDatasetService;
 import org.theeuropeanlibrary.maia.common.definitions.Dataset;
 
 /**
@@ -29,12 +27,13 @@ import org.theeuropeanlibrary.maia.common.definitions.Dataset;
  * 
  */
 @Path("/datasets")
+//@Path("/datasets/{" + P_PROVIDER + "}")
 @Component
 @Scope("request")
 public class DatasetsResource {
 
     @Autowired
-    private DatasetService<String> datasetService;
+    private MemoryDatasetService datasetService;
 
     @Value("${numberOfElementsOnPage}")
     private int numberOfDatasets;
@@ -51,12 +50,12 @@ public class DatasetsResource {
      * first slice of result will be returned.
      */
     @GET
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public ResultSlice<Dataset<String>> getDataSets(
+    @Produces({MediaType.APPLICATION_JSON})
+    public ResultSet<Dataset<String>> getDataSets(
     		@QueryParam(Q_PROVIDER) String providerId,
     		@QueryParam(Q_START_FROM) String startDatasetId) {
 
-        ResultSlice<Dataset<String>> dList = new ResultSlice<Dataset<String>>();
+    	ResultSet<Dataset<String>> dList = new ResultSet<Dataset<String>>();
         
     	if (providerId != null) { // search only for datasets of specific provider
             dList.setResults(datasetService.getDataSetsForProvider(providerId, startDatasetId, numberOfDatasets));
@@ -65,7 +64,6 @@ public class DatasetsResource {
             dList.setResults(datasetService.getDataSets(startDatasetId, numberOfDatasets));
     	}
         return dList;
-    	
     }
 
     /**
@@ -75,11 +73,13 @@ public class DatasetsResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @PreAuthorize("isAuthenticated()")
-    public Response createDataSet(Dataset<String> dataset) {
+    @Path("/provider/{" + P_PROVIDER + "}")
+    public Response createDataSet(@PathParam(P_PROVIDER) String providerId, Dataset<String> dataset) {
 
         ParamUtil.require("dataset", dataset);
+        ParamUtil.require("providerId", providerId);
 
-        Dataset<String> createdDataset = datasetService.createDataSet(dataset);
+        Dataset<String> createdDataset = datasetService.createDataSet(providerId, dataset);
         return Response.ok().entity(createdDataset).build();
     }
 }

@@ -20,21 +20,21 @@
     <bean id="dataProviderService" class="org.theeuropeanlibrary.hera.rest.administration.service.memory.MemoryProviderService" />
     
 	<!-- Resources -->
+    <bean id="loginResource" class="org.theeuropeanlibrary.hera.rest.administration.LoginResource" />
+    
     <bean id="dataProviderResource" class="org.theeuropeanlibrary.hera.rest.administration.ProviderResource" />
     <bean id="dataProvidersResource" class="org.theeuropeanlibrary.hera.rest.administration.ProvidersResource" />
 	
     <bean id="datasetResource" class="org.theeuropeanlibrary.hera.rest.administration.DatasetResource" />
     <bean id="datasetsResource" class="org.theeuropeanlibrary.hera.rest.administration.DatasetsResource" />
     
-    <bean id="loginResource" class="org.theeuropeanlibrary.hera.rest.administration.LoginResource" />
-
-    <!-- JSON serialization: Jackson custom object Mapper -->
     <bean id="filterFactory" class="org.theeuropeanlibrary.maia.common.filter.BaseEntityFilterFactory" />
     <bean id="providerRegistry" class="org.theeuropeanlibrary.maia.tel.model.provider.ProviderRegistry">
          <constructor-arg name="filterFactory" ref="filterFactory"/> 
     </bean>
     <bean id="datasetRegistry" class="org.theeuropeanlibrary.maia.tel.model.dataset.DatasetRegistry" />
     
+    <!-- JSON serialization: Jackson custom object Mapper -->
     <bean id="objectMapper" class="org.theeuropeanlibrary.maia.converter.json.EntityObjectMapper">
         <constructor-arg name="providerRegistry" ref="providerRegistry"/>
          <constructor-arg name="datasetRegistry" ref="datasetRegistry"/> 

@@ -1,8 +1,6 @@
 package org.theeuropeanlibrary.hera.rest.administration;
 
-import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
@@ -14,7 +12,6 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.spring.scope.RequestContextFilter;
 import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Before;
-import org.junit.Test;
 import org.mockito.Mockito;
 import org.springframework.context.ApplicationContext;
 import org.theeuropeanlibrary.hera.rest.administration.service.DatasetService;
@@ -52,7 +49,7 @@ public class DatasetResourceTest extends JerseyTest {
                         "classpath:hera-administration-context-test-mock.xml");
     }
 
-    @Test
+//    @Test
     public void deleteDataset() throws Exception {
         assertNotNull(datasetService);
 
