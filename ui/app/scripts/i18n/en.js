@@ -63,7 +63,7 @@ angular
                     DATASETS: {
                         DATASETS_LABEL: "Datasets",
                         IDENTIFIER: "Identifier",
-                        TYPE: "Dataset type",
+                        DATASET_TYPE: "Dataset type",
                         STATUS: "Dataset status",
                         REDISTRIBUTE: "Redistribute",
                         PARTNERSHIP_AGREEMENT: "Partnership agreement",
@@ -80,7 +80,15 @@ angular
                         FURTHER_INFORMATION: "Further information",
                         TIME_RESTRICTION: "Time restriction",
                         DURATION_OF_RESTRICTION: "Duration of restriction",
-                        LICENSE: "License"
+                        LICENSE: "License",
+                        DATA: "Data",
+                        DIGITISATION_STATUS: "Digitisation status",
+                        LINKS: "Links",
+                        LINK_TYPE: "Type",
+                        NOTES: "Notes",
+                        URL: "Url",
+                        NOTE: "Note",
+                        NOTE_TYPE: "Note type"
                     },
                     LANGUAGES: {
                         "UND" : "Undetermined",

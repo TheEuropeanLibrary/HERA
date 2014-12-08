@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="dataset-type" class="col-sm-3 control-label" translate="DATASETS.TYPE"></label>
+                        <label for="dataset-type" class="col-sm-3 control-label" translate="DATASETS.DATASET_TYPE"></label>
                         <div class="col-sm-9">
                             <select id="dataset-type" class="tel-form-control form-control"
                                     ng-options="c.value as c.label for c in datasetTypes"
@@ -210,6 +210,83 @@
                     <button class="btn btn-success tel-btn" type="button" ng-if="editMode.redistribute" translate="SAVE"
                             ng-click="saveChanges('redistribute')"></button>
                     <button class="btn btn-danger tel-btn" type="button" ng-if="editMode.redistribute" ng-click="cancelEdit('redistribute')"
+                            translate="CANCEL"></button>
+                </div>
+            </accordion-group>
+            <accordion-group is-open="accordionStatuses.data" class="success">
+                <accordion-heading>
+                    <span translate="DATASETS.DATA"></span>
+                    <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.data, 'fa-minus-square': accordionStatuses.data}"></i>
+                </accordion-heading>
+                <form class="form-horizontal" name="data" novalidate>
+                    <div class="form-group">
+                        <label for="digitisation-status" class="col-sm-3 control-label" translate="DATASETS.DIGITISATION_STATUS"></label>
+                        <div class="col-sm-9">
+                            <select id="digitisation-status" class="tel-form-control form-control"
+                                    ng-options="c.value as c.label for c in licenses"
+                                    ng-if="editMode.data"
+                                    ng-model="data.redistribute.ProviderType"></select>
+                            <p ng-if="!editMode.data" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                        </div>
+                    </div>
+                    <h4 translate="DATASETS.LINKS"></h4>
+                    <div class="form-group tel-header-group">
+                        <label class="col-sm-5 control-label" translate="DATASETS.LINK_TYPE"></label>
+                        <label class="col-sm-5 control-label" translate="DATASETS.URL"></label>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-5">
+                            <select class="tel-form-control form-control" ng-model="name.NameType"
+                                    ng-options="c.value as c.label | translate for c in nameTypes"
+                                    ng-if="editMode.data"></select>
+                            <p class="form-control-static" ng-if="!editMode.data">{{ name.NameType | translate}}</p>
+                        </div>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control tel-form-control" ng-model="name.Value"
+                                   ng-if="editMode.data">
+                            <p class="form-control-static" ng-if="!editMode.data">{{ name.Language | translate}}</p>
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="tel-btn btn btn-danger" ng-click="removeName($index)" ng-if="editMode.data">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="tel-btn btn btn-primary" ng-click="addName()" ng-if="$last && editMode.data">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <h4 translate="DATASETS.NOTES"></h4>
+                    <div class="form-group tel-header-group">
+                        <label class="col-sm-5 control-label" translate="DATASETS.NOTE_TYPE"></label>
+                        <label class="col-sm-5 control-label" translate="DATASETS.NOTE"></label>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-5">
+                            <select class="tel-form-control form-control" ng-model="name.NameType"
+                                    ng-options="c.value as c.label | translate for c in nameTypes"
+                                    ng-if="editMode.data"></select>
+                            <p class="form-control-static" ng-if="!editMode.data">{{ name.NameType | translate}}</p>
+                        </div>
+                        <div class="col-sm-5">
+                            <textarea class="form-control tel-form-control" ng-if="editMode.data"></textarea>
+                            <p class="form-control-static" ng-if="!editMode.data">{{ name.Language | translate}}</p>
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="tel-btn btn btn-danger" ng-click="removeName($index)" ng-if="editMode.data">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="tel-btn btn btn-primary" ng-click="addName()" ng-if="$last && editMode.data">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <div class="tel-panel-buttons">
+                    <button class="btn btn-primary tel-btn" type="button" ng-if="!editMode.data" ng-click="toggleEditMode('data')"
+                            translate="EDIT"></button>
+                    <button class="btn btn-success tel-btn" type="button" ng-if="editMode.data" translate="SAVE"
+                            ng-click="saveChanges('redistribute')"></button>
+                    <button class="btn btn-danger tel-btn" type="button" ng-if="editMode.data" ng-click="cancelEdit('data')"
                             translate="CANCEL"></button>
                 </div>
             </accordion-group>
