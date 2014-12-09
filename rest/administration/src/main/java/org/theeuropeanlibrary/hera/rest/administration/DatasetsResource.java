@@ -1,6 +1,5 @@
 package org.theeuropeanlibrary.hera.rest.administration;
 
-import static org.theeuropeanlibrary.hera.rest.administration.ParamConstants.P_PROVIDER;
 import static org.theeuropeanlibrary.hera.rest.administration.ParamConstants.Q_PROVIDER;
 import static org.theeuropeanlibrary.hera.rest.administration.ParamConstants.Q_START_FROM;
 
@@ -8,7 +7,6 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
@@ -27,7 +25,6 @@ import org.theeuropeanlibrary.maia.common.definitions.Dataset;
  * 
  */
 @Path("/datasets")
-//@Path("/datasets/{" + P_PROVIDER + "}")
 @Component
 @Scope("request")
 public class DatasetsResource {
@@ -37,7 +34,8 @@ public class DatasetsResource {
 
     @Value("${numberOfElementsOnPage}")
     private int numberOfDatasets;
-
+    
+	
     /**
      * @return
      * Returns data sets. Result is returned in slices.
@@ -73,8 +71,7 @@ public class DatasetsResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @PreAuthorize("isAuthenticated()")
-    @Path("/provider/{" + P_PROVIDER + "}")
-    public Response createDataSet(@PathParam(P_PROVIDER) String providerId, Dataset<String> dataset) {
+    public Response createDataSet(@QueryParam(Q_PROVIDER) String providerId, Dataset<String> dataset) {
 
         ParamUtil.require("dataset", dataset);
         ParamUtil.require("providerId", providerId);
