@@ -16,6 +16,11 @@ angular.module("telApp")
                     return $http.get(bmApiUrls.getUrl("tel", "datasets"), {
                         params: params
                     });
+                },
+                getDataset: function (id, params) {
+                    return $http.get(bmApiUrls.getUrl("tel", "datasets") + "/" + encodeURIComponent(id), {
+                        params: params
+                    });
                 }
             };
         }]);

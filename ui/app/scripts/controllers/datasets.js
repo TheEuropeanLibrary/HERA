@@ -43,6 +43,8 @@ angular.module("telApp")
                 return data;
             }
 
+            var dataCopy;
+
             $scope.accordionStatuses = {};
             $scope.editMode = {};
             $scope.data = {};
@@ -63,6 +65,28 @@ angular.module("telApp")
                 $scope.datepickers[type] = true;
             };
 
+            $scope.getData = function (type) {
+                if ($scope.selectedDatasetId) {
+                    Datasets
+                        .getDataset($scope.selectedDatasetId, {
+                            filter: type
+                        })
+                        .then(function (data) {
+                            $scope.data[type] = data.data;
+                            dataCopy = angular.copy($scope.data);
+                        });
+                }
+            };
+
+            $scope.$watch("accordionStatuses", function (newVal, oldVal) {
+                var type;
+                for (type in newVal) {
+                    if (newVal[type] && newVal[type] != oldVal[type]) {
+                        $scope.getData(type);
+                    }
+                }
+            }, true);
+
             Providers
                 .getProviders()
                 .then(parseProviders)
@@ -79,7 +103,17 @@ angular.module("telApp")
                     });
                 })
                 .then(function (data) {
-
+                    $scope.datasets = data.data.results.map(function (dataset) {
+                        return {
+                            id: dataset.id,
+                            name: dataset.Name[0].Value
+                        }
+                    });
+                    if ($scope.datasets && $scope.datasets.length) {
+                        $scope.selectedDatasetId = $scope.datasets[0].id;
+                        return Datasets.getDataset($scope.selectedDatasetId);
+                    }
                 });
+                //.then();
         }
     ]);
