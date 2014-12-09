@@ -15,15 +15,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.theeuropeanlibrary.maia.common.converter.ConverterException;
 import org.theeuropeanlibrary.maia.common.definitions.Dataset;
-import org.theeuropeanlibrary.maia.common.definitions.Provider;
 import org.theeuropeanlibrary.maia.converter.json.DatasetEntityJsonConverter;
 import org.theeuropeanlibrary.maia.converter.json.EntityObjectMapper;
-import org.theeuropeanlibrary.maia.tel.model.common.qualifier.Country;
-import org.theeuropeanlibrary.maia.tel.model.common.qualifier.Language;
 import org.theeuropeanlibrary.maia.tel.model.dataset.DatasetKeys;
 import org.theeuropeanlibrary.maia.tel.model.dataset.DatasetRegistry;
-import org.theeuropeanlibrary.maia.tel.model.dataset.definitions.DatasetType;
-import org.theeuropeanlibrary.maia.tel.model.dataset.definitions.IngestionStatus;
 import org.theeuropeanlibrary.maia.tel.model.provider.ProviderRegistry;
 
 /**
@@ -54,7 +49,7 @@ public class DatasetIntegrationTest {
 
     private static final String BASE_URL = "http://localhost:8082/hera-rest-administration";
     
-    private static final String createDatasetPathTemplate = "/datasets" + "/provider/{" + ParamConstants.P_PROVIDER + "}";
+    private static final String createDatasetPathTemplate = "/datasets";
     private static final String getDatasetForProviderPathTemplate = "/datasets" ;
     private static final String getMultipleDatasetsPathTemplate = "/datasets" ;
     private static final String getDatasetPathTemplate = "/datasets" + "/{" + ParamConstants.P_DATASET + "}";
@@ -74,7 +69,6 @@ public class DatasetIntegrationTest {
     /**
      * Create / Get / Update / Delete
      */
-//TODO: JSON does not serialize providers properly so some parts are commented out (for now)
 //TODO: this works but requires a running instance
 //    @Test
     public void fullDatasetIntegrationTest() throws ConverterException {
@@ -96,7 +90,7 @@ public class DatasetIntegrationTest {
         
     	// create one dataset
     	Response resp1 = client.target(BASE_URL).path(createDatasetPathTemplate)
-    			.resolveTemplate(ParamConstants.P_PROVIDER, PROVIDER_ID)
+    			.queryParam(ParamConstants.Q_PROVIDER, PROVIDER_ID)
     			.request()
     			.post(Entity.json(datasetToIngest));
     	
@@ -105,7 +99,7 @@ public class DatasetIntegrationTest {
     	
     	// create one more dataset
     	Response resp2 = client.target(BASE_URL).path(createDatasetPathTemplate)
-    			.resolveTemplate(ParamConstants.P_PROVIDER, PROVIDER_ID)
+    			.queryParam(ParamConstants.Q_PROVIDER, PROVIDER_ID)
     			.request()
     			.post(Entity.json(datasetToIngest2));
         assertThat(resp2.getStatus(), equalTo(200));
@@ -137,7 +131,7 @@ public class DatasetIntegrationTest {
     			.get();
         assertThat(getResponseForSpecificProvider.getStatus(), equalTo(200));
         ResultSlice<Dataset<String>> resultSlice = getResponseForSpecificProvider.readEntity(ResultSlice.class);
-        assertThat(resultSlice.getResults().size(), equalTo(2)); // there was 2 datasets inserted with this providerId
+        assertThat(resultSlice.getResults().size(), greaterThan(2)); // there was 2 datasets inserted with this providerId
         
         // make a get request for multiple datasets
     	Response getResponseForMultipleDatasets = client.target(BASE_URL).path(getMultipleDatasetsPathTemplate)

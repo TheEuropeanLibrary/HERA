@@ -5,6 +5,7 @@ import static org.theeuropeanlibrary.hera.rest.administration.ParamConstants.Q_F
 
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -42,8 +43,8 @@ public class ProviderResource {
 	@Autowired
 	private ProviderService<String> providerService;
 	
-	@Autowired
-	private EntityFilterFactory<String, Provider<String>> filters;
+	@Resource
+	private EntityFilterFactory<String, Provider<String>> providerFilters;
 	
     /**
      * @return Retrieves a provider.
@@ -56,7 +57,7 @@ public class ProviderResource {
 		Provider<String> p = providerService.getProvider(providerId);
 		
 		if (filterName != null) {
-			EntityFilter<String, Provider<String>> f = filters.getFilterForName(filterName);
+			EntityFilter<String, Provider<String>> f = providerFilters.getFilterForName(filterName);
 			p = (Provider<String>)  f.filter(p);
 		}
 		
@@ -83,7 +84,7 @@ public class ProviderResource {
 	    	Provider<String> newProvider = provider;
 			Provider<String> oldProvider = providerService.getProvider(providerId);
 
-			EntityFilter<String, Provider<String>> f = filters.getFilterForName(filterName);
+			EntityFilter<String, Provider<String>> f = providerFilters.getFilterForName(filterName);
 			f.merge(oldProvider, newProvider);
 			
 	    	providerService.updateProvider(providerId, oldProvider);

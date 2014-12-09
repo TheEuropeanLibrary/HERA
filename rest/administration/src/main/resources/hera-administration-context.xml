@@ -28,11 +28,15 @@
     <bean id="datasetResource" class="org.theeuropeanlibrary.hera.rest.administration.DatasetResource" />
     <bean id="datasetsResource" class="org.theeuropeanlibrary.hera.rest.administration.DatasetsResource" />
     
-    <bean id="filterFactory" class="org.theeuropeanlibrary.maia.common.filter.BaseEntityFilterFactory" />
+    <bean id="datasetFilters" class="org.theeuropeanlibrary.maia.common.filter.BaseEntityFilterFactory" />
+    <bean id="providerFilters" class="org.theeuropeanlibrary.maia.common.filter.BaseEntityFilterFactory" />
+    
     <bean id="providerRegistry" class="org.theeuropeanlibrary.maia.tel.model.provider.ProviderRegistry">
-         <constructor-arg name="filterFactory" ref="filterFactory"/> 
+         <constructor-arg name="filterFactory" ref="providerFilters"/> 
     </bean>
-    <bean id="datasetRegistry" class="org.theeuropeanlibrary.maia.tel.model.dataset.DatasetRegistry" />
+    <bean id="datasetRegistry" class="org.theeuropeanlibrary.maia.tel.model.dataset.DatasetRegistry">
+         <constructor-arg name="filterFactory" ref="datasetFilters"/> 
+    </bean>
     
     <!-- JSON serialization: Jackson custom object Mapper -->
     <bean id="objectMapper" class="org.theeuropeanlibrary.maia.converter.json.EntityObjectMapper">
