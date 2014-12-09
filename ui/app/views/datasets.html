@@ -78,8 +78,8 @@
                             <select id="partnership-agreement-status" class="tel-form-control form-control"
                                     ng-options="c.value as c.label for c in partnershipAgreementStatuses"
                                     ng-if="editMode.redistribute"
-                                    ng-model="data.redistribute.ProviderType"></select>
-                            <p ng-if="!editMode.redistribute" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                                    ng-model="data.redistribute.Agreement.Status"></select>
+                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.Agreement.Status | translate }}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -87,13 +87,13 @@
                         <div class="col-sm-9">
                             <p class="input-group" ng-if="editMode.redistribute">
                                 <input id="partnership-agreement-signed" type="text" class="tel-form-control form-control"
-                                       datepicker-popup="dd.MM.yyyy" ng-model="dt" is-open="datepickers.partnershipAgreementSigned"
+                                       datepicker-popup="dd-MM-yyyy" ng-model="data.redistribute.Agreement.Signed" is-open="datepickers.partnershipAgreementSigned"
                                        show-button-bar="false" />
                                 <span class="tel-input-group-btn input-group-btn">
                                     <button type="button" class="tel-btn btn btn-default" ng-click="openDatepicker($event ,'partnershipAgreementSigned')"><i class="glyphicon glyphicon-calendar"></i></button>
                                 </span>
                             </p>
-                            <p ng-if="!editMode.redistribute" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.Agreement.Signed | date:'dd-MM-yyyy'}}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -101,13 +101,13 @@
                         <div class="col-sm-9">
                             <p class="input-group" ng-if="editMode.redistribute">
                                 <input id="appendix-received" type="text" class="tel-form-control form-control"
-                                       datepicker-popup="dd.MM.yyyy" ng-model="dt" is-open="datepickers.appendixReceived"
+                                       datepicker-popup="dd.MM.yyyy" ng-model="data.redistribute.Agreement.Appendix" is-open="datepickers.appendixReceived"
                                        show-button-bar="false" />
                                 <span class="tel-input-group-btn input-group-btn">
                                     <button type="button" class="tel-btn btn btn-default" ng-click="openDatepicker($event, 'appendixReceived')"><i class="glyphicon glyphicon-calendar"></i></button>
                                 </span>
                             </p>
-                            <p ng-if="!editMode.redistribute" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.Agreement.Appendix | date:'dd-MM-yyyy' }}</p>
                         </div>
                     </div>
                     <h4 translate="DATASETS.RESTRICTION"></h4>
@@ -117,8 +117,8 @@
                             <select id="restriction-by-distribution-format" class="tel-form-control form-control"
                                     ng-options="c.value as c.label for c in distributionFormats"
                                     ng-if="editMode.redistribute"
-                                    ng-model="data.redistribute.ProviderType"></select>
-                            <p ng-if="!editMode.redistribute" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                                    ng-model="data.redistribute.Restriction.Format"></select>
+                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.Restriction.Format }}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -127,15 +127,15 @@
                             <select id="other-distribution-formats" class="tel-form-control form-control"
                                     ng-options="c.value as c.label for c in distributionFormats"
                                     ng-if="editMode.redistribute"
-                                    ng-model="data.redistribute.ProviderType"></select>
-                            <p ng-if="!editMode.redistribute" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                                    ng-model="data.redistribute.Restriction.OtherFormat"></select>
+                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.Restriction.OtherFormat }}</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="appendix-received" class="col-sm-3 control-label" translate="DATASETS.REDISTRIBUTE_TERMS"></label>
                         <div class="col-sm-9">
-                            <textarea ng-if="editMode.redistribute" class="tel-form-control form-control"></textarea>
-                            <p ng-if="!editMode.redistribute" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                            <textarea ng-if="editMode.redistribute" class="tel-form-control form-control" ng-model="data.redistribute.Restriction.Terms"></textarea>
+                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.Restriction.Terms}}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -143,13 +143,13 @@
                         <div class="col-sm-9">
                             <p class="input-group" ng-if="editMode.redistribute">
                                 <input id="time-restriction" type="text" class="tel-form-control form-control"
-                                       datepicker-popup="dd.MM.yyyy" ng-model="dt" is-open="datepickers.timeRestriction"
+                                       datepicker-popup="dd.MM.yyyy" ng-model="data.redistribute.Restriction.Time" is-open="datepickers.timeRestriction"
                                        show-button-bar="false" />
                                 <span class="tel-input-group-btn input-group-btn">
                                     <button type="button" class="tel-btn btn btn-default" ng-click="openDatepicker($event ,'timeRestriction')"><i class="glyphicon glyphicon-calendar"></i></button>
                                 </span>
                             </p>
-                            <p ng-if="!editMode.redistribute" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.Restriction.Time | date:'dd-MM-yyyy' }}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -157,13 +157,13 @@
                         <div class="col-sm-9">
                             <p class="input-group" ng-if="editMode.redistribute">
                                 <input id="duration-of-restriction" type="text" class="tel-form-control form-control"
-                                       datepicker-popup="dd.MM.yyyy" ng-model="dt" is-open="datepickers.durationOfRestriction"
+                                       datepicker-popup="dd.MM.yyyy" ng-model="data.redistribute.Restriction.Duration" is-open="datepickers.durationOfRestriction"
                                        show-button-bar="false" />
                                 <span class="tel-input-group-btn input-group-btn">
                                     <button type="button" class="tel-btn btn btn-default" ng-click="openDatepicker($event ,'durationOfRestriction')"><i class="glyphicon glyphicon-calendar"></i></button>
                                 </span>
                             </p>
-                            <p ng-if="!editMode.redistribute" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.Restriction.Duration | date:'dd-MM-yyyy' }}</p>
                         </div>
                     </div>
                     <h4 translate="DATASETS.LICENSE"></h4>
@@ -173,16 +173,16 @@
                             <select id="source-data-license" class="tel-form-control form-control"
                                     ng-options="c.value as c.label for c in licenses"
                                     ng-if="editMode.redistribute"
-                                    ng-model="data.redistribute.ProviderType"></select>
-                            <p ng-if="!editMode.redistribute" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                                    ng-model="data.redistribute.License.Source"></select>
+                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.License.Source }}</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="other-source-data-license" class="col-sm-3 control-label" translate="DATASETS.OTHER_SOURCE_DATA_LICENSE"></label>
                         <div class="col-sm-9">
-                            <textarea id="other-source-data-license" ng-if="editMode.redistribute"
-                                      class="tel-form-control form-control"></textarea>
-                            <p ng-if="!editMode.redistribute" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                            <input id="other-source-data-license" ng-if="editMode.redistribute"
+                                   class="tel-form-control form-control" ng-model="data.redistribute.License.OtherSource">
+                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.License.OtherSource }}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -191,16 +191,16 @@
                             <select id="distribution-format-license" class="tel-form-control form-control"
                                     ng-options="c.value as c.label for c in licenses"
                                     ng-if="editMode.redistribute"
-                                    ng-model="data.redistribute.ProviderType"></select>
-                            <p ng-if="!editMode.redistribute" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                                    ng-model="data.redistribute.License.Distribution"></select>
+                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.License.Distribution }}</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="further-information" class="col-sm-3 control-label" translate="DATASETS.FURTHER_INFORMATION"></label>
                         <div class="col-sm-9">
                             <textarea id="further-information" ng-if="editMode.redistribute"
-                                      class="tel-form-control form-control"></textarea>
-                            <p ng-if="!editMode.redistribute" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                                      class="tel-form-control form-control" ng-model="data.redistribute.License.FurtherInformation"></textarea>
+                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.License.FurtherInformation }}</p>
                         </div>
                     </div>
                 </form>
