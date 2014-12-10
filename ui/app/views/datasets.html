@@ -218,49 +218,50 @@
                     <span translate="DATASETS.DATA"></span>
                     <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.data, 'fa-minus-square': accordionStatuses.data}"></i>
                 </accordion-heading>
-                <form class="form-horizontal" name="data" novalidate>
+                <form class="form-horizontal" name="dataForm" novalidate>
                     <div class="form-group">
                         <label for="digitisation-status" class="col-sm-3 control-label" translate="DATASETS.DIGITISATION_STATUS"></label>
                         <div class="col-sm-9">
                             <select id="digitisation-status" class="tel-form-control form-control"
                                     ng-options="c.value as c.label for c in licenses"
                                     ng-if="editMode.data"
-                                    ng-model="data.redistribute.ProviderType"></select>
-                            <p ng-if="!editMode.data" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                                    ng-model="data.data.DigitisationStatus"></select>
+                            <p ng-if="!editMode.data" class="form-control-static">{{ data.data.DigitisationStatus }}</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="expected-records" class="col-sm-3 control-label" translate="DATASETS.EXPECTED_RECORDS"></label>
                         <div class="col-sm-9">
-                            <input id="expected-records" type="text" class="form-control tel-form-control" ng-model="name.Value"
+                            <input id="expected-records" type="text" class="form-control tel-form-control" ng-model="data.data.ExpectedRecords"
                                    ng-if="editMode.data">
-                            <p class="form-control-static" ng-if="!editMode.data">{{ name.Language | translate}}</p>
+                            <p class="form-control-static" ng-if="!editMode.data">{{ data.data.ExpectedRecords }}</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="expected-digital" class="col-sm-3 control-label" translate="DATASETS.EXPECTED_DIGITAL"></label>
                         <div class="col-sm-9">
-                            <input id="expected-digital" type="text" class="form-control tel-form-control" ng-model="name.Value"
+                            <input id="expected-digital" type="text" class="form-control tel-form-control" ng-model="data.data.ExpectedDigitalObjects"
                                    ng-if="editMode.data">
-                            <p class="form-control-static" ng-if="!editMode.data">{{ name.Language | translate}}</p>
+                            <p class="form-control-static" ng-if="!editMode.data">{{ data.data.ExpectedDigitalObjects }}</p>
                         </div>
                     </div>
                     <h4 translate="DATASETS.DELIVERED_DATA"></h4>
-                    <div class="form-group tel-header-group">
+                    <div class="form-group tel-header-group" ng-if="data.data.DataFormat.length > 0">
                         <label class="col-sm-5 control-label" translate="DATASETS.DATA_TYPE"></label>
                         <label class="col-sm-5 control-label" translate="DATASETS.DATA_NAME"></label>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-repeat="format in data.data.DataFormat">
                         <div class="col-sm-5">
                             <select class="tel-form-control form-control" ng-model="name.NameType"
                                     ng-options="c.value as c.label | translate for c in nameTypes"
-                                    ng-if="editMode.data"></select>
-                            <p class="form-control-static" ng-if="!editMode.data">{{ name.NameType | translate}}</p>
+                                    ng-if="editMode.data"
+                                    ng-model="format.Type"></select>
+                            <p class="form-control-static" ng-if="!editMode.data">{{ format.Type | translate }}</p>
                         </div>
                         <div class="col-sm-5">
-                            <input id="expected-digital" type="text" class="form-control tel-form-control" ng-model="name.Value"
-                                   ng-if="editMode.data">
-                            <p class="form-control-static" ng-if="!editMode.data">{{ name.Language | translate}}</p>
+                            <input id="expected-digital" type="text" class="form-control tel-form-control"
+                                   ng-model="format.Value" ng-if="editMode.data">
+                            <p class="form-control-static" ng-if="!editMode.data">{{ format.Value }}</p>
                         </div>
                         <div class="col-sm-2">
                             <button type="button" class="tel-btn btn btn-danger" ng-click="removeName($index)" ng-if="editMode.data">

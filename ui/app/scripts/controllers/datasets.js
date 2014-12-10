@@ -74,6 +74,7 @@ angular.module("telApp")
                         .then(function (data) {
                             $scope.data[type] = data.data;
                             dataCopy = angular.copy($scope.data);
+                            console.log($scope.data);
                         });
                 }
             };
