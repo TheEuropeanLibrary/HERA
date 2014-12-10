@@ -104,7 +104,8 @@ angular
                         ITEM_TYPE: "Item type",
                         COLLECTION_DESCRIPTIONS: "Collection descriptions",
                         DESCRIPTION_TITLE: "Description title",
-                        DESCRIPTION: "Description"
+                        DESCRIPTION: "Description",
+                        DISCIPLINE: "Discipline"
                     },
                     LANGUAGES: {
                         "UND" : "Undetermined",

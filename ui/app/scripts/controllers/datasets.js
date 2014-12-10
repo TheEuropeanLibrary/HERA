@@ -79,6 +79,46 @@ angular.module("telApp")
                 }
             };
 
+            $scope.addDataType = function () {
+                if ($scope.data.data.DataFormat) {
+                    $scope.data.data.DataFormat.push({});
+                }
+            };
+
+            $scope.removeDataType = function (index) {
+                $scope.data.data.DataFormat.splice(index, 1);
+            };
+
+            $scope.addLink = function () {
+                if ($scope.data.portal.Link) {
+                    $scope.data.portal.Link.push({});
+                }
+            };
+
+            $scope.removeLink = function (index) {
+                $scope.data.portal.Link.splice(index, 1);
+            };
+
+            $scope.addDescription = function () {
+                if ($scope.data.description.CollectionDescription) {
+                    $scope.data.description.CollectionDescription.push({});
+                }
+            };
+
+            $scope.removeDescription = function (index) {
+                $scope.data.description.CollectionDescription.splice(index, 1);
+            };
+
+            $scope.addNote = function () {
+                if ($scope.data.description.Note) {
+                    $scope.data.description.Note.push({});
+                }
+            };
+
+            $scope.removeNote = function (index) {
+                $scope.data.description.Note.splice(index, 1);
+            };
+
             $scope.$watch("accordionStatuses", function (newVal, oldVal) {
                 var type;
                 for (type in newVal) {
@@ -87,6 +127,74 @@ angular.module("telApp")
                     }
                 }
             }, true);
+
+            telEnums.getDatasetTypes().then(function (data) {
+                $scope.datasetTypes = data;
+            });
+
+            telEnums.getIngestionStatuses().then(function (data) {
+                $scope.ingestionStatuses = data;
+            });
+
+            telEnums.getAgreementStatuses().then(function (data) {
+                $scope.agreementStatuses = data;
+            });
+
+            telEnums.getDistributionFormats().then(function (data) {
+                $scope.distributionFormats = data;
+            });
+
+            telEnums.getSourceLicenses().then(function (data) {
+                $scope.sourceLicenses = data;
+            });
+
+            telEnums.getDistributionLicenses().then(function (data) {
+                $scope.distributionLicenses = data;
+            });
+
+            telEnums.getDigitisationStatuses().then(function (data) {
+                $scope.digitisationStatuses = data;
+            });
+
+            telEnums.getDataTypes().then(function (data) {
+                $scope.dataTypes = data;
+            });
+
+            telEnums.getDataTypes().then(function (data) {
+                $scope.portalStatuses = data;
+            });
+
+            telEnums.getDatasetLinkTypes().then(function (data) {
+                $scope.datasetLinkTypes = data;
+            });
+
+            telEnums.getNoteTypes().then(function (data) {
+                $scope.noteTypes = data;
+            });
+
+            telEnums.getDisciplines().then(function (data) {
+                $scope.disciplines = data;
+            });
+
+            telEnums.getSpatialCoverages().then(function (data) {
+                $scope.spatialCoverages = data;
+            });
+
+            telEnums.getTimeCoverages().then(function (data) {
+                $scope.timeCoverages = data;
+            });
+
+            telEnums.getItemTypes().then(function (data) {
+                $scope.itemTypes = data;
+            });
+
+            telEnums.getSubjects().then(function (data) {
+                $scope.subjects = data;
+            });
+
+            telEnums.getLanguages().then(function (data) {
+                $scope.languages = data;
+            });
 
             Providers
                 .getProviders()

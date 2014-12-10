@@ -780,6 +780,36 @@ angular
 
             var consortiumTypes = ["AGGREGATION", "PURCHASING"];
 
+            var datasetTypes = ["BIBLIOGRAPHY", "CATALOGUE", "COLLECTION", "DATABASE", "DATASET", "FINDING_AIDS", "PASSTHROUGH", "PERSONAL_COLLECTION", "REPOSITORY", "VIRUTAL_EXHIBITION"];
+
+            var ingestionStatuses = ["ACCEPTANCE", "PUBLISH"];
+
+            var agreementStatuses = ["NONE", "READY", "INTERNAL_READY", "PUBLISH"];
+
+            var distributionFormats = ["MARC", "EDM_LOD", "DCMI", "DC", "EAD", "EDM", "MODS", "OTHER"];
+
+            var sourceLicenses = ["BY", "BY_ND", "BY_NC", "BY_NC_ND", "BY_NC_SA", "BY_SA", "FRANCE", "OTHER"];
+
+            var distributionLicenses = ["BY", "BY_ND", "BY_NC", "BY_NC_ND", "BY_NC_SA", "BY_SA", "FRANCE", "OTHER"];
+
+            var digitisationStatuses = ["DIGITISED", "NON_DIGITISED", "PARTIALLY_DIGITISED"];
+
+            var dataTypes = ["FULLTEXT", "CONTROLLED_VOCABULARY", "CONTENT", "AUTHORITY", "DIGITAL"];
+
+            var datasetLinkType = ["ACCESS_RIGHTS", "PROVENANCE", "BIBLIOGRAPHY", "SOURCE"];
+
+            var noteTypes = ["ACCESS_RIGHTS", "PROVENANCE", "BIBLIOGRAPHY", "SOURCE"];
+
+            var disciplines = ["HUMANITIES"];
+
+            var spatialCoverages = ["PARIS"];
+
+            var timeCoverages = ["RENAISSANCE"];
+
+            var itemTypes = ["BLUE_PRINT"];
+
+            var subjects = ["MEDIEVAL_HISTORY"];
+
             return {
                 getCountries: function () {
                     return $q.when(countries.map(function (country) {
@@ -850,6 +880,126 @@ angular
                         return {
                             label: "CONSORTIUM_TYPE." + c,
                             value: c
+                        };
+                    }));
+                },
+                getDatasetTypes: function () {
+                    return $q.when(datasetTypes.map(function (d) {
+                        return {
+                            label: "DATASET_TYPE." + d,
+                            value: d
+                        };
+                    }));
+                },
+                getIngestionStatuses: function () {
+                    return $q.when(ingestionStatuses.map(function (i) {
+                        return {
+                            label: "INGESTION_STATUS." + i,
+                            value: i
+                        };
+                    }));
+                },
+                getAgreementStatuses: function () {
+                    return $q.when(agreementStatuses.map(function (a) {
+                        return {
+                            label: "AGREEMENT_STATUS." + a,
+                            value: a
+                        };
+                    }));
+                },
+                getDistributionFormats: function () {
+                    return $q.when(distributionFormats.map(function (d) {
+                        return {
+                            label: "DISTRIBUTION_FORMAT." + d,
+                            value: d
+                        };
+                    }));
+                },
+                getSourceLicenses: function () {
+                    return $q.when(sourceLicenses.map(function (s) {
+                        return {
+                            label: "SOURCE_LICENSE." + s,
+                            value: s
+                        };
+                    }));
+                },
+                getDistributionLicenses: function () {
+                    return $q.when(distributionLicenses.map(function (d) {
+                        return {
+                            label: "DISTRIBUTION_LICENSE." + d,
+                            value: d
+                        };
+                    }));
+                },
+                getDigitisationStatuses: function () {
+                    return $q.when(digitisationStatuses.map(function (d) {
+                        return {
+                            label: "DIGITISATION_STATUS." + d,
+                            value: d
+                        };
+                    }));
+                },
+                getDataTypes: function () {
+                    return $q.when(dataTypes.map(function (d) {
+                        return {
+                            label: "DATA_TYPE." + d,
+                            value: d
+                        };
+                    }));
+                },
+                getDatasetLinkTypes: function () {
+                    return $q.when(datasetLinkType.map(function (d) {
+                        return {
+                            label: "DATASET_LINK_TYPE." + d,
+                            value: d
+                        };
+                    }));
+                },
+                getNoteTypes: function () {
+                    return $q.when(noteTypes.map(function (n) {
+                        return {
+                            label: "NOTE_TYPE." + n,
+                            value: n
+                        };
+                    }));
+                },
+                getDisciplines: function () {
+                    return $q.when(disciplines.map(function (d) {
+                        return {
+                            label: "DISCIPLINE." + d,
+                            value: d
+                        };
+                    }));
+                },
+                getSpatialCoverages: function () {
+                    return $q.when(spatialCoverages.map(function (s) {
+                        return {
+                            label: "SPATIAL_COVERAGE." + s,
+                            value: s
+                        };
+                    }));
+                },
+                getTimeCoverages: function () {
+                    return $q.when(timeCoverages.map(function (t) {
+                        return {
+                            label: "TIME_COVERAGE." + t,
+                            value: t
+                        };
+                    }));
+                },
+                getItemTypes: function () {
+                    return $q.when(itemTypes.map(function (t) {
+                        return {
+                            label: "ITEM_TYPE." + t,
+                            value: t
+                        };
+                    }));
+                },
+                getSubjects: function () {
+                    return $q.when(subjects.map(function (s) {
+                        return {
+                            label: "SUBJECT." + s,
+                            value: s
                         };
                     }));
                 }

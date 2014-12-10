@@ -47,7 +47,7 @@
                         <label for="dataset-status" class="col-sm-3 control-label" translate="DATASETS.STATUS"></label>
                         <div class="col-sm-9">
                             <select id="dataset-status" class="tel-form-control form-control"
-                                    ng-options="c.value as c.label for c in datasetStatuses"
+                                    ng-options="c.value as c.label for c in ingestionStatuses"
                                     ng-if="editMode.general"
                                     ng-model="data.general.IngestionStatus"></select>
                             <p ng-if="!editMode.general" class="form-control-static">{{ 'INGESTION_STATUS.' + data.general.IngestionStatus | translate}}</p>
@@ -76,7 +76,7 @@
                         <label for="partnership-agreement-status" class="col-sm-3 control-label" translate="DATASETS.AGREEMENT_STATUS"></label>
                         <div class="col-sm-9">
                             <select id="partnership-agreement-status" class="tel-form-control form-control"
-                                    ng-options="c.value as c.label for c in partnershipAgreementStatuses"
+                                    ng-options="c.value as c.label for c in agreementStatuses"
                                     ng-if="editMode.redistribute"
                                     ng-model="data.redistribute.Agreement.Status"></select>
                             <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.Agreement.Status | translate }}</p>
@@ -124,10 +124,8 @@
                     <div class="form-group">
                         <label for="other-distribution-formats" class="col-sm-3 control-label" translate="DATASETS.OTHER_DISTRIBUTION_FORMATS"></label>
                         <div class="col-sm-9">
-                            <select id="other-distribution-formats" class="tel-form-control form-control"
-                                    ng-options="c.value as c.label for c in distributionFormats"
-                                    ng-if="editMode.redistribute"
-                                    ng-model="data.redistribute.Restriction.OtherFormat"></select>
+                            <input id="other-distribution-formats" type="text" class="form-control tel-form-control"
+                                   ng-model="data.redistribute.Restriction.OtherFormat" ng-if="editMode.redistribute">
                             <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.Restriction.OtherFormat }}</p>
                         </div>
                     </div>
@@ -171,7 +169,7 @@
                         <label for="source-data-license" class="col-sm-3 control-label" translate="DATASETS.SOURCE_DATA_LICENSE"></label>
                         <div class="col-sm-9">
                             <select id="source-data-license" class="tel-form-control form-control"
-                                    ng-options="c.value as c.label for c in licenses"
+                                    ng-options="c.value as c.label for c in sourceLicenses"
                                     ng-if="editMode.redistribute"
                                     ng-model="data.redistribute.License.Source"></select>
                             <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.License.Source }}</p>
@@ -189,7 +187,7 @@
                         <label for="distribution-format-license" class="col-sm-3 control-label" translate="DATASETS.DISTRIBUTION_FORMAT_LICENSE"></label>
                         <div class="col-sm-9">
                             <select id="distribution-format-license" class="tel-form-control form-control"
-                                    ng-options="c.value as c.label for c in licenses"
+                                    ng-options="c.value as c.label for c in distributionLicenses"
                                     ng-if="editMode.redistribute"
                                     ng-model="data.redistribute.License.Distribution"></select>
                             <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.License.Distribution }}</p>
@@ -223,7 +221,7 @@
                         <label for="digitisation-status" class="col-sm-3 control-label" translate="DATASETS.DIGITISATION_STATUS"></label>
                         <div class="col-sm-9">
                             <select id="digitisation-status" class="tel-form-control form-control"
-                                    ng-options="c.value as c.label for c in licenses"
+                                    ng-options="c.value as c.label for c in digitisationStatuses"
                                     ng-if="editMode.data"
                                     ng-model="data.data.DigitisationStatus"></select>
                             <p ng-if="!editMode.data" class="form-control-static">{{ data.data.DigitisationStatus }}</p>
@@ -253,21 +251,21 @@
                     <div class="form-group" ng-repeat="format in data.data.DataFormat">
                         <div class="col-sm-5">
                             <select class="tel-form-control form-control" ng-model="name.NameType"
-                                    ng-options="c.value as c.label | translate for c in nameTypes"
+                                    ng-options="c.value as c.label | translate for c in dataTypes"
                                     ng-if="editMode.data"
-                                    ng-model="format.Type"></select>
-                            <p class="form-control-static" ng-if="!editMode.data">{{ format.Type | translate }}</p>
+                                    ng-model="format.DataType"></select>
+                            <p class="form-control-static" ng-if="!editMode.data">{{ format.DataType | translate }}</p>
                         </div>
                         <div class="col-sm-5">
-                            <input id="expected-digital" type="text" class="form-control tel-form-control"
+                            <input type="text" class="form-control tel-form-control"
                                    ng-model="format.Value" ng-if="editMode.data">
                             <p class="form-control-static" ng-if="!editMode.data">{{ format.Value }}</p>
                         </div>
                         <div class="col-sm-2">
-                            <button type="button" class="tel-btn btn btn-danger" ng-click="removeName($index)" ng-if="editMode.data">
+                            <button type="button" class="tel-btn btn btn-danger" ng-click="removeDataType($index)" ng-if="editMode.data">
                                 <i class="fa fa-minus"></i>
                             </button>
-                            <button type="button" class="tel-btn btn btn-primary" ng-click="addName()" ng-if="$last && editMode.data">
+                            <button type="button" class="tel-btn btn btn-primary" ng-click="addDataType()" ng-if="$last && editMode.data">
                                 <i class="fa fa-plus"></i>
                             </button>
                         </div>
@@ -292,10 +290,10 @@
                         <label for="portal-status" class="col-sm-3 control-label" translate="DATASETS.PORTAL_STATUS"></label>
                         <div class="col-sm-9">
                             <select id="portal-status" class="tel-form-control form-control"
-                                    ng-options="c.value as c.label for c in licenses"
+                                    ng-options="c.value as c.label for c in portalStatuses"
                                     ng-if="editMode.portal"
-                                    ng-model="data.redistribute.ProviderType"></select>
-                            <p ng-if="!editMode.portal" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                                    ng-model="data.portal.PortalStatus"></select>
+                            <p ng-if="!editMode.portal" class="form-control-static">{{ 'PORTAL_STATUS.' + data.portal.PortalStatus | translate }}</p>
                         </div>
                     </div>
                     <h4 translate="DATASETS.LINKS"></h4>
@@ -303,23 +301,24 @@
                         <label class="col-sm-5 control-label" translate="DATASETS.LINK_TYPE"></label>
                         <label class="col-sm-5 control-label" translate="DATASETS.URL"></label>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-repeat="link in data.portal.Link">
                         <div class="col-sm-5">
                             <select class="tel-form-control form-control" ng-model="name.NameType"
-                                    ng-options="c.value as c.label | translate for c in nameTypes"
-                                    ng-if="editMode.portal"></select>
-                            <p class="form-control-static" ng-if="!editMode.portal">{{ name.NameType | translate}}</p>
+                                    ng-options="c.value as c.label | translate for c in datasetLinkTypes"
+                                    ng-if="editMode.portal"
+                                    ng-model="link.LinkType"></select>
+                            <p class="form-control-static" ng-if="!editMode.portal">{{ link.LinkType | translate}}</p>
                         </div>
                         <div class="col-sm-5">
                             <input type="text" class="form-control tel-form-control" ng-model="name.Value"
                                    ng-if="editMode.portal">
-                            <p class="form-control-static" ng-if="!editMode.portal">{{ name.Language | translate}}</p>
+                            <p class="form-control-static" ng-if="!editMode.portal">{{ link.Value | translate}}</p>
                         </div>
                         <div class="col-sm-2">
-                            <button type="button" class="tel-btn btn btn-danger" ng-click="removeName($index)" ng-if="editMode.portal">
+                            <button type="button" class="tel-btn btn btn-danger" ng-click="removeLink($index)" ng-if="editMode.portal">
                                 <i class="fa fa-minus"></i>
                             </button>
-                            <button type="button" class="tel-btn btn btn-primary" ng-click="addName()" ng-if="$last && editMode.portal">
+                            <button type="button" class="tel-btn btn btn-primary" ng-click="addLink()" ng-if="$last && editMode.portal">
                                 <i class="fa fa-plus"></i>
                             </button>
                         </div>
@@ -329,22 +328,22 @@
                         <label class="col-sm-5 control-label" translate="DATASETS.NOTE_TYPE"></label>
                         <label class="col-sm-5 control-label" translate="DATASETS.NOTE"></label>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-repeat="note in data.portal.Note">
                         <div class="col-sm-5">
-                            <select class="tel-form-control form-control" ng-model="name.NameType"
-                                    ng-options="c.value as c.label | translate for c in nameTypes"
+                            <select class="tel-form-control form-control" ng-model="note.NoteType"
+                                    ng-options="c.value as c.label | translate for c in noteTypes"
                                     ng-if="editMode.portal"></select>
-                            <p class="form-control-static" ng-if="!editMode.portal">{{ name.NameType | translate}}</p>
+                            <p class="form-control-static" ng-if="!editMode.portal">{{ 'NOTE_TYPE.' + note.NoteType | translate}}</p>
                         </div>
                         <div class="col-sm-5">
                             <textarea class="form-control tel-form-control" ng-if="editMode.portal"></textarea>
-                            <p class="form-control-static" ng-if="!editMode.portal">{{ name.Language | translate}}</p>
+                            <p class="form-control-static" ng-if="!editMode.portal">{{ note.Value }}</p>
                         </div>
                         <div class="col-sm-2">
-                            <button type="button" class="tel-btn btn btn-danger" ng-click="removeName($index)" ng-if="editMode.portal">
+                            <button type="button" class="tel-btn btn btn-danger" ng-click="removeNote($index)" ng-if="editMode.portal">
                                 <i class="fa fa-minus"></i>
                             </button>
-                            <button type="button" class="tel-btn btn btn-primary" ng-click="addName()" ng-if="$last && editMode.portal">
+                            <button type="button" class="tel-btn btn btn-primary" ng-click="addNote()" ng-if="$last && editMode.portal">
                                 <i class="fa fa-plus"></i>
                             </button>
                         </div>
@@ -359,32 +358,38 @@
                             translate="CANCEL"></button>
                 </div>
             </accordion-group>
-            <accordion-group is-open="accordionStatuses.descriptions" class="success">
+            <accordion-group is-open="accordionStatuses.description" class="success">
                 <accordion-heading>
                     <span translate="DATASETS.DESCRIPTIONS"></span>
-                    <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.descriptions, 'fa-minus-square': accordionStatuses.descriptions}"></i>
+                    <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.description, 'fa-minus-square': accordionStatuses.description}"></i>
                 </accordion-heading>
                 <form class="form-horizontal" name="descriptions" novalidate>
                     <div class="form-group">
                         <label for="discipline" class="col-sm-3 control-label" translate="DATASETS.DISCIPLINE"></label>
                         <div class="col-sm-9">
                             <select id="discipline" class="tel-form-control form-control"
-                                    ng-options="c.value as c.label for c in licenses"
-                                    ng-if="editMode.descriptions" multiple
-                                    ng-model="data.redistribute.ProviderType"></select>
-                            <p ng-if="!editMode.descriptions" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                                    ng-options="c.value as c.label for c in disciplines"
+                                    ng-if="editMode.description" multiple
+                                    ng-model="data.description.Discipline"></select>
+                            <p ng-if="!editMode.description" class="form-control-static">{{ data.description.Discipline }}</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label" translate="DATASETS.LANGUAGE"></label>
                         <div class="col-sm-9">
-                            <ui-select ng-model="name.Language" theme="bootstrap" class="tel-select" ng-if="editMode.descriptions">
-                                <ui-select-match>{{$select.selected.label | translate}}</ui-select-match>
-                                <ui-select-choices repeat="c.value as c in languages | filter: $select.search">
-                                    <span ng-bind-html="c.label | translate | highlight: $select.search"></span>
+                            <!--<ui-select ng-model="name.Language" theme="bootstrap" class="tel-select" ng-if="editMode.description">-->
+                                <!--<ui-select-match>{{$select.selected.label | translate}}</ui-select-match>-->
+                                <!--<ui-select-choices repeat="c.value as c in languages | filter: $select.search">-->
+                                    <!--<span ng-bind-html="c.label | translate | highlight: $select.search"></span>-->
+                                <!--</ui-select-choices>-->
+                            <!--</ui-select>-->
+                            <ui-select ng-if="editMode.description" class="tel-select" multiple ng-model="data.description.Language" theme="bootstrap">
+                                <ui-select-match>{{ $item.label }}</ui-select-match>
+                                <ui-select-choices repeat="c.value as c in languages | propsFilter: { label: $select.search }">
+                                    <div ng-bind-html="c.label | highlight: $select.search"></div>
                                 </ui-select-choices>
                             </ui-select>
-                            <p class="form-control-static" ng-if="!editMode.descriptions">{{ name.Language | translate }}</p>
+                            <p class="form-control-static" ng-if="!editMode.description">{{ name.Language | translate }}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -392,39 +397,39 @@
                         <div class="col-sm-9">
                             <select id="subject" class="tel-form-control form-control"
                                     ng-options="c.value as c.label for c in licenses"
-                                    ng-if="editMode.descriptions" multiple
-                                    ng-model="data.redistribute.ProviderType"></select>
-                            <p ng-if="!editMode.descriptions" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                                    ng-if="editMode.description" multiple
+                                    ng-model="data.description.Subject"></select>
+                            <p ng-if="!editMode.description" class="form-control-static">{{ data.description.Subject | translate }}</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="time-coverage" class="col-sm-3 control-label" translate="DATASETS.TIME_COVERAGE"></label>
                         <div class="col-sm-9">
                             <select id="time-coverage" class="tel-form-control form-control"
-                                    ng-options="c.value as c.label for c in licenses"
-                                    ng-if="editMode.descriptions" multiple
-                                    ng-model="data.redistribute.ProviderType"></select>
-                            <p ng-if="!editMode.descriptions" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                                    ng-options="c.value as c.label for c in timeCoverages"
+                                    ng-if="editMode.description" multiple
+                                    ng-model="data.description.TimeCoverage"></select>
+                            <p ng-if="!editMode.description" class="form-control-static">{{ data.description.TimeCoverage | translate }}</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="spatial-coverage" class="col-sm-3 control-label" translate="DATASETS.SPATIAL_COVERAGE"></label>
                         <div class="col-sm-9">
                             <select id="spatial-coverage" class="tel-form-control form-control"
-                                    ng-options="c.value as c.label for c in licenses"
-                                    ng-if="editMode.descriptions" multiple
-                                    ng-model="data.redistribute.ProviderType"></select>
-                            <p ng-if="!editMode.descriptions" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                                    ng-options="c.value as c.label for c in spatialCoverages"
+                                    ng-if="editMode.description" multiple
+                                    ng-model="data.description.SpatialCoverage"></select>
+                            <p ng-if="!editMode.description" class="form-control-static">{{ data.description.SpatialCoverage | translate}}</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="item-type" class="col-sm-3 control-label" translate="DATASETS.ITEM_TYPE"></label>
                         <div class="col-sm-9">
                             <select id="item-type" class="tel-form-control form-control"
-                                    ng-options="c.value as c.label for c in licenses"
-                                    ng-if="editMode.descriptions" multiple
-                                    ng-model="data.redistribute.ProviderType"></select>
-                            <p ng-if="!editMode.descriptions" class="form-control-static">{{data.redistribute.ProviderType | translate}}</p>
+                                    ng-options="c.value as c.label for c in itemTypes"
+                                    ng-if="editMode.description" multiple
+                                    ng-model="data.description.ItemType"></select>
+                            <p ng-if="!editMode.description" class="form-control-static">{{ data.description.ItemType | translate }}</p>
                         </div>
                     </div>
                     <h4 translate="DATASETS.COLLECTION_DESCRIPTIONS"></h4>
@@ -432,23 +437,28 @@
                         <label class="col-sm-5 control-label" translate="DATASETS.DESCRIPTION_TITLE"></label>
                         <label class="col-sm-5 control-label" translate="DATASETS.DESCRIPTION"></label>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group tel-collection-descriptions" ng-repeat="desc in data.description.CollectionDescription">
                         <div class="col-sm-5">
-                            <select class="tel-form-control form-control" ng-model="name.NameType"
-                                    ng-options="c.value as c.label | translate for c in nameTypes"
-                                    ng-if="editMode.descriptions"></select>
-                            <p class="form-control-static" ng-if="!editMode.descriptions">{{ name.NameType | translate}}</p>
+                            <ui-select ng-model="desc.Language" theme="bootstrap" class="tel-select" ng-if="editMode.description">
+                                <ui-select-match>{{$select.selected.label | translate}}</ui-select-match>
+                                <ui-select-choices repeat="c.value as c in languages | filter: $select.search">
+                                    <span ng-bind-html="c.label | translate | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                            <p class="form-control-static" ng-if="!editMode.description">{{ desc.Language }}</p>
+                            <input class="form-control tel-form-control" ng-if="editMode.description" ng-model="desc.Value.Title">
+                            <p class="form-control-static" ng-if="!editMode.description">{{ desc.Value.Title }}</p>
                         </div>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control tel-form-control" ng-model="name.Value"
-                                   ng-if="editMode.descriptions">
-                            <p class="form-control-static" ng-if="!editMode.descriptions">{{ name.Language | translate}}</p>
+                            <textarea class="form-control tel-form-control" ng-model="desc.Value.Description"
+                                      ng-if="editMode.description"></textarea>
+                            <p class="form-control-static" ng-if="!editMode.description">{{ desc.Value.Description | translate}}</p>
                         </div>
                         <div class="col-sm-2">
-                            <button type="button" class="tel-btn btn btn-danger" ng-click="removeName($index)" ng-if="editMode.descriptions">
+                            <button type="button" class="tel-btn btn btn-danger" ng-click="removeDescription($index)" ng-if="editMode.description">
                                 <i class="fa fa-minus"></i>
                             </button>
-                            <button type="button" class="tel-btn btn btn-primary" ng-click="addName()" ng-if="$last && editMode.descriptions">
+                            <button type="button" class="tel-btn btn btn-primary" ng-click="addDescription()" ng-if="$last && editMode.description">
                                 <i class="fa fa-plus"></i>
                             </button>
                         </div>
@@ -458,38 +468,34 @@
                         <label class="col-sm-5 control-label" translate="DATASETS.NOTE_TYPE"></label>
                         <label class="col-sm-5 control-label" translate="DATASETS.NOTE"></label>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-repeat="note in data.description.Note">
                         <div class="col-sm-5">
-                            <ui-select ng-model="name.Language" theme="bootstrap" class="tel-select" ng-if="editMode.descriptions">
-                                <ui-select-match>{{$select.selected.label | translate}}</ui-select-match>
-                                <ui-select-choices repeat="c.value as c in languages | filter: $select.search">
-                                    <span ng-bind-html="c.label | translate | highlight: $select.search"></span>
-                                </ui-select-choices>
-                            </ui-select>
-                            <p class="form-control-static" ng-if="!editMode.descriptions">{{ name.NameType | translate}}</p>
-                            <input class="form-control tel-form-control" ng-if="!editMode.descriptions">
-                            <p class="form-control-static" ng-if="!editMode.descriptions">{{ name.NameType | translate}}</p>
+                            <select class="tel-form-control form-control"
+                                    ng-options="c.value as c.label for c in noteTypes"
+                                    ng-if="editMode.description"
+                                    ng-model="note.NoteType"></select>
+                            <p class="form-control-static" ng-if="!editMode.description">{{ 'NOTE_TYPE.' + note.NoteType | translate}}</p>
                         </div>
                         <div class="col-sm-5">
-                            <textarea class="form-control tel-form-control" ng-if="editMode.data"></textarea>
-                            <p class="form-control-static" ng-if="!editMode.descriptions">{{ name.Language | translate}}</p>
+                            <textarea class="form-control tel-form-control" ng-if="editMode.description" ng-model="note.Value"></textarea>
+                            <p class="form-control-static" ng-if="!editMode.description">{{ note.Value }}</p>
                         </div>
                         <div class="col-sm-2">
-                            <button type="button" class="tel-btn btn btn-danger" ng-click="removeName($index)" ng-if="editMode.descriptions">
+                            <button type="button" class="tel-btn btn btn-danger" ng-click="removeNote($index)" ng-if="editMode.description">
                                 <i class="fa fa-minus"></i>
                             </button>
-                            <button type="button" class="tel-btn btn btn-primary" ng-click="addName()" ng-if="$last && editMode.descriptions">
+                            <button type="button" class="tel-btn btn btn-primary" ng-click="addNote()" ng-if="$last && editMode.description">
                                 <i class="fa fa-plus"></i>
                             </button>
                         </div>
                     </div>
                 </form>
                 <div class="tel-panel-buttons">
-                    <button class="btn btn-primary tel-btn" type="button" ng-if="!editMode.descriptions" ng-click="toggleEditMode('descriptions')"
+                    <button class="btn btn-primary tel-btn" type="button" ng-if="!editMode.description" ng-click="toggleEditMode('description')"
                             translate="EDIT"></button>
-                    <button class="btn btn-success tel-btn" type="button" ng-if="editMode.descriptions" translate="SAVE"
-                            ng-click="saveChanges('descriptions')"></button>
-                    <button class="btn btn-danger tel-btn" type="button" ng-if="editMode.descriptions" ng-click="cancelEdit('descriptions')"
+                    <button class="btn btn-success tel-btn" type="button" ng-if="editMode.description" translate="SAVE"
+                            ng-click="saveChanges('description')"></button>
+                    <button class="btn btn-danger tel-btn" type="button" ng-if="editMode.description" ng-click="cancelEdit('description')"
                             translate="CANCEL"></button>
                 </div>
             </accordion-group>
