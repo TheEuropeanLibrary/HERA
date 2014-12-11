@@ -13,12 +13,14 @@ import org.glassfish.jersey.client.JerseyClientBuilder;
 import org.glassfish.jersey.client.authentication.HttpAuthenticationFeature;
 import org.junit.Before;
 import org.junit.Test;
+import org.theeuropeanlibrary.hera.rest.administration.utils.HardcodedExamplesUtil;
 import org.theeuropeanlibrary.maia.common.converter.ConverterException;
 import org.theeuropeanlibrary.maia.common.definitions.Dataset;
 import org.theeuropeanlibrary.maia.converter.json.DatasetEntityJsonConverter;
 import org.theeuropeanlibrary.maia.converter.json.EntityObjectMapper;
 import org.theeuropeanlibrary.maia.tel.model.dataset.DatasetKeys;
 import org.theeuropeanlibrary.maia.tel.model.dataset.DatasetRegistry;
+import org.theeuropeanlibrary.maia.tel.model.dataset.definitions.descriptions.CollectionDescription;
 import org.theeuropeanlibrary.maia.tel.model.provider.ProviderRegistry;
 
 /**
@@ -36,6 +38,9 @@ public class DatasetIntegrationTest {
     private final static String DATASET_NAME_UPDATED = "DATASET_SIMON_UPDATED_TO_lollipop";
 
     private final static String PROVIDER_ID = "PROVIDER_ID";
+    
+    private final static String COL_DESCRIPTION = "COLLECTION";
+    private final static String COL_DESCRIPTION_UPDATED = "COLLECTION_UPDATED";
     
 	private EntityObjectMapper objectMapper;
 	
@@ -73,15 +78,13 @@ public class DatasetIntegrationTest {
 //    @Test
     public void fullDatasetIntegrationTest() throws ConverterException {
     	
+    	// first dataset is a super simple example
     	Dataset<String> datasetToIngest = new Dataset<String>();
     	datasetToIngest.addValue(DatasetKeys.NAME, DATASET_NAME);
     	
-    	Dataset<String> datasetToIngest2 = new Dataset<String>();
-    	datasetToIngest2.addValue(DatasetKeys.NAME, DATASET_NAME);
+    	// second dataset is a full example
+    	Dataset<String> datasetToIngest2 = HardcodedExamplesUtil.createDatasets();
     	
-        String encodedDataset = converter.encode(datasetToIngest);
-        System.out.println(encodedDataset);
-        
         ObjectMapperContextResolver r = new ObjectMapperContextResolver();
         r.setObjectMapper(objectMapper);
         client.register(r);
@@ -103,6 +106,7 @@ public class DatasetIntegrationTest {
     			.request()
     			.post(Entity.json(datasetToIngest2));
         assertThat(resp2.getStatus(), equalTo(200));
+    	Dataset<String> createdDataset2 = resp2.readEntity(Dataset.class);
         
         // GET //
         
@@ -131,7 +135,7 @@ public class DatasetIntegrationTest {
     			.get();
         assertThat(getResponseForSpecificProvider.getStatus(), equalTo(200));
         ResultSlice<Dataset<String>> resultSlice = getResponseForSpecificProvider.readEntity(ResultSlice.class);
-        assertThat(resultSlice.getResults().size(), greaterThan(2)); // there was 2 datasets inserted with this providerId
+        assertThat(resultSlice.getResults().size(), greaterThan(1)); // there was 2 datasets inserted with this providerId
         
         // make a get request for multiple datasets
     	Response getResponseForMultipleDatasets = client.target(BASE_URL).path(getMultipleDatasetsPathTemplate)
@@ -143,26 +147,36 @@ public class DatasetIntegrationTest {
         
         // UPDATE //
 
+        // update using filter
         Dataset<String> datasetToUpdate = new Dataset();
-        datasetToUpdate.setId(createdDataset.getId());
-        datasetToUpdate.addValue(DatasetKeys.NAME, DATASET_NAME_UPDATED);
+        datasetToUpdate.setId(createdDataset2.getId());
+        CollectionDescription cDoriginal = new CollectionDescription(COL_DESCRIPTION, "");
+        datasetToUpdate.addValue(DatasetKeys.COLLECTION_DESCRIPTION, cDoriginal);
     	
     	Response updateResponse = client.target(BASE_URL).path(updateDatasetPathTemplate)
-    			.resolveTemplate(ParamConstants.P_DATASET, createdDataset.getId())
+    			.resolveTemplate(ParamConstants.P_DATASET, createdDataset2.getId())
+    			.queryParam(ParamConstants.Q_FILTER, "description")
     			.request()
     			.put(Entity.json(datasetToUpdate));
+    	
+        assertThat(updateResponse.getStatus(), equalTo(200));
     	
     	// lets make sure the dataset has been updated
         // try to get back the updated dataset 
     	Response getUpdatedDatasetResponse = client.target(BASE_URL).path(getDatasetPathTemplate)
-    			.resolveTemplate(ParamConstants.P_DATASET, createdDataset.getId())
+    			.resolveTemplate(ParamConstants.P_DATASET, createdDataset2.getId())
     			.request()
     			.get();
 
     	Dataset<String> updatedDataset = getUpdatedDatasetResponse.readEntity(Dataset.class);
-        assertThat(updateResponse.getStatus(), equalTo(200));
-        assertThat(updatedDataset.getId(), equalTo(createdDataset.getId()));
-        assertThat(updatedDataset.getFirstValue(DatasetKeys.NAME), equalTo(DATASET_NAME_UPDATED));
+        assertThat(updatedDataset.getId(), equalTo(createdDataset2.getId()));
+        
+        CollectionDescription cDupdated = updatedDataset.getFirstValue(DatasetKeys.COLLECTION_DESCRIPTION);
+        assertThat(cDupdated, equalTo(cDupdated));
+
+        // make sure old values still remain the same
+        assertThat(datasetToIngest2.getFirstValue(DatasetKeys.COUNTRY), equalTo(updatedDataset.getFirstValue(DatasetKeys.COUNTRY)));
+        
 
         // DELETE //
         
