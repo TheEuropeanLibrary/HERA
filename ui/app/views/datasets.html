@@ -250,7 +250,7 @@
                     </div>
                     <div class="form-group" ng-repeat="format in data.data.DataFormat">
                         <div class="col-sm-5">
-                            <select class="tel-form-control form-control" ng-model="name.NameType"
+                            <select class="tel-form-control form-control"
                                     ng-options="c.value as c.label | translate for c in dataTypes"
                                     ng-if="editMode.data"
                                     ng-model="format.DataType"></select>
@@ -285,7 +285,7 @@
                     <span translate="DATASETS.PORTAL"></span>
                     <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.portal, 'fa-minus-square': accordionStatuses.portal}"></i>
                 </accordion-heading>
-                <form class="form-horizontal" name="data" novalidate>
+                <form class="form-horizontal" name="portal" novalidate>
                     <div class="form-group">
                         <label for="portal-status" class="col-sm-3 control-label" translate="DATASETS.PORTAL_STATUS"></label>
                         <div class="col-sm-9">
@@ -303,16 +303,16 @@
                     </div>
                     <div class="form-group" ng-repeat="link in data.portal.Link">
                         <div class="col-sm-5">
-                            <select class="tel-form-control form-control" ng-model="name.NameType"
+                            <select class="tel-form-control form-control"
                                     ng-options="c.value as c.label | translate for c in datasetLinkTypes"
                                     ng-if="editMode.portal"
                                     ng-model="link.LinkType"></select>
                             <p class="form-control-static" ng-if="!editMode.portal">{{ link.LinkType | translate}}</p>
                         </div>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control tel-form-control" ng-model="name.Value"
+                            <input type="text" class="form-control tel-form-control" ng-model="link.Value"
                                    ng-if="editMode.portal">
-                            <p class="form-control-static" ng-if="!editMode.portal">{{ link.Value | translate}}</p>
+                            <p class="form-control-static" ng-if="!editMode.portal">{{ link.Value }}</p>
                         </div>
                         <div class="col-sm-2">
                             <button type="button" class="tel-btn btn btn-danger" ng-click="removeLink($index)" ng-if="editMode.portal">
@@ -336,8 +336,8 @@
                             <p class="form-control-static" ng-if="!editMode.portal">{{ 'NOTE_TYPE.' + note.NoteType | translate}}</p>
                         </div>
                         <div class="col-sm-5">
-                            <textarea class="form-control tel-form-control" ng-if="editMode.portal"></textarea>
-                            <p class="form-control-static" ng-if="!editMode.portal">{{ note.Value }}</p>
+                            <textarea class="form-control tel-form-control" ng-if="editMode.portal" ng-model="note.Value"></textarea>
+                            <p class="form-control-static tel-multiline-text" ng-if="!editMode.portal">{{ note.Value }}</p>
                         </div>
                         <div class="col-sm-2">
                             <button type="button" class="tel-btn btn btn-danger" ng-click="removeNote($index)" ng-if="editMode.portal">
@@ -400,7 +400,7 @@
                         <label for="subject" class="col-sm-3 control-label" translate="DATASETS.SUBJECT"></label>
                         <div class="col-sm-9">
                             <select id="subject" class="tel-form-control form-control"
-                                    ng-options="c.value as c.label for c in licenses"
+                                    ng-options="c.value as c.label for c in subjects"
                                     ng-if="editMode.description" multiple
                                     ng-model="data.description.Subject"></select>
                             <p ng-if="!editMode.description" class="form-control-static">
@@ -457,7 +457,7 @@
                                     <span ng-bind-html="c.label | translate | highlight: $select.search"></span>
                                 </ui-select-choices>
                             </ui-select>
-                            <p class="form-control-static" ng-if="!editMode.description">{{ desc.Language }}</p>
+                            <p class="form-control-static" ng-if="!editMode.description">{{ desc.Language | translate }}</p>
                             <input class="form-control tel-form-control" ng-if="editMode.description" ng-model="desc.Value.Title">
                             <p class="form-control-static" ng-if="!editMode.description">{{ desc.Value.Title }}</p>
                         </div>
@@ -475,32 +475,32 @@
                             </button>
                         </div>
                     </div>
-                    <h4 translate="DATASETS.NOTES"></h4>
-                    <div class="form-group tel-header-group">
-                        <label class="col-sm-5 control-label" translate="DATASETS.NOTE_TYPE"></label>
-                        <label class="col-sm-5 control-label" translate="DATASETS.NOTE"></label>
-                    </div>
-                    <div class="form-group" ng-repeat="note in data.description.Note">
-                        <div class="col-sm-5">
-                            <select class="tel-form-control form-control"
-                                    ng-options="c.value as c.label for c in noteTypes"
-                                    ng-if="editMode.description"
-                                    ng-model="note.NoteType"></select>
-                            <p class="form-control-static" ng-if="!editMode.description">{{ 'NOTE_TYPE.' + note.NoteType | translate}}</p>
-                        </div>
-                        <div class="col-sm-5">
-                            <textarea class="form-control tel-form-control" ng-if="editMode.description" ng-model="note.Value"></textarea>
-                            <p class="form-control-static" ng-if="!editMode.description">{{ note.Value }}</p>
-                        </div>
-                        <div class="col-sm-2">
-                            <button type="button" class="tel-btn btn btn-danger" ng-click="removeNote($index)" ng-if="editMode.description">
-                                <i class="fa fa-minus"></i>
-                            </button>
-                            <button type="button" class="tel-btn btn btn-primary" ng-click="addNote()" ng-if="$last && editMode.description">
-                                <i class="fa fa-plus"></i>
-                            </button>
-                        </div>
-                    </div>
+                    <!--<h4 translate="DATASETS.NOTES"></h4>-->
+                    <!--<div class="form-group tel-header-group">-->
+                        <!--<label class="col-sm-5 control-label" translate="DATASETS.NOTE_TYPE"></label>-->
+                        <!--<label class="col-sm-5 control-label" translate="DATASETS.NOTE"></label>-->
+                    <!--</div>-->
+                    <!--<div class="form-group" ng-repeat="note in data.description.Note">-->
+                        <!--<div class="col-sm-5">-->
+                            <!--<select class="tel-form-control form-control"-->
+                                    <!--ng-options="c.value as c.label for c in noteTypes"-->
+                                    <!--ng-if="editMode.description"-->
+                                    <!--ng-model="note.NoteType"></select>-->
+                            <!--<p class="form-control-static" ng-if="!editMode.description">{{ 'NOTE_TYPE.' + note.NoteType | translate}}</p>-->
+                        <!--</div>-->
+                        <!--<div class="col-sm-5">-->
+                            <!--<textarea class="form-control tel-form-control" ng-if="editMode.description" ng-model="note.Value"></textarea>-->
+                            <!--<p class="form-control-static" ng-if="!editMode.description">{{ note.Value }}</p>-->
+                        <!--</div>-->
+                        <!--<div class="col-sm-2">-->
+                            <!--<button type="button" class="tel-btn btn btn-danger" ng-click="removeNote($index)" ng-if="editMode.description">-->
+                                <!--<i class="fa fa-minus"></i>-->
+                            <!--</button>-->
+                            <!--<button type="button" class="tel-btn btn btn-primary" ng-click="addNote()" ng-if="$last && editMode.description">-->
+                                <!--<i class="fa fa-plus"></i>-->
+                            <!--</button>-->
+                        <!--</div>-->
+                    <!--</div>-->
                 </form>
                 <div class="tel-panel-buttons">
                     <button class="btn btn-primary tel-btn" type="button" ng-if="!editMode.description" ng-click="toggleEditMode('description')"
