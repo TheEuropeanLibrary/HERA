@@ -74,6 +74,23 @@ angular.module("telApp")
                         .then(function (data) {
                             $scope.data[type] = data.data;
                             dataCopy = angular.copy($scope.data);
+                            if (type == "data" && !$scope.data.data.DataFormat) {
+                                $scope.data.data.DataFormat = [{}];
+                            }
+                            if (type == "portal") {
+                                if (!$scope.data.portal.Link) {
+                                    $scope.data.portal.Link = [{
+                                        LinkType: "test",
+                                        Value: "test"
+                                    }];
+                                }
+                                if (!$scope.data.portal.Note) {
+                                    $scope.data.portal.Note = [{
+                                        NoteType: "test",
+                                        Value: "test"
+                                    }];
+                                }
+                            }
                             console.log($scope.data);
                         });
                 }
@@ -119,6 +136,22 @@ angular.module("telApp")
                 $scope.data.description.Note.splice(index, 1);
             };
 
+            $scope.saveChanges = function (type) {
+                //if ($scope.parentForm[type].$valid && $scope.data[type]) {
+                Datasets.updateDataset($scope.data[type], {
+                        filter: type
+                    })
+                    .then(function () {
+                        if ($scope.parentForm[type]) {
+                            $scope.parentForm[type].$setPristine();
+                        }
+                        if ($scope.editMode[type]) {
+                            $scope.editMode[type] = false;
+                        }
+                    });
+                //}
+            };
+
             $scope.$watch("accordionStatuses", function (newVal, oldVal) {
                 var type;
                 for (type in newVal) {
@@ -160,7 +193,7 @@ angular.module("telApp")
                 $scope.dataTypes = data;
             });
 
-            telEnums.getDataTypes().then(function (data) {
+            telEnums.getPortalStatuses().then(function (data) {
                 $scope.portalStatuses = data;
             });
 
@@ -220,7 +253,6 @@ angular.module("telApp")
                     });
                     if ($scope.datasets && $scope.datasets.length) {
                         $scope.selectedDatasetId = $scope.datasets[0].id;
-                        return Datasets.getDataset($scope.selectedDatasetId);
                     }
                 });
                 //.then();
