@@ -133,7 +133,7 @@
                         <label for="appendix-received" class="col-sm-3 control-label" translate="DATASETS.REDISTRIBUTE_TERMS"></label>
                         <div class="col-sm-9">
                             <textarea ng-if="editMode.redistribute" class="tel-form-control form-control" ng-model="data.redistribute.Restriction.Terms"></textarea>
-                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.Restriction.Terms}}</p>
+                            <p ng-if="!editMode.redistribute" class="form-control-static tel-multiline-text">{{ data.redistribute.Restriction.Terms}}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -198,7 +198,7 @@
                         <div class="col-sm-9">
                             <textarea id="further-information" ng-if="editMode.redistribute"
                                       class="tel-form-control form-control" ng-model="data.redistribute.License.FurtherInformation"></textarea>
-                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.License.FurtherInformation }}</p>
+                            <p ng-if="!editMode.redistribute" class="form-control-static tel-multiline-text">{{ data.redistribute.License.FurtherInformation }}</p>
                         </div>
                     </div>
                 </form>
@@ -371,7 +371,9 @@
                                     ng-options="c.value as c.label for c in disciplines"
                                     ng-if="editMode.description" multiple
                                     ng-model="data.description.Discipline"></select>
-                            <p ng-if="!editMode.description" class="form-control-static">{{ data.description.Discipline }}</p>
+                            <p ng-if="!editMode.description" class="form-control-static">
+                                <span ng-repeat="disc in data.description.Discipline">{{ disc | translate }}, </span>
+                            </p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -389,7 +391,9 @@
                                     <div ng-bind-html="c.label | highlight: $select.search"></div>
                                 </ui-select-choices>
                             </ui-select>
-                            <p class="form-control-static" ng-if="!editMode.description">{{ name.Language | translate }}</p>
+                            <p ng-if="!editMode.description" class="form-control-static">
+                                <span ng-repeat="lang in data.description.Language">{{ lang | translate }}, </span>
+                            </p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -399,7 +403,9 @@
                                     ng-options="c.value as c.label for c in licenses"
                                     ng-if="editMode.description" multiple
                                     ng-model="data.description.Subject"></select>
-                            <p ng-if="!editMode.description" class="form-control-static">{{ data.description.Subject | translate }}</p>
+                            <p ng-if="!editMode.description" class="form-control-static">
+                                <span ng-repeat="sub in data.description.Subject">{{ sub | translate }}, </span>
+                            </p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -409,7 +415,9 @@
                                     ng-options="c.value as c.label for c in timeCoverages"
                                     ng-if="editMode.description" multiple
                                     ng-model="data.description.TimeCoverage"></select>
-                            <p ng-if="!editMode.description" class="form-control-static">{{ data.description.TimeCoverage | translate }}</p>
+                            <p ng-if="!editMode.description" class="form-control-static">
+                                <span ng-repeat="time in data.description.TimeCoverage">{{ time | translate }}, </span>
+                            </p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -419,7 +427,9 @@
                                     ng-options="c.value as c.label for c in spatialCoverages"
                                     ng-if="editMode.description" multiple
                                     ng-model="data.description.SpatialCoverage"></select>
-                            <p ng-if="!editMode.description" class="form-control-static">{{ data.description.SpatialCoverage | translate}}</p>
+                            <p ng-if="!editMode.description" class="form-control-static">
+                                <span ng-repeat="spatial in data.description.SpatialCoverage">{{ spatial | translate }}, </span>
+                            </p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -429,7 +439,9 @@
                                     ng-options="c.value as c.label for c in itemTypes"
                                     ng-if="editMode.description" multiple
                                     ng-model="data.description.ItemType"></select>
-                            <p ng-if="!editMode.description" class="form-control-static">{{ data.description.ItemType | translate }}</p>
+                            <p ng-if="!editMode.description" class="form-control-static">
+                                <span ng-repeat="item in data.description.ItemType">{{ item | translate }}, </span>
+                            </p>
                         </div>
                     </div>
                     <h4 translate="DATASETS.COLLECTION_DESCRIPTIONS"></h4>
@@ -452,7 +464,7 @@
                         <div class="col-sm-5">
                             <textarea class="form-control tel-form-control" ng-model="desc.Value.Description"
                                       ng-if="editMode.description"></textarea>
-                            <p class="form-control-static" ng-if="!editMode.description">{{ desc.Value.Description | translate}}</p>
+                            <p class="form-control-static tel-multiline-text" ng-if="!editMode.description">{{ desc.Value.Description }}</p>
                         </div>
                         <div class="col-sm-2">
                             <button type="button" class="tel-btn btn btn-danger" ng-click="removeDescription($index)" ng-if="editMode.description">

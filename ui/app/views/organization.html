@@ -268,7 +268,7 @@
                                 <div class="col-sm-9">
                                     <textarea class="tel-form-control form-control"
                                               ng-if="editMode.membership" ng-model="data.membership.Note"></textarea>
-                                    <p style="white-space: pre;" ng-if="!editMode.membership" class="form-control-static">{{ data.membership.Note }}</p>
+                                    <p ng-if="!editMode.membership" class="form-control-static tel-multiline-text">{{ data.membership.Note }}</p>
                                 </div>
                             </div>
                         </form>

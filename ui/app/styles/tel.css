@@ -1675,6 +1675,9 @@ html {
 .tel-collection-descriptions .tel-select {
   margin-bottom: 15px;
 }
+.tel-multiline-text {
+  white-space: pre-wrap;
+}
 @media (min-width: 480px) {
   .tel-navigation > li {
     width: auto;
