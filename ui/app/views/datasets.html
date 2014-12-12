@@ -451,13 +451,13 @@
                     </div>
                     <div class="form-group tel-collection-descriptions" ng-repeat="desc in data.description.CollectionDescription">
                         <div class="col-sm-5">
-                            <ui-select ng-model="desc.Language" theme="bootstrap" class="tel-select" ng-if="editMode.description">
-                                <ui-select-match>{{$select.selected.label | translate}}</ui-select-match>
-                                <ui-select-choices repeat="c.value as c in languages | filter: $select.search">
-                                    <span ng-bind-html="c.label | translate | highlight: $select.search"></span>
-                                </ui-select-choices>
-                            </ui-select>
-                            <p class="form-control-static" ng-if="!editMode.description">{{ desc.Language | translate }}</p>
+                            <!--<ui-select ng-model="desc.Language" theme="bootstrap" class="tel-select" ng-if="editMode.description">-->
+                                <!--<ui-select-match>{{$select.selected.label | translate}}</ui-select-match>-->
+                                <!--<ui-select-choices repeat="c.value as c in languages | filter: $select.search">-->
+                                    <!--<span ng-bind-html="c.label | translate | highlight: $select.search"></span>-->
+                                <!--</ui-select-choices>-->
+                            <!--</ui-select>-->
+                            <!--<p class="form-control-static" ng-if="!editMode.description">{{ desc.Language | translate }}</p>-->
                             <input class="form-control tel-form-control" ng-if="editMode.description" ng-model="desc.Value.Title">
                             <p class="form-control-static" ng-if="!editMode.description">{{ desc.Value.Title }}</p>
                         </div>
