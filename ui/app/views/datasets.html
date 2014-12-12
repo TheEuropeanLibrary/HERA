@@ -87,13 +87,13 @@
                         <div class="col-sm-9">
                             <p class="input-group" ng-if="editMode.redistribute">
                                 <input id="partnership-agreement-signed" type="text" class="tel-form-control form-control"
-                                       datepicker-popup="dd-MM-yyyy" ng-model="data.redistribute.Agreement.Signed" is-open="datepickers.partnershipAgreementSigned"
+                                       datepicker-popup="dd.MM.yyyy" ng-model="data.redistribute.Agreement.Signed" is-open="datepickers.partnershipAgreementSigned"
                                        show-button-bar="false" />
                                 <span class="tel-input-group-btn input-group-btn">
                                     <button type="button" class="tel-btn btn btn-default" ng-click="openDatepicker($event ,'partnershipAgreementSigned')"><i class="glyphicon glyphicon-calendar"></i></button>
                                 </span>
                             </p>
-                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.Agreement.Signed | date:'dd-MM-yyyy'}}</p>
+                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.Agreement.Signed | date:'dd.MM.yyyy'}}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -107,7 +107,7 @@
                                     <button type="button" class="tel-btn btn btn-default" ng-click="openDatepicker($event, 'appendixReceived')"><i class="glyphicon glyphicon-calendar"></i></button>
                                 </span>
                             </p>
-                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.Agreement.Appendix | date:'dd-MM-yyyy' }}</p>
+                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.Agreement.Appendix | date:'dd.MM.yyyy' }}</p>
                         </div>
                     </div>
                     <h4 translate="DATASETS.RESTRICTION"></h4>
@@ -147,7 +147,7 @@
                                     <button type="button" class="tel-btn btn btn-default" ng-click="openDatepicker($event ,'timeRestriction')"><i class="glyphicon glyphicon-calendar"></i></button>
                                 </span>
                             </p>
-                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.Restriction.Time | date:'dd-MM-yyyy' }}</p>
+                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.Restriction.Time | date:'dd.MM.yyyy' }}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -161,7 +161,7 @@
                                     <button type="button" class="tel-btn btn btn-default" ng-click="openDatepicker($event ,'durationOfRestriction')"><i class="glyphicon glyphicon-calendar"></i></button>
                                 </span>
                             </p>
-                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.Restriction.Duration | date:'dd-MM-yyyy' }}</p>
+                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.Restriction.Duration | date:'dd.MM.yyyy' }}</p>
                         </div>
                     </div>
                     <h4 translate="DATASETS.LICENSE"></h4>
