@@ -305,8 +305,7 @@
                         <div class="col-sm-5">
                             <select class="tel-form-control form-control"
                                     ng-options="c.value as c.label | translate for c in datasetLinkTypes"
-                                    ng-if="editMode.portal"
-                                    ng-model="link.LinkType"></select>
+                                    ng-if="editMode.portal"></select>
                             <p class="form-control-static" ng-if="!editMode.portal">{{ link.LinkType | translate}}</p>
                         </div>
                         <div class="col-sm-5">
