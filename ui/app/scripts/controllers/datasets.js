@@ -127,13 +127,13 @@ angular.module("telApp")
             };
 
             $scope.addNote = function () {
-                if ($scope.data.description.Note) {
-                    $scope.data.description.Note.push({});
+                if ($scope.data.portal.Note) {
+                    $scope.data.portal.Note.push({});
                 }
             };
 
             $scope.removeNote = function (index) {
-                $scope.data.description.Note.splice(index, 1);
+                $scope.data.portal.Note.splice(index, 1);
             };
 
             $scope.saveChanges = function (type) {
