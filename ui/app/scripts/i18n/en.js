@@ -105,7 +105,14 @@ angular
                         COLLECTION_DESCRIPTIONS: "Collection descriptions",
                         DESCRIPTION_TITLE: "Description title",
                         DESCRIPTION: "Description",
-                        DISCIPLINE: "Discipline"
+                        DISCIPLINE: "Discipline",
+                        HARVESTING: "Harvesting",
+                        HARVEST_TIME_PREF: "Harvest time pref",
+                        HARVEST_TIME_OTHER: "Harvest time other",
+                        HARVESTING_DATE: "Harvesting date",
+                        HARVESTING_UPDATE: "Harvesting update",
+                        HARVESTING_RECORDS: "Harvesting records"
+
                     },
                     LANGUAGES: {
                         "UND" : "Undetermined",

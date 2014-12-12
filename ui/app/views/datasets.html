@@ -513,4 +513,48 @@
             </accordion-group>
         </accordion>
     </div>
+    <div class="col-xs-6">
+        <accordion class="tel-accordion" close-others="false">
+            <accordion-group is-open="accordionStatuses.harvesting" class="success">
+                <accordion-heading>
+                    <span translate="DATASETS.HARVESTING"></span>
+                    <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.harvesting, 'fa-minus-square': accordionStatuses.harvesting}"></i>
+                </accordion-heading>
+                <div class="tel-table-primary">
+                    <!--<div class="tel-table-header">-->
+                    <!--<div class="tel-table-caption">-->
+                    <!--Primary Table-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <table class="table table-bordered">
+                        <tbody>
+                        <tr>
+                            <td translate="DATASETS.HARVEST_TIME_PREF"></td>
+                            <td>{{ data.harvesting.HarvestingTime }}</td>
+                        </tr>
+                        <tr>
+                            <td translate="DATASETS.HARVEST_TIME_OTHER"></td>
+                            <td>{{ data.harvesting.HarvestingTimeOther }}</td>
+                        </tr>
+                        <tr>
+                            <td translate="DATASETS.HARVESTING_DATE"></td>
+                            <td>{{ data.harvesting.HarvestingDate | date:"dd-MM-yyyy" }}</td>
+                        </tr>
+                        <tr>
+                            <td translate="DATASETS.HARVESTING_UPDATE"></td>
+                            <td>{{ data.harvesting.HarvestingUpdate | date:"dd-MM-yyyy" }}</td>
+                        </tr>
+                        <tr>
+                            <td translate="DATASETS.HARVESTING_RECORDS"></td>
+                            <td>{{ data.harvesting.HarvestedRecords }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="tel-table-footer clearfix">
+                        <a href="#" class="btn btn-primary pull-right" translate="DATASETS.HARVESTING"></a>
+                    </div>
+                </div>
+            </accordion-group>
+        </accordion>
+    </div>
 </div>

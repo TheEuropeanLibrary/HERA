@@ -148,6 +148,7 @@ angular.module("telApp")
                         if ($scope.editMode[type]) {
                             $scope.editMode[type] = false;
                         }
+                        $scope.getData(type);
                     });
                 //}
             };

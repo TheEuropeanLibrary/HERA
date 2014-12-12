@@ -269,8 +269,8 @@
                         <label class="col-sm-3 control-label" translate="ORGANISATIONS.NOTES"></label>
                         <div class="col-sm-9">
                             <textarea class="tel-form-control form-control"
-                                      ng-if="editMode.membership" ng-model="data.membership.Note"></textarea>
-                            <p ng-if="!editMode.membership" class="form-control-static tel-multiline-text">{{ data.membership.Note }}</p>
+                                      ng-if="editMode.membership" ng-model="data.membership.Note[0]"></textarea>
+                            <p ng-if="!editMode.membership" class="form-control-static tel-multiline-text">{{ data.membership.Note[0] }}</p>
                         </div>
                     </div>
                 </form>
