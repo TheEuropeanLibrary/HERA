@@ -579,12 +579,16 @@ html {
   outline: 0 none;
   text-decoration: none;
 }
-.tel-accordion .panel-group .panel .panel-heading h4 a .accordion-status {
+.tel-accordion .panel-group .panel .panel-heading h4 a .accordion-status.fa {
   font-size: 10px;
   line-height: 36px;
+  margin-right: 0;
   position: absolute;
   top: 3px;
   right: 15px;
+}
+.tel-accordion .panel-group .panel .panel-heading h4 a .fa {
+  margin-right: 5px;
 }
 .tel-accordion .panel-group .panel .panel-body {
   padding: 20px;
