@@ -1675,6 +1675,7 @@ html {
 .tel-input-group-btn.input-group-btn .btn.tel-btn {
   padding-top: 8px;
   padding-bottom: 8px;
+  height: 34px;
 }
 .tel-collection-descriptions .tel-select {
   margin-bottom: 15px;
