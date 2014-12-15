@@ -15,7 +15,6 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 import org.theeuropeanlibrary.hera.rest.administration.service.memory.MemoryDatasetService;
 import org.theeuropeanlibrary.maia.common.definitions.Dataset;
@@ -70,7 +69,6 @@ public class DatasetsResource {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @PreAuthorize("isAuthenticated()")
     public Response createDataSet(@QueryParam(Q_PROVIDER) String providerId, Dataset<String> dataset) {
 
         ParamUtil.require("dataset", dataset);

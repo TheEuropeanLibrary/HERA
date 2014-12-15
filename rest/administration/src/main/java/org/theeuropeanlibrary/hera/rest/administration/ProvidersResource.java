@@ -63,7 +63,6 @@ public class ProvidersResource {
      */
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @PreAuthorize("isAuthenticated()")
     @POST
     public Response createProvider(Provider<String> provider)
             throws ProviderAlreadyExistsException {
