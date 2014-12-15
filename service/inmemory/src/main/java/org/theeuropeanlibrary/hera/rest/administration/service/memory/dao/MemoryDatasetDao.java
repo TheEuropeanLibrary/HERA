@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.Set;
 
 import org.theeuropeanlibrary.maia.common.definitions.Dataset;
+import org.theeuropeanlibrary.maia.common.filter.EntityFilter;
+import org.theeuropeanlibrary.maia.tel.model.dataset.DatasetRegistry;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Lists;
@@ -21,7 +23,10 @@ import com.google.common.collect.Multimap;
  * @since 10.11.2014
  */
 public class MemoryDatasetDao {
-	
+
+	/** Returns a simplified view of a Dataset */
+	EntityFilter<String, Dataset<String>> simpleDatasetFilter = DatasetRegistry.getInstance().getFilterFactory().getFilterForName("simple");
+
 	private Map<String, Dataset<String>> datasetsByDatasetId = Maps.newHashMap();
 	private Multimap<String, Dataset<String>> datasetsByProviderId = ArrayListMultimap.create();
 
@@ -66,7 +71,10 @@ public class MemoryDatasetDao {
 		Iterator<Dataset<String>> i = datasetsByDatasetId.values().iterator();
 		int count = 0;
 		while(count < numberOfDatasets && i.hasNext()) {
-			datasetsToReturn.add(i.next());
+
+			Dataset<String> currentDataset = i.next();
+			currentDataset = simpleDatasetFilter.filter(currentDataset);
+			datasetsToReturn.add(currentDataset);
 			count++;
 		}
 		return datasetsToReturn;

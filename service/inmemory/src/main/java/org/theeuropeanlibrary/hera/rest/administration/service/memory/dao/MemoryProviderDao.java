@@ -19,7 +19,8 @@ import com.google.common.collect.Maps;
  * @since 10.11.2014
  */
 public class MemoryProviderDao {
-	
+
+	/** Returns a simplified view of a Provider */
 	EntityFilter<String, Provider<String>> providersFilter = ProviderRegistry.getInstance().getFilterFactory().getFilterForName("simple");
 
 	private Map<String, Provider<String>> providers = Maps.newHashMap();
