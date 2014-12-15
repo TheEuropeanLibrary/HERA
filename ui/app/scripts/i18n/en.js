@@ -116,8 +116,11 @@ angular
                         INGESTION_TYPE: "Ingestion type",
                         LAST_INGESTION_DATE: "Last ingestion date",
                         LAST_INGESTION_NUMBER: "Last ingestion number",
-                        INGESTION: "Ingestion"
-
+                        INGESTION: "Ingestion",
+                        STATISTICS: "Statistics",
+                        STATISTICS_TYPE: "Statistics type",
+                        STATISTICS_STATUS: "Status",
+                        DETAILS_LINK: "Details link"
                     },
                     LANGUAGES: {
                         "UND" : "Undetermined",

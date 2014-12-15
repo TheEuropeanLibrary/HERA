@@ -601,6 +601,35 @@
                     </div>
                 </div>
             </accordion-group>
+            <accordion-group is-open="accordionStatuses.statistic" class="success">
+                <accordion-heading>
+                    <span translate="DATASETS.STATISTICS"></span>
+                    <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.statistic, 'fa-minus-square': accordionStatuses.statistic}"></i>
+                </accordion-heading>
+                <div class="tel-table-primary">
+                    <div class="tel-datasets-table-container">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th translate="DATASETS.STATISTICS_TYPE"></th>
+                                <th translate="DATASETS.STATISTICS_STATUS"></th>
+                                <th translate="DATASETS.DETAILS_LINK"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="data in data.statistic.Statistic">
+                                <td>{{ data.Value.Type | translate}}</td>
+                                <td>{{ data.Value.Status | date: "dd.MM.yyyy" }}</td>
+                                <td>{{ data.Value.Url }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tel-table-footer clearfix">
+                        <a href="#" class="btn btn-primary pull-right" translate="DATASETS.STATISTICS"></a>
+                    </div>
+                </div>
+            </accordion-group>
         </accordion>
     </div>
 </div>
