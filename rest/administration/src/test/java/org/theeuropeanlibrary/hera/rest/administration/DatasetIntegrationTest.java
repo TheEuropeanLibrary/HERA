@@ -14,12 +14,15 @@ import org.glassfish.jersey.client.authentication.HttpAuthenticationFeature;
 import org.junit.Before;
 import org.junit.Test;
 import org.theeuropeanlibrary.hera.rest.administration.utils.HardcodedExamplesUtil;
+import org.theeuropeanlibrary.maia.common.Entity.QualifiedValue;
 import org.theeuropeanlibrary.maia.common.converter.ConverterException;
 import org.theeuropeanlibrary.maia.common.definitions.Dataset;
 import org.theeuropeanlibrary.maia.converter.json.DatasetEntityJsonConverter;
 import org.theeuropeanlibrary.maia.converter.json.EntityObjectMapper;
+import org.theeuropeanlibrary.maia.tel.model.common.qualifier.Language;
 import org.theeuropeanlibrary.maia.tel.model.dataset.DatasetKeys;
 import org.theeuropeanlibrary.maia.tel.model.dataset.DatasetRegistry;
+import org.theeuropeanlibrary.maia.tel.model.dataset.definitions.LinkType;
 import org.theeuropeanlibrary.maia.tel.model.dataset.definitions.descriptions.CollectionDescription;
 import org.theeuropeanlibrary.maia.tel.model.provider.ProviderRegistry;
 
@@ -38,9 +41,9 @@ public class DatasetIntegrationTest {
     private final static String DATASET_NAME_UPDATED = "DATASET_SIMON_UPDATED_TO_lollipop";
 
     private final static String PROVIDER_ID = "PROVIDER_ID";
-    
-    private final static String COL_DESCRIPTION = "COLLECTION";
-    private final static String COL_DESCRIPTION_UPDATED = "COLLECTION_UPDATED";
+
+    private final static String COL_TITLE = "COLLECTION_TITLE";
+    private final static String COL_DESCRIPTION = "COLLECTION_DESCRIPTION";
     
 	private EntityObjectMapper objectMapper;
 	
@@ -75,7 +78,7 @@ public class DatasetIntegrationTest {
      * Create / Get / Update / Delete
      */
 //TODO: this works but requires a running instance
-//    @Test
+    @Test
     public void fullDatasetIntegrationTest() throws ConverterException {
     	
     	// first dataset is a super simple example
@@ -115,6 +118,7 @@ public class DatasetIntegrationTest {
     			.resolveTemplate(ParamConstants.P_DATASET, createdDataset.getId())
     			.request()
     			.get();
+    	
 
     	Dataset<String> getDataset = getResponse.readEntity(Dataset.class);
         assertThat(getResponse.getStatus(), equalTo(200));
@@ -147,12 +151,15 @@ public class DatasetIntegrationTest {
         
         // UPDATE //
 
-        // update using filter
+        // update using filter "description"
         Dataset<String> datasetToUpdate = new Dataset();
         datasetToUpdate.setId(createdDataset2.getId());
-        CollectionDescription cDoriginal = new CollectionDescription(COL_DESCRIPTION, "");
-        datasetToUpdate.addValue(DatasetKeys.COLLECTION_DESCRIPTION, cDoriginal);
-    	
+        CollectionDescription cDoriginal = new CollectionDescription(COL_TITLE, COL_DESCRIPTION);
+        datasetToUpdate.addValue(DatasetKeys.COLLECTION_DESCRIPTION, cDoriginal, Language.AAR);
+        
+        String encodedDataset = converter.encode(datasetToUpdate);
+        System.out.println(encodedDataset);
+        
     	Response updateResponse = client.target(BASE_URL).path(updateDatasetPathTemplate)
     			.resolveTemplate(ParamConstants.P_DATASET, createdDataset2.getId())
     			.queryParam(ParamConstants.Q_FILTER, "description")
@@ -172,11 +179,42 @@ public class DatasetIntegrationTest {
         assertThat(updatedDataset.getId(), equalTo(createdDataset2.getId()));
         
         CollectionDescription cDupdated = updatedDataset.getFirstValue(DatasetKeys.COLLECTION_DESCRIPTION);
-        assertThat(cDupdated, equalTo(cDupdated));
+        assertThat(cDupdated, equalTo(cDoriginal));
 
         // make sure old values still remain the same
         assertThat(datasetToIngest2.getFirstValue(DatasetKeys.COUNTRY), equalTo(updatedDataset.getFirstValue(DatasetKeys.COUNTRY)));
         
+        // update using filter "portal"
+        Dataset<String> datasetToUpdate2 = new Dataset();
+        datasetToUpdate2.setId(createdDataset2.getId());
+        String oriniginalLink = "www.itsfriday.com";
+        datasetToUpdate2.addValue(DatasetKeys.LINK, oriniginalLink, LinkType.ACCESS);
+        
+    	Response updateResponse2 = client.target(BASE_URL).path(updateDatasetPathTemplate)
+    			.resolveTemplate(ParamConstants.P_DATASET, createdDataset2.getId())
+    			.queryParam(ParamConstants.Q_FILTER, "portal")
+    			.request()
+    			.put(Entity.json(datasetToUpdate2));
+    	
+        assertThat(updateResponse2.getStatus(), equalTo(200));
+    	
+    	// lets make sure the dataset has been updated
+        // try to get back the updated dataset
+    	Response getUpdatedDatasetResponse2 = client.target(BASE_URL).path(getDatasetPathTemplate)
+    			.resolveTemplate(ParamConstants.P_DATASET, createdDataset2.getId())
+    			.request()
+    			.get();
+
+    	Dataset<String> updatedDataset2 = getUpdatedDatasetResponse2.readEntity(Dataset.class);
+        assertThat(updatedDataset.getId(), equalTo(createdDataset2.getId()));
+        
+        String linkUpdated = updatedDataset2.getFirstValue(DatasetKeys.LINK);
+        QualifiedValue<String> firstQualifiedValue = updatedDataset2.getFirstQualifiedValue(DatasetKeys.LINK);
+        assertThat(firstQualifiedValue.getQualifier(LinkType.class), equalTo(LinkType.ACCESS));
+        assertThat(linkUpdated, equalTo(oriniginalLink));
+
+        // make sure old values still remain the same
+        assertThat(datasetToIngest2.getFirstValue(DatasetKeys.COUNTRY), equalTo(updatedDataset.getFirstValue(DatasetKeys.COUNTRY)));
 
         // DELETE //
         

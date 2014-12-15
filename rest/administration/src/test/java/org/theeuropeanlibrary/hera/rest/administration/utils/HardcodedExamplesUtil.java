@@ -3,6 +3,8 @@ package org.theeuropeanlibrary.hera.rest.administration.utils;
 import org.theeuropeanlibrary.maia.common.definitions.Dataset;
 import org.theeuropeanlibrary.maia.common.definitions.Provider;
 import org.theeuropeanlibrary.maia.tel.model.common.Coordinate;
+import org.theeuropeanlibrary.maia.tel.model.common.EntityRelation;
+import org.theeuropeanlibrary.maia.tel.model.common.PortalStatus;
 import org.theeuropeanlibrary.maia.tel.model.common.qualifier.Country;
 import org.theeuropeanlibrary.maia.tel.model.common.qualifier.Language;
 import org.theeuropeanlibrary.maia.tel.model.common.qualifier.NameType;
@@ -13,10 +15,14 @@ import org.theeuropeanlibrary.maia.tel.model.dataset.definitions.DataType;
 import org.theeuropeanlibrary.maia.tel.model.dataset.definitions.DatasetType;
 import org.theeuropeanlibrary.maia.tel.model.dataset.definitions.DigitisationStatus;
 import org.theeuropeanlibrary.maia.tel.model.dataset.definitions.DistributionFormat;
+import org.theeuropeanlibrary.maia.tel.model.dataset.definitions.IngestionNumber;
 import org.theeuropeanlibrary.maia.tel.model.dataset.definitions.IngestionStatus;
+import org.theeuropeanlibrary.maia.tel.model.dataset.definitions.IngestionUpdate;
 import org.theeuropeanlibrary.maia.tel.model.dataset.definitions.License;
 import org.theeuropeanlibrary.maia.tel.model.dataset.definitions.LicenseType;
+import org.theeuropeanlibrary.maia.tel.model.dataset.definitions.NoteType;
 import org.theeuropeanlibrary.maia.tel.model.dataset.definitions.Restriction;
+import org.theeuropeanlibrary.maia.tel.model.dataset.definitions.Statistic;
 import org.theeuropeanlibrary.maia.tel.model.dataset.definitions.descriptions.CollectionDescription;
 import org.theeuropeanlibrary.maia.tel.model.dataset.definitions.descriptions.Discipline;
 import org.theeuropeanlibrary.maia.tel.model.dataset.definitions.descriptions.ItemType;
@@ -28,22 +34,20 @@ import org.theeuropeanlibrary.maia.tel.model.provider.definitions.Address;
 import org.theeuropeanlibrary.maia.tel.model.provider.definitions.ConsortiumType;
 import org.theeuropeanlibrary.maia.tel.model.provider.definitions.ContactRelation;
 import org.theeuropeanlibrary.maia.tel.model.provider.definitions.DatasetRelation;
-import org.theeuropeanlibrary.maia.tel.model.provider.definitions.EntityRelation;
 import org.theeuropeanlibrary.maia.tel.model.provider.definitions.LibraryOrganization;
 import org.theeuropeanlibrary.maia.tel.model.provider.definitions.LinkType;
 import org.theeuropeanlibrary.maia.tel.model.provider.definitions.MembershipType;
-import org.theeuropeanlibrary.maia.tel.model.provider.definitions.PortalStatus;
 import org.theeuropeanlibrary.maia.tel.model.provider.definitions.ProviderType;
 
 public class HardcodedExamplesUtil {
 
     public static Dataset<String> createDatasets() {
+    	
         Dataset<String> dataset = new Dataset<>();
         dataset.setId("a0037");
 
         dataset.addValue(DatasetKeys.IDENTIFIER, "a0037");
         dataset.addValue(DatasetKeys.NAME, "British Library integrated catalogue - Online catalogues of printed and electronic resources", NameType.MAIN, Language.ENG);
-        dataset.addValue(DatasetKeys.LANGUAGE, Language.ENG);
         dataset.addValue(DatasetKeys.COUNTRY, Country.GB);
         dataset.addValue(DatasetKeys.INGESTION_STATUS, IngestionStatus.PUBLISH);
         dataset.addValue(DatasetKeys.DATASET_TYPE, DatasetType.CATALOGUE);
@@ -68,6 +72,10 @@ public class HardcodedExamplesUtil {
         license.setDistribution(LicenseType.BY);
         license.setFurtherInformation("BLA");
         dataset.addValue(DatasetKeys.LICENSE, license);
+        
+        dataset.addValue(DatasetKeys.PORTAL_STATUS, PortalStatus.LIVE);
+        dataset.addValue(DatasetKeys.LINK, "http://www.theeuropeanlibrary.org/tel4/collection/a0037", org.theeuropeanlibrary.maia.tel.model.dataset.definitions.LinkType.ACCESS);
+        dataset.addValue(DatasetKeys.NOTE, "Limited access", NoteType.ACCESS_RIGHTS);
 
         dataset.addValue(DatasetKeys.DIGITISATION_STATUS, DigitisationStatus.PARTIALLY_DIGITISED);
         dataset.addValue(DatasetKeys.EXPECTED_RECORDS, "13000000");
@@ -80,13 +88,35 @@ public class HardcodedExamplesUtil {
         dataset.addValue(DatasetKeys.TIME_COVERAGE, TimeCoverage.RENAISSANCE);
         dataset.addValue(DatasetKeys.SPATIAL_COVERAGE, SpatialCoverage.PARIS);
         dataset.addValue(DatasetKeys.ITEM_TYPE, ItemType.BLUE_PRINT);
-        dataset.addValue(DatasetKeys.COLLECTION_DESCRIPTION, new CollectionDescription("Title", "KatNUK je glavni katalog naše knjižnice in je hkrati"
-        		+ " največji katalog posamezne knjižnice v Sloveniji. Obsega več kot 900.000 bibliografskih zapisov, ki predstavljajo: "
-        		+ "gradivo, ki ga knjižnica tekoče pridobiva od leta 1988; za obdobje 1774-1948 samo popis knjig in vse gradivo,"
-        		+ " ki ga je knjižnica pridobila v obdobju od 1948-1987. V katalogu so popisane monografske publikacije,"
-        		+ " novejše periodične publikacije in članki iz slovenskih strokovnih časnikov in revij"
-        		+ " (tekoče se popisujejo od leta 1990)"), Language.ENG);
-   
+        dataset.addValue(DatasetKeys.COLLECTION_DESCRIPTION, new CollectionDescription("Title", "KatNUK je glavni katalog naše knjižnice in je hkrati največji katalog posamezne knjižnice v Sloveniji. Obsega več kot 900.000 bibliografskih zapisov, ki predstavljajo: gradivo, ki ga knjižnica tekoče pridobiva od leta 1988; za obdobje 1774-1948 samo popis knjig in vse gradivo, ki ga je knjižnica pridobila v obdobju od 1948-1987. V katalogu so popisane monografske publikacije, novejše periodične publikacije in članki iz slovenskih strokovnih časnikov in revij (tekoče se popisujejo od leta 1990)"), Language.ENG);
+
+        dataset.addValue(DatasetKeys.HARVESTING_TIME, "Other");
+        dataset.addValue(DatasetKeys.HARVESTING_TIME_OTHER, "Weekly");
+        dataset.addValue(DatasetKeys.HARVESTING_DATE, "01-01-2012");
+        dataset.addValue(DatasetKeys.HARVESTING_UPDATE, "01-01-2014");
+        dataset.addValue(DatasetKeys.HARVESTING_RECORDS, "1000000");
+
+        dataset.addValue(DatasetKeys.INGESTION_NUMBER, new IngestionNumber("Loading", "1000000"));
+        dataset.addValue(DatasetKeys.INGESTION_NUMBER, new IngestionNumber("Indexing", "1000000"));
+        dataset.addValue(DatasetKeys.INGESTION_UPDATE, new IngestionUpdate("Loading", "01-01-2014", "5000"));
+        dataset.addValue(DatasetKeys.INGESTION_UPDATE, new IngestionUpdate("Indexing", "01-01-2014", "5000"));
+
+        dataset.addValue(DatasetKeys.STATISTIC, new Statistic("EDM", "01-01-2014", "5000"));
+
+        dataset.addValue(DatasetKeys.AGGREGATION_DATE, "01-01-2012");
+        dataset.addValue(DatasetKeys.AGGREGATION_UPDATE, "01-01-2014");
+        dataset.addValue(DatasetKeys.EUROPEANA_ID, "91209312");
+        dataset.addValue(DatasetKeys.EUROPEANA_RECORDS, "1000000");
+        dataset.addValue(DatasetKeys.DIGITISED_CONTENT_RIGHTS, "CC0");
+        dataset.addValue(DatasetKeys.EUROPEANA_DELIVERY_DATE, "01-01-2014");
+
+        dataset.addValue(DatasetKeys.PROJECT, new EntityRelation("31", "EC1914"));
+
+        dataset.addValue(DatasetKeys.TASK, new EntityRelation("132", "Update Information"));
+
+        dataset.addValue(DatasetKeys.TICKET, new EntityRelation("132", "Synchronization on portal doesn't work!"));
+
+        dataset.addValue(DatasetKeys.SUBSET, new EntityRelation("132", "a0037_a"));
         return dataset;
     }
     
