@@ -630,6 +630,97 @@
                     </div>
                 </div>
             </accordion-group>
+            <accordion-group is-open="accordionStatuses.project" class="success">
+                <accordion-heading>
+                    <span translate="DATASETS.PROJECTS"></span>
+                    <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.project, 'fa-minus-square': accordionStatuses.project}"></i>
+                </accordion-heading>
+                <div class="tel-table-primary">
+                    <div class="tel-datasets-table-container">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th translate="DATASETS.PROJECT_NAME"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="data in data.project.Project">
+                                <td>{{ data.Value.Name }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tel-table-footer clearfix">
+                        <a href="#" class="btn btn-primary pull-right" translate="DATASETS.ADD_PROJECT"></a>
+                    </div>
+                </div>
+            </accordion-group>
+            <accordion-group is-open="accordionStatuses.subset" class="success">
+                <accordion-heading>
+                    <span translate="DATASETS.SUBSETS"></span>
+                    <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.subset, 'fa-minus-square': accordionStatuses.subset}"></i>
+                </accordion-heading>
+                <div class="tel-table-primary">
+                    <div class="tel-datasets-table-container">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th translate="DATASETS.SUBSET_NAME"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="data in data.subset.Subset">
+                                <td>{{ data.Value.Name }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tel-table-footer clearfix">
+                        <a href="#" class="btn btn-primary pull-right" translate="DATASETS.ADD_SUBSET"></a>
+                    </div>
+                </div>
+            </accordion-group>
+            <accordion-group is-open="accordionStatuses.ticket" class="success">
+                <accordion-heading>
+                    <span translate="DATASETS.TICKETS"></span>
+                    <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.ticket, 'fa-minus-square': accordionStatuses.ticket}"></i>
+                </accordion-heading>
+                <ul class="tel-ticket-list">
+                    <li class="tel-ticket" ng-repeat="ticket in data.ticket.Ticket">
+                        <span class="label label-success pull-right">Completed</span>
+                        <a class="ticket-title" title="" href="#"> {{ ticket.Value.Name }} <span>[#201798]</span></a>
+                        <span class="ticket-info">
+                            Opened by <a title="" href="#">Timothy Owens</a> today
+                        </span>
+                    </li>
+                    <li class="tel-ticket" ng-repeat="ticket in data.ticket.Ticket">
+                        <span class="label label-success pull-right">Completed</span>
+                        <a class="ticket-title" title="" href="#"> {{ ticket.Value.Name }} <span>[#201798]</span></a>
+                        <span class="ticket-info">
+                            Opened by <a title="" href="#">Timothy Owens</a> today
+                        </span>
+                    </li>
+                </ul>
+                <!--<div class="tel-table-primary">-->
+                    <!--<div class="tel-datasets-table-container">-->
+                        <!--<table class="table table-bordered">-->
+                            <!--<thead>-->
+                            <!--<tr>-->
+                                <!--<th translate="DATASETS.TICKET_NAME"></th>-->
+                            <!--</tr>-->
+                            <!--</thead>-->
+                            <!--<tbody>-->
+                            <!--<tr ng-repeat="data in data.subset.Tickets">-->
+                                <!--<td>{{ data.Value.Name }}</td>-->
+                            <!--</tr>-->
+                            <!--</tbody>-->
+                        <!--</table>-->
+                    <!--</div>-->
+                    <!--<div class="tel-table-footer clearfix">-->
+                        <!--<a href="#" class="btn btn-primary pull-right" translate="DATASETS.ADD_SUBSET"></a>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </accordion-group>
         </accordion>
     </div>
 </div>

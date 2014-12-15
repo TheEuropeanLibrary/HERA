@@ -120,7 +120,14 @@ angular
                         STATISTICS: "Statistics",
                         STATISTICS_TYPE: "Statistics type",
                         STATISTICS_STATUS: "Status",
-                        DETAILS_LINK: "Details link"
+                        DETAILS_LINK: "Details link",
+                        PROJECTS: "Projects",
+                        ADD_PROJECT: "Add project",
+                        PROJECT_NAME: "Project name",
+                        SUBSETS: "Subsets",
+                        SUBSET_NAME: "Subset name",
+                        ADD_SUBSET: "Add subset",
+                        TICKETS: "Tickets"
                     },
                     LANGUAGES: {
                         "UND" : "Undetermined",
