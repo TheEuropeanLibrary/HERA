@@ -111,7 +111,12 @@ angular
                         HARVEST_TIME_OTHER: "Harvest time other",
                         HARVESTING_DATE: "Harvesting date",
                         HARVESTING_UPDATE: "Harvesting update",
-                        HARVESTING_RECORDS: "Harvesting records"
+                        HARVESTING_RECORDS: "Harvesting records",
+                        TOTAL_NUMBER: "Total number",
+                        INGESTION_TYPE: "Ingestion type",
+                        LAST_INGESTION_DATE: "Last ingestion date",
+                        LAST_INGESTION_NUMBER: "Last ingestion number",
+                        INGESTION: "Ingestion"
 
                     },
                     LANGUAGES: {

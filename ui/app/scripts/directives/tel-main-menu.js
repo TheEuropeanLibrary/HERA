@@ -31,6 +31,7 @@ angular.module("telApp")
                                     });
                             }
                         } else {
+                            $this.next().css("opacity", 1);
                             if ($this.parent().hasClass("tel-dropdown-open")) {
                                 $this.next().slideDown();
                             } else {
