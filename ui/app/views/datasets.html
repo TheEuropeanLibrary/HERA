@@ -554,6 +554,53 @@
                     </div>
                 </div>
             </accordion-group>
+            <accordion-group is-open="accordionStatuses.ingestion" class="success">
+                <accordion-heading>
+                    <span translate="DATASETS.INGESTION"></span>
+                    <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.ingestion, 'fa-minus-square': accordionStatuses.ingestion}"></i>
+                </accordion-heading>
+                <div class="tel-table-primary">
+                    <div class="tel-datasets-table-container">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th translate="DATASETS.DATA_TYPE"></th>
+                                <th translate="DATASETS.TOTAL_NUMBER"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="data in data.ingestion.IngestionNumber">
+                                <td>{{ data.Value.Type | translate}}</td>
+                                <td>{{ data.Value.Number }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tel-table-primary">
+                    <div class="tel-datasets-table-container">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th translate="DATASETS.INGESTION_TYPE"></th>
+                                <th translate="DATASETS.LAST_INGESTION_DATE"></th>
+                                <th translate="DATASETS.LAST_INGESTION_NUMBER"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="data in data.ingestion.IngestionUpdate">
+                                <td>{{ data.Value.Type | translate}}</td>
+                                <td>{{ data.Value.Date | date: "dd.MM.yyyy" }}</td>
+                                <td>{{ data.Value.Number }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tel-table-footer clearfix">
+                        <a href="#" class="btn btn-primary pull-right" translate="DATASETS.INGESTION"></a>
+                    </div>
+                </div>
+            </accordion-group>
         </accordion>
     </div>
 </div>
