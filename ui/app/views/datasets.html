@@ -254,7 +254,7 @@
                                     ng-options="c.value as c.label | translate for c in dataTypes"
                                     ng-if="editMode.data"
                                     ng-model="format.DataType"></select>
-                            <p class="form-control-static" ng-if="!editMode.data">{{ format.DataType | translate }}</p>
+                            <p class="form-control-static" ng-if="!editMode.data">{{ 'DATA_TYPE.' + format.DataType | translate }}</p>
                         </div>
                         <div class="col-sm-5">
                             <input type="text" class="form-control tel-form-control"
@@ -303,10 +303,10 @@
                     </div>
                     <div class="form-group" ng-repeat="link in data.portal.Link">
                         <div class="col-sm-5">
-                            <select class="tel-form-control form-control"
+                            <select class="tel-form-control form-control" ng-model="link.LinkType"
                                     ng-options="c.value as c.label | translate for c in datasetLinkTypes"
                                     ng-if="editMode.portal"></select>
-                            <p class="form-control-static" ng-if="!editMode.portal">{{ link.LinkType | translate}}</p>
+                            <p class="form-control-static" ng-if="!editMode.portal">{{ 'DATASET_LINK_TYPE.' + link.LinkType | translate}}</p>
                         </div>
                         <div class="col-sm-5">
                             <input type="text" class="form-control tel-form-control" ng-model="link.Value"
@@ -329,7 +329,7 @@
                     </div>
                     <div class="form-group" ng-repeat="note in data.portal.Note">
                         <div class="col-sm-5">
-                            <select class="tel-form-control form-control"
+                            <select class="tel-form-control form-control" ng-model="note.NoteType"
                                     ng-options="c.value as c.label | translate for c in noteTypes"
                                     ng-if="editMode.portal"></select>
                             <p class="form-control-static" ng-if="!editMode.portal">{{ 'NOTE_TYPE.' + note.NoteType | translate}}</p>
@@ -450,13 +450,13 @@
                     </div>
                     <div class="form-group tel-collection-descriptions" ng-repeat="desc in data.description.CollectionDescription">
                         <div class="col-sm-5">
-                            <!--<ui-select ng-model="desc.Language" theme="bootstrap" class="tel-select" ng-if="editMode.description">-->
-                                <!--<ui-select-match>{{$select.selected.label | translate}}</ui-select-match>-->
-                                <!--<ui-select-choices repeat="c.value as c in languages | filter: $select.search">-->
-                                    <!--<span ng-bind-html="c.label | translate | highlight: $select.search"></span>-->
-                                <!--</ui-select-choices>-->
-                            <!--</ui-select>-->
-                            <!--<p class="form-control-static" ng-if="!editMode.description">{{ desc.Language | translate }}</p>-->
+                            <ui-select ng-model="desc.Language" theme="bootstrap" class="tel-select" ng-if="editMode.description">
+                                <ui-select-match>{{$select.selected.label | translate}}</ui-select-match>
+                                <ui-select-choices repeat="c.value as c in languages | filter: $select.search">
+                                    <span ng-bind-html="c.label | translate | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                            <p class="form-control-static" ng-if="!editMode.description">{{ 'LANGUAGES.' + desc.Language | translate }}</p>
                             <input class="form-control tel-form-control" ng-if="editMode.description" ng-model="desc.Value.Title">
                             <p class="form-control-static" ng-if="!editMode.description">{{ desc.Value.Title }}</p>
                         </div>
