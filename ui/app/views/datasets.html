@@ -30,7 +30,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label" translate="DATASETS.IDENTIFIER"></label>
                         <div class="col-sm-9">
-                            <p class="form-control-static">{{data.general.Identifier}}</p>
+                            <p class="form-control-static tel-form-control-static">{{data.general.Identifier}}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -40,7 +40,7 @@
                                     ng-options="c.value as c.label for c in datasetTypes"
                                     ng-if="editMode.general"
                                     ng-model="data.general.DatasetType"></select>
-                            <p ng-if="!editMode.general" class="form-control-static">{{ 'DATASET_TYPE.' + data.general.DatasetType | translate}}</p>
+                            <p ng-if="!editMode.general" class="form-control-static tel-form-control-static">{{ 'DATASET_TYPE.' + data.general.DatasetType | translate}}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -50,7 +50,7 @@
                                     ng-options="c.value as c.label for c in ingestionStatuses"
                                     ng-if="editMode.general"
                                     ng-model="data.general.IngestionStatus"></select>
-                            <p ng-if="!editMode.general" class="form-control-static">{{ 'INGESTION_STATUS.' + data.general.IngestionStatus | translate}}</p>
+                            <p ng-if="!editMode.general" class="form-control-static tel-form-control-static">{{ 'INGESTION_STATUS.' + data.general.IngestionStatus | translate}}</p>
                         </div>
                     </div>
                 </form>
@@ -79,7 +79,7 @@
                                     ng-options="c.value as c.label for c in agreementStatuses"
                                     ng-if="editMode.redistribute"
                                     ng-model="data.redistribute.Agreement.Status"></select>
-                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.Agreement.Status | translate }}</p>
+                            <p ng-if="!editMode.redistribute" class="form-control-static tel-form-control-static">{{ data.redistribute.Agreement.Status | translate }}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -93,7 +93,7 @@
                                     <button type="button" class="tel-btn btn btn-default" ng-click="openDatepicker($event ,'partnershipAgreementSigned')"><i class="glyphicon glyphicon-calendar"></i></button>
                                 </span>
                             </p>
-                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.Agreement.Signed | date:'dd.MM.yyyy'}}</p>
+                            <p ng-if="!editMode.redistribute" class="form-control-static tel-form-control-static">{{ data.redistribute.Agreement.Signed | date:'dd.MM.yyyy'}}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -107,7 +107,7 @@
                                     <button type="button" class="tel-btn btn btn-default" ng-click="openDatepicker($event, 'appendixReceived')"><i class="glyphicon glyphicon-calendar"></i></button>
                                 </span>
                             </p>
-                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.Agreement.Appendix | date:'dd.MM.yyyy' }}</p>
+                            <p ng-if="!editMode.redistribute" class="form-control-static tel-form-control-static">{{ data.redistribute.Agreement.Appendix | date:'dd.MM.yyyy' }}</p>
                         </div>
                     </div>
                     <h4 translate="DATASETS.RESTRICTION"></h4>
@@ -118,7 +118,7 @@
                                     ng-options="c.value as c.label for c in distributionFormats"
                                     ng-if="editMode.redistribute"
                                     ng-model="data.redistribute.Restriction.Format"></select>
-                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.Restriction.Format }}</p>
+                            <p ng-if="!editMode.redistribute" class="form-control-static tel-form-control-static">{{ data.redistribute.Restriction.Format }}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -126,14 +126,14 @@
                         <div class="col-sm-9">
                             <input id="other-distribution-formats" type="text" class="form-control tel-form-control"
                                    ng-model="data.redistribute.Restriction.OtherFormat" ng-if="editMode.redistribute">
-                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.Restriction.OtherFormat }}</p>
+                            <p ng-if="!editMode.redistribute" class="form-control-static tel-form-control-static">{{ data.redistribute.Restriction.OtherFormat }}</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="appendix-received" class="col-sm-3 control-label" translate="DATASETS.REDISTRIBUTE_TERMS"></label>
                         <div class="col-sm-9">
                             <textarea ng-if="editMode.redistribute" class="tel-form-control form-control" ng-model="data.redistribute.Restriction.Terms"></textarea>
-                            <p ng-if="!editMode.redistribute" class="form-control-static tel-multiline-text">{{ data.redistribute.Restriction.Terms}}</p>
+                            <p ng-if="!editMode.redistribute" class="form-control-static tel-form-control-static tel-multiline-text">{{ data.redistribute.Restriction.Terms}}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -147,7 +147,7 @@
                                     <button type="button" class="tel-btn btn btn-default" ng-click="openDatepicker($event ,'timeRestriction')"><i class="glyphicon glyphicon-calendar"></i></button>
                                 </span>
                             </p>
-                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.Restriction.Time | date:'dd.MM.yyyy' }}</p>
+                            <p ng-if="!editMode.redistribute" class="form-control-static tel-form-control-static">{{ data.redistribute.Restriction.Time | date:'dd.MM.yyyy' }}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -161,7 +161,7 @@
                                     <button type="button" class="tel-btn btn btn-default" ng-click="openDatepicker($event ,'durationOfRestriction')"><i class="glyphicon glyphicon-calendar"></i></button>
                                 </span>
                             </p>
-                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.Restriction.Duration | date:'dd.MM.yyyy' }}</p>
+                            <p ng-if="!editMode.redistribute" class="form-control-static tel-form-control-static">{{ data.redistribute.Restriction.Duration | date:'dd.MM.yyyy' }}</p>
                         </div>
                     </div>
                     <h4 translate="DATASETS.LICENSE"></h4>
@@ -172,7 +172,7 @@
                                     ng-options="c.value as c.label for c in sourceLicenses"
                                     ng-if="editMode.redistribute"
                                     ng-model="data.redistribute.License.Source"></select>
-                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.License.Source }}</p>
+                            <p ng-if="!editMode.redistribute" class="form-control-static tel-form-control-static">{{ data.redistribute.License.Source }}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -180,7 +180,7 @@
                         <div class="col-sm-9">
                             <input id="other-source-data-license" ng-if="editMode.redistribute"
                                    class="tel-form-control form-control" ng-model="data.redistribute.License.OtherSource">
-                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.License.OtherSource }}</p>
+                            <p ng-if="!editMode.redistribute" class="form-control-static tel-form-control-static">{{ data.redistribute.License.OtherSource }}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -190,7 +190,7 @@
                                     ng-options="c.value as c.label for c in distributionLicenses"
                                     ng-if="editMode.redistribute"
                                     ng-model="data.redistribute.License.Distribution"></select>
-                            <p ng-if="!editMode.redistribute" class="form-control-static">{{ data.redistribute.License.Distribution }}</p>
+                            <p ng-if="!editMode.redistribute" class="form-control-static tel-form-control-static">{{ data.redistribute.License.Distribution }}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -198,7 +198,7 @@
                         <div class="col-sm-9">
                             <textarea id="further-information" ng-if="editMode.redistribute"
                                       class="tel-form-control form-control" ng-model="data.redistribute.License.FurtherInformation"></textarea>
-                            <p ng-if="!editMode.redistribute" class="form-control-static tel-multiline-text">{{ data.redistribute.License.FurtherInformation }}</p>
+                            <p ng-if="!editMode.redistribute" class="form-control-static tel-form-control-static tel-multiline-text">{{ data.redistribute.License.FurtherInformation }}</p>
                         </div>
                     </div>
                 </form>
@@ -224,7 +224,7 @@
                                     ng-options="c.value as c.label for c in digitisationStatuses"
                                     ng-if="editMode.data"
                                     ng-model="data.data.DigitisationStatus"></select>
-                            <p ng-if="!editMode.data" class="form-control-static">{{ data.data.DigitisationStatus }}</p>
+                            <p ng-if="!editMode.data" class="form-control-static tel-form-control-static">{{ data.data.DigitisationStatus }}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -232,7 +232,7 @@
                         <div class="col-sm-9">
                             <input id="expected-records" type="text" class="form-control tel-form-control" ng-model="data.data.ExpectedRecords"
                                    ng-if="editMode.data">
-                            <p class="form-control-static" ng-if="!editMode.data">{{ data.data.ExpectedRecords }}</p>
+                            <p class="form-control-static tel-form-control-static" ng-if="!editMode.data">{{ data.data.ExpectedRecords }}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -240,7 +240,7 @@
                         <div class="col-sm-9">
                             <input id="expected-digital" type="text" class="form-control tel-form-control" ng-model="data.data.ExpectedDigitalObjects"
                                    ng-if="editMode.data">
-                            <p class="form-control-static" ng-if="!editMode.data">{{ data.data.ExpectedDigitalObjects }}</p>
+                            <p class="form-control-static tel-form-control-static" ng-if="!editMode.data">{{ data.data.ExpectedDigitalObjects }}</p>
                         </div>
                     </div>
                     <h4 translate="DATASETS.DELIVERED_DATA"></h4>
@@ -254,12 +254,12 @@
                                     ng-options="c.value as c.label | translate for c in dataTypes"
                                     ng-if="editMode.data"
                                     ng-model="format.DataType"></select>
-                            <p class="form-control-static" ng-if="!editMode.data">{{ 'DATA_TYPE.' + format.DataType | translate }}</p>
+                            <p class="form-control-static tel-form-control-static" ng-if="!editMode.data">{{ 'DATA_TYPE.' + format.DataType | translate }}</p>
                         </div>
                         <div class="col-sm-5">
                             <input type="text" class="form-control tel-form-control"
                                    ng-model="format.Value" ng-if="editMode.data">
-                            <p class="form-control-static" ng-if="!editMode.data">{{ format.Value }}</p>
+                            <p class="form-control-static tel-form-control-static" ng-if="!editMode.data">{{ format.Value }}</p>
                         </div>
                         <div class="col-sm-2">
                             <button type="button" class="tel-btn btn btn-danger" ng-click="removeDataType($index)" ng-if="editMode.data">
@@ -293,7 +293,7 @@
                                     ng-options="c.value as c.label for c in portalStatuses"
                                     ng-if="editMode.portal"
                                     ng-model="data.portal.PortalStatus"></select>
-                            <p ng-if="!editMode.portal" class="form-control-static">{{ 'PORTAL_STATUS.' + data.portal.PortalStatus | translate }}</p>
+                            <p ng-if="!editMode.portal" class="form-control-static tel-form-control-static">{{ 'PORTAL_STATUS.' + data.portal.PortalStatus | translate }}</p>
                         </div>
                     </div>
                     <h4 translate="DATASETS.LINKS"></h4>
@@ -306,12 +306,14 @@
                             <select class="tel-form-control form-control" ng-model="link.LinkType"
                                     ng-options="c.value as c.label | translate for c in datasetLinkTypes"
                                     ng-if="editMode.portal"></select>
-                            <p class="form-control-static" ng-if="!editMode.portal">{{ 'DATASET_LINK_TYPE.' + link.LinkType | translate}}</p>
+                            <p class="form-control-static tel-form-control-static" ng-if="!editMode.portal">{{ 'DATASET_LINK_TYPE.' + link.LinkType | translate}}</p>
                         </div>
                         <div class="col-sm-5">
                             <input type="text" class="form-control tel-form-control" ng-model="link.Value"
                                    ng-if="editMode.portal">
-                            <p class="form-control-static" ng-if="!editMode.portal">{{ link.Value }}</p>
+                            <p class="form-control-static tel-form-control-static" ng-if="!editMode.portal">
+                                <a ng-href="{{ link.Value }}" target="_blank">{{ link.Value }}</a>
+                            </p>
                         </div>
                         <div class="col-sm-2">
                             <button type="button" class="tel-btn btn btn-danger" ng-click="removeLink($index)" ng-if="editMode.portal">
@@ -332,11 +334,11 @@
                             <select class="tel-form-control form-control" ng-model="note.NoteType"
                                     ng-options="c.value as c.label | translate for c in noteTypes"
                                     ng-if="editMode.portal"></select>
-                            <p class="form-control-static" ng-if="!editMode.portal">{{ 'NOTE_TYPE.' + note.NoteType | translate}}</p>
+                            <p class="form-control-static tel-form-control-static" ng-if="!editMode.portal">{{ 'NOTE_TYPE.' + note.NoteType | translate}}</p>
                         </div>
                         <div class="col-sm-5">
                             <textarea class="form-control tel-form-control" ng-if="editMode.portal" ng-model="note.Value"></textarea>
-                            <p class="form-control-static tel-multiline-text" ng-if="!editMode.portal">{{ note.Value }}</p>
+                            <p class="form-control-static tel-form-control-static tel-multiline-text" ng-if="!editMode.portal">{{ note.Value }}</p>
                         </div>
                         <div class="col-sm-2">
                             <button type="button" class="tel-btn btn btn-danger" ng-click="removeNote($index)" ng-if="editMode.portal">
@@ -370,7 +372,7 @@
                                     ng-options="c.value as c.label for c in disciplines"
                                     ng-if="editMode.description" multiple
                                     ng-model="data.description.Discipline"></select>
-                            <p ng-if="!editMode.description" class="form-control-static">
+                            <p ng-if="!editMode.description" class="form-control-static tel-form-control-static">
                                 <span ng-repeat="disc in data.description.Discipline">{{ disc | translate }}, </span>
                             </p>
                         </div>
@@ -390,7 +392,7 @@
                                     <div ng-bind-html="c.label | highlight: $select.search"></div>
                                 </ui-select-choices>
                             </ui-select>
-                            <p ng-if="!editMode.description" class="form-control-static">
+                            <p ng-if="!editMode.description" class="form-control-static tel-form-control-static">
                                 <span ng-repeat="lang in data.description.Language">{{ lang | translate }}, </span>
                             </p>
                         </div>
@@ -402,7 +404,7 @@
                                     ng-options="c.value as c.label for c in subjects"
                                     ng-if="editMode.description" multiple
                                     ng-model="data.description.Subject"></select>
-                            <p ng-if="!editMode.description" class="form-control-static">
+                            <p ng-if="!editMode.description" class="form-control-static tel-form-control-static">
                                 <span ng-repeat="sub in data.description.Subject">{{ sub | translate }}, </span>
                             </p>
                         </div>
@@ -414,7 +416,7 @@
                                     ng-options="c.value as c.label for c in timeCoverages"
                                     ng-if="editMode.description" multiple
                                     ng-model="data.description.TimeCoverage"></select>
-                            <p ng-if="!editMode.description" class="form-control-static">
+                            <p ng-if="!editMode.description" class="form-control-static tel-form-control-static">
                                 <span ng-repeat="time in data.description.TimeCoverage">{{ time | translate }}, </span>
                             </p>
                         </div>
@@ -426,7 +428,7 @@
                                     ng-options="c.value as c.label for c in spatialCoverages"
                                     ng-if="editMode.description" multiple
                                     ng-model="data.description.SpatialCoverage"></select>
-                            <p ng-if="!editMode.description" class="form-control-static">
+                            <p ng-if="!editMode.description" class="form-control-static tel-form-control-static">
                                 <span ng-repeat="spatial in data.description.SpatialCoverage">{{ spatial | translate }}, </span>
                             </p>
                         </div>
@@ -438,7 +440,7 @@
                                     ng-options="c.value as c.label for c in itemTypes"
                                     ng-if="editMode.description" multiple
                                     ng-model="data.description.ItemType"></select>
-                            <p ng-if="!editMode.description" class="form-control-static">
+                            <p ng-if="!editMode.description" class="form-control-static tel-form-control-static">
                                 <span ng-repeat="item in data.description.ItemType">{{ item | translate }}, </span>
                             </p>
                         </div>
@@ -456,14 +458,14 @@
                                     <span ng-bind-html="c.label | translate | highlight: $select.search"></span>
                                 </ui-select-choices>
                             </ui-select>
-                            <p class="form-control-static" ng-if="!editMode.description">{{ 'LANGUAGES.' + desc.Language | translate }}</p>
+                            <p class="form-control-static tel-form-control-static" ng-if="!editMode.description">{{ 'LANGUAGES.' + desc.Language | translate }}</p>
                             <input class="form-control tel-form-control" ng-if="editMode.description" ng-model="desc.Value.Title">
-                            <p class="form-control-static" ng-if="!editMode.description">{{ desc.Value.Title }}</p>
+                            <p class="form-control-static tel-form-control-static" ng-if="!editMode.description">{{ desc.Value.Title }}</p>
                         </div>
                         <div class="col-sm-5">
                             <textarea class="form-control tel-form-control" ng-model="desc.Value.Description"
                                       ng-if="editMode.description"></textarea>
-                            <p class="form-control-static tel-multiline-text" ng-if="!editMode.description">{{ desc.Value.Description }}</p>
+                            <p class="form-control-static tel-form-control-static tel-multiline-text" ng-if="!editMode.description">{{ desc.Value.Description }}</p>
                         </div>
                         <div class="col-sm-2">
                             <button type="button" class="tel-btn btn btn-danger" ng-click="removeDescription($index)" ng-if="editMode.description">
@@ -485,11 +487,11 @@
                                     <!--ng-options="c.value as c.label for c in noteTypes"-->
                                     <!--ng-if="editMode.description"-->
                                     <!--ng-model="note.NoteType"></select>-->
-                            <!--<p class="form-control-static" ng-if="!editMode.description">{{ 'NOTE_TYPE.' + note.NoteType | translate}}</p>-->
+                            <!--<p class="form-control-static tel-form-control-static" ng-if="!editMode.description">{{ 'NOTE_TYPE.' + note.NoteType | translate}}</p>-->
                         <!--</div>-->
                         <!--<div class="col-sm-5">-->
                             <!--<textarea class="form-control tel-form-control" ng-if="editMode.description" ng-model="note.Value"></textarea>-->
-                            <!--<p class="form-control-static" ng-if="!editMode.description">{{ note.Value }}</p>-->
+                            <!--<p class="form-control-static tel-form-control-static" ng-if="!editMode.description">{{ note.Value }}</p>-->
                         <!--</div>-->
                         <!--<div class="col-sm-2">-->
                             <!--<button type="button" class="tel-btn btn btn-danger" ng-click="removeNote($index)" ng-if="editMode.description">-->
@@ -701,25 +703,28 @@
                         </span>
                     </li>
                 </ul>
-                <!--<div class="tel-table-primary">-->
-                    <!--<div class="tel-datasets-table-container">-->
-                        <!--<table class="table table-bordered">-->
-                            <!--<thead>-->
-                            <!--<tr>-->
-                                <!--<th translate="DATASETS.TICKET_NAME"></th>-->
-                            <!--</tr>-->
-                            <!--</thead>-->
-                            <!--<tbody>-->
-                            <!--<tr ng-repeat="data in data.subset.Tickets">-->
-                                <!--<td>{{ data.Value.Name }}</td>-->
-                            <!--</tr>-->
-                            <!--</tbody>-->
-                        <!--</table>-->
-                    <!--</div>-->
-                    <!--<div class="tel-table-footer clearfix">-->
-                        <!--<a href="#" class="btn btn-primary pull-right" translate="DATASETS.ADD_SUBSET"></a>-->
-                    <!--</div>-->
-                <!--</div>-->
+            </accordion-group>
+            <accordion-group is-open="accordionStatuses.task" class="success">
+                <accordion-heading>
+                    <span translate="DATASETS.TASKS"></span>
+                    <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.task, 'fa-minus-square': accordionStatuses.task}"></i>
+                </accordion-heading>
+                <ul class="tel-task-list">
+                    <li class="tel-task" ng-repeat="task in data.task.Task">
+                        <span class="label label-warning pull-right">High</span>
+                        <!--<div class="fa fa-arrows-v task-sort-icon"></div>-->
+                        <!--<div class="action-checkbox">-->
+                            <!--<label class="px-single">-->
+                                <!--<input type="checkbox" class="px"><span class="lbl"></span>-->
+                            <!--</label>-->
+                        <!--</div>-->
+                        <div class="tel-checkbox checkbox">
+                            <label>
+                                <input type="checkbox"> <span class="lbl">{{ task.Value.Name }} <span>1 hour left</span></span>
+                            </label>
+                        </div>
+                    </li>
+                </ul>
             </accordion-group>
         </accordion>
     </div>

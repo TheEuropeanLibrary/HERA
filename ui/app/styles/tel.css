@@ -1730,6 +1730,44 @@ html {
 .tel-accordion .panel-body .tel-ticket-list {
   margin: -20px;
 }
+.tel-accordion .panel-body .tel-task-list {
+  margin: -20px;
+}
+.tel-task-list {
+  list-style: none;
+  padding: 0;
+}
+.tel-task-list .tel-task {
+  padding: 20px;
+}
+.tel-task-list .tel-task .checkbox.tel-checkbox label {
+  display: block;
+}
+.tel-task-list .tel-task .checkbox.tel-checkbox label .lbl {
+  color: #444444;
+  line-height: 21px;
+  font-size: 13px;
+}
+.tel-task-list .tel-task .checkbox.tel-checkbox label .lbl span {
+  color: #aaa;
+  display: inline-block;
+  font-size: 12px;
+  font-style: italic;
+  margin-left: 5px;
+}
+.tel-task-list .tel-task .checkbox.tel-checkbox label input[type="checkbox"]:checked + .lbl {
+  color: #999999;
+  text-decoration: line-through;
+}
+.tel-task-list .tel-task .checkbox.tel-checkbox label input[type="checkbox"]:checked + .lbl span {
+  display: none;
+}
+.tel-task-list .tel-task .label {
+  margin-top: 12px;
+}
+.form-control-static.tel-form-control-static {
+  word-break: break-all;
+}
 @media (min-width: 480px) {
   .tel-navigation > li {
     width: auto;

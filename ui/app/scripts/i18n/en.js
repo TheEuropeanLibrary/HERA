@@ -127,7 +127,8 @@ angular
                         SUBSETS: "Subsets",
                         SUBSET_NAME: "Subset name",
                         ADD_SUBSET: "Add subset",
-                        TICKETS: "Tickets"
+                        TICKETS: "Tickets",
+                        TASKS: "Tasks"
                     },
                     LANGUAGES: {
                         "UND" : "Undetermined",

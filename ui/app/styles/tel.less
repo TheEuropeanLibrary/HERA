@@ -1873,6 +1873,48 @@ body, html {
     .tel-ticket-list {
         margin: -20px;
     }
+    .tel-task-list {
+        margin: -20px;
+    }
+}
+
+.tel-task-list {
+    list-style: none;
+    padding: 0;
+    .tel-task {
+        padding: 20px;
+        .checkbox.tel-checkbox {
+            label {
+                display: block;
+                .lbl {
+                    color: #444444;
+                    line-height: 21px;
+                    font-size: 13px;
+                    span {
+                        color: #aaa;
+                        display: inline-block;
+                        font-size: 12px;
+                        font-style: italic;
+                        margin-left: 5px;
+                    }
+                }
+                input[type="checkbox"]:checked + .lbl {
+                    color: #999999;
+                    text-decoration: line-through;
+                    span {
+                        display: none;
+                    }
+                }
+            }
+        }
+        .label {
+            margin-top: 12px;
+        }
+    }
+}
+
+.form-control-static.tel-form-control-static {
+    word-break: break-all;
 }
 
 @media (min-width: 480px) {
