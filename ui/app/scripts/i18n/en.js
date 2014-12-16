@@ -116,8 +116,19 @@ angular
                         INGESTION_TYPE: "Ingestion type",
                         LAST_INGESTION_DATE: "Last ingestion date",
                         LAST_INGESTION_NUMBER: "Last ingestion number",
-                        INGESTION: "Ingestion"
-
+                        INGESTION: "Ingestion",
+                        STATISTICS: "Statistics",
+                        STATISTICS_TYPE: "Statistics type",
+                        STATISTICS_STATUS: "Status",
+                        DETAILS_LINK: "Details link",
+                        PROJECTS: "Projects",
+                        ADD_PROJECT: "Add project",
+                        PROJECT_NAME: "Project name",
+                        SUBSETS: "Subsets",
+                        SUBSET_NAME: "Subset name",
+                        ADD_SUBSET: "Add subset",
+                        TICKETS: "Tickets",
+                        TASKS: "Tasks"
                     },
                     LANGUAGES: {
                         "UND" : "Undetermined",

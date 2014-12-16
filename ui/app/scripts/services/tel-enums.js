@@ -796,7 +796,7 @@ angular
 
             var dataTypes = ["FULLTEXT", "CONTROLLED_VOCABULARY", "CONTENT", "AUTHORITY", "DIGITAL"];
 
-            var datasetLinkType = ["ACCESS_RIGHTS", "PROVENANCE", "BIBLIOGRAPHY", "SOURCE"];
+            var datasetLinkType = ["DESCRIPTION", "ACCESS"];
 
             var noteTypes = ["ACCESS_RIGHTS", "PROVENANCE", "BIBLIOGRAPHY", "SOURCE"];
 

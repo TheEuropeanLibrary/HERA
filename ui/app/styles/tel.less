@@ -1825,6 +1825,98 @@ body, html {
     white-space: pre-wrap;
 }
 
+.tel-ticket-list {
+    list-style: none;
+    padding: 0;
+    .tel-ticket {
+        padding: 20px;
+        & + .tel-ticket {
+            border-top: 1px solid #e4e4e4;
+        }
+        .ticket-title {
+            display: block;
+            font-size: 14px;
+            line-height: 20px;
+            padding: 0 90px 0 0;
+            span {
+                color: #aaaaaa;
+                display: inline-block;
+                padding-left: 4px;
+                text-decoration: none;
+            }
+            &:hover,
+            &:focus{
+                text-decoration: none;
+                span {
+                    text-decoration: none;
+                }
+            }
+        }
+        .ticket-info {
+            color: #aaaaaa;
+            font-size: 12px;
+            a {
+                color: #555555;
+                &:hover {
+                    color: #555555;
+                    text-decoration: none;
+                }
+                &:focus {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+.tel-accordion .panel-body {
+    .tel-ticket-list {
+        margin: -20px;
+    }
+    .tel-task-list {
+        margin: -20px;
+    }
+}
+
+.tel-task-list {
+    list-style: none;
+    padding: 0;
+    .tel-task {
+        padding: 20px;
+        .checkbox.tel-checkbox {
+            label {
+                display: block;
+                .lbl {
+                    color: #444444;
+                    line-height: 21px;
+                    font-size: 13px;
+                    span {
+                        color: #aaa;
+                        display: inline-block;
+                        font-size: 12px;
+                        font-style: italic;
+                        margin-left: 5px;
+                    }
+                }
+                input[type="checkbox"]:checked + .lbl {
+                    color: #999999;
+                    text-decoration: line-through;
+                    span {
+                        display: none;
+                    }
+                }
+            }
+        }
+        .label {
+            margin-top: 12px;
+        }
+    }
+}
+
+.form-control-static.tel-form-control-static {
+    word-break: break-all;
+}
+
 @media (min-width: 480px) {
     .tel-navigation {
         & > li {
