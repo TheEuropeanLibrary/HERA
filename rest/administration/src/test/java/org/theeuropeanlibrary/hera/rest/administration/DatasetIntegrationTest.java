@@ -55,7 +55,8 @@ public class DatasetIntegrationTest {
 
     private Client client = JerseyClientBuilder.newClient().register(basicAuthentication);
 
-    private static final String BASE_URL = "http://localhost:8082/hera-rest-administration";
+//    private static final String BASE_URL = "http://localhost:8082/hera-rest-administration";
+	 private static final String BASE_URL =  "http://146.48.82.158:8080/hera-rest-administration/";
     
     private static final String createDatasetPathTemplate = "/datasets";
     private static final String getDatasetForProviderPathTemplate = "/datasets" ;
