@@ -368,10 +368,14 @@
                     <div class="form-group">
                         <label for="discipline" class="col-sm-3 control-label" translate="DATASETS.DISCIPLINE"></label>
                         <div class="col-sm-9">
-                            <select id="discipline" class="tel-form-control form-control"
-                                    ng-options="c.value as c.label for c in disciplines"
-                                    ng-if="editMode.description" multiple
-                                    ng-model="data.description.Discipline"></select>
+                            <ui-select id="discipline" ng-if="editMode.description" class="tel-select" multiple
+                                       ng-model="data.description.Discipline" theme="bootstrap">
+                                <ui-select-match>{{ $item.label }}</ui-select-match>
+                                <ui-select-choices repeat="c.value as c in disciplines | propsFilter: { label: $select.search }">
+                                    <div ng-bind-html="c.label | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+
                             <p ng-if="!editMode.description" class="form-control-static tel-form-control-static">
                                 <span ng-repeat="disc in data.description.Discipline">{{ disc | translate }}, </span>
                             </p>
@@ -380,12 +384,6 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label" translate="DATASETS.LANGUAGE"></label>
                         <div class="col-sm-9">
-                            <!--<ui-select ng-model="name.Language" theme="bootstrap" class="tel-select" ng-if="editMode.description">-->
-                                <!--<ui-select-match>{{$select.selected.label | translate}}</ui-select-match>-->
-                                <!--<ui-select-choices repeat="c.value as c in languages | filter: $select.search">-->
-                                    <!--<span ng-bind-html="c.label | translate | highlight: $select.search"></span>-->
-                                <!--</ui-select-choices>-->
-                            <!--</ui-select>-->
                             <ui-select ng-if="editMode.description" class="tel-select" multiple ng-model="data.description.Language" theme="bootstrap">
                                 <ui-select-match>{{ $item.label }}</ui-select-match>
                                 <ui-select-choices repeat="c.value as c in languages | propsFilter: { label: $select.search }">
@@ -400,10 +398,13 @@
                     <div class="form-group">
                         <label for="subject" class="col-sm-3 control-label" translate="DATASETS.SUBJECT"></label>
                         <div class="col-sm-9">
-                            <select id="subject" class="tel-form-control form-control"
-                                    ng-options="c.value as c.label for c in subjects"
-                                    ng-if="editMode.description" multiple
-                                    ng-model="data.description.Subject"></select>
+                            <ui-select id="subject" ng-if="editMode.description" class="tel-select" multiple
+                                       ng-model="data.description.Subject" theme="bootstrap">
+                                <ui-select-match>{{ $item.label }}</ui-select-match>
+                                <ui-select-choices repeat="c.value as c in subjects | propsFilter: { label: $select.search }">
+                                    <div ng-bind-html="c.label | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
                             <p ng-if="!editMode.description" class="form-control-static tel-form-control-static">
                                 <span ng-repeat="sub in data.description.Subject">{{ sub | translate }}, </span>
                             </p>
@@ -412,10 +413,13 @@
                     <div class="form-group">
                         <label for="time-coverage" class="col-sm-3 control-label" translate="DATASETS.TIME_COVERAGE"></label>
                         <div class="col-sm-9">
-                            <select id="time-coverage" class="tel-form-control form-control"
-                                    ng-options="c.value as c.label for c in timeCoverages"
-                                    ng-if="editMode.description" multiple
-                                    ng-model="data.description.TimeCoverage"></select>
+                            <ui-select id="time-coverage" ng-if="editMode.description" class="tel-select" multiple
+                                       ng-model="data.description.TimeCoverage" theme="bootstrap">
+                                <ui-select-match>{{ $item.label }}</ui-select-match>
+                                <ui-select-choices repeat="c.value as c in timeCoverages | propsFilter: { label: $select.search }">
+                                    <div ng-bind-html="c.label | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
                             <p ng-if="!editMode.description" class="form-control-static tel-form-control-static">
                                 <span ng-repeat="time in data.description.TimeCoverage">{{ time | translate }}, </span>
                             </p>
@@ -424,10 +428,13 @@
                     <div class="form-group">
                         <label for="spatial-coverage" class="col-sm-3 control-label" translate="DATASETS.SPATIAL_COVERAGE"></label>
                         <div class="col-sm-9">
-                            <select id="spatial-coverage" class="tel-form-control form-control"
-                                    ng-options="c.value as c.label for c in spatialCoverages"
-                                    ng-if="editMode.description" multiple
-                                    ng-model="data.description.SpatialCoverage"></select>
+                            <ui-select id="spatial-coverage" ng-if="editMode.description" class="tel-select" multiple
+                                       ng-model="data.description.SpatialCoverage" theme="bootstrap">
+                                <ui-select-match>{{ $item.label }}</ui-select-match>
+                                <ui-select-choices repeat="c.value as c in spatialCoverages | propsFilter: { label: $select.search }">
+                                    <div ng-bind-html="c.label | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
                             <p ng-if="!editMode.description" class="form-control-static tel-form-control-static">
                                 <span ng-repeat="spatial in data.description.SpatialCoverage">{{ spatial | translate }}, </span>
                             </p>
@@ -436,10 +443,13 @@
                     <div class="form-group">
                         <label for="item-type" class="col-sm-3 control-label" translate="DATASETS.ITEM_TYPE"></label>
                         <div class="col-sm-9">
-                            <select id="item-type" class="tel-form-control form-control"
-                                    ng-options="c.value as c.label for c in itemTypes"
-                                    ng-if="editMode.description" multiple
-                                    ng-model="data.description.ItemType"></select>
+                            <ui-select id="item-type" ng-if="editMode.description" class="tel-select" multiple
+                                       ng-model="data.description.ItemType" theme="bootstrap">
+                                <ui-select-match>{{ $item.label }}</ui-select-match>
+                                <ui-select-choices repeat="c.value as c in itemTypes | propsFilter: { label: $select.search }">
+                                    <div ng-bind-html="c.label | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
                             <p ng-if="!editMode.description" class="form-control-static tel-form-control-static">
                                 <span ng-repeat="item in data.description.ItemType">{{ item | translate }}, </span>
                             </p>
