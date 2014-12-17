@@ -138,8 +138,18 @@ angular.module("telApp")
             };
 
             $scope.deleteImage = function (index) {
-                $scope.data.image.Image.splice(index, 1);
-                $scope.saveChanges("image");
+
+                var modalInstance = $modal.open({
+                    templateUrl: "views/remove-image-modal.html",
+                    controller: "RemoveImageModalCtrl",
+                    windowClass: "tel-modal",
+                    backdropClass: "tel-modal-backdrop"
+                });
+
+                modalInstance.result.then(function () {
+                    $scope.data.image.Image.splice(index, 1);
+                    $scope.saveChanges("image");
+                });
             };
 
             telEnums.getLanguages().then(function (languages) {
