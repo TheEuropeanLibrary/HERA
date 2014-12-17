@@ -47,7 +47,9 @@ angular.module("telApp")
                 dataCopy = {};
 
             $scope.editMode = false;
-            $scope.accordionStatuses = {};
+            $scope.accordionStatuses = {
+                general: true
+            };
             $scope.data = {};
             $scope.editMode = {};
 

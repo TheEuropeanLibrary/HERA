@@ -255,6 +255,7 @@ angular.module("telApp")
                     if ($scope.datasets && $scope.datasets.length) {
                         $scope.selectedDatasetId = $scope.datasets[0].id;
                     }
+                    $scope.accordionStatuses.general = true;
                 });
                 //.then();
         }
