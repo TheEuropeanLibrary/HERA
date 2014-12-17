@@ -1730,6 +1730,11 @@ body, html {
         color: #ffffff;
         box-shadow: 0 0 12px rgba(0,0,0,.1) inset;
     }
+    &.btn-xs {
+        font-size: 12px;
+        line-height: 1.5;
+        padding: 1px 5px;
+    }
 }
 
 .tel-company-selector {
@@ -1762,12 +1767,21 @@ body, html {
     margin-bottom: 20px;
     max-height: 250px;
     overflow-y: auto;
-    img {
+    .tel-organisation-image-container {
         display: inline-block;
         max-height: 100px;
         margin-right: 15px;
         margin-bottom: 15px;
+        position: relative;
         vertical-align: middle;
+        img {
+            max-height: 100px;
+        }
+        .btn.tel-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
     }
 }
 

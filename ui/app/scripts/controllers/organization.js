@@ -135,6 +135,11 @@ angular.module("telApp")
                 });
             };
 
+            $scope.deleteImage = function (index) {
+                $scope.data.image.Image.splice(index, 1);
+                $scope.saveChanges("image");
+            };
+
             telEnums.getLanguages().then(function (languages) {
                 $scope.languages = languages;
             });

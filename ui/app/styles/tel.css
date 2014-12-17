@@ -1610,6 +1610,11 @@ html {
   color: #ffffff;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.1) inset;
 }
+.tel-btn.btn.btn-xs {
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 1px 5px;
+}
 .tel-company-selector {
   margin-bottom: 20px;
   position: relative;
@@ -1639,12 +1644,21 @@ html {
   max-height: 250px;
   overflow-y: auto;
 }
-.tel-organisation-images img {
+.tel-organisation-images .tel-organisation-image-container {
   display: inline-block;
   max-height: 100px;
   margin-right: 15px;
   margin-bottom: 15px;
+  position: relative;
   vertical-align: middle;
+}
+.tel-organisation-images .tel-organisation-image-container img {
+  max-height: 100px;
+}
+.tel-organisation-images .tel-organisation-image-container .btn.tel-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 .form-group.tel-form-group-vertical > label {
   text-align: left;
