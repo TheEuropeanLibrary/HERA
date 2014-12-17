@@ -64,7 +64,7 @@
                             translate="CANCEL"></button>
                 </div>
             </accordion-group>
-            <accordion-group is-open="accordionStatuses.redistribute" class="success">
+            <accordion-group is-open="accordionStatuses.redistribute" class="danger">
                 <accordion-heading>
                     <i class="fa fa-bus"></i>
                     <span translate="DATASETS.REDISTRIBUTE"></span>
@@ -213,7 +213,7 @@
                             translate="CANCEL"></button>
                 </div>
             </accordion-group>
-            <accordion-group is-open="accordionStatuses.data" class="success">
+            <accordion-group is-open="accordionStatuses.data" class="warning">
                 <accordion-heading>
                     <i class="fa fa-folder"></i>
                     <span translate="DATASETS.DATA"></span>
@@ -283,7 +283,7 @@
                             translate="CANCEL"></button>
                 </div>
             </accordion-group>
-            <accordion-group is-open="accordionStatuses.portal" class="success">
+            <accordion-group is-open="accordionStatuses.portal" class="info">
                 <accordion-heading>
                     <i class="fa fa-fire"></i>
                     <span translate="DATASETS.PORTAL"></span>
@@ -531,7 +531,7 @@
     </div>
     <div class="col-xs-6">
         <accordion class="tel-accordion" close-others="false">
-            <accordion-group is-open="accordionStatuses.harvesting" class="success">
+            <accordion-group is-open="accordionStatuses.harvesting" class="primary">
                 <accordion-heading>
                     <i class="fa fa-bus"></i>
                     <span translate="DATASETS.HARVESTING"></span>
@@ -568,11 +568,11 @@
                         </tbody>
                     </table>
                     <div class="tel-table-footer clearfix">
-                        <a href="#" class="btn btn-primary pull-right" translate="DATASETS.HARVESTING"></a>
+                        <a href="#" class="btn btn-primary tel-btn pull-right" translate="DATASETS.HARVESTING"></a>
                     </div>
                 </div>
             </accordion-group>
-            <accordion-group is-open="accordionStatuses.ingestion" class="success">
+            <accordion-group is-open="accordionStatuses.ingestion" class="warning">
                 <accordion-heading>
                     <i class="fa fa-book"></i>
                     <span translate="DATASETS.INGESTION"></span>
@@ -616,7 +616,7 @@
                         </table>
                     </div>
                     <div class="tel-table-footer clearfix">
-                        <a href="#" class="btn btn-primary pull-right" translate="DATASETS.INGESTION"></a>
+                        <a href="#" class="btn btn-primary tel-btn pull-right" translate="DATASETS.INGESTION"></a>
                     </div>
                 </div>
             </accordion-group>
@@ -626,7 +626,7 @@
                     <span translate="DATASETS.STATISTICS"></span>
                     <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.statistic, 'fa-minus-square': accordionStatuses.statistic}"></i>
                 </accordion-heading>
-                <div class="tel-table-primary">
+                <div class="tel-table-success">
                     <div class="tel-datasets-table-container">
                         <table class="table table-bordered">
                             <thead>
@@ -646,17 +646,17 @@
                         </table>
                     </div>
                     <div class="tel-table-footer clearfix">
-                        <a href="#" class="btn btn-primary pull-right" translate="DATASETS.STATISTICS"></a>
+                        <a href="#" class="btn btn-primary tel-btn pull-right" translate="DATASETS.STATISTICS"></a>
                     </div>
                 </div>
             </accordion-group>
-            <accordion-group is-open="accordionStatuses.project" class="success">
+            <accordion-group is-open="accordionStatuses.project" class="warning">
                 <accordion-heading>
                     <i class="fa fa-cloud"></i>
                     <span translate="DATASETS.PROJECTS"></span>
                     <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.project, 'fa-minus-square': accordionStatuses.project}"></i>
                 </accordion-heading>
-                <div class="tel-table-primary">
+                <div class="tel-table-warning">
                     <div class="tel-datasets-table-container">
                         <table class="table table-bordered">
                             <thead>
@@ -672,17 +672,17 @@
                         </table>
                     </div>
                     <div class="tel-table-footer clearfix">
-                        <a href="#" class="btn btn-primary pull-right" translate="DATASETS.ADD_PROJECT"></a>
+                        <a href="#" class="btn btn-primary tel-btn pull-right" translate="DATASETS.ADD_PROJECT"></a>
                     </div>
                 </div>
             </accordion-group>
-            <accordion-group is-open="accordionStatuses.subset" class="success">
+            <accordion-group is-open="accordionStatuses.subset" class="info">
                 <accordion-heading>
                     <i class="fa fa-briefcase"></i>
                     <span translate="DATASETS.SUBSETS"></span>
                     <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.subset, 'fa-minus-square': accordionStatuses.subset}"></i>
                 </accordion-heading>
-                <div class="tel-table-primary">
+                <div class="tel-table-info">
                     <div class="tel-datasets-table-container">
                         <table class="table table-bordered">
                             <thead>
@@ -698,11 +698,11 @@
                         </table>
                     </div>
                     <div class="tel-table-footer clearfix">
-                        <a href="#" class="btn btn-primary pull-right" translate="DATASETS.ADD_SUBSET"></a>
+                        <a href="#" class="btn btn-primary tel-btn pull-right" translate="DATASETS.ADD_SUBSET"></a>
                     </div>
                 </div>
             </accordion-group>
-            <accordion-group is-open="accordionStatuses.ticket" class="success">
+            <accordion-group is-open="accordionStatuses.ticket" class="danger">
                 <accordion-heading>
                     <i class="fa fa-bullhorn"></i>
                     <span translate="DATASETS.TICKETS"></span>

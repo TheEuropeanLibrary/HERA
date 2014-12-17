@@ -191,7 +191,7 @@
                             translate="CANCEL"></button>
                 </div>
             </accordion-group>
-            <accordion-group is-open="accordionStatuses.membership">
+            <accordion-group is-open="accordionStatuses.membership" class="info">
                 <accordion-heading>
                     <i class="fa fa-envelope"></i>
                     <span translate="ORGANISATIONS.MEMBERSHIP"></span>
@@ -282,7 +282,7 @@
                             translate="CANCEL"></button>
                 </div>
             </accordion-group>
-            <accordion-group is-open="accordionStatuses.portal">
+            <accordion-group is-open="accordionStatuses.portal" class="danger">
                 <accordion-heading>
                     <i class="fa fa-fire"></i>
                     <span translate="ORGANISATIONS.PORTAL"></span>
@@ -359,7 +359,7 @@
                     <span translate="ORGANISATIONS.DATASETS"></span>
                     <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.dataset, 'fa-minus-square': accordionStatuses.dataset}"></i>
                 </accordion-heading>
-                    <div class="tel-table-primary">
+                    <div class="tel-table-info">
                         <!--<div class="tel-table-header">-->
                         <!--<div class="tel-table-caption">-->
                         <!--Primary Table-->
@@ -384,33 +384,35 @@
                             </table>
                         </div>
                         <div class="tel-table-footer clearfix">
-                            <button type="button" class="btn btn-primary pull-right" translate="ORGANISATIONS.ADD_DATASET"></button>
+                            <button type="button" class="btn btn-primary tel-btn pull-right" translate="ORGANISATIONS.ADD_DATASET"></button>
                         </div>
                     </div>
             </accordion-group>
-            <accordion-group is-open="accordionStatuses.contact">
+            <accordion-group is-open="accordionStatuses.contact" class="warning">
                 <accordion-heading>
                     <i class="fa fa-users"></i>
                     <span translate="ORGANISATIONS.CONTACTS"></span>
                     <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.contact, 'fa-minus-square': accordionStatuses.contact}"></i>
                 </accordion-heading>
-                <div class="tel-datasets-table-container" ng-if="data.contact.Contact.length">
-                    <table class="table table-bordered">
-                        <thead>
-                        <tr>
-                            <th translate="ORGANISATIONS.NAME">Name</th>
-                            <th translate="ORGANISATIONS.ROLE">Name</th>
-                            <th translate="ORGANISATIONS.EMAIL">E-mail</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ng-repeat="contact in data.contact.Contact">
-                            <td>{{ contact.Value.Name }}</td>
-                            <td>{{ contact.Value.Role }}</td>
-                            <td>{{ contact.Value['Email'] }}</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                <div class="tel-table-warning">
+                    <div class="tel-datasets-table-container" ng-if="data.contact.Contact.length">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th translate="ORGANISATIONS.NAME">Name</th>
+                                <th translate="ORGANISATIONS.ROLE">Name</th>
+                                <th translate="ORGANISATIONS.EMAIL">E-mail</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="contact in data.contact.Contact">
+                                <td>{{ contact.Value.Name }}</td>
+                                <td>{{ contact.Value.Role }}</td>
+                                <td>{{ contact.Value['Email'] }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </accordion-group>
             <accordion-group is-open="accordionStatuses.project" class="success">
@@ -419,7 +421,7 @@
                     <span translate="DATASETS.PROJECTS"></span>
                     <i class="accordion-status fa" ng-class="{'fa-plus-square': !accordionStatuses.project, 'fa-minus-square': accordionStatuses.project}"></i>
                 </accordion-heading>
-                <div class="tel-table-primary">
+                <div class="tel-table-success">
                     <div class="tel-datasets-table-container">
                         <table class="table table-bordered">
                             <thead>
@@ -435,11 +437,11 @@
                         </table>
                     </div>
                     <div class="tel-table-footer clearfix">
-                        <a href="#" class="btn btn-primary pull-right" translate="DATASETS.ADD_PROJECT"></a>
+                        <a href="#" class="btn btn-primary tel-btn pull-right" translate="DATASETS.ADD_PROJECT"></a>
                     </div>
                 </div>
             </accordion-group>
-            <accordion-group is-open="accordionStatuses.image">
+            <accordion-group is-open="accordionStatuses.image" class="danger">
                 <accordion-heading>
                     <i class="fa fa-image"></i>
                     <span translate="ORGANISATIONS.IMAGES"></span>
@@ -455,7 +457,7 @@
                     ng-click="addImage()">
                 </button>
             </accordion-group>
-            <accordion-group is-open="accordionStatuses.ticket">
+            <accordion-group is-open="accordionStatuses.ticket" class="primary">
                 <accordion-heading>
                     <i class="fa fa-bullhorn"></i>
                     <span translate="ORGANISATIONS.TICKETS"></span>
@@ -478,7 +480,7 @@
                     </li>
                 </ul>
             </accordion-group>
-            <accordion-group is-open="accordionStatuses.task">
+            <accordion-group is-open="accordionStatuses.task" class="warning">
                 <accordion-heading>
                     <i class="fa fa-thumb-tack"></i>
                     <span translate="ORGANISATIONS.TASKS"></span>
